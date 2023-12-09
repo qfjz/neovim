@@ -45,3 +45,5 @@ Neovim + Lua
 | `<leader>g`   | FzfLua live grep                                                                        |
 | `<leader>f`   | FzfLua files                                                                            |
 | `U`           | Przywraca zmiany                                                                        |
+| `gj`          | Następna zmiana w pliku - Git                                                           |
+| `gk`          | Poprzednia zmiana w pliku - Git                                                         |
