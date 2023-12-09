@@ -19,6 +19,10 @@ vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
 vim.opt.list = true
 vim.opt.backspace = "3"
+vim.opt.path:remove("/usr/include")
+vim.opt.path:append("**")
+vim.opt.wildignore = "*/.git/*,*/.hg/*,*/.svn/*.,*/.DS_Store,*/node_modules/*"
+vim.opt.wildignore:append("*share/nvim/runtime/colors/*")  -- wyłączenie standardowych schematów kolorystycznych
 vim.opt.backup = false
 vim.opt.scrolloff = 999
 vim.opt.textwidth = 100
