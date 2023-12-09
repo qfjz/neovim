@@ -1,7 +1,5 @@
 # Neovim + Lua
 
-Neovim + Lua
-
 ## Przypisane skróty klawiszowe
 
 | Skrót         | Opis                                                                                    |
