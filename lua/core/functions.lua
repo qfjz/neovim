@@ -121,3 +121,8 @@ KolorPora = function()
         -- vim.notify("rose-pine-moon")
     end
 end
+
+P = function(v)
+    print(vim.inspect(v))
+    return v
+end

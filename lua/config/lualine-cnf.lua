@@ -84,7 +84,6 @@ local function ins_right(component)
 end
 
 ins_left {
-  -- mode component
   function()
     return '▊'
   end,
@@ -118,7 +117,6 @@ ins_left {
 }
 
 ins_left {
-  -- filesize component
   'filesize',
   cond = conditions.buffer_not_empty,
 }
@@ -127,8 +125,6 @@ ins_left { 'location' }
 
 ins_left { 'progress', color = { fg = colors.fg, gui = 'bold' } }
 
--- Insert mid section. You can make any number of sections in neovim :)
--- for lualine it's any number greater then 2
 ins_left {
   function()
     return '%='
@@ -138,7 +134,7 @@ ins_left {
 ins_left {
   'filename',
   cond = conditions.buffer_not_empty,
-  color = { fg = colors.magenta, gui = 'bold' },
+  color = { fg = colors.yellow },
 }
 
 -- ins_right {
@@ -179,5 +175,4 @@ ins_right {
   padding = { left = 1 },
 }
 
--- Now don't forget to initialize lualine
 lualine.setup(config)
