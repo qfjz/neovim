@@ -45,3 +45,4 @@ Neovim + Lua
 | `<esc>`       | Wyłącza wyróżnianie szukanego tekstu                                                    |
 | `<leader>g`   | FzfLua live grep                                                                        |
 | `<leader>f`   | FzfLua files                                                                            |
+| `U`           | Przywraca zmiany                                                                        |
