@@ -35,6 +35,9 @@ local conditions = {
   end,
 }
 
+-- sprawdza listę pluginów do aktualizacji
+local lazy_status = require("lazy.status")
+
 -- Config
 local config = {
   options = {
@@ -145,6 +148,12 @@ ins_left {
 -- }
 
 ins_right {
+    lazy_status.updates,
+    cond = lazy_status.has_updates,
+    color = { fg = colors.white, gui = "bold" },
+}
+
+ins_right {
   'diff',
   -- Is it me or the symbol for modified us really weird
   symbols = { added = ' ', modified = '󰝤 ', removed = ' ' },
@@ -154,6 +163,12 @@ ins_right {
     removed = { fg = colors.red },
   },
   cond = conditions.hide_in_width,
+}
+
+ins_right {
+    "filetype",
+    cond = conditions.hide_in_width,
+    color = {},
 }
 
 ins_right {

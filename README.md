@@ -43,3 +43,5 @@ Neovim + Lua
 | `<leader>o`   | Pozostawia otwarte tylko aktywne okno                                                   |
 | `<leader>c`   | Zamyka aktywne okno                                                                     |
 | `<esc>`       | Wyłącza wyróżnianie szukanego tekstu                                                    |
+| `<leader>g`   | FzfLua live grep                                                                        |
+| `<leader>f`   | FzfLua files                                                                            |
