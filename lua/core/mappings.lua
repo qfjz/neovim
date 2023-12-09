@@ -36,6 +36,7 @@ vim.keymap.set("n", "<leader>b", "<cmd>FzfLua buffers<cr>", { desc = "Przełącz
 vim.keymap.set("n", "<tab>", "<cmd>e #<cr>", { desc= "Przełączanie pomiędzy dwoma ostatnimi buforami" })
 vim.keymap.set("n", "<leader>o", "<cmd>only<cr>", { desc = "Pozostawia otwarte tylko aktywne okno" })
 vim.keymap.set("n", "<leader>c", "<cmd>close<cr>", { desc = "Zamyka aktywne okno" })
+vim.keymap.set("n", "<esc>", "<cmd>nohl<cr>", { silent = true, desc = "Wyłącza wyróżnianie szukanego tekstu" })
 -- Mapowanie znaczników (undo) w trybie INSERT, po wprowadzeniu jednego ze znaków , . ! ? ; :
 local undo_ch = { ",", ".", "!", "?", ";", ":" }
 for _, ch in ipairs(undo_ch) do

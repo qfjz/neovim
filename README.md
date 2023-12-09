@@ -42,3 +42,4 @@ Neovim + Lua
 | `<tab>`       | Przełączanie pomiędzy dwoma ostatnimi buforami                                          |
 | `<leader>o`   | Pozostawia otwarte tylko aktywne okno                                                   |
 | `<leader>c`   | Zamyka aktywne okno                                                                     |
+| `<esc>`       | Wyłącza wyróżnianie szukanego tekstu                                                    |
