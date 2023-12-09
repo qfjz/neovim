@@ -1,4 +1,4 @@
-# neovim
+# Neovim + Lua
 
 Neovim + Lua
 
