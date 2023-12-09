@@ -47,3 +47,4 @@ Neovim + Lua
 | `U`           | Przywraca zmiany                                                                        |
 | `gj`          | Następna zmiana w pliku - Git                                                           |
 | `gk`          | Poprzednia zmiana w pliku - Git                                                         |
+| `Alt+o`       | Hydra menu                                                                              |
