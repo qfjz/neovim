@@ -27,12 +27,18 @@ Neovim + Lua
 | `gf`          | Otwiera plik pod kursorem                                                               |
 | `dh`          | Usuwa od kursora do początku linii                                                      |
 | `dl`          | Usuwa od kursora do końca linii                                                         |
-| `<leader>vs`  | Dzieli okno w pionie                                                                    |
+| `<leader>sv`  | Dzieli okno w pionie                                                                    |
 | `<leader>sp`  | Dzieli okno w poziomie                                                                  |
-| `<leader>vv`  | Wyszukiwarka plików konfiguracyjnych                                                    |
+| `<leader>v`   | Wyszukiwarka plików konfiguracyjnych                                                    |
 | `yA`          | Kopiuje całą zawartość pliku do rejestru                                                |
 | `<space>m`    | Kopiuje zawartość głównego rejestru do rejestru `x`                                     |
 | `M`           | Wkleja zawartość rejestru `x`, standardowo klawisz `M` przenosi kursor na środek ekranu |
 | `<leader>C`   | Tworzy nowy plik                                                                        |
 | `<F9>`        | Zmiana tematu kolorystycznego w zależności od pory dnia                                 |
 | `Ctrl+/`      | Tworzy komentarz                                                                        |
+| `+`           | Zwiększa wartość liczby                                                                 |
+| `-`           | Zmniejsza wartość liczby                                                                |
+| `<leader>b`   | Przełączanie pomiędzy buforami                                                          |
+| `<tab>`       | Przełączanie pomiędzy dwoma ostatnimi buforami                                          |
+| `<leader>o`   | Pozostawia otwarte tylko aktywne okno                                                   |
+| `<leader>c`   | Zamyka aktywne okno                                                                     |

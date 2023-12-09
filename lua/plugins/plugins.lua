@@ -30,6 +30,7 @@ return {
     "jamessan/vim-gnupg",
     "anuvyklack/hydra.nvim",
     "nvim-lualine/lualine.nvim",
+    "romgrk/barbar.nvim",
     "folke/which-key.nvim",
     {
         "nvim-neo-tree/neo-tree.nvim",
