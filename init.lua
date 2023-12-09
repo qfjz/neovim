@@ -1,0 +1,13 @@
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
+require("core.lazy")
+require("core.options")
+require("core.mappings")
+require("core.functions")
+require("core.autocommands")
+require("config.which-key-cnf")
+require("config.gitsigns-cnf")
+require("plugins.plugins")
+
+vim.cmd([[colorscheme tokyonight]])
