@@ -17,7 +17,6 @@ Neovim + Lua
 | `<leader>w`   | Zapisanie zmian                                                                         |
 | `qq`          | Wyjśćie                                                                                 |
 | `<leader>;`   | Wejście do trybu COMMAND                                                                |
-| `M`           | Przechodzi do znacznika `m`                                                             |
 | `<c-h>`       | Przechodzi do okna po lewej                                                             |
 | `<c-l>`       | Przechodzi do okna po prawej                                                            |
 | `<c-j>`       | Przechodzi do okna niżej                                                                |
