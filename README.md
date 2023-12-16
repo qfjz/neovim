@@ -47,7 +47,7 @@
 | `gj`          | Następna zmiana w pliku - Git                                                             |
 | `gk`          | Poprzednia zmiana w pliku - Git                                                           |
 | `Alt+o`       | Hydra menu                                                                                |
-| `s+znak`      | Rozpoczyna wyszukiwanie za pomocą pluginu `flash.nvim`                                    |
+| `s + 2 znaki` | Rozpoczyna wyszukiwanie za pomocą pluginu `flash.nvim`                                    |
 
 ## Komendy
 
