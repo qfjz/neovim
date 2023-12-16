@@ -12,6 +12,7 @@ require("config.gitsigns-cnf")
 require("config.lualine-cnf")
 require("config.hydra-cnf")
 require("config.treesitter-cnf")
+require("config.lf-cnf")
 require("plugins.plugins")
 
 vim.cmd([[colorscheme tokyonight]])
