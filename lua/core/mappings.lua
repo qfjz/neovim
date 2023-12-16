@@ -50,3 +50,17 @@ local undo_ch = { ",", ".", "!", "?", ";", ":" }
 for _, ch in ipairs(undo_ch) do
     vim.keymap.set("i", ch, ch .. "<c-g>u")
 end
+-- Plugin flash.nvim wyszukiwanie za pomocą "s"
+vim.keymap.set({ "n", "o", "x" }, "s", function()
+    require("flash").jump({
+        search = {
+            forward = true,
+            wrap = false,
+            multi_window = false,
+            -- wyszukuje tylko początku wyrazu
+            mode = function(str)
+                return "\\<" .. str
+            end,
+        },
+    })
+end)

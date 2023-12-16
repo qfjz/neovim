@@ -13,6 +13,7 @@ require("config.lualine-cnf")
 require("config.hydra-cnf")
 require("config.treesitter-cnf")
 require("config.lf-cnf")
+require("config.flash-cnf")
 require("plugins.plugins")
 
 vim.cmd([[colorscheme tokyonight]])

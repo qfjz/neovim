@@ -32,6 +32,7 @@ return {
     "nvim-lualine/lualine.nvim",
     "romgrk/barbar.nvim",
     "folke/which-key.nvim",
+    "folke/flash.nvim",
     {
         "nvim-treesitter/nvim-treesitter",
         enabled = true,
