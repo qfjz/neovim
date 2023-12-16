@@ -1,5 +1,7 @@
 # Neovim + Lua
 
+![screenshot](screenshot.png)
+
 ## Przypisane skróty klawiszowe
 
 | Skrót         | Opis                                                                                      |
