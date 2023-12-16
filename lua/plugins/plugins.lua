@@ -33,6 +33,9 @@ return {
     "romgrk/barbar.nvim",
     "folke/which-key.nvim",
     "folke/flash.nvim",
+    "folke/zen-mode.nvim",  -- tryb Zen
+    "folke/twilight.nvim",  -- zakreśla tylko bieżący paragraf
+    "lukas-reineke/indent-blankline.nvim",  -- pionowe linie wyróżniające wcięcie
     {
         "nvim-treesitter/nvim-treesitter",
         enabled = true,

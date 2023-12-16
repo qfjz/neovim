@@ -64,3 +64,15 @@ vim.keymap.set({ "n", "o", "x" }, "s", function()
         },
     })
 end)
+-- ZenMode
+vim.keymap.set("n", "<leader>z", function()
+    if vim.g.zen_mode_active then
+        require("zen-mode").toggle()
+        vim.g.zen_mode_active = false
+        vim.cmd[[IBLToggle]]
+    else
+        require("zen-mode").toggle()
+        vim.g.zen_mode_active = true
+        vim.cmd[[IBLToggle]]
+    end
+end, { desc = "Zen Mode Toggle" })

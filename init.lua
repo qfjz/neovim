@@ -14,6 +14,8 @@ require("config.hydra-cnf")
 require("config.treesitter-cnf")
 require("config.lf-cnf")
 require("config.flash-cnf")
+require("config.zen-mode-cnf")
+require("config.ibl-cnf")
 require("plugins.plugins")
 
 vim.cmd([[colorscheme tokyonight]])
