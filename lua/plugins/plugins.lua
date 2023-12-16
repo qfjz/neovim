@@ -33,6 +33,10 @@ return {
     "romgrk/barbar.nvim",
     "folke/which-key.nvim",
     {
+        "nvim-treesitter/nvim-treesitter",
+        enabled = true,
+    },
+    {
         "nvim-neo-tree/neo-tree.nvim",
         -- keys = {
           -- { "<leader>ft", "<cmd>Neotree toggle<cr>", desc = "NeoTree" },
@@ -47,7 +51,6 @@ return {
             require("neo-tree").setup()
         end,
     },
-
     {
         "folke/tokyonight.nvim",
         lazy = false, -- make sure we load this during startup if it is your main colorscheme
@@ -57,7 +60,6 @@ return {
         -- vim.cmd([[colorscheme tokyonight]])
         end,
     },
-
     {
         "nvim-neorg/neorg",
         -- lazy-load on filetype
