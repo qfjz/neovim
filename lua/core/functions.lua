@@ -126,3 +126,63 @@ P = function(v)
     print(vim.inspect(v))
     return v
 end
+
+FileSize = function()
+    file = vim.fn.resolve(vim.fn.expand("%:p"))
+    local size = vim.fn.getfsize(file)
+    if size <= 0 then
+        return ""
+    end
+    local sufixes = { "b", "k", "m", "g" }
+    local i = 1
+    while size > 1024 do
+        size = size / 1024
+        i = i + 1
+    end
+    return string.format("%.1f%s", size, sufixes[i])
+end
+
+FileInfo = function()
+    -- Desc: Wyświetla informacje o pliku
+    Filename=vim.fn.resolve(vim.fn.expand("%:p"))
+    Msg=""
+    Msg=Msg .. "Mod: " .. vim.fn.strftime("%F %T",vim.fn.getftime(Filename)) .. " " .. Filename .. ", Size: " ..  FileSize() .. ", TL# " .. TotalLines()
+    print(Msg)
+end
+
+TotalLines = function()
+    local tl = vim.fn.line("$")
+    return tl
+end
+
+MkDir = function()
+    local dir = vim.fn.expand("%:p:h")
+    if vim.fn.isdirectory(dir) == 0 then
+        vim.fn.mkdir(dir, "p")
+    end
+end
+
+Write = function()
+    -- Desc: Zapisuje plik Write()
+    for _, v in ipairs(vim.fn.getbufinfo("%")) do
+        if v.name == "" then
+            vim.notify("Bufor bez nazwy, plik nie zostanie zapisany.")
+            return
+        end
+    end
+    if vim.fn.filereadable(vim.fn.expand("%")) == 1 then
+        vim.cmd("lcd %:p:h")
+        for _, v in ipairs(vim.fn.getbufinfo("%")) do
+            if v.changed == 1 then
+                vim.cmd("silent update")
+                vim.notify("Zapisałem" .. " " .. vim.fn.expand("%:p"))
+            else
+                vim.notify("Brak zmian w pliku" .. " " .. vim.fn.expand("%:p"))
+            end
+        end
+    else
+        MkDir()
+        vim.cmd("silent write")
+        vim.notify("Utworzyłem" .. " " .. vim.fn.expand("%:p"))
+    end
+end
