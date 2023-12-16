@@ -238,6 +238,7 @@ P = function(v)
     return v
 end
 ```
+
 ### FileInfo
 
 ```lua
@@ -268,6 +269,7 @@ FileSize = function()
     return string.format("%.1f%s", size, sufixes[i])
 end
 ```
+
 ### TotalLines
 
 ```lua
