@@ -19,3 +19,8 @@ autocmd({ 'FileType', 'BufEnter' }, {
     pattern = '*',
     command = [[setlocal formatoptions-=cro]]
 })
+
+-- Ustawia kursor tam gdzie go zostawiliśmy
+autocmd("BufReadPost", {
+    command = [[if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g'\"" | endif]]
+})
