@@ -54,7 +54,7 @@ end
 vim.keymap.set({ "n", "o", "x" }, "s", function()
     require("flash").jump({
         search = {
-            forward = true,
+            forward = false,
             wrap = false,
             multi_window = false,
             -- wyszukuje tylko początku wyrazu
