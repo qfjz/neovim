@@ -1,5 +1,7 @@
 # Komendy
 
+Lista dostępnych komend
+
 | Komenda       | Opis                                                                                  |
 |---------------|---------------------------------------------------------------------------------------|
 | `Kolory`      | Komenda uruchamia menu wyboru schematu kolorystycznego z podglądem na żywo            |
@@ -10,4 +12,4 @@
 | `NvimAppName` | Wyświetla nazwę konfiguracji Neovim                                                   |
 | `Config`      | Edycja plików konfiguracyjnych                                                        |
 | `Skroty`      | Otwiera okno listy skrótów klawiszowych                                               |
-
+| `Fileinfo`    | Wyświetla informacje o pliku                                                          |
