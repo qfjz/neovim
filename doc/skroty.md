@@ -47,3 +47,7 @@
 | `Alt+o`       | Hydra menu                                                                                |
 | `s + 2 znaki` | Rozpoczyna wyszukiwanie za pomocą pluginu `flash.nvim`                                    |
 | `<leader>z`   | Uruchamia tryb Zen                                                                        |
+| `vv`          | Zaznacza linię pomijając puste znaki na początku i znak końca linii                       |
+| `tt`          | Dublowanie linii                                                                          |
+| `<leader>cp`  | Klonuje cały paragraf                                                                     |
+| `vd`          | Sprawdza czy kolejna linia jest identyczna, jeśli tak usuwa jedną z nich                  |

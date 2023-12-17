@@ -9,4 +9,5 @@
 | `CDG`         | Sprawdza czy plik znajduje się w repozytoriujm Git i wyświetla jego główny katalog    |
 | `NvimAppName` | Wyświetla nazwę konfiguracji Neovim                                                   |
 | `Config`      | Edycja plików konfiguracyjnych                                                        |
+| `Skroty`      | Otwiera okno listy skrótów klawiszowych                                               |
 
