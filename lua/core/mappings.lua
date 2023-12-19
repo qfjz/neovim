@@ -50,6 +50,7 @@ vim.keymap.set("n", "vv", "^vg_", { desc = "Zaznacza linię pomijając puste zna
 vim.keymap.set("n", "tt", ":t.<cr>", { desc = "Dublowanie linii" })
 vim.keymap.set("n", "<leader>cp", "yap<s-}>p", { desc = "Klonuje cały paragraf" })
 vim.keymap.set("n", "vd", [[:norm vj<cr>:sort u<cr>]], { noremap = true, silent = true , desc = "Sprawdza czy kolejna linia jest identyczna, jeśli tak usuwa jedną z nich" })
+vim.keymap.set("n", "<leader>r", '<cmd>FzfLua registers<cr>', { desc = "Wklej z wybranego rejestru" })
 -- Mapowanie znaczników (undo) w trybie INSERT, po wprowadzeniu jednego ze znaków , . ! ? ; :
 local undo_ch = { ",", ".", "!", "?", ";", ":" }
 for _, ch in ipairs(undo_ch) do

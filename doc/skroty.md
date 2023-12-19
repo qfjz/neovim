@@ -51,3 +51,4 @@
 | `tt`          | Dublowanie linii                                                                          |
 | `<leader>cp`  | Klonuje cały paragraf                                                                     |
 | `vd`          | Sprawdza czy kolejna linia jest identyczna, jeśli tak usuwa jedną z nich                  |
+| `<leader>r`   | Wkleja z wybrangeo rejestru                                                               |
