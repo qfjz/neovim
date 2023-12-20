@@ -187,12 +187,12 @@ Write = function()
     end
 end
 
-Mappings = function()
-    if Skroty == 1 then
-        Skroty = 0
+Skroty = function()
+    if Skrot == 1 then
+        Skrot = 0
         vim.cmd("pclose")
     else
-        Skroty = 1
+        Skrot = 1
         vim.cmd("pedit $HOME/.config/" .. NvimAppName() .. "/doc/skroty.md")
     end
 end
