@@ -1,3 +1,4 @@
+-- commands
 vim.api.nvim_create_user_command("Kolory", "FzfLua colorschemes", {})
 vim.api.nvim_create_user_command("CDFD", "lua CDFD()", {})
 vim.api.nvim_create_user_command("CD", "lua CD()", {})
@@ -7,3 +8,7 @@ vim.api.nvim_create_user_command("NvimAppName", "lua print(NvimAppName())", {})
 vim.api.nvim_create_user_command("Config", "lua NvimConfig()", {})
 vim.api.nvim_create_user_command("Skroty", "lua Skroty()", {})
 vim.api.nvim_create_user_command("Fileinfo", "lua FileInfo()", {})
+vim.api.nvim_create_user_command("PU", "lua PU()", {})
+vim.api.nvim_create_user_command("GP", "lua GP()", {})
+vim.api.nvim_create_user_command("GPS", "lua GPS()", {})
+vim.api.nvim_create_user_command("GI", "lua GI()", {})

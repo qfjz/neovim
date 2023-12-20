@@ -51,6 +51,23 @@ vim.keymap.set("n", "tt", ":t.<cr>", { desc = "Dublowanie linii" })
 vim.keymap.set("n", "<leader>cp", "yap<s-}>p", { desc = "Klonuje cały paragraf" })
 vim.keymap.set("n", "vd", [[:norm vj<cr>:sort u<cr>]], { noremap = true, silent = true , desc = "Sprawdza czy kolejna linia jest identyczna, jeśli tak usuwa jedną z nich" })
 vim.keymap.set("n", "<leader>r", '<cmd>FzfLua registers<cr>', { desc = "Wklej z wybranego rejestru" })
+vim.keymap.set("n", "<leader>yy", "^vg_y", { desc = "Kopiuje linię pomijając puste znaki na początku i znak końca linii" })
+-- kokopiujepiuje do schowka systemowego np: <leader>yap - kopiuje paragraf do schowka systemowego
+vim.keymap.set("n", "<leader>y", [["*y]], { desc = "Rozpoczyna sekwencję kopiowania (<leader>yap)" })
+vim.keymap.set("n", "<leader>Y", [["*y$]], { desc = "Kopiuje od kursora do końca linii" })
+vim.keymap.set("x", "<leader>y", [["*y]], { desc = "Kopiuje zaznaczony tekst w trybie VISUAL" })
+-- Wkleja tekst bez końca linii w linii wyżej / linii poniżej przydatne jeśli kopiujemy tekst ze środka linii lub linię bez znaku końca linii
+-- https://gist.github.com/benfrain/97f2b91087121b2d4ba0dcc4202d252f
+vim.keymap.set("n", "<leader>P", '<cmd>exe "put! " . v:register<cr>', { desc = "Wklej powyżej" })
+vim.keymap.set("n", "<leader>p", '<cmd>exe "put "  . v:register<cr>', { desc = "Wklej poniżej" })
+vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "Wkleja, nie podmieniając rejestru w trybie VISUAL" })
+-- Usuwa obiekt tekstowy nie kopiując go do standardowego rejestru
+-- Na przykład <leader>xd usuwa całą linię, <leader>xiw usuwa wyraz pod kursorem
+vim.keymap.set("n", "<leader>x", [["_d]])
+vim.keymap.set("x", "<leader>x", [["_d]])
+vim.keymap.set("n", "<leader>xx", [["_dd]], { desc = "Usuwa linię, bez kopiowania do rejestru" })
+vim.keymap.set("n", ",p", '"0p', { desc = "Wkleja ostatnio skopiowany tekst, NIE ten wycięty / usunięty" })
+vim.keymap.set("n", ",P", '"0P', { desc = "Wkleja ostatnio skopiowany tekst, NIE ten wycięty / usunięty" })
 -- Mapowanie znaczników (undo) w trybie INSERT, po wprowadzeniu jednego ze znaków , . ! ? ; :
 local undo_ch = { ",", ".", "!", "?", ";", ":" }
 for _, ch in ipairs(undo_ch) do

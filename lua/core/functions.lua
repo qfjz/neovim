@@ -196,3 +196,37 @@ Skroty = function()
         vim.cmd("pedit $HOME/.config/" .. NvimAppName() .. "/doc/skroty.md")
     end
 end
+
+GP = function()
+    -- Desc: Uruchamia skrypt `sh/gp.sh`
+    CDFD()
+    local HOME_DIR = os.getenv("HOME")
+    local GP_SH = HOME_DIR .. "/.config/" .. NvimAppName() .. "/sh/gp.sh"
+    vim.fn.system({GP_SH, '-v', '-f %:p'})
+    vim.cmd("redraw!")
+end
+
+GPS = function()
+    CDFD()
+    local HOME_DIR = os.getenv("HOME")
+    local GPS_SH = HOME_DIR .. "/.config/" .. NvimAppName() .. "/sh/gps.sh"
+    vim.fn.system({GPS_SH, '-v', '-f %:p'})
+    vim.cmd("redraw!")
+end
+
+GI = function()
+    CDFD()
+    local HOME_DIR = os.getenv("HOME")
+    local GI_SH = HOME_DIR .. "/.config/" .. NvimAppName() .. "/sh/gi.sh"
+    local l = vim.fn.system(GI_SH .. " " .. "vim")
+    local l = vim.fn.substitute(l, '\n$', '', '')
+    print(l)
+end
+
+PU = function()
+    CDFD()
+    local HOME_DIR = os.getenv("HOME")
+    local PU_SH = HOME_DIR .. "/.config/" .. NvimAppName() .. "/sh/pu.sh"
+    vim.fn.system(PU_SH)
+    vim.cmd("e ~/tmp/pu.tmp")
+end

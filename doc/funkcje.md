@@ -255,16 +255,66 @@ Write = function()
 end
 ```
 
-## Mappings
+## Skroty
 
 ```lua
-Mappings = function()
-    if Skroty == 1 then
-        Skroty = 0
+Skroty = function()
+    if Skrot == 1 then
+        Skrot = 0
         vim.cmd("pclose")
     else
-        Skroty = 1
+        Skrot = 1
         vim.cmd("pedit $HOME/.config/" .. NvimAppName() .. "/doc/skroty.md")
     end
+end
+```
+
+## GP
+
+```lua
+GP = function()
+    -- Desc: Uruchamia skrypt `sh/gp.sh`
+    CDFD()
+    local HOME_DIR = os.getenv("HOME")
+    local GP_SH = HOME_DIR .. "/.config/" .. NvimAppName() .. "/sh/gp.sh"
+    vim.fn.system({GP_SH, '-v', '-f %:p'})
+    vim.cmd("redraw!")
+end
+```
+
+## GPS
+
+```lua
+GPS = function()
+    CDFD()
+    local HOME_DIR = os.getenv("HOME")
+    local GPS_SH = HOME_DIR .. "/.config/" .. NvimAppName() .. "/sh/gps.sh"
+    vim.fn.system({GPS_SH, '-v', '-f %:p'})
+    vim.cmd("redraw!")
+end
+```
+
+## GI
+
+```lua
+GI = function()
+    CDFD()
+    local HOME_DIR = os.getenv("HOME")
+    local GI_SH = HOME_DIR .. "/.config/" .. NvimAppName() .. "/sh/gi.sh"
+    local l = vim.fn.system(GI_SH .. " " .. "vim")
+    local l = vim.fn.substitute(l, '\n$', '', '')
+    print(l)
+end
+```
+
+## PU
+
+```lua
+PU = function()
+    CDFD()
+    local HOME_DIR = os.getenv("HOME")
+    local PU_SH = HOME_DIR .. "/.config/" .. NvimAppName() .. "/sh/pu.sh"
+    vim.fn.system(PU_SH)
+    vim.cmd("e ~/tmp/pu.tmp")
 end
 ```
