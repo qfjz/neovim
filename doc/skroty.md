@@ -48,7 +48,7 @@
 ## Kopiowanie, usuwanie i wklejanie
 
 - Skopiowany tekst jest przechowywany w rejestrze `0`
-- Usunięty tekst jest przechowywany w standardowym rejestrze `1`
+- Usunięty tekst jest przechowywany w rejestrze `1`
 
 | Skrót         | Opis                                                                                      |
 |---------------|-------------------------------------------------------------------------------------------|
