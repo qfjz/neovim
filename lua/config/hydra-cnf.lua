@@ -16,6 +16,8 @@ local hint = [[
  _r_: relativenumber    _w_: wrap
  _?_: search history    _;_: commands history
  _s_: spell!            _h_: help tags
+ _N_: Neorg home        _p_: Neorg public
+ _W_: Neorg work
 
  ^
           _<Enter>_: FzfLua    _<Esc>_
@@ -49,6 +51,9 @@ Hydra({
         { 'l', cmd 'set list!' },
         { '?', cmd 'FzfLua search_history',  { desc = 'search history' } },
         { ';', cmd 'FzfLua command_history', { desc = 'command-line history' } },
+        { 'N', cmd 'Neorg workspace home', { desc = 'Neorg home workspace' } },
+        { 'p', cmd 'Neorg workspace public', { desc = 'Neorg public workspace' } },
+        { 'W', cmd 'Neorg workspace work', { desc = 'Neorg work workspace' } },
         { '<Enter>', cmd 'FzfLua', { exit = true, desc = 'list all pickers' } },
         { '<Esc>', nil, { exit = true, nowait = true } },
     }
