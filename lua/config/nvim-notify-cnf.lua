@@ -42,6 +42,6 @@ configs.setup({
     wrap = true,
     render = "wrapped-compact",
     stages = "static",
-    timeout = 1000,
+    timeout = 2000,
     top_down = true
 })
