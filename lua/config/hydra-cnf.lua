@@ -18,6 +18,7 @@ local hint = [[
  _s_: spell!            _h_: help tags
  _N_: Neorg home        _z_: ZenMode
  _W_: Neorg work        _Z_: Neorg public
+ _i_: IBLToggle
 
  _p_: Przezroczystość 80%  _P_: Przezroczystość 0% 
  _L_: Czcionka 21          _S_: Czcionka 17
@@ -42,6 +43,7 @@ Hydra({
     heads = {
         { 'o', cmd 'FzfLua oldfiles', { desc = 'Ostatnio edytowane pliki' } },
         { 'k', cmd 'FzfLua keymaps' },
+        { 'i', cmd 'IBLToggle' },
         { 'c', cmd 'FzfLua colorschemes', { desc = 'colorschemes' } },
         { 'h', cmd 'FzfLua help_tags', { desc = 'vim help' } },
         { 'b', cmd 'BufferOrderByBufferNumber', { desc = 'Sort Buffers' } },
