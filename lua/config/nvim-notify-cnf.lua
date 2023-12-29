@@ -36,8 +36,8 @@ configs.setup({
         WARN = ""
     },
     level = 2,
-    minimum_width = 50,
-    max_width = 50,
+    minimum_width = 40,
+    max_width = 60,
     max_height = 6,
     wrap = true,
     render = "wrapped-compact",

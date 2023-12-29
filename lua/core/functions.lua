@@ -2,7 +2,7 @@
 CD = function()
     local BmDirs = os.getenv("BM_DIRS")
     if BmDirs == nil then
-        print("Brak zmiennej systemowej BM_DIRS")
+        vim.notify("Brak zmiennej systemowej \"BM_DIRS\"")
         return
     end
     command = 'cd'
@@ -21,7 +21,7 @@ end
 CDE = function()
     local BmDirs = os.getenv("BM_DIRS")
     if BmDirs == nil then
-        print("Brak zmiennej systemowej BM_DIRS")
+        vim.notify("Brak zmiennej systemowej \"BM_DIRS\"")
         return
     end
     command = 'e'
@@ -64,7 +64,11 @@ CDG = function()
         end
     end
     if root_dir then
-        print("Found git repository at", root_dir)
+        local MSG = ("Found git repository at" .. root_dir)
+        vim.notify(MSG, "info", {
+            timeout = 6000,
+            title = "Informacje o repozytorium",
+        })
     end
 end
 
@@ -100,6 +104,7 @@ end
 CopyReg = function()
     -- Desc: kopiuje zawartość standardowego rejestru " do rejestru x
     vim.fn.setreg("x", vim.fn.getreg('"'))
+    vim.notify("Skopiowałem standardowy rejestr do rejestru 'x'")
 end
 
 KolorPora = function()
@@ -146,6 +151,10 @@ FileInfo = function()
     Msg=""
     Msg=Msg .. "Mod: " .. vim.fn.strftime("%F %T",vim.fn.getftime(Filename)) .. " " .. Filename .. ", Size: " ..  FileSize() .. ", TL# " .. TotalLines()
     print(Msg)
+    vim.notify(Msg, "info", {
+        timeout = 6000,
+        title = "Informacje o repozytorium",
+    })
 end
 
 TotalLines = function()
@@ -218,7 +227,10 @@ GI = function()
     local GI_SH = HOME_DIR .. "/.config/" .. NvimAppName() .. "/sh/gi.sh"
     local l = vim.fn.system(GI_SH .. " " .. "vim")
     local l = vim.fn.substitute(l, '\n$', '', '')
-    print(l)
+    vim.notify(l, "info", {
+        timeout = 6000,
+        title = "Informacje o repozytorium",
+    })
 end
 
 PU = function()
