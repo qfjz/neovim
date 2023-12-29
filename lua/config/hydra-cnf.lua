@@ -17,6 +17,9 @@ local hint = [[
  _?_: search history    _;_: commands history
  _s_: spell!            _h_: help tags
 
+ _p_: Przezroczystość 80%  _P_: Przezroczystość 0% 
+ _L_: Czcionka 21          _S_: Czcionka 17
+ _V_: Czcionka 12
  ^
           _<Enter>_: FzfLua    _<Esc>_
 ]]
@@ -49,6 +52,11 @@ Hydra({
         { 'l', cmd 'set list!' },
         { '?', cmd 'FzfLua search_history',  { desc = 'search history' } },
         { ';', cmd 'FzfLua command_history', { desc = 'command-line history' } },
+        { 'p', cmd 'lua vim.g.neovide_transparency = 0.2' },
+        { 'P', cmd 'lua vim.g.neovide_transparency = 1' },
+        { 'L', cmd 'lua vim.o.guifont = "Source Code Pro:h21"' },
+        { 'S', cmd 'lua vim.o.guifont = "Source Code Pro:h17"' },
+        { 'V', cmd 'lua vim.o.guifont = "Source Code Pro:h12"' },
         { '<Enter>', cmd 'FzfLua', { exit = true, desc = 'list all pickers' } },
         { '<Esc>', nil, { exit = true, nowait = true } },
     }
