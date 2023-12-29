@@ -2,7 +2,7 @@
 local ok, configs = pcall(require, 'notify')
 if not ok then return end
 
-require("notify")
+vim.notify = require("notify")
 
 vim.cmd[[highlight NotifyERRORBorder guifg=#8A1F1F]]
 vim.cmd[[highlight NotifyWARNBorder guifg=#79491D]]
