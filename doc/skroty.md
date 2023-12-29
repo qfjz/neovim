@@ -44,6 +44,8 @@
 | `<leader>z`   | Uruchamia tryb Zen                                                                        |
 | `vv`          | Zaznacza linię pomijając puste znaki na początku i znak końca linii                       |
 | `vd`          | Sprawdza czy kolejna linia jest identyczna, jeśli tak usuwa jedną z nich                  |
+| `zm`          | Otwiera zagnieżdżenia                                                                     |
+| `zn`          | Zamyka zagnieżdżenia                                                                      |
 
 ## Kopiowanie, usuwanie i wklejanie
 
