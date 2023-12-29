@@ -68,6 +68,11 @@ vim.keymap.set("x", "<leader>x", [["_d]])
 vim.keymap.set("n", "<leader>xx", [["_dd]], { desc = "Usuwa linię, bez kopiowania do rejestru" })
 vim.keymap.set("n", ",p", '"0p', { desc = "Wkleja ostatnio skopiowany tekst, NIE ten wycięty / usunięty" })
 vim.keymap.set("n", ",P", '"0P', { desc = "Wkleja ostatnio skopiowany tekst, NIE ten wycięty / usunięty" })
+-- Zmiana wielkości okna
+vim.keymap.set("n", "<m-h>", "<cmd>vertical resize -2<cr>")
+vim.keymap.set("n", "<m-j>", "<cmd>resize +2<cr>")
+vim.keymap.set("n", "<m-k>", "<cmd>resize -2<cr>")
+vim.keymap.set("n", "<m-l>", "<cmd>vertical resize +2<cr>")
 -- Mapowanie znaczników (undo) w trybie INSERT, po wprowadzeniu jednego ze znaków , . ! ? ; :
 local undo_ch = { ",", ".", "!", "?", ";", ":" }
 for _, ch in ipairs(undo_ch) do

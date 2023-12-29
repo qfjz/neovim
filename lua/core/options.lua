@@ -40,3 +40,29 @@ vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true -- enable persistent undo
 vim.opt.undolevels = 10000
 vim.opt.signcolumn = "yes"  -- Always show the signcolumn, otherwise it would shift the text each time
+
+if vim.g.neovide then
+    local function alpha()
+        return string.format("%x", math.floor((255 * vim.g.transparency) or 0.8))
+    end
+    vim.o.guifont = "Source Code Pro:h12"
+    vim.g.neovide_transparency = 1
+    -- vim.g.neovide_transparency = 0.7
+    vim.g.transparency = 0.9
+    vim.g.neovide_background_color = "#0f1117" .. alpha()
+    vim.g.neovide_cursor_animation_length = 0.03
+    vim.g.neovide_cursor_vfx_mode = "railgun"
+    vim.cmd[[silent! colorscheme bamboo]]
+    vim.cmd[[highlight Cursor guifg=black guibg=#fbb829]]
+    vim.cmd[[highlight iCursor guifg=black guibg=#0aaeb3]]
+    vim.cmd[[highlight oCursor guifg=black guibg=#ff5f00]]
+    vim.cmd[[set guicursor=n-v-c:block-Cursor]]
+    vim.cmd[[set guicursor+=i-ci-ve:ver25-iCursor,r-cr:hor20-iCursor,o:hor50-oCursor]]
+    vim.cmd[[set guicursor+=a:blinkwait700-blinkoff400-blinkon250]]
+    vim.keymap.set("n", "<c-/>", "<Plug>kommentary_line_default", {})
+    vim.keymap.set("x", "<c-/>", "<Plug>kommentary_visual_default", {})
+    vim.keymap.set("i", "<S-Insert>", "<c-r>*")
+    vim.keymap.set("i", "<C-S-V>", "<c-r>*")
+    vim.keymap.set("n", "<S-Insert>", [["*p]])
+    vim.keymap.set("n", "<C-S-V>", [["*p]])
+end
