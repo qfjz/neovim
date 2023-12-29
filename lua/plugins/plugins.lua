@@ -17,7 +17,6 @@ return {
     "xero/miasma.nvim",
     "olivercederborg/poimandres.nvim",
     "Rigellute/rigel",
-    "rose-pine/neovim",
     "ibhagwan/fzf-lua",
     "mbbill/undotree",
     "akinsho/toggleterm.nvim",
