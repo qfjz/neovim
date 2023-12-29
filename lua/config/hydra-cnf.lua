@@ -16,6 +16,8 @@ local hint = [[
  _r_: relativenumber    _w_: wrap
  _?_: search history    _;_: commands history
  _s_: spell!            _h_: help tags
+ _N_: Neorg home        _z_: ZenMode
+ _W_: Neorg work        _Z_: Neorg public
 
  _p_: Przezroczystość 80%  _P_: Przezroczystość 0% 
  _L_: Czcionka 21          _S_: Czcionka 17
@@ -52,11 +54,15 @@ Hydra({
         { 'l', cmd 'set list!' },
         { '?', cmd 'FzfLua search_history',  { desc = 'search history' } },
         { ';', cmd 'FzfLua command_history', { desc = 'command-line history' } },
+        { 'z', cmd 'ZenMode', { desc = 'ZenMode' } },
         { 'p', cmd 'lua vim.g.neovide_transparency = 0.2' },
         { 'P', cmd 'lua vim.g.neovide_transparency = 1' },
         { 'L', cmd 'lua vim.o.guifont = "Source Code Pro:h21"' },
         { 'S', cmd 'lua vim.o.guifont = "Source Code Pro:h17"' },
         { 'V', cmd 'lua vim.o.guifont = "Source Code Pro:h12"' },
+        { 'N', cmd 'Neorg workspace home', { desc = 'Neorg home workspace' } },
+        { 'Z', cmd 'Neorg workspace public', { desc = 'Neorg public workspace' } },
+        { 'W', cmd 'Neorg workspace work', { desc = 'Neorg work workspace' } },
         { '<Enter>', cmd 'FzfLua', { exit = true, desc = 'list all pickers' } },
         { '<Esc>', nil, { exit = true, nowait = true } },
     }

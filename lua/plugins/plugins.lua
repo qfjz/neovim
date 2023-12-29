@@ -66,13 +66,23 @@ return {
     },
     {
         "nvim-neorg/neorg",
-        -- lazy-load on filetype
-        ft = "norg",
-        -- options for neorg. This will automatically call `require("neorg").setup(opts)`
-        opts = {
-            load = {
-                ["core.defaults"] = {},
-            },
-        },
+        build = ":Neorg sync-parsers",
+        dependencies = { "nvim-lua/plenary.nvim" },
+--         config = function()
+--             require("neorg").setup {
+--                 load = {
+--                     ["core.defaults"] = {}, -- Loads default behaviour
+--                     ["core.concealer"] = {}, -- Adds pretty icons to your documents
+--                     ["core.dirman"] = { -- Manages Neorg workspaces
+--                         config = {
+--                             workspaces = {
+--                                 home = "~/Sync/Notes/neorg/home",
+--                                 work = "~/Sync/Notes/neorg/work",
+--                             },
+--                         },
+--                     },
+--                 },
+--             }
+--         end,
     },
 }

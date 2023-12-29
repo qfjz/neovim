@@ -16,6 +16,7 @@ require("config.lf-cnf")
 require("config.flash-cnf")
 require("config.zen-mode-cnf")
 require("config.ibl-cnf")
+require("config.neorg-cnf")
 require("plugins.plugins")
 
 vim.cmd([[colorscheme tokyonight]])
