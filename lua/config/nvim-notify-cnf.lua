@@ -24,3 +24,24 @@ vim.cmd[[highlight link NotifyWARNBody Normal]]
 vim.cmd[[highlight link NotifyINFOBody Normal]]
 vim.cmd[[highlight link NotifyDEBUGBody Normal]]
 vim.cmd[[highlight link NotifyTRACEBody Normal]]
+
+configs.setup({
+    background_colour = "NotifyBackground",
+    fps = 30,
+    icons = {
+        DEBUG = "",
+        ERROR = "",
+        INFO = "",
+        TRACE = "✎",
+        WARN = ""
+    },
+    level = 2,
+    minimum_width = 50,
+    max_width = 50,
+    max_height = 6,
+    wrap = true,
+    render = "wrapped-compact",
+    stages = "static",
+    timeout = 1000,
+    top_down = true
+})
