@@ -318,3 +318,74 @@ PU = function()
     vim.cmd("e ~/tmp/pu.tmp")
 end
 ```
+## FindNotesDir
+
+```lua
+FindNotesDir = function()
+    local rg_cmd = "rg --files --follow -g '*.md'"
+    local cwd_dir = os.getenv("NOTES_DIR")
+    if cwd_dir == nil then
+        cwd_dir = vim.fn.resolve(vim.fn.expand("$HOME/Notes"))
+    end
+    local prompt = "Notatki> "
+    require'fzf-lua'.files({ 
+        prompt = prompt,
+        cmd = rg_cmd,
+        cwd = cwd_dir,
+        winopts = {
+            preview = { hidden = "nohidden" },
+            fullscreen = true,
+        }
+    })
+end
+```
+
+## BmFiles
+
+```lua
+BmFiles = function()
+    local BmFiles = os.getenv("BM_FILES")
+    if BmFiles == nil then
+        BmFiles = vim.fn.resolve(vim.fn.expand("$HOME/.config/bmfilles"))
+    end
+    if vim.fn.filereadable(BmFiles) == 0 then
+        io.open(BmFiles, "a+")
+    end
+    local files = vim.fn.readfile(vim.fn.expand(BmFiles))
+    opts = {}
+    opts.prompt = "Files> "
+    opts.actions = {
+        ['default'] = function(selected)
+            vim.cmd("e " .. selected[1])
+        end
+    }
+    require'fzf-lua'.fzf_exec(files, opts)
+end
+```
+
+## Add_BMFile
+
+```lua
+Add_BMFile = function()
+    local BmFiles = os.getenv("BM_FILES")
+    if BmFiles == nil then
+        BmFiles = vim.fn.resolve(vim.fn.expand("$HOME/.config/bmfilles"))
+    end
+    local BmFilesHandle = io.open(BmFiles, "a+")
+    local FileName = vim.fn.resolve(vim.fn.expand("%:p"))
+    BmFilesHandle:write(FileName .. "\n")
+    BmFilesHandle:close()
+end
+```
+
+## EditBmFiles
+
+```lua
+EditBmFiles = function()
+    local BmFiles = os.getenv("BM_FILES")
+    if BmFiles == nil then
+        BmFiles = vim.fn.resolve(vim.fn.expand("$HOME/.config/bmfilles"))
+    end
+    vim.cmd('e' .. BmFiles)
+end
+```

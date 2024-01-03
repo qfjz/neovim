@@ -75,6 +75,7 @@ vim.keymap.set("n", "<m-h>", "<cmd>vertical resize -2<cr>")
 vim.keymap.set("n", "<m-j>", "<cmd>resize +2<cr>")
 vim.keymap.set("n", "<m-k>", "<cmd>resize -2<cr>")
 vim.keymap.set("n", "<m-l>", "<cmd>vertical resize +2<cr>")
+vim.keymap.set("n", "<space><space>", "<cmd>lua FindNotesDir()<cr>")
 -- Mapowanie znaczników (undo) w trybie INSERT, po wprowadzeniu jednego ze znaków , . ! ? ; :
 local undo_ch = { ",", ".", "!", "?", ";", ":" }
 for _, ch in ipairs(undo_ch) do
