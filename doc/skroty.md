@@ -40,6 +40,7 @@
 | `gj`             | Następna zmiana w pliku - Git                                             |
 | `gk`             | Poprzednia zmiana w pliku - Git                                           |
 | `Alt+o`          | Hydra menu                                                                |
+| `Alt+t`          | Uruchamia menu dla pluginu pomo.nvim                                      |
 | `s + 2 znaki`    | Rozpoczyna wyszukiwanie za pomocą pluginu `flash.nvim`                    |
 | `<leader>z`      | Uruchamia tryb Zen                                                        |
 | `vv`             | Zaznacza linię pomijając puste znaki na początku i znak końca linii       |
