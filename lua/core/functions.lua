@@ -242,7 +242,7 @@ PU = function()
 end
 
 FindNotesDir = function()
-    local rg_cmd = "rg --files --follow -g '*.md'"
+    local rg_cmd = "rg --files --follow -g '*.md' -g '*.norg'"
     local cwd_dir = os.getenv("NOTES_DIR")
     if cwd_dir == nil then
         cwd_dir = vim.fn.resolve(vim.fn.expand("$HOME/Notes"))
