@@ -33,8 +33,12 @@ vim.opt.conceallevel = 0
 vim.opt.confirm = true
 vim.opt.fillchars = { eob = ' ' }
 vim.opt.incsearch = true
+vim.opt.inccommand = "split"
+vim.opt.redrawtime = 1000
+vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.magic = true
+vim.opt.virtualedit = "block"  -- block, insert, all, onemore, none
 vim.opt.swapfile = false
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true -- enable persistent undo
