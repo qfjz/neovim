@@ -3,7 +3,7 @@ local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 
 -- wyróżnienie kopiowanego tekstu
-autocmd('TextYankPost', {
+autocmd("TextYankPost", {
     group = augroup('HighlightYank', {}),
     pattern = '*',
     callback = function()
@@ -15,7 +15,7 @@ autocmd('TextYankPost', {
 })
 
  -- wyłącza parametry `cro` czyli nie wstawia automatycznie komentarza w kolejnej linii
-autocmd({ 'FileType', 'BufEnter' }, {
+autocmd({ "FileType", "BufEnter" }, {
     pattern = '*',
     command = [[setlocal formatoptions-=cro]]
 })
@@ -41,7 +41,22 @@ autocmd("FileType", {
     end,
 })
 
-autocmd({ "BufNewFile" }, {
+autocmd("BufEnter", {
+    group = augroup("iblenable", {}),
+    pattern = "*",
+    command = [[IBLEnable]]
+})
+
+autocmd("BufEnter", {
+    group = augroup("ibldisable", {}),
+    pattern = {
+        "*.norg",
+        "*.md",
+    },
+    command = [[IBLDisable]]
+})
+
+autocmd("BufNewFile", {
     pattern = { "*.sh" },
     command = [[0r ~/.config/nvim/templates/bash.sh]]
 })
