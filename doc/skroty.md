@@ -30,6 +30,7 @@
 | `-`              | Zmniejsza wartość liczby                                                  |
 | `<leader>b`      | Przełączanie pomiędzy buforami                                            |
 | `<tab>`          | Przełączanie pomiędzy dwoma ostatnimi buforami                            |
+| `<s-tab>`        | Pozwala wybrać bufor za pomocą jednej litery `BufferPick`                 |
 | `<leader>o`      | Pozostawia otwarte tylko aktywne okno                                     |
 | `<leader>c`      | Zamyka aktywne okno                                                       |
 | `<esc>`          | Wyłącza wyróżnianie szukanego tekstu                                      |
