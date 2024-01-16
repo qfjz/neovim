@@ -76,12 +76,6 @@ vim.keymap.set("n", "<m-j>", "<cmd>resize +2<cr>")
 vim.keymap.set("n", "<m-k>", "<cmd>resize -2<cr>")
 vim.keymap.set("n", "<m-l>", "<cmd>vertical resize +2<cr>")
 vim.keymap.set("n", "<space><space>", "<cmd>lua FindNotesDir()<cr>")
-vim.keymap.set("n", "<leader>nl", function()
-  require("noice").cmd("last")
-end)
-vim.keymap.set("n", "<leader>nh", function()
-  require("noice").cmd("history")
-end)
 -- Mapowanie znaczników (undo) w trybie INSERT, po wprowadzeniu jednego ze znaków , . ! ? ; :
 local undo_ch = { ",", ".", "!", "?", ";", ":" }
 for _, ch in ipairs(undo_ch) do
@@ -113,3 +107,10 @@ vim.keymap.set("n", "<leader>z", function()
         vim.cmd[[IBLToggle]]
     end
 end, { desc = "Zen Mode Toggle" })
+-- Noice
+--[[ vim.keymap.set("n", "<leader>nl", function()
+  require("noice").cmd("last")
+end)
+vim.keymap.set("n", "<leader>nh", function()
+  require("noice").cmd("history")
+end) ]]
