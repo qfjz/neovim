@@ -36,6 +36,7 @@ return {
     "folke/twilight.nvim",  -- zakreśla tylko bieżący paragraf
     "lukas-reineke/indent-blankline.nvim",  -- pionowe linie wyróżniające wcięcie
     "rcarriga/nvim-notify",
+    -- "folke/noice.nvim",
     "epwalsh/pomo.nvim",
     "steelsojka/pears.nvim",
     {

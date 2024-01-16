@@ -153,7 +153,7 @@ FileInfo = function()
     print(Msg)
     vim.notify(Msg, "info", {
         timeout = 6000,
-        title = "Informacje o repozytorium",
+        title = "Informacje o pliku",
     })
 end
 
