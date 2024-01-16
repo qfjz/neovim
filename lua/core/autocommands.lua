@@ -27,7 +27,7 @@ autocmd("BufReadPost", {
 
 -- zamyka pliki przy pomocy 'q'
 -- https://github.com/loqusion/dotfiles
-vim.api.nvim_create_autocmd("FileType", {
+autocmd("FileType", {
     group = augroup("close_with_q", {}),
     pattern = {
         "git",
@@ -39,4 +39,9 @@ vim.api.nvim_create_autocmd("FileType", {
         vim.keymap.set("n", "d", "<c-d>", { buffer = event.buf, silent = true })
         vim.keymap.set("n", "u", "<c-u>", { buffer = event.buf, silent = true })
     end,
+})
+
+autocmd({ "BufNewFile" }, {
+    pattern = { "*.sh" },
+    command = [[0r ~/.config/nvim/templates/bash.sh]]
 })
