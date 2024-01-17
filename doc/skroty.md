@@ -40,6 +40,8 @@
 | `U`              | Przywraca zmiany                                                          |
 | `gj`             | Następna zmiana w pliku - Git                                             |
 | `gk`             | Poprzednia zmiana w pliku - Git                                           |
+| `<c-n>`          | Następna zmiana w pliku - Git                                             |
+| `<c-p>`          | Poprzednia zmiana w pliku - Git                                           |
 | `Alt+o`          | Hydra menu                                                                |
 | `Alt+t`          | Uruchamia menu dla pluginu pomo.nvim                                      |
 | `s + 2 znaki`    | Rozpoczyna wyszukiwanie za pomocą pluginu `flash.nvim`                    |
@@ -49,6 +51,11 @@
 | `zm`             | Otwiera zagnieżdżenia                                                     |
 | `zn`             | Zamyka zagnieżdżenia                                                      |
 | `<space><space>` | Przeszukuje katalog `$HOME/Notes` lub katalog w zmiennej `$NOTES_DIR`     |
+| `<leader>i`      | Pokazuje zmiany w repozytorium Git `FzfLua git_status`                    |
+| `<LeftRelease>`  | Kopiuje zaznaczony tekst myszką                                           |
+| `<c-r>p`         | W linii komend wkleja skopiowany ostatnio tekst                           |
+| `g;`             | Porusza się pomiędzy zmianami w pliku, poprzednia zmiana                  |
+| `g,`             | Porusza się pomiędzy zmianami w pliku                                     |
 
 ## Kopiowanie, usuwanie i wklejanie
 
