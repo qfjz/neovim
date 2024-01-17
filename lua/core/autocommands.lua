@@ -79,10 +79,10 @@ vim.api.nvim_create_autocmd("FileType", {
         "norg",
     },
     callback = function()
-        vim.api.nvim_buf_set_keymap(0, "n", "1", "<cmd>norm I* <cr>A", { noremap = true })
-        vim.api.nvim_buf_set_keymap(0, "n", "2", "<cmd>norm I** <cr>A", { noremap = true })
-        vim.api.nvim_buf_set_keymap(0, "n", "3", "<cmd>norm I*** <cr>A", { noremap = true })
-        vim.api.nvim_buf_set_keymap(0, "n", "4", "<cmd>norm I**** <cr>A", { noremap = true })
+        vim.api.nvim_buf_set_keymap(0, "n", "1", [[<cmd>norm o* <cr>]], { noremap = true })
+        vim.api.nvim_buf_set_keymap(0, "n", "2", [[<cmd>norm o** <cr>]], { noremap = true })
+        vim.api.nvim_buf_set_keymap(0, "n", "3", [[<cmd>norm o*** <cr>]], { noremap = true })
+        vim.api.nvim_buf_set_keymap(0, "n", "4", [[<cmd>norm o**** <cr>]], { noremap = true })
         vim.api.nvim_buf_set_keymap(0, "i", ",c", [[<esc><cmd>norm I@code @end<cr><cmd>norm bb<cr><cmd>startinsert<cr>]], { noremap = true })
 
     end,
