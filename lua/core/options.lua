@@ -45,6 +45,7 @@ vim.opt.undofile = true -- enable persistent undo
 vim.opt.undolevels = 10000
 vim.opt.signcolumn = "yes"  -- Always show the signcolumn, otherwise it would shift the text each time
 vim.opt.foldmethod = "manual"
+vim.opt.foldenable = false
 -- Neovide
 if vim.g.neovide then
     local function alpha()
