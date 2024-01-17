@@ -79,11 +79,12 @@ vim.api.nvim_create_autocmd("FileType", {
         "norg",
     },
     callback = function()
-        vim.api.nvim_buf_set_keymap(0, "n", "1", [[<cmd>norm o* <cr>]], { noremap = true })
-        vim.api.nvim_buf_set_keymap(0, "n", "2", [[<cmd>norm o** <cr>]], { noremap = true })
-        vim.api.nvim_buf_set_keymap(0, "n", "3", [[<cmd>norm o*** <cr>]], { noremap = true })
-        vim.api.nvim_buf_set_keymap(0, "n", "4", [[<cmd>norm o**** <cr>]], { noremap = true })
-        vim.api.nvim_buf_set_keymap(0, "i", ",c", [[<esc><cmd>norm I@code @end<cr><cmd>norm bb<cr><cmd>startinsert<cr>]], { noremap = true })
+        -- vim.api.nvim_buf_set_keymap(0, "n", "1", [[<cmd>norm o* <cr>]], { noremap = true })
+        vim.api.nvim_buf_set_keymap(0, "n", "1", [[o* ]], { noremap = true })
+        vim.api.nvim_buf_set_keymap(0, "n", "2", [[o** ]], { noremap = true })
+        vim.api.nvim_buf_set_keymap(0, "n", "3", [[o*** ]], { noremap = true })
+        vim.api.nvim_buf_set_keymap(0, "n", "4", [[o**** ]], { noremap = true })
+        vim.api.nvim_buf_set_keymap(0, "i", ",c", [[<esc>o@code@end<esc>O]], { noremap = true })
 
     end,
     group = "Neorg",
