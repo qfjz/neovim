@@ -43,7 +43,7 @@ autocmd("FileType", {
     end,
 })
 
-vim.api.nvim_create_autocmd("FileType", {
+autocmd("FileType", {
     pattern = { "lua" },
     callback = function()
         vim.api.nvim_buf_set_keymap(0, "n", "K", 'viwy:help <c-r>"<cr>', { noremap = true })
@@ -51,15 +51,15 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- Klawisz `K` w plikach sh wywołuje pomoc dla wyrazu pod kursorem
-vim.api.nvim_create_autocmd("FileType", {
+autocmd("FileType", {
   pattern = { "sh" },
     callback = function()
         vim.api.nvim_buf_set_keymap(0, "n", "K", 'viwy:Man <c-r>"<cr>', { noremap = true })
     end,
 })
 
-vim.api.nvim_create_augroup("Markdown", { clear = true })
-vim.api.nvim_create_autocmd("FileType", {
+autocmd("FileType", {
+    group = augroup("Markdown", { clear = true }),
     pattern = {
         "markdown",
     },
@@ -73,8 +73,8 @@ vim.api.nvim_create_autocmd("FileType", {
     group = "Markdown",
 })
 
-vim.api.nvim_create_augroup("Neorg", { clear = true })
-vim.api.nvim_create_autocmd("FileType", {
+autocmd("FileType", {
+    group = augroup("Neorg", { clear = true }),
     pattern = {
         "norg",
     },
