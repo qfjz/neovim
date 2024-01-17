@@ -36,9 +36,57 @@ autocmd("FileType", {
     callback = function(event)
         vim.bo[event.buf].buflisted = false
         vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
+        vim.api.nvim_buf_set_keymap(0, "n", "<leader>l", "<c-]>", { noremap = true })
+        vim.api.nvim_buf_set_keymap(0, "n", "<leader>h", "<c-t>", { noremap = true })
         vim.keymap.set("n", "d", "<c-d>", { buffer = event.buf, silent = true })
         vim.keymap.set("n", "u", "<c-u>", { buffer = event.buf, silent = true })
     end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "lua" },
+    callback = function()
+        vim.api.nvim_buf_set_keymap(0, "n", "K", 'viwy:help <c-r>"<cr>', { noremap = true })
+    end,
+})
+
+-- Klawisz `K` w plikach sh wywołuje pomoc dla wyrazu pod kursorem
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "sh" },
+    callback = function()
+        vim.api.nvim_buf_set_keymap(0, "n", "K", 'viwy:Man <c-r>"<cr>', { noremap = true })
+    end,
+})
+
+vim.api.nvim_create_augroup("Markdown", { clear = true })
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = {
+        "md",
+    },
+    callback = function()
+        vim.api.nvim_buf_set_keymap(0, "n", "1", "<cmd>norm I# <cr>", { noremap = true })
+        vim.api.nvim_buf_set_keymap(0, "n", "2", "<cmd>norm I## <cr>", { noremap = true })
+        vim.api.nvim_buf_set_keymap(0, "n", "3", "<cmd>norm I###  <cr>", { noremap = true })
+        vim.api.nvim_buf_set_keymap(0, "n", "3", "<cmd>norm I#### <cr>", { noremap = true })
+        vim.api.nvim_buf_set_keymap(0, "i", ",c", ":norm I```", { noremap = true })
+    end,
+    group = "Markdown",
+})
+
+vim.api.nvim_create_augroup("Neorg", { clear = true })
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = {
+        "norg",
+    },
+    callback = function()
+        vim.api.nvim_buf_set_keymap(0, "n", "1", "<cmd>norm I* <cr><cmd>startinsert<cr>", { noremap = true })
+        vim.api.nvim_buf_set_keymap(0, "n", "2", ":norm I** <cr><cmd>startinsert<cr>", { noremap = true })
+        vim.api.nvim_buf_set_keymap(0, "n", "3", ":norm I*** <cr><cmd>startinsert<cr>", { noremap = true })
+        vim.api.nvim_buf_set_keymap(0, "n", "3", ":norm I**** <cr><cmd>startinsert<cr>", { noremap = true })
+        vim.api.nvim_buf_set_keymap(0, "i", ",c", [[<esc><cmd>norm I@code @end<cr><cmd>norm bb<cr><cmd>startinsert<cr>]], { noremap = true })
+
+    end,
+    group = "Neorg",
 })
 
 autocmd("BufEnter", {

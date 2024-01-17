@@ -4,6 +4,9 @@ vim.keymap.set("n", [[<leader>n]], "<cmd>Neotree reveal_force_cwd toggle<cr>", {
 vim.keymap.set("n", [[\]], "<cmd>Neotree reveal_force_cwd toggle<cr>", { desc = "Uruchamia menadżer plików NeoTree" })
 vim.keymap.set({"n", "x"}, [[gh]], "^", { desc = "Początek linii" })
 vim.keymap.set({"n", "x"}, [[gl]], "$", { desc = "Koniec linii" })
+-- vim.keymap.set({"n", "x"}, "H", "0")
+-- vim.keymap.set({"n", "x"}, "M", "gM")
+-- vim.keymap.set({"n", "x"}, "L", "$")
 vim.keymap.set("n", [[<leader>,]], [[<cmd>bp<cr>]], { desc = "Poprzeni bufor" })
 vim.keymap.set("n", [[<leader>.]], [[<cmd>bn<cr>]], { desc = "Następny bufor" })
 vim.keymap.set("n", [[<leader>w]], [[<cmd>lua Write()<cr>]], { desc = "Zapisanie zmian" })
@@ -13,6 +16,11 @@ vim.keymap.set("n", [[<c-h>]], [[<c-w><c-h>]], { desc = "Przechodzi do okna po l
 vim.keymap.set("n", [[<c-l>]], [[<c-w><c-l>]], { desc = "Przechodzi do okna po prawej" })
 vim.keymap.set("n", [[<c-j>]], [[<c-w><c-j>]], { desc = "Przechodzi do okna niżej" })
 vim.keymap.set("n", [[<c-k>]], [[<c-w><c-k>]], { desc = "Przechodzi do okna wyżej" })
+-- Mapowanie dla terminala
+vim.keymap.set("t", [[<c-h>]], [[<c-\><c-n><c-w>h]])
+vim.keymap.set("t", [[<c-j>]], [[<c-\><c-n><c-w>j]])
+vim.keymap.set("t", [[<c-k>]], [[<c-\><c-n><c-w>k]])
+vim.keymap.set("t", [[<c-l>]], [[<c-\><c-n><c-w>l]])
 vim.keymap.set("n", [[<leader>so]], [[<cmd>luafile %<cr><cmd>lua vim.notify("Przeładowałem plik: " .. vim.fn.expand("%:p"))<cr>]], { desc = "Wczytuje bieżący plik Lua" })
 vim.keymap.set("n", [[<leader>d]], [[<cmd>bd<cr>]], { desc = "Usuwa bufor" })
 vim.keymap.set("n", [[gf]], [[<cmd>edit <cfile><cr>]], { desc = "Otwiera plik pod kursorem" })
@@ -31,8 +39,8 @@ vim.keymap.set("n", "<F9>", "<cmd>lua KolorPora()<cr>", { desc = "Zmiana tematu 
 vim.keymap.set("n", "<c-_>", "<Plug>kommentary_line_default", { desc = "<Ctrl + /> Tworzy komentarz" })
 vim.keymap.set("x", "<c-_>", "<Plug>kommentary_visual_default", { desc = "<Ctrl + /> Tworzy komentarz" })
 vim.keymap.set("n", "<leader>u", "<cmd>UndotreeToggle<cr>", { desc = "Rejestr zmian Undotree" })
-vim.keymap.set("n", "+", "<C-a>", { desc = "Zwiększa wartość liczby" })
-vim.keymap.set("n", "-", "<C-x>", { desc = "Zmniejsza wartość liczby" })
+vim.keymap.set({ "n", "x" }, "+", "<C-a>", { desc = "Zwiększa wartość liczby" })
+vim.keymap.set({ "n", "x" }, "-", "<C-x>", { desc = "Zmniejsza wartość liczby" })
 vim.keymap.set("n", "<leader>b", "<cmd>FzfLua buffers<cr>", { desc = "Przełączanie pomiędzy buforami" })
 vim.keymap.set("n", "<tab>", "<cmd>e #<cr>", { desc= "Przełączanie pomiędzy dwoma ostatnimi buforami" })
 vim.keymap.set("n", [[<s-tab>]], "<cmd>BufferPick<cr>", { desc = "Pozwala wybrać bufor za pomocą jednej litery" })
@@ -46,11 +54,16 @@ vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true })
 vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true })
 vim.keymap.set("n", "gj", '<cmd>lua require"gitsigns.actions".next_hunk()<cr>zv', { desc = "Następna zmiana w pliku - Git" })
 vim.keymap.set("n", "gk", '<cmd>lua require"gitsigns.actions".prev_hunk()<cr>zv', { silent = true }, { desc = "Poprzednia zmiana w pliku - git" })
+vim.keymap.set("n", "<c-n>", '<cmd>lua require"gitsigns.actions".next_hunk()<cr>zv')
+vim.keymap.set("n", "<c-p>", '<cmd>lua require"gitsigns.actions".prev_hunk()<cr>zv')
+vim.keymap.set("n", "<leader>i", "<cmd>FzfLua git_status<cr>", { desc = "Pokazuje zmiany w repozytorium Git" })
 vim.keymap.set("n", "<leader>l", "<cmd>lua require('lf').start({ border = 'none', width = vim.o.columns, height = vim.o.lines })<cr>")
 vim.keymap.set("n", "vv", "^vg_", { desc = "Zaznacza linię pomijając puste znaki na początku i znak końca linii" })
 vim.keymap.set("n", "tt", ":t.<cr>", { desc = "Dublowanie linii" })
 vim.keymap.set("n", "<leader>cp", "yap<s-}>p", { desc = "Klonuje cały paragraf" })
 vim.keymap.set("n", "vd", [[:norm vj<cr>:sort u<cr>]], { noremap = true, silent = true , desc = "Sprawdza czy kolejna linia jest identyczna, jeśli tak usuwa jedną z nich" })
+-- Kopiowanie zaznaczonego tekstu myszką
+vim.keymap.set("v", "<LeftRelease>", '"+ygv<Esc>')
 vim.keymap.set("n", "<leader>r", '<cmd>FzfLua registers<cr>', { desc = "Wklej z wybranego rejestru" })
 vim.keymap.set("n", "<leader>yy", "^vg_y", { desc = "Kopiuje linię pomijając puste znaki na początku i znak końca linii" })
 -- kokopiujepiuje do schowka systemowego np: <leader>yap - kopiuje paragraf do schowka systemowego
@@ -79,6 +92,55 @@ vim.keymap.set("n", "<m-l>", "<cmd>vertical resize +2<cr>")
 vim.keymap.set("n", "<space><space>", "<cmd>lua FindNotesDir()<cr>")
 -- Wklejanie w linii komend
 vim.keymap.set("c", "<c-r>p", '<c-r>"')
+vim.keymap.set("n", "<leader><cr>", "<cmd>.!bash<cr>", { desc = "Uruchamia komendę z bieżącej linii: echo 2+2 | bc" })
+-- Przechodzi do kolejnej / poprzedniej szukanej pozycji, dodatkowo wyśrodkowuje ekran i otwiera zagnieżdżenia
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
+-- zlicza ilość wystąpień wyrazu pod kursorem
+vim.keymap.set("n", "*", "*<C-O>:%s///gn<CR>")
+vim.keymap.set("n", "#", "#<C-O>:%s///gn<CR>")
+-- Poruszanie się pomiędzy zmianami w pliku
+vim.keymap.set("n", "g;", "g;zvzz")
+vim.keymap.set("n", "g,", "g,zvzz")
+-- Sugestie sprawdzania pisowni
+vim.keymap.set("n", "gs", "<cmd>FzfLua spell_suggest<cr>")
+-- poruszanie się po podmenu podpowiedzi <c-y> zatwierdza; <c-e> przerywa
+vim.api.nvim_set_keymap('i', '<Tab>',   [[pumvisible() ? "\<C-n>" : "\<Tab>"]],   { noremap = true, expr = true })
+vim.api.nvim_set_keymap('i', '<S-Tab>', [[pumvisible() ? "\<C-p>" : "\<S-Tab>"]], { noremap = true, expr = true })
+-- Przechodzi ekran w dół / górę jednocześnie wyśrodkowując stronę i otwierając zagnieżdżenia
+vim.keymap.set("n", "<c-d>", "<c-d>zzzv")
+vim.keymap.set("n", "<c-u>", "<c-u>zzzv")
+-- Poruszanie się pomiędzy paragrafami
+vim.keymap.set("n", "}", "}zvzz")
+vim.keymap.set("n", "{", "{zvzz")
+-- TAB w trybie VISUAL pozostaje w trybie VISUAL
+vim.keymap.set("x", "<", "<gv")
+vim.keymap.set("x", ">", ">gv")
+vim.keymap.set("x", "<c-k>", "<cmd>m '<-2<cr>gv=gv", { silent = true, desc = "Przenosi zaznaczony tekst linię wyżej" })
+vim.keymap.set("x", "<c-j>", "<cmd>m '>+1<cr>gv=gv", { silent = true, desc = "Przenosi zaznaczony tekst linię niżej" })
+-- Uruchamia przeglądarkę na linku pod kursorem używając przeglądarki zdefiniowanej w zmiennej $BROWSER
+vim.keymap.set("n", "gx", "<cmd>silent execute '!$BROWSER ' . shellescape(expand('<cfile>'), 1)<cr>")
+-- zaznacza wyraz pod kursorem i przechodzi do modyfikacji wszystkich znalezionych wyrazów
+vim.keymap.set("n", "<leader>sc", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Znajdź i zamień, wyraz pod kursorem" })
+-- w trybie VISUAL ('v') należy zacząć zaznaczanie od słowa, które chcemy zamienić
+vim.keymap.set("x", "<leader>sc", [[:s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+-- zamienia wyraz znajdujący się pod kursorem, wcześniej skopiowanym wyrazem w całym pliku
+vim.keymap.set("n", "<leader>S", [[:%s/\<<c-r><c-w>\>/<c-r>0/gI<cr>]])
+-- tabs
+vim.keymap.set("n", "<leader><tab>l", "<cmd>tablast<cr>", { desc = "Last Tab" })
+vim.keymap.set("n", "<leader><tab>f", "<cmd>tabfirst<cr>", { desc = "First Tab" })
+vim.keymap.set("n", "<leader><tab><tab>", "<cmd>tabnew<cr>", { desc = "New Tab" })
+vim.keymap.set("n", "<leader><tab>]", "<cmd>tabnext<cr>", { desc = "Next Tab" })
+vim.keymap.set("n", "<leader><tab>n", "<cmd>tabnext<cr>", { desc = "Next Tab" })
+vim.keymap.set("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
+vim.keymap.set("n", "<leader><tab>p", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
+vim.keymap.set("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Tab" })
+vim.keymap.set("n", "<leader>L", "<cmd>lua FileInfo()<cr>", { desc = "Wyświetla informacje o pliku" })
+-- Historia komend :
+vim.keymap.set("n", "q:", "<nop>")
+vim.keymap.set("n", "q:", "<cmd>FzfLua command_history<cr>")
+vim.keymap.set("n", "q;", "<cmd>FzfLua command_history<cr>")
+
 -- Mapowanie znaczników (undo) w trybie INSERT, po wprowadzeniu jednego ze znaków , . ! ? ; :
 local undo_ch = { ",", ".", "!", "?", ";", ":" }
 for _, ch in ipairs(undo_ch) do
