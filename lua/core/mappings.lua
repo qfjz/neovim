@@ -140,7 +140,17 @@ vim.keymap.set("n", "<leader>L", "<cmd>lua FileInfo()<cr>", { desc = "Wyświetla
 vim.keymap.set("n", "q:", "<nop>")
 vim.keymap.set("n", "q:", "<cmd>FzfLua command_history<cr>")
 vim.keymap.set("n", "q;", "<cmd>FzfLua command_history<cr>")
-
+vim.keymap.set("n", "<leader>ha", require("harpoon.mark").add_file)
+vim.keymap.set("n", "<leader>hh", require("harpoon.ui").toggle_quick_menu)
+vim.keymap.set("n", "<leader>h1", function() require("harpoon.ui").nav_file(1) end)
+vim.keymap.set("n", "<leader>h2", function() require("harpoon.ui").nav_file(2) end)
+vim.keymap.set("n", "<leader>h3", function() require("harpoon.ui").nav_file(3) end)
+vim.keymap.set("n", "<leader>h4", function() require("harpoon.ui").nav_file(4) end)
+vim.keymap.set("n", "<leader>h5", function() require("harpoon.ui").nav_file(5) end)
+vim.keymap.set("n", "<leader>h6", function() require("harpoon.ui").nav_file(6) end)
+vim.keymap.set("n", "<leader>h7", function() require("harpoon.ui").nav_file(7) end)
+vim.keymap.set("n", "<leader>h8", function() require("harpoon.ui").nav_file(8) end)
+vim.keymap.set("n", "<leader>h9", function() require("harpoon.ui").nav_file(9) end)
 -- Mapowanie znaczników (undo) w trybie INSERT, po wprowadzeniu jednego ze znaków , . ! ? ; :
 local undo_ch = { ",", ".", "!", "?", ";", ":" }
 for _, ch in ipairs(undo_ch) do

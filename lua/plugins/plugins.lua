@@ -39,6 +39,7 @@ return {
     -- "folke/noice.nvim",
     "epwalsh/pomo.nvim",
     "steelsojka/pears.nvim",
+    "ThePrimeagen/harpoon",
     {
         "nvim-treesitter/nvim-treesitter",
         enabled = true,
