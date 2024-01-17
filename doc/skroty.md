@@ -56,6 +56,36 @@
 | `<c-r>p`         | W linii komend wkleja skopiowany ostatnio tekst                           |
 | `g;`             | Porusza się pomiędzy zmianami w pliku, poprzednia zmiana                  |
 | `g,`             | Porusza się pomiędzy zmianami w pliku                                     |
+| `<c-k>`          | W trybie VISUAL przenosi zaznaczony tekst linię wyżej                     |
+| `<c-j>`          | W trybie VISUAL przenosi zaznaczony tekst linię niżej                     |
+| `gx`             | Otwiera adres WWW pod kursorem w przeglądarce                             |
+| `<leader>sc`     | Znajdź i zamień, wyraz pod kursorem                                       |
+| `<leader>sc`     | Zamienia wyraz pod kursorem w trybie VISUAL                               |
+| `<leader>S`      | Zamienia wyraz pod kursorem skopiowanym wcześniej tekstem                 |
+| `<leader>L`      | Wyświetla informacje o pliku                                              |
+| `q:`             | Wyświetla historię komend                                                 |
+| `q;`             | Wyświetla historię komend                                                 |
+
+## Zarządzanie kartami
+
+| Skrót                | Opis                                                                      |
+|----------------------|---------------------------------------------------------------------------|
+| `<leader><tab>l`     | Przechodzi do ostatniej karty                                             |
+| `<leader><tab>f`     | Przechodzi do pierwszej karty                                             |
+| `<leader><tab><tab>` | Otwiera nową kartę                                                        |
+| `<leader><tab>]`     | Przechodzi do następnej karty                                             |
+| `<leader><tab>n`     | Przechodzi do następnej karty                                             |
+| `<leader><tab>[`     | Przechodzi do poprzeniej karty                                            |
+| `<leader><tab>p`     | Przechodzi do poprzeniej karty                                            |
+| `<leader><tab>d`     | Zamyka bieżącą kartę                                                      |
+
+## Harpoon
+
+| Skrót        | Opis                                                                      |
+|--------------|---------------------------------------------------------------------------|
+| `<leader>ha` | Dodaje plik do listy Harpoon                                              |
+| `<leader>hh` | Wyświetla listę plików                                                    |
+| `<leader>hX` | Przechodzi do X pliku na liście gdzie X to cyfra od 1-9                   |
 
 ## Kopiowanie, usuwanie i wklejanie
 
