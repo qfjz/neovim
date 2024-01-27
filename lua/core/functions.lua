@@ -1,3 +1,4 @@
+-- Aktualizacja: 2024-01-27 18:27:26, sobota 27 stycznia
 -- functions
 CD = function()
     local BmDirs = os.getenv("BM_DIRS")
@@ -295,4 +296,19 @@ EditBmFiles = function()
         BmFiles = vim.fn.resolve(vim.fn.expand("$HOME/.config/bmfilles"))
     end
     vim.cmd('e' .. BmFiles)
+end
+
+OstatniaAktualizacja = function()
+    vim.cmd[[silent! language pl_PL.UTF-8]]
+    local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+    -- local data_aktualizacji = vim.fn.strftime("%Y %b %d")
+    local data_aktualizacji = vim.fn.strftime("%F %T, %A %d %B")
+    local ln = vim.fn.line("$")
+    if ln > 10 then
+        ln = 10
+    end
+    vim.cmd("1," .. ln .. " g/Aktualizacja: /s/Aktualizacja: .*/Aktualizacja: " .. data_aktualizacji)
+    vim.api.nvim_win_set_cursor(0, {row, col})
+    vim.cmd[[silent! language en_US]]
+    vim.cmd("norm ")
 end

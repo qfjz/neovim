@@ -389,3 +389,22 @@ EditBmFiles = function()
     vim.cmd('e' .. BmFiles)
 end
 ```
+
+## OstatniaAktualizacja
+
+```lua
+OstatniaAktualizacja = function()
+    vim.cmd[[silent! language pl_PL.UTF-8]]
+    local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+    -- local data_aktualizacji = vim.fn.strftime("%Y %b %d")
+    local data_aktualizacji = vim.fn.strftime("%F %T, %A %d %B")
+    local ln = vim.fn.line("$")
+    if ln > 10 then
+        ln = 10
+    end
+    vim.cmd("1," .. ln .. " g/Aktualizacja: /s/Aktualizacja: .*/Aktualizacja: " .. data_aktualizacji)
+    vim.api.nvim_win_set_cursor(0, {row, col})
+    vim.cmd[[silent! language en_US]]
+    vim.cmd("norm ")
+end
+```
