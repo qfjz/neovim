@@ -13,3 +13,31 @@ vim.api.nvim_create_user_command("GP", "lua GP()", {})
 vim.api.nvim_create_user_command("GPS", "lua GPS()", {})
 vim.api.nvim_create_user_command("GI", "lua GI()", {})
 vim.api.nvim_create_user_command("OstatniaAktualizacja", "lua OstatniaAktualizacja()", {})
+
+-- https://github.com/justinsgithub/Oh-My-LazyVim/blob/main/lua/_oml/config/commands/init.lua
+vim.api.nvim_create_user_command("BiPolar", function(_)
+  local moods_table = {
+    ["true"] = "false",
+    ["false"] = "true",
+    ["True"] = "False",
+    ["False"] = "True",
+    ["on"] = "off",
+    ["off"] = "on",
+    ["On"] = "Off",
+    ["Off"] = "On",
+    ["open"] = "close",
+    ["close"] = "open",
+    ["Open"] = "Close",
+    ["Close"] = "Open",
+  }
+  local cursor_word = vim.api.nvim_eval("expand('<cword>')")
+  if moods_table[cursor_word] then
+    vim.cmd("normal ciw" .. moods_table[cursor_word] .. "")
+  end
+end, { desc = "Switch Moody Words", force = true })
+
+-- Otwiera plik pod kursorem dodając na początku ścieśki "src/"
+vim.api.nvim_create_user_command("OpenFile", function()
+  local cursor_word = "src/" .. vim.api.nvim_eval("expand('<cWORD>')")
+  vim.cmd("e " .. cursor_word)
+end, { force = true })
