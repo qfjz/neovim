@@ -65,6 +65,8 @@
 | `<leader>L`      | Wyświetla informacje o pliku                                              |
 | `q:`             | Wyświetla historię komend                                                 |
 | `q;`             | Wyświetla historię komend                                                 |
+| `<leader>tb`     | Uruchamia komendę `BiPolar`                                               |
+| `<leader>tt`     | Uruchamia terminal systemowy w oknie Neovim                               |
 
 ## Zarządzanie kartami
 

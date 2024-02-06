@@ -1,5 +1,6 @@
 vim.keymap.set("n", [[<s-enter>]], "mzO<esc>`z", { desc = "Dodaje pustą linię powyżej bieżącej" })
 vim.keymap.set("n", [[<enter>]], "mzo<esc>`z", { desc = "Dodaje pustą linię poniżej bieżącej" })
+vim.keymap.set("v", [[<enter>]], "y", { desc = "Kopiuje zaznaczony tekst" })
 vim.keymap.set("n", [[<leader>n]], "<cmd>Neotree reveal_force_cwd toggle<cr>", { desc = "Uruchamia menadżer plików NeoTree" })
 vim.keymap.set("n", [[\]], "<cmd>Neotree reveal_force_cwd toggle<cr>", { desc = "Uruchamia menadżer plików NeoTree" })
 vim.keymap.set({"n", "x"}, [[gh]], "^", { desc = "Początek linii" })
@@ -84,6 +85,8 @@ vim.keymap.set("n", ",p", '"0p', { desc = "Wkleja ostatnio skopiowany tekst, NIE
 vim.keymap.set("n", ",P", '"0P', { desc = "Wkleja ostatnio skopiowany tekst, NIE ten wycięty / usunięty" })
 vim.keymap.set("n", "zn", "zm")
 vim.keymap.set("n", "zm", "zn")
+vim.keymap.set("n", "<leader>tb", "<cmd>BiPolar<cr>")
+vim.keymap.set("n", "<leader>tt", "<cmd>ToggleTerm<cr>")
 -- Zmiana wielkości okna
 vim.keymap.set("n", "<m-h>", "<cmd>vertical resize -2<cr>")
 vim.keymap.set("n", "<m-j>", "<cmd>resize +2<cr>")
