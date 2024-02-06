@@ -65,7 +65,7 @@ CDG = function()
         end
     end
     if root_dir then
-        local MSG = ("Found git repository at" .. root_dir)
+        local MSG = ("Found git repository at " .. root_dir)
         vim.notify(MSG, "info", {
             timeout = 6000,
             title = "Informacje o repozytorium",
