@@ -1,5 +1,7 @@
 # Komendy
 
+Aktualizacja: 2024-02-06 20:36:28, wtorek 06 lutego
+
 Lista dostępnych komend
 
 | Komenda                | Opis                                                                                       |

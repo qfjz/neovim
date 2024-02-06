@@ -1,12 +1,14 @@
 # Funkcje
 
+Aktualizacja: 2024-02-06 20:36:13, wtorek 06 lutego
+
 ## CD
 
 ```lua
 CD = function()
     local BmDirs = os.getenv("BM_DIRS")
     if BmDirs == nil then
-        print("Brak zmiennej systemowej BM_DIRS")
+        vim.notify("Brak zmiennej systemowej \"BM_DIRS\"")
         return
     end
     command = 'cd'
@@ -29,7 +31,7 @@ end
 CDE = function()
     local BmDirs = os.getenv("BM_DIRS")
     if BmDirs == nil then
-        print("Brak zmiennej systemowej BM_DIRS")
+        vim.notify("Brak zmiennej systemowej \"BM_DIRS\"")
         return
     end
     command = 'e'
@@ -77,13 +79,17 @@ Funkcja wyświetla główny katalog repozytorium Git.
 CDG = function()
     local root_dir
     for dir in vim.fs.parents(vim.api.nvim_buf_get_name(0)) do
-      if vim.fn.isdirectory(dir .. "/.git") == 1 then
-        root_dir = dir
-        break
-      end
+        if vim.fn.isdirectory(dir .. "/.git") == 1 then
+            root_dir = dir
+            break
+        end
     end
     if root_dir then
-      print("Found git repository at", root_dir)
+        local MSG = ("Found git repository at " .. root_dir)
+        vim.notify(MSG, "info", {
+            timeout = 6000,
+            title = "Informacje o repozytorium",
+        })
     end
 end
 ```
@@ -138,6 +144,7 @@ Kopiuje zawartość standardowego rejestru `"` do rejestru `x`.
 ```lua
 CopyReg = function()
     vim.fn.setreg("x", vim.fn.getreg('"'))
+    vim.notify("Skopiowałem standardowy rejestr do rejestru 'x'")
 end
 ```
 
@@ -175,13 +182,18 @@ end
 
 ## FileInfo
 
+Wyświetla informacje o pliku
+
 ```lua
 FileInfo = function()
-    -- Desc: Wyświetla informacje o pliku
     Filename=vim.fn.resolve(vim.fn.expand("%:p"))
     Msg=""
     Msg=Msg .. "Mod: " .. vim.fn.strftime("%F %T",vim.fn.getftime(Filename)) .. " " .. Filename .. ", Size: " ..  FileSize() .. ", TL# " .. TotalLines()
     print(Msg)
+    vim.notify(Msg, "info", {
+        timeout = 6000,
+        title = "Informacje o pliku",
+    })
 end
 ```
 
@@ -303,7 +315,10 @@ GI = function()
     local GI_SH = HOME_DIR .. "/.config/" .. NvimAppName() .. "/sh/gi.sh"
     local l = vim.fn.system(GI_SH .. " " .. "vim")
     local l = vim.fn.substitute(l, '\n$', '', '')
-    print(l)
+    vim.notify(l, "info", {
+        timeout = 6000,
+        title = "Informacje o repozytorium",
+    })
 end
 ```
 
