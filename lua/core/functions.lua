@@ -57,15 +57,10 @@ end
 
 CDG = function()
     -- Desc: Funkcja wyświetla główny katalog repozytorium Git
-    local root_dir
-    for dir in vim.fs.parents(vim.api.nvim_buf_get_name(0)) do
-        if vim.fn.isdirectory(dir .. "/.git") == 1 then
-            root_dir = dir
-            break
-        end
-    end
-    if root_dir then
-        local MSG = ("Found git repository at " .. root_dir)
+    local result = vim.fn.system("git rev-parse --is-inside-work-tree")
+    if vim.v.shell_error == 0 and result:find("true") then
+        local root_dir = vim.fn.system("git rev-parse --show-toplevel")
+        local MSG = ("Found git repository at" .. " " .. root_dir)
         vim.notify(MSG, "info", {
             timeout = 6000,
             title = "Informacje o repozytorium",
@@ -88,7 +83,6 @@ GitFiles = function()
             }
         })
     else
-        -- local rg_cmd = "rg --files --hidden --follow -g '!*.md'"
         local rg_cmd = "rg --files --hidden --follow"
         require'fzf-lua'.files({ 
             cmd = rg_cmd,

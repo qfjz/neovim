@@ -8,7 +8,7 @@ Aktualizacja: 2024-02-09 10:03:47, piątek 09 lutego
 CD = function()
     local BmDirs = os.getenv("BM_DIRS")
     if BmDirs == nil then
-        print("Brak zmiennej systemowej BM_DIRS")
+        vim.notify("Brak zmiennej systemowej \"BM_DIRS\"")
         return
     end
     command = 'cd'
@@ -31,7 +31,7 @@ end
 CDE = function()
     local BmDirs = os.getenv("BM_DIRS")
     if BmDirs == nil then
-        print("Brak zmiennej systemowej BM_DIRS")
+        vim.notify("Brak zmiennej systemowej \"BM_DIRS\"")
         return
     end
     command = 'e'
@@ -55,6 +55,7 @@ symbolicznymi.
 
 ```lua
 CDFD = function()
+    -- Desc: Funkcja przechodzi do katalogu w którym znajduje się edytorwany plik, potrafi podążać za linkami symbolicznymi
     local filename = vim.loop.fs_realpath(vim.api.nvim_buf_get_name(0))
     local directory = vim.fs.dirname(filename)
     if directory == nil then
@@ -455,5 +456,24 @@ EditBmFiles = function()
         BmFiles = vim.fn.resolve(vim.fn.expand("$HOME/.config/bmfilles"))
     end
     vim.cmd('e' .. BmFiles)
+end
+```
+
+## OstatniaAktualizacja
+
+```lua
+OstatniaAktualizacja = function()
+    vim.cmd[[silent! language pl_PL.UTF-8]]
+    local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+    -- local data_aktualizacji = vim.fn.strftime("%Y %b %d")
+    local data_aktualizacji = vim.fn.strftime("%F %T, %A %d %B")
+    local ln = vim.fn.line("$")
+    if ln > 10 then
+        ln = 10
+    end
+    vim.cmd("1," .. ln .. " g/Aktualizacja: /s/Aktualizacja: .*/Aktualizacja: " .. data_aktualizacji)
+    vim.api.nvim_win_set_cursor(0, {row, col})
+    vim.cmd[[silent! language en_US]]
+    vim.cmd("norm ")
 end
 ```
