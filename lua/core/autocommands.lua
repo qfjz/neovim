@@ -109,3 +109,13 @@ autocmd("BufNewFile", {
     pattern = { "*.sh" },
     command = [[0r ~/.config/nvim/templates/bash.sh]]
 })
+
+autocmd("FileType", {
+    group = augroup("vertical_help", { clear = true }),
+    pattern = "help",
+    callback = function()
+        vim.bo.bufhidden = "unload"
+        vim.cmd.wincmd("L")
+        vim.cmd.wincmd("=")
+    end,
+})
