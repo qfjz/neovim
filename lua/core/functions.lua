@@ -73,6 +73,46 @@ CDG = function()
     end
 end
 
+GitFiles = function()
+    -- Desc: Uruchamia FzfLua git_files
+    -- W sytuacji kiedy jesteśmy w repozytorium Git wyszukiwane są wyłącznie pliki dodane do repozytorium!!!
+    CDFD()
+    local result = vim.fn.system("git rev-parse --is-inside-work-tree")
+    if vim.v.shell_error == 0 and result:find("true") then
+        local prompt = "GitFiles> "
+        require'fzf-lua'.git_files({
+            prompt = prompt,
+            winopts = { 
+                preview = { hidden = "nohidden" },
+                fullscreen = true, 
+            }
+        })
+    else
+        -- local rg_cmd = "rg --files --hidden --follow -g '!*.md'"
+        local rg_cmd = "rg --files --hidden --follow"
+        require'fzf-lua'.files({ 
+            cmd = rg_cmd,
+            winopts = {
+                preview = { hidden = "nohidden" },
+                fullscreen = true,
+            }
+        })
+    end
+end
+
+Files = function()
+    -- Desc: Uruchamia FzfLua files
+    CDFD()
+    local rg_cmd = "rg --files --hidden --follow"
+    require'fzf-lua'.files({ 
+        cmd = rg_cmd,
+        winopts = {
+            preview = { hidden = "nohidden" },
+            fullscreen = true,
+        }
+    })
+end
+
 PWD = function()
     return(vim.cmd[[pwd]])
 end

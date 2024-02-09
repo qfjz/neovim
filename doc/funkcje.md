@@ -1,6 +1,6 @@
 # Funkcje
 
-Aktualizacja: 2024-02-06 20:36:13, wtorek 06 lutego
+Aktualizacja: 2024-02-09 10:03:47, piątek 09 lutego
 
 ## CD
 
@@ -8,7 +8,7 @@ Aktualizacja: 2024-02-06 20:36:13, wtorek 06 lutego
 CD = function()
     local BmDirs = os.getenv("BM_DIRS")
     if BmDirs == nil then
-        vim.notify("Brak zmiennej systemowej \"BM_DIRS\"")
+        print("Brak zmiennej systemowej BM_DIRS")
         return
     end
     command = 'cd'
@@ -31,7 +31,7 @@ end
 CDE = function()
     local BmDirs = os.getenv("BM_DIRS")
     if BmDirs == nil then
-        vim.notify("Brak zmiennej systemowej \"BM_DIRS\"")
+        print("Brak zmiennej systemowej BM_DIRS")
         return
     end
     command = 'e'
@@ -77,20 +77,82 @@ Funkcja wyświetla główny katalog repozytorium Git.
 
 ```lua
 CDG = function()
-    local root_dir
-    for dir in vim.fs.parents(vim.api.nvim_buf_get_name(0)) do
-        if vim.fn.isdirectory(dir .. "/.git") == 1 then
-            root_dir = dir
-            break
-        end
-    end
-    if root_dir then
-        local MSG = ("Found git repository at " .. root_dir)
+    local result = vim.fn.system("git rev-parse --is-inside-work-tree")
+    if vim.v.shell_error == 0 and result:find("true") then
+        local root_dir = vim.fn.system("git rev-parse --show-toplevel")
+        local MSG = ("Found git repository at" .. " " .. root_dir)
         vim.notify(MSG, "info", {
             timeout = 6000,
             title = "Informacje o repozytorium",
         })
     end
+end
+```
+
+Stara wersja:
+
+```lua
+CDG = function()
+    local root_dir
+    for dir in vim.fs.parents(vim.api.nvim_buf_get_name(0)) do
+      if vim.fn.isdirectory(dir .. "/.git") == 1 then
+        root_dir = dir
+        break
+      end
+    end
+    if root_dir then
+      print("Found git repository at", root_dir)
+    end
+end
+```
+
+## GitFiles
+
+Uruchamia FzfLua git_files
+
+W sytuacji kiedy jesteśmy w repozytorium Git wyszukiwane są wyłącznie pliki dodane do repozytorium!!!
+
+```lua
+GitFiles = function()
+    CDFD()
+    local result = vim.fn.system("git rev-parse --is-inside-work-tree")
+    if vim.v.shell_error == 0 and result:find("true") then
+        local prompt = "GitFiles> "
+        require'fzf-lua'.git_files({
+            prompt = prompt,
+            winopts = { 
+                preview = { hidden = "nohidden" },
+                fullscreen = true, 
+            }
+        })
+    else
+        local rg_cmd = "rg --files --hidden --follow"
+        require'fzf-lua'.files({ 
+            cmd = rg_cmd,
+            winopts = {
+                preview = { hidden = "nohidden" },
+                fullscreen = true,
+            }
+        })
+    end
+end
+```
+
+## Files
+
+Uruchamia FzfLua files
+
+```lua
+Files = function()
+    CDFD()
+    local rg_cmd = "rg --files --hidden --follow"
+    require'fzf-lua'.files({ 
+        cmd = rg_cmd,
+        winopts = {
+            preview = { hidden = "nohidden" },
+            fullscreen = true,
+        }
+    })
 end
 ```
 
@@ -144,7 +206,6 @@ Kopiuje zawartość standardowego rejestru `"` do rejestru `x`.
 ```lua
 CopyReg = function()
     vim.fn.setreg("x", vim.fn.getreg('"'))
-    vim.notify("Skopiowałem standardowy rejestr do rejestru 'x'")
 end
 ```
 
@@ -182,18 +243,13 @@ end
 
 ## FileInfo
 
-Wyświetla informacje o pliku
-
 ```lua
 FileInfo = function()
+    -- Desc: Wyświetla informacje o pliku
     Filename=vim.fn.resolve(vim.fn.expand("%:p"))
     Msg=""
     Msg=Msg .. "Mod: " .. vim.fn.strftime("%F %T",vim.fn.getftime(Filename)) .. " " .. Filename .. ", Size: " ..  FileSize() .. ", TL# " .. TotalLines()
     print(Msg)
-    vim.notify(Msg, "info", {
-        timeout = 6000,
-        title = "Informacje o pliku",
-    })
 end
 ```
 
@@ -315,10 +371,7 @@ GI = function()
     local GI_SH = HOME_DIR .. "/.config/" .. NvimAppName() .. "/sh/gi.sh"
     local l = vim.fn.system(GI_SH .. " " .. "vim")
     local l = vim.fn.substitute(l, '\n$', '', '')
-    vim.notify(l, "info", {
-        timeout = 6000,
-        title = "Informacje o repozytorium",
-    })
+    print(l)
 end
 ```
 
@@ -402,24 +455,5 @@ EditBmFiles = function()
         BmFiles = vim.fn.resolve(vim.fn.expand("$HOME/.config/bmfilles"))
     end
     vim.cmd('e' .. BmFiles)
-end
-```
-
-## OstatniaAktualizacja
-
-```lua
-OstatniaAktualizacja = function()
-    vim.cmd[[silent! language pl_PL.UTF-8]]
-    local row, col = unpack(vim.api.nvim_win_get_cursor(0))
-    -- local data_aktualizacji = vim.fn.strftime("%Y %b %d")
-    local data_aktualizacji = vim.fn.strftime("%F %T, %A %d %B")
-    local ln = vim.fn.line("$")
-    if ln > 10 then
-        ln = 10
-    end
-    vim.cmd("1," .. ln .. " g/Aktualizacja: /s/Aktualizacja: .*/Aktualizacja: " .. data_aktualizacji)
-    vim.api.nvim_win_set_cursor(0, {row, col})
-    vim.cmd[[silent! language en_US]]
-    vim.cmd("norm ")
 end
 ```
