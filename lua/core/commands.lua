@@ -1,5 +1,5 @@
 -- commands
--- Aktualizacja: 2024-02-06 08:49:29, wtorek 06 lutego
+-- Aktualizacja: 2024-02-10 06:18:27, sobota 10 lutego
 vim.api.nvim_create_user_command("Kolory", "FzfLua colorschemes", {})
 vim.api.nvim_create_user_command("CDFD", "lua CDFD()", {})
 vim.api.nvim_create_user_command("CD", "lua CD()", {})
@@ -17,10 +17,14 @@ vim.api.nvim_create_user_command("F", "lua Files()", {})
 vim.api.nvim_create_user_command("Files", "lua Files()", {})
 vim.api.nvim_create_user_command("GF", "lua GitFiles()", {})
 vim.api.nvim_create_user_command("GFiles", "lua GitFiles()", {})
+vim.api.nvim_create_user_command("GitFiles", "lua GitFiles()", {})
 vim.api.nvim_create_user_command("OstatniaAktualizacja", "lua OstatniaAktualizacja()", {})
 vim.api.nvim_create_user_command("TermGitStatus", "lua require'toggleterm'.exec('git status', 1, 22)", {})
 vim.api.nvim_create_user_command("TermGitPull", "lua require'toggleterm'.exec('git pull', 1, 12)", {})
 vim.api.nvim_create_user_command("TermPs", "lua require'toggleterm'.exec('ps ax', 1, 12)", {})
+vim.api.nvim_create_user_command("BmFiles", "lua BmFiles()", {})
+vim.api.nvim_create_user_command("AddBmFile", "lua AddBMFile()", {})
+vim.api.nvim_create_user_command("EditBmFiles", "lua EditBmFiles()", {})
 
 -- https://github.com/justinsgithub/Oh-My-LazyVim/blob/main/lua/_oml/config/commands/init.lua
 vim.api.nvim_create_user_command("BiPolar", function(_)

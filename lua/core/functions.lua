@@ -1,5 +1,5 @@
--- Aktualizacja: 2024-01-27 18:27:26, sobota 27 stycznia
 -- functions
+-- Aktualizacja: 2024-02-10 06:18:40, sobota 10 lutego
 CD = function()
     local BmDirs = os.getenv("BM_DIRS")
     if BmDirs == nil then
@@ -313,7 +313,7 @@ BmFiles = function()
     require'fzf-lua'.fzf_exec(files, opts)
 end
 
-Add_BMFile = function()
+AddBmFile = function()
     local BmFiles = os.getenv("BM_FILES")
     if BmFiles == nil then
         BmFiles = vim.fn.resolve(vim.fn.expand("$HOME/.config/bmfilles"))
