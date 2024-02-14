@@ -22,6 +22,7 @@ require("config.nvim-notify-cnf")
 require("config.pomo-cnf")
 require("config.pears-cnf")
 require("config.toggleterm")
+require("config.fzflua-cnf")
 -- require("config.noice-cnf")
 require("plugins.plugins")
 

@@ -35,6 +35,7 @@ return {
     "folke/zen-mode.nvim",  -- tryb Zen
     "folke/twilight.nvim",  -- zakreśla tylko bieżący paragraf
     "lukas-reineke/indent-blankline.nvim",  -- pionowe linie wyróżniające wcięcie
+    "HiPhish/rainbow-delimiters.nvim",
     "rcarriga/nvim-notify",
     -- "folke/noice.nvim",
     "epwalsh/pomo.nvim",
