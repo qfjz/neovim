@@ -1,5 +1,5 @@
 -- functions
--- Aktualizacja: 2024-02-15 06:30:44, czwartek 15 lutego
+-- Aktualizacja: 2024-02-15 13:00:48, czwartek 15 lutego
 CD = function()
     local BmDirs = os.getenv("BM_DIRS")
     if BmDirs == nil then
@@ -58,9 +58,7 @@ end
 CDG = function()
     -- Desc: Funkcja wyświetla główny katalog repozytorium Git
     if package.loaded['gitsigns'] then
-        for _, v in ipairs(vim.fn.getbufinfo("%")) do
-            local root_dir = v.variables.gitsigns_status_dict.root
-        end
+        local root_dir = vim.inspect(vim.fn.getbufinfo("%")[1].variables.gitsigns_status_dict.root)
         local MSG = ("Found git repository at" .. " " .. root_dir)
         vim.notify(MSG, "info", {
             timeout = 6000,
