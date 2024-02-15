@@ -120,3 +120,19 @@ autocmd("FileType", {
         vim.cmd.wincmd("=")
     end,
 })
+
+-- Automatically update changed file in Vim
+-- https://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim/383044#383044
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" }, {
+  command = [[silent! if mode() != 'c' && !bufexists("[Command Line]") | checktime | endif]],
+})
+
+-- Notification after file change
+vim.api.nvim_create_autocmd("FileChangedShellPost", {
+  command = [[echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None]],
+})
+
+-- wchodzi w tryb INSERT przy otworzeniu NOWEGO pliku
+vim.api.nvim_create_autocmd({ "BufNewFile" }, {
+    command = [[startinsert]],
+})
