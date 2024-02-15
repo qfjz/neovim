@@ -1,5 +1,5 @@
 -- functions
--- Aktualizacja: 2024-02-15 05:31:52, czwartek 15 lutego
+-- Aktualizacja: 2024-02-15 06:17:22, czwartek 15 lutego
 CD = function()
     local BmDirs = os.getenv("BM_DIRS")
     if BmDirs == nil then
@@ -360,6 +360,28 @@ end
 
 BufInfo = function()
     for _, v in ipairs(vim.fn.getbufinfo("%")) do
-            P(v)
+        P(v)
     end
 end
+
+vim.cmd[[
+    " np :Redir !ls :Redir hi (lista kolorów) :Redir BufInfo
+    function! Redir(cmd)
+        for win in range(1, winnr('$'))
+            if getwinvar(win, 'scratch')
+                execute win . 'windo close'
+            endif
+        endfor
+        if a:cmd =~ '^!'
+            execute "let output = system('" . substitute(a:cmd, '^!', '', '') . "')"
+        else
+            redir => output
+            execute a:cmd
+        redir END
+        endif
+        vnew
+        let w:scratch = 1
+        setlocal nobuflisted buftype=nofile bufhidden=wipe noswapfile
+        call setline(1, split(output, "\n"))
+    endfunction
+]]
