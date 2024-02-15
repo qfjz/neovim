@@ -27,6 +27,8 @@ vim.api.nvim_create_user_command("AddBmFile", "lua AddBMFile()", {})
 vim.api.nvim_create_user_command("EditBmFiles", "lua EditBmFiles()", {})
 vim.api.nvim_create_user_command("BufInfo", "lua BufInfo()", {})
 
+vim.cmd[[command! -nargs=1 -complete=command Redir silent call Redir(<f-args>)]]
+
 -- https://github.com/justinsgithub/Oh-My-LazyVim/blob/main/lua/_oml/config/commands/init.lua
 vim.api.nvim_create_user_command("BiPolar", function(_)
     local moods_table = {
