@@ -1,5 +1,5 @@
 -- functions
--- Aktualizacja: 2024-02-15 06:17:22, czwartek 15 lutego
+-- Aktualizacja: 2024-02-15 06:30:44, czwartek 15 lutego
 CD = function()
     local BmDirs = os.getenv("BM_DIRS")
     if BmDirs == nil then
@@ -377,7 +377,7 @@ vim.cmd[[
         else
             redir => output
             execute a:cmd
-        redir END
+            redir END
         endif
         vnew
         let w:scratch = 1
