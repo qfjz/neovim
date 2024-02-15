@@ -1,5 +1,5 @@
 -- functions
--- Aktualizacja: 2024-02-15 13:00:48, czwartek 15 lutego
+-- Aktualizacja: 2024-02-15 13:09:26, czwartek 15 lutego
 CD = function()
     local BmDirs = os.getenv("BM_DIRS")
     if BmDirs == nil then
@@ -383,3 +383,8 @@ vim.cmd[[
         call setline(1, split(output, "\n"))
     endfunction
 ]]
+
+EditGitConfig = function()
+    local git_config_dir = vim.fn.getbufinfo("%")[1].variables.gitsigns_status_dict.gitdir
+    vim.cmd("e" .. git_config_dir .. "/config")
+end
