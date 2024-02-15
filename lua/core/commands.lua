@@ -26,8 +26,7 @@ vim.api.nvim_create_user_command("BmFiles", "lua BmFiles()", {})
 vim.api.nvim_create_user_command("AddBmFile", "lua AddBMFile()", {})
 vim.api.nvim_create_user_command("EditBmFiles", "lua EditBmFiles()", {})
 vim.api.nvim_create_user_command("BufInfo", "lua BufInfo()", {})
-
-vim.cmd[[command! -nargs=1 -complete=command Redir silent call Redir(<f-args>)]]
+vim.api.nvim_create_user_command("Redir", "silent call Redir (<f-args>)", { complete="command", nargs=1 })
 
 -- https://github.com/justinsgithub/Oh-My-LazyVim/blob/main/lua/_oml/config/commands/init.lua
 vim.api.nvim_create_user_command("BiPolar", function(_)
