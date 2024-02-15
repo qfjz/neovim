@@ -1,5 +1,5 @@
 -- autocommands
--- Aktualizacja: 2024-02-15 04:47:38, czwartek 15 lutego
+-- Aktualizacja: 2024-02-15 05:34:05, czwartek 15 lutego
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 
@@ -53,7 +53,7 @@ autocmd("FileType", {
 
 -- Klawisz `K` w plikach sh wywołuje pomoc dla wyrazu pod kursorem
 autocmd("FileType", {
-  pattern = { "sh" },
+    pattern = { "sh" },
     callback = function()
         vim.api.nvim_buf_set_keymap(0, "n", "K", 'viwy:Man <c-r>"<cr>', { noremap = true })
     end,
@@ -124,7 +124,16 @@ autocmd("FileType", {
 -- Automatically update changed file in Vim
 -- https://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim/383044#383044
 autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" }, {
-  command = [[silent! if mode() != 'c' && !bufexists("[Command Line]") | checktime | endif]],
+    -- command = [[silent! if mode() != 'c' && !bufexists("[Command Line]") | checktime | endif]],
+    callback = function()
+        if vim.fn.mode() ~= "c" then
+            for _, v in ipairs(vim.fn.getbufinfo("%")) do
+                if v.name ~= "" then
+                    vim.cmd[[checktime]]
+                end
+            end
+        end
+    end
 })
 
 -- Notification after file change

@@ -1,5 +1,5 @@
 -- commands
--- Aktualizacja: 2024-02-10 06:18:27, sobota 10 lutego
+-- Aktualizacja: 2024-02-15 05:33:46, czwartek 15 lutego
 vim.api.nvim_create_user_command("Kolory", "FzfLua colorschemes", {})
 vim.api.nvim_create_user_command("CDFD", "lua CDFD()", {})
 vim.api.nvim_create_user_command("CD", "lua CD()", {})
@@ -25,31 +25,32 @@ vim.api.nvim_create_user_command("TermPs", "lua require'toggleterm'.exec('ps ax'
 vim.api.nvim_create_user_command("BmFiles", "lua BmFiles()", {})
 vim.api.nvim_create_user_command("AddBmFile", "lua AddBMFile()", {})
 vim.api.nvim_create_user_command("EditBmFiles", "lua EditBmFiles()", {})
+vim.api.nvim_create_user_command("BufInfo", "lua BufInfo()", {})
 
 -- https://github.com/justinsgithub/Oh-My-LazyVim/blob/main/lua/_oml/config/commands/init.lua
 vim.api.nvim_create_user_command("BiPolar", function(_)
-  local moods_table = {
-    ["true"] = "false",
-    ["false"] = "true",
-    ["True"] = "False",
-    ["False"] = "True",
-    ["on"] = "off",
-    ["off"] = "on",
-    ["On"] = "Off",
-    ["Off"] = "On",
-    ["open"] = "close",
-    ["close"] = "open",
-    ["Open"] = "Close",
-    ["Close"] = "Open",
-  }
-  local cursor_word = vim.api.nvim_eval("expand('<cword>')")
-  if moods_table[cursor_word] then
-    vim.cmd("normal ciw" .. moods_table[cursor_word] .. "")
-  end
+    local moods_table = {
+        ["true"] = "false",
+        ["false"] = "true",
+        ["True"] = "False",
+        ["False"] = "True",
+        ["on"] = "off",
+        ["off"] = "on",
+        ["On"] = "Off",
+        ["Off"] = "On",
+        ["open"] = "close",
+        ["close"] = "open",
+        ["Open"] = "Close",
+        ["Close"] = "Open",
+    }
+    local cursor_word = vim.api.nvim_eval("expand('<cword>')")
+    if moods_table[cursor_word] then
+        vim.cmd("normal ciw" .. moods_table[cursor_word] .. "")
+    end
 end, { desc = "Switch Moody Words", force = true })
 
 -- Otwiera plik pod kursorem dodając na początku ścieśki "src/"
 vim.api.nvim_create_user_command("OpenFile", function()
-  local cursor_word = "src/" .. vim.api.nvim_eval("expand('<cWORD>')")
-  vim.cmd("e " .. cursor_word)
+    local cursor_word = "src/" .. vim.api.nvim_eval("expand('<cWORD>')")
+    vim.cmd("e " .. cursor_word)
 end, { force = true })
