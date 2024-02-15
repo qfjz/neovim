@@ -1,5 +1,5 @@
 -- autocommands
--- Aktualizacja: 2024-02-15 05:52:40, czwartek 15 lutego
+-- Aktualizacja: 2024-02-15 05:54:12, czwartek 15 lutego
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 
@@ -148,6 +148,6 @@ autocmd("FileChangedShellPost", {
 })
 
 -- wchodzi w tryb INSERT przy otworzeniu NOWEGO pliku
-autocmd({ "BufNewFile", "BufNew" }, {
+autocmd({ "BufNewFile" }, {
     command = [[startinsert]],
 })
