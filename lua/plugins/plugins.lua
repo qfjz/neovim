@@ -22,7 +22,6 @@ return {
     "akinsho/toggleterm.nvim",
     "lmburns/lf.nvim",
     "b3nj5m1n/kommentary",
-    "vim-scripts/AutoComplPop",
     "tpope/vim-fugitive",
     "lewis6991/gitsigns.nvim",
     "ojroques/vim-oscyank",
@@ -37,7 +36,7 @@ return {
     "lukas-reineke/indent-blankline.nvim",  -- pionowe linie wyróżniające wcięcie
     "HiPhish/rainbow-delimiters.nvim",
     "rcarriga/nvim-notify",
-    -- "folke/noice.nvim",
+    "folke/noice.nvim",
     "epwalsh/pomo.nvim",
     "steelsojka/pears.nvim",
     "ThePrimeagen/harpoon",
@@ -73,5 +72,13 @@ return {
         "nvim-neorg/neorg",
         build = ":Neorg sync-parsers",
         dependencies = { "nvim-lua/plenary.nvim" },
-    }
+    },
+    {"VonHeikemen/lsp-zero.nvim", branch = "v3.x"},
+    {"neovim/nvim-lspconfig"},
+    {"hrsh7th/cmp-nvim-lsp"},
+    {"hrsh7th/nvim-cmp"},
+    {"hrsh7th/cmp-buffer"},
+    {"L3MON4D3/LuaSnip"},
+    {"williamboman/mason.nvim"},
+    {"williamboman/mason-lspconfig.nvim"},
 }

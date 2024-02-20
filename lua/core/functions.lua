@@ -363,7 +363,7 @@ BufInfo = function()
 end
 
 vim.cmd[[
-    " np :Redir !ls :Redir hi (lista kolorów) :Redir BufInfo
+    " np :Redir !ls :Redir hi (lista kolorów) :Redir BufInfo :Redir lua P(package.loaded)
     function! Redir(cmd)
         for win in range(1, winnr('$'))
             if getwinvar(win, 'scratch')

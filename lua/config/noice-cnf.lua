@@ -2,6 +2,12 @@
 local ok, configs = pcall(require, 'noice')
 if not ok then return end
 
+-- if package.loaded['noice'] then
+    -- vim.notify("Plugin noice załadowany", "info", {
+        -- timeout = 6000,
+    -- })
+-- end
+
 configs.setup({
     cmdline = {
         enabled = true, -- enables the Noice cmdline UI
