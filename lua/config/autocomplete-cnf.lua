@@ -9,8 +9,8 @@ cmp.setup({
         completeopt = 'menu,menuone,noinsert'
     },
     sources = {
-        {name = 'nvim_lsp'},
-        {name = 'luasnip'},
+        { name = 'nvim_lsp' },
+        { name = 'luasnip' },
         {
             name = 'buffer',
             option = {
@@ -18,6 +18,7 @@ cmp.setup({
                 -- keyword_pattern = [[\%(-\?\d\+\%(\.\d\+\)\?\|\h\w*\%([\-.]\w*\)*\)]],
             }
         },
+        { name = 'path' },
     },
     mapping = cmp.mapping.preset.insert({
         -- confirm completion
