@@ -17,13 +17,27 @@ return {
     "xero/miasma.nvim",
     "olivercederborg/poimandres.nvim",
     "Rigellute/rigel",
+    {
+        "folke/tokyonight.nvim",
+        lazy = false, -- make sure we load this during startup if it is your main colorscheme
+        priority = 1000, -- make sure to load this before all the other start plugins
+        config = function()
+            -- load the colorscheme here
+            -- vim.cmd.colorscheme[[tokyonight]]
+        end,
+    },
     "ibhagwan/fzf-lua",
     "mbbill/undotree",
     "akinsho/toggleterm.nvim",
     "lmburns/lf.nvim",
+    "goolord/alpha-nvim",
     "b3nj5m1n/kommentary",
     "tpope/vim-fugitive",
+    "tpope/vim-eunuch",
+    "tpope/vim-repeat",
+    "tpope/vim-surround",
     "lewis6991/gitsigns.nvim",
+    "Jorengarenar/fauxClip",
     "ojroques/vim-oscyank",
     "jamessan/vim-gnupg",
     "anuvyklack/hydra.nvim",
@@ -60,26 +74,17 @@ return {
         end,
     },
     {
-        "folke/tokyonight.nvim",
-        lazy = false, -- make sure we load this during startup if it is your main colorscheme
-        priority = 1000, -- make sure to load this before all the other start plugins
-        config = function()
-            -- load the colorscheme here
-            -- vim.cmd.colorscheme[[tokyonight]]
-        end,
-    },
-    {
         "nvim-neorg/neorg",
         build = ":Neorg sync-parsers",
         dependencies = { "nvim-lua/plenary.nvim" },
     },
     { "VonHeikemen/lsp-zero.nvim", branch = "v3.x" },
     "neovim/nvim-lspconfig",
-    "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/nvim-cmp",
     "hrsh7th/cmp-buffer",
+    "hrsh7th/cmp-path",
+    "hrsh7th/cmp-nvim-lsp",
     "L3MON4D3/LuaSnip",
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
-    "hrsh7th/cmp-path",
 }

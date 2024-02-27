@@ -77,6 +77,22 @@ CDG = function()
     end
 end
 
+Docs = function()
+    -- Desc: Wyszukiwanie plików w katalogu docs
+    local rg_cmd = "rg --files --follow -g '*.md'"
+    local cwd_dir = "$HOME/.config/" .. NvimAppName() .. "/doc"
+    local prompt = "Docs> "
+    require'fzf-lua'.files({
+        prompt = prompt,
+        cwd = cwd_dir,
+        cmd = rg_cmd,
+        winopts = { 
+            preview = { hidden = "nohidden" },
+            fullscreen = true, 
+        }
+    })
+end
+
 GitFiles = function()
     -- Desc: Uruchamia FzfLua git_files
     -- W sytuacji kiedy jesteśmy w repozytorium Git wyszukiwane są wyłącznie pliki dodane do repozytorium!!!
@@ -283,6 +299,20 @@ PU = function()
     local PU_SH = HOME_DIR .. "/.config/" .. NvimAppName() .. "/sh/pu.sh"
     vim.fn.system(PU_SH)
     vim.cmd("e ~/tmp/pu.tmp")
+end
+
+SearchDir = function(dir)
+    local rg_cmd = "rg --files --follow"
+    local prompt = "Search> "
+    require'fzf-lua'.files({ 
+        prompt = prompt,
+        cmd = rg_cmd,
+        cwd = dir,
+        winopts = {
+            preview = { hidden = "nohidden" },
+            fullscreen = true,
+        }
+    })
 end
 
 FindNotesDir = function()

@@ -26,6 +26,8 @@ require("config.fzflua-cnf")
 require("config.noice-cnf")
 require("config.lsp-zero-cnf")
 require("config.autocomplete-cnf")
+require("config.fauxClip-cnf")
+require("config.alpha-cnf")
 require("plugins.plugins")
 
 vim.cmd([[colorscheme tokyonight]])
