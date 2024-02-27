@@ -1,6 +1,6 @@
 # Funkcje
 
-Aktualizacja: 2024-02-09 10:03:47, piątek 09 lutego
+Aktualizacja: 2024-02-27 13:30:25, wtorek 27 lutego
 
 ## CD
 
@@ -104,6 +104,28 @@ CDG = function()
     if root_dir then
       print("Found git repository at", root_dir)
     end
+end
+```
+
+## Docs
+
+Przeszukuje katalog `~/.config/NvimAppName()/doc`
+
+```lua
+Docs = function()
+    -- Desc: Wyszukiwanie plików w katalogu docs
+    local rg_cmd = "rg --files --follow -g '*.md'"
+    local cwd_dir = "$HOME/.config/" .. NvimAppName() .. "/doc"
+    local prompt = "Docs> "
+    require'fzf-lua'.files({
+        prompt = prompt,
+        cwd = cwd_dir,
+        cmd = rg_cmd,
+        winopts = { 
+            preview = { hidden = "nohidden" },
+            fullscreen = true, 
+        }
+    })
 end
 ```
 
@@ -387,6 +409,25 @@ PU = function()
     vim.cmd("e ~/tmp/pu.tmp")
 end
 ```
+
+## SearchDir
+
+```lua
+SearchDir = function(dir)
+    local rg_cmd = "rg --files --follow"
+    local prompt = "Search> "
+    require'fzf-lua'.files({ 
+        prompt = prompt,
+        cmd = rg_cmd,
+        cwd = dir,
+        winopts = {
+            preview = { hidden = "nohidden" },
+            fullscreen = true,
+        }
+    })
+end
+```
+
 ## FindNotesDir
 
 ```lua
@@ -432,10 +473,10 @@ BmFiles = function()
 end
 ```
 
-## Add_BMFile
+## AddBMFile
 
 ```lua
-Add_BMFile = function()
+AddBMFile = function()
     local BmFiles = os.getenv("BM_FILES")
     if BmFiles == nil then
         BmFiles = vim.fn.resolve(vim.fn.expand("$HOME/.config/bmfilles"))
@@ -475,5 +516,50 @@ OstatniaAktualizacja = function()
     vim.api.nvim_win_set_cursor(0, {row, col})
     vim.cmd[[silent! language en_US]]
     vim.cmd("norm ")
+end
+```
+
+## BufInfo
+
+```lua
+BufInfo = function()
+    for _, v in ipairs(vim.fn.getbufinfo("%")) do
+        P(v)
+    end
+end
+```
+
+## Redir
+
+```vim
+vim.cmd[[
+    " np :Redir !ls :Redir hi (lista kolorów) :Redir BufInfo :Redir lua P(package.loaded)
+    function! Redir(cmd)
+        for win in range(1, winnr('$'))
+            if getwinvar(win, 'scratch')
+                execute win . 'windo close'
+            endif
+        endfor
+        if a:cmd =~ '^!'
+            execute "let output = system('" . substitute(a:cmd, '^!', '', '') . "')"
+        else
+            redir => output
+            execute a:cmd
+            redir END
+        endif
+        vnew
+        let w:scratch = 1
+        setlocal nobuflisted buftype=nofile bufhidden=wipe noswapfile
+        call setline(1, split(output, "\n"))
+    endfunction
+]]
+```
+
+## EditGitConfig
+
+```lua
+EditGitConfig = function()
+    local git_config_dir = vim.fn.getbufinfo("%")[1].variables.gitsigns_status_dict.gitdir
+    vim.cmd("e" .. git_config_dir .. "/config")
 end
 ```

@@ -1,6 +1,6 @@
 # Komendy
 
-Aktualizacja: 2024-02-06 20:36:28, wtorek 06 lutego
+Aktualizacja: 2024-02-27 13:30:15, wtorek 27 lutego
 
 Lista dostępnych komend
 
@@ -25,3 +25,4 @@ Lista dostępnych komend
 | `TermPs`               | Uruchamia komendę `ps ax` w terminalu systemowym                                           |
 | `BiPolar`              | Zamienia słowa np: `true` na `false`, `on` na `off`, itp.                                  |
 | `OpenFile`             | Otwiera plik o nazwie słowa pod kursorem w lokalizacji względnej `src/<słowo>`             |
+| `Docs`                 | Przeszukuje katalog z dokumentacją dla nvim-qfjz                                           |

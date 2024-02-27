@@ -1,5 +1,5 @@
 -- functions
--- Aktualizacja: 2024-02-15 13:09:26, czwartek 15 lutego
+-- Aktualizacja: 2024-02-27 13:30:29, wtorek 27 lutego
 CD = function()
     local BmDirs = os.getenv("BM_DIRS")
     if BmDirs == nil then

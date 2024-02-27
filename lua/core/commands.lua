@@ -1,5 +1,5 @@
 -- commands
--- Aktualizacja: 2024-02-15 13:11:12, czwartek 15 lutego
+-- Aktualizacja: 2024-02-27 13:30:20, wtorek 27 lutego
 vim.api.nvim_create_user_command("Kolory", "FzfLua colorschemes", {})
 vim.api.nvim_create_user_command("CDFD", "lua CDFD()", {})
 vim.api.nvim_create_user_command("CD", "lua CD()", {})
@@ -28,6 +28,7 @@ vim.api.nvim_create_user_command("EditBmFiles", "lua EditBmFiles()", {})
 vim.api.nvim_create_user_command("BufInfo", "lua BufInfo()", {})
 vim.api.nvim_create_user_command("Redir", "silent call Redir (<f-args>)", { complete="command", nargs=1 })
 vim.api.nvim_create_user_command("EditGitConfig", "lua EditGitConfig()", {})
+vim.api.nvim_create_user_command("Docs", "lua Docs()", {})
 
 -- https://github.com/justinsgithub/Oh-My-LazyVim/blob/main/lua/_oml/config/commands/init.lua
 vim.api.nvim_create_user_command("BiPolar", function(_)
