@@ -1,4 +1,21 @@
-local lsp_zero = require('lsp-zero')
+-- lsp-zero
+-- Aktualizacja: 2024-02-27 11:25:57, wtorek 27 lutego
+local ok, lsp_zero = pcall(require, "lsp-zero")
+if not ok then
+    return
+end
+
+local ok, mason = pcall(require, "mason")
+if not ok then
+    return
+end
+
+local ok, mason_lspconfig = pcall(require, "mason-lspconfig")
+if not ok then
+    return
+end
+
+-- local lsp_zero = require('lsp-zero')
 
 lsp_zero.on_attach(function(client, bufnr)
     -- see :help lsp-zero-keybindings
