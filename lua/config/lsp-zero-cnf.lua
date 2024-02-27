@@ -17,9 +17,18 @@ require('mason').setup({
         }
     }
 })
+
+if vim.fn.system[[command -v pyright]] ~= "" then
+    -- pyright_cmd = vim.fn.system[[command -v pyright]]
+    -- vim.notify("PyRight" .. " " .. pyright_cmd)
+    PyRight = "pyright"
+else
+    PyRight = nil
+end
+
 require('mason-lspconfig').setup({
     ensure_installed = {
-        "pyright",
+        PyRight,
     },
     handlers = {
         lsp_zero.default_setup,
