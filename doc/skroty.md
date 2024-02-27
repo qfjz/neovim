@@ -1,6 +1,6 @@
 # Przypisane skróty klawiszowe
 
-Aktualizacja: 2024-02-06 20:36:41, wtorek 06 lutego
+Aktualizacja: 2024-02-27 13:47:34, wtorek 27 lutego
 
 | Skrót            | Opis                                                                      |
 |------------------|---------------------------------------------------------------------------|
@@ -69,6 +69,7 @@ Aktualizacja: 2024-02-06 20:36:41, wtorek 06 lutego
 | `q;`             | Wyświetla historię komend                                                 |
 | `<leader>tb`     | Uruchamia komendę `BiPolar`                                               |
 | `<leader>tt`     | Uruchamia terminal systemowy w oknie Neovim                               |
+| `<leader>A`      | Uruchamia Dashboard Alpha                                                 |
 
 ## Zarządzanie kartami
 
