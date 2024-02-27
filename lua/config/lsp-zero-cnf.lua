@@ -1,5 +1,5 @@
 -- lsp-zero
--- Aktualizacja: 2024-02-27 11:25:57, wtorek 27 lutego
+-- Aktualizacja: 2024-02-27 11:26:52, wtorek 27 lutego
 local ok, lsp_zero = pcall(require, "lsp-zero")
 if not ok then
     return
@@ -25,7 +25,7 @@ end)
 
 -- to learn how to use mason.nvim with lsp-zero
 -- read this: https://github.com/VonHeikemen/lsp-zero.nvim/blob/v3.x/doc/md/guide/integrate-with-mason-nvim.md
-require('mason').setup({
+mason.setup({
     ui = {
         icons = {
             package_installed = "✓",
@@ -43,7 +43,7 @@ else
     PyRight = nil
 end
 
-require('mason-lspconfig').setup({
+mason_lspconfig.setup({
     ensure_installed = {
         PyRight,
     },
