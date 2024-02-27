@@ -1,5 +1,5 @@
--- functions
--- Aktualizacja: 2024-02-27 13:30:29, wtorek 27 lutego
+-- functions.lua
+-- Aktualizacja: 2024-02-27 14:22:42, wtorek 27 lutego
 CD = function()
     local BmDirs = os.getenv("BM_DIRS")
     if BmDirs == nil then
@@ -241,6 +241,7 @@ Write = function()
         vim.cmd("lcd %:p:h")
         for _, v in ipairs(vim.fn.getbufinfo("%")) do
             if v.changed == 1 then
+                OstatniaAktualizacja()
                 vim.cmd("silent update")
                 vim.notify("Zapisałem" .. " " .. vim.fn.expand("%:p"))
             else

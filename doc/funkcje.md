@@ -1,6 +1,6 @@
 # Funkcje
 
-Aktualizacja: 2024-02-27 13:30:25, wtorek 27 lutego
+Aktualizacja: 2024-02-27 14:23:36, wtorek 27 lutego
 
 ## CD
 
@@ -332,6 +332,7 @@ Write = function()
         vim.cmd("lcd %:p:h")
         for _, v in ipairs(vim.fn.getbufinfo("%")) do
             if v.changed == 1 then
+                OstatniaAktualizacja()
                 vim.cmd("silent update")
                 vim.notify("Zapisałem" .. " " .. vim.fn.expand("%:p"))
             else

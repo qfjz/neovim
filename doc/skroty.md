@@ -1,6 +1,6 @@
 # Przypisane skróty klawiszowe
 
-Aktualizacja: 2024-02-27 13:47:34, wtorek 27 lutego
+Aktualizacja: 2024-02-27 14:23:03, wtorek 27 lutego
 
 | Skrót            | Opis                                                                      |
 |------------------|---------------------------------------------------------------------------|
@@ -39,6 +39,7 @@ Aktualizacja: 2024-02-27 13:47:34, wtorek 27 lutego
 | `<leader>g`      | FzfLua live grep                                                          |
 | `<leader>f`      | FzfLua files                                                              |
 | `<leader>l`      | Uruchamia menadżer plików LF                                              |
+| `u`              | Cofa zmiany (standardowy skrót)                                           |
 | `U`              | Przywraca zmiany                                                          |
 | `gj`             | Następna zmiana w pliku - Git                                             |
 | `gk`             | Poprzednia zmiana w pliku - Git                                           |
