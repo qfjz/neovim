@@ -1,6 +1,6 @@
 # Przypisane skróty klawiszowe
 
-Aktualizacja: 2024-02-27 14:23:03, wtorek 27 lutego
+Aktualizacja: 2024-02-27 14:27:33, wtorek 27 lutego
 
 | Skrót            | Opis                                                                      |
 |------------------|---------------------------------------------------------------------------|
@@ -100,6 +100,7 @@ Aktualizacja: 2024-02-27 14:23:03, wtorek 27 lutego
 
 | Skrót         | Opis                                                                                      |
 |---------------|-------------------------------------------------------------------------------------------|
+| `[ENTER]`     | Kopiuje zaznaczony tekst                                                                  |
 | `<leader>r`   | Wkleja z wybrangeo rejestru                                                               |
 | `<leader>yy`  | Kopiuje linię pomijając puste znaki na początku i znak końca linii                        |
 | `<leader>y`   | Kopiuje do schowka systemowego, rozpoczynając sekwecję np. `<leader>yap`                  |

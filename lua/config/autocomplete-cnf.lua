@@ -1,3 +1,5 @@
+-- autocomplete-cnf.lua
+-- Aktualizacja: 2024-02-27 14:25:05, wtorek 27 lutego
 -- konfiguracja https://lsp-zero.netlify.app/v3.x/autocomplete.html
 local cmp = require('cmp')
 local cmp_action = require('lsp-zero').cmp_action()
