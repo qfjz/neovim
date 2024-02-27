@@ -10,7 +10,7 @@ dashboard.section.buttons.val = {
     dashboard.button("r", "  Ostation używane pliki", "<cmd>FzfLua oldfiles<cr>"),
     dashboard.button("f", "  Wyszukiwanie plików", "<cmd>FzfLua files<cr>"),
     dashboard.button("g", "  Przeszukiwanie plików", "<cmd>FzfLua live_grep<cr>"),
-    dashboard.button("b", "  Skrypty ~/.bin", "<cmd>lua SearchDir('$HOME/bin')<cr>"),
+    dashboard.button("b", "  Skrypty ~/bin", "<cmd>lua SearchDir('$HOME/bin')<cr>"),
     dashboard.button("v", "  Konfiguracja Neovim", "<cmd>lua NvimConfig()<cr>"),
     dashboard.button("K", "  Kolory", "<cmd>Kolory<cr>"),
     dashboard.button("d", "  Dokumentacja", "<cmd>lua Docs()<cr>"),
