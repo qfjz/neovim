@@ -1,4 +1,5 @@
 -- plugin-alpha.lua
+-- Aktualizacja: 2024-02-28 06:09:30, środa 28 lutego
 local ok, alpha = pcall(require, 'alpha')
 if not ok then return end
 
@@ -15,6 +16,7 @@ dashboard.section.buttons.val = {
     dashboard.button("K", "  Kolory", "<cmd>Kolory<cr>"),
     dashboard.button("d", "  Dokumentacja", "<cmd>lua Docs()<cr>"),
     dashboard.button("u", "  Aktualizacja pluginów", "<cmd>Lazy update<cr>"),
+    dashboard.button("q", "  Exit", "<cmd>qa!<cr>"),
 }
 dashboard.section.footer.val = "liczba  ~" .. plugins_count
 dashboard.opts.opts.noautocmd = true
