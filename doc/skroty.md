@@ -1,6 +1,8 @@
 # Przypisane skróty klawiszowe
 
-Aktualizacja: 2024-02-27 14:27:33, wtorek 27 lutego
+Aktualizacja: 2024-02-29 19:31:56, czwartek 29 lutego
+
+Przeszukiwanie skrótów klawiszowych: `:FzfLua keymaps`
 
 | Skrót            | Opis                                                                      |
 |------------------|---------------------------------------------------------------------------|

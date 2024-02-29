@@ -152,17 +152,33 @@ ins_left {
     color = { fg = colors.yellow },
 }
 
--- ins_right {
-    -- 'branch',
-    -- icon = '',
-    -- color = { fg = colors.violet, gui = 'bold' },
--- }
+ins_right {
+    function()
+        local ok, pomo = pcall(require, "pomo")
+        if not ok then
+          return ""
+        end
+
+        local timer = pomo.get_first_to_finish()
+        if timer == nil then
+          return ""
+        end
+
+        return "󰄉 " .. tostring(timer)
+    end,
+}
 
 ins_right {
     lazy_status.updates,
     cond = lazy_status.has_updates,
     color = { fg = colors.white, gui = "bold" },
 }
+
+-- ins_right {
+    -- 'branch',
+    -- icon = '',
+    -- color = { fg = colors.violet, gui = 'bold' },
+-- }
 
 ins_right {
     'diff',
