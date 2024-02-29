@@ -1,5 +1,5 @@
 -- commands
--- Aktualizacja: 2024-02-27 13:30:20, wtorek 27 lutego
+-- Aktualizacja: 2024-02-29 19:03:01, czwartek 29 lutego
 vim.api.nvim_create_user_command("Kolory", "FzfLua colorschemes", {})
 vim.api.nvim_create_user_command("CDFD", "lua CDFD()", {})
 vim.api.nvim_create_user_command("CD", "lua CD()", {})
@@ -26,7 +26,6 @@ vim.api.nvim_create_user_command("BmFiles", "lua BmFiles()", {})
 vim.api.nvim_create_user_command("AddBmFile", "lua AddBMFile()", {})
 vim.api.nvim_create_user_command("EditBmFiles", "lua EditBmFiles()", {})
 vim.api.nvim_create_user_command("BufInfo", "lua BufInfo()", {})
-vim.api.nvim_create_user_command("Redir", "silent call Redir (<f-args>)", { complete="command", nargs=1 })
 vim.api.nvim_create_user_command("EditGitConfig", "lua EditGitConfig()", {})
 vim.api.nvim_create_user_command("Docs", "lua Docs()", {})
 

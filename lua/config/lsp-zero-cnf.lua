@@ -1,17 +1,17 @@
 -- lsp-zero
--- Aktualizacja: 2024-02-27 11:26:52, wtorek 27 lutego
-local ok, lsp_zero = pcall(require, "lsp-zero")
-if not ok then
+-- Aktualizacja: 2024-02-29 19:25:11, czwartek 29 lutego
+local ok_lsp_zero, lsp_zero = pcall(require, "lsp-zero")
+if not ok_lsp_zero then
     return
 end
 
-local ok, mason = pcall(require, "mason")
-if not ok then
+local ok_mason, mason = pcall(require, "mason")
+if not ok_mason then
     return
 end
 
-local ok, mason_lspconfig = pcall(require, "mason-lspconfig")
-if not ok then
+local ok_mason_lspconfig, mason_lspconfig = pcall(require, "mason-lspconfig")
+if not ok_mason_lspconfig then
     return
 end
 
@@ -49,5 +49,14 @@ mason_lspconfig.setup({
     },
     handlers = {
         lsp_zero.default_setup,
+    },
+    require'lspconfig'.lua_ls.setup {
+        settings = {
+            Lua = {
+                diagnostics = {
+                    globals = { 'vim' }
+                }
+            }
+        }
     },
 })

@@ -1,5 +1,5 @@
 -- functions.lua
--- Aktualizacja: 2024-02-27 14:22:42, wtorek 27 lutego
+-- Aktualizacja: 2024-02-29 19:00:03, czwartek 29 lutego
 CD = function()
     local BmDirs = os.getenv("BM_DIRS")
     if BmDirs == nil then
@@ -392,28 +392,6 @@ BufInfo = function()
         P(v)
     end
 end
-
-vim.cmd[[
-    " np :Redir !ls :Redir hi (lista kolorów) :Redir BufInfo :Redir lua P(package.loaded)
-    function! Redir(cmd)
-        for win in range(1, winnr('$'))
-            if getwinvar(win, 'scratch')
-                execute win . 'windo close'
-            endif
-        endfor
-        if a:cmd =~ '^!'
-            execute "let output = system('" . substitute(a:cmd, '^!', '', '') . "')"
-        else
-            redir => output
-            execute a:cmd
-            redir END
-        endif
-        vnew
-        let w:scratch = 1
-        setlocal nobuflisted buftype=nofile bufhidden=wipe noswapfile
-        call setline(1, split(output, "\n"))
-    endfunction
-]]
 
 EditGitConfig = function()
     local git_config_dir = vim.fn.getbufinfo("%")[1].variables.gitsigns_status_dict.gitdir

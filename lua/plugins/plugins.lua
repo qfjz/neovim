@@ -36,6 +36,7 @@ return {
     "tpope/vim-eunuch",
     "tpope/vim-repeat",
     "tpope/vim-surround",
+    "sbulav/nredir.nvim",
     "lewis6991/gitsigns.nvim",
     "Jorengarenar/fauxClip",
     "ojroques/vim-oscyank",
