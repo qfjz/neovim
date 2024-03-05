@@ -1,6 +1,6 @@
 # Przypisane skróty klawiszowe
 
-Aktualizacja: 2024-02-29 19:31:56, czwartek 29 lutego
+Aktualizacja: 2024-03-05 12:58:43, wtorek 05 marca
 
 Przeszukiwanie skrótów klawiszowych: `:FzfLua keymaps`
 
@@ -94,6 +94,13 @@ Przeszukiwanie skrótów klawiszowych: `:FzfLua keymaps`
 | `<leader>ha` | Dodaje plik do listy Harpoon                                              |
 | `<leader>hh` | Wyświetla listę plików                                                    |
 | `<leader>hX` | Przechodzi do X pliku na liście gdzie X to cyfra od 1-9                   |
+
+## todo-comments
+
+| Skrót  | Opis                                                                      |
+|--------|---------------------------------------------------------------------------|
+| `]t`   | Przechodzi do następnego znacznika obsługiwanego przez plugin             |
+| `[t`   | Przechodzi do poprzedniego znacznika obsługiwanego przez plugin           |
 
 ## Kopiowanie, usuwanie i wklejanie
 

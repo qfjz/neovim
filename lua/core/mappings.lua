@@ -1,5 +1,5 @@
 -- mappings
--- Aktualizacja: 2024-02-27 13:46:51, wtorek 27 lutego
+-- Aktualizacja: 2024-03-05 12:56:46, wtorek 05 marca
 vim.keymap.set("n", [[<s-enter>]], "mzO<esc>`z", { desc = "Dodaje pustą linię powyżej bieżącej" })
 vim.keymap.set("n", [[<enter>]], "mzo<esc>`z", { desc = "Dodaje pustą linię poniżej bieżącej" })
 vim.keymap.set("v", [[<enter>]], "y", { desc = "Kopiuje zaznaczony tekst" })
@@ -181,6 +181,17 @@ vim.keymap.set({ "n", "o", "x" }, "s", function()
         },
     })
 end)
+-- Plugin todo-comments.nvim
+vim.keymap.set("n", "]t", function()
+  require("todo-comments").jump_next()
+end, { desc = "Next todo comment" })
+vim.keymap.set("n", "[t", function()
+  require("todo-comments").jump_prev()
+end, { desc = "Previous todo comment" })
+-- You can also specify a list of valid jump keywords
+-- vim.keymap.set("n", "]t", function()
+  -- require("todo-comments").jump_next({keywords = { "ERROR", "WARNING" }})
+-- end, { desc = "Next error/warning todo comment" })
 -- ZenMode
 vim.keymap.set("n", "<leader>z", function()
     if vim.g.zen_mode_active then
