@@ -2,7 +2,7 @@ local ok, todo_comments = pcall(require, 'todo-comments')
 if not ok then return end
 
 todo_comments.setup({
-    signs = true,      -- show icons in the signs column
+    signs = false,      -- show icons in the signs column
     sign_priority = 8, -- sign priority
     -- keywords recognized as todo comments
     keywords = {
