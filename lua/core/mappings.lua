@@ -1,6 +1,5 @@
 -- mappings
--- Aktualizacja: 2024-03-08 14:28:10, piątek 08 marca
--- <space>sf fzf-lua.files()
+-- Aktualizacja: 2024-03-08 14:29:50, piątek 08 marca
 -- <space>s. fzf-lua.oldfiles()
 -- <space>sh fzf-lua.help_tags()
 -- <space>sm fzf-lua.keymaps()
@@ -202,6 +201,14 @@ vim.keymap.set("n", "<leader>s.", function()
         },
     })
 end, { desc = "Wyszukiwanie ostatnio edytowanych plików" })
+vim.keymap.set("n", "<leader>sf", function()
+    require('fzf-lua').files({ 
+        winopts = {
+            preview = { hidden = "nohidden" },
+            fullscreen = true,
+        },
+    })
+end, { desc = "Wyszukiwanie plików" })
 -- Plugin todo-comments.nvim
 vim.keymap.set("n", "]t", function()
     require("todo-comments").jump_next()
