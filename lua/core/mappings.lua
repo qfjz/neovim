@@ -1,5 +1,5 @@
 -- mappings
--- Aktualizacja: 2024-03-08 14:31:48, piątek 08 marca
+-- Aktualizacja: 2024-03-08 14:43:37, piątek 08 marca
 vim.keymap.set("n", [[<s-enter>]], "mzO<esc>`z", { desc = "Dodaje pustą linię powyżej bieżącej" })
 vim.keymap.set("n", [[<enter>]], "mzo<esc>`z", { desc = "Dodaje pustą linię poniżej bieżącej" })
 vim.keymap.set("v", [[<enter>]], "y", { desc = "Kopiuje zaznaczony tekst" })
@@ -181,6 +181,14 @@ vim.keymap.set({ "n", "o", "x" }, "s", function()
         },
     })
 end)
+vim.keymap.set("n", "<leader>sw", function()
+    require('fzf-lua').grep_cWORD({ 
+        winopts = {
+            preview = { hidden = "nohidden" },
+            fullscreen = true,
+        },
+    })
+end, { desc = "Wyszukuje słowa znajdującego się pod kursorem" })
 vim.keymap.set("n", "<leader>sh", function()
     require('fzf-lua').help_tags({ 
         winopts = {
