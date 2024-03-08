@@ -1,5 +1,5 @@
 -- mappings
--- Aktualizacja: 2024-03-08 11:24:34, piątek 08 marca
+-- Aktualizacja: 2024-03-08 14:23:15, piątek 08 marca
 vim.keymap.set("n", [[<s-enter>]], "mzO<esc>`z", { desc = "Dodaje pustą linię powyżej bieżącej" })
 vim.keymap.set("n", [[<enter>]], "mzo<esc>`z", { desc = "Dodaje pustą linię poniżej bieżącej" })
 vim.keymap.set("v", [[<enter>]], "y", { desc = "Kopiuje zaznaczony tekst" })
@@ -189,16 +189,24 @@ vim.keymap.set("n", "<leader>sh", function()
         },
     })
 end, { desc = "Przeszukiwanie stron pomocy" })
+vim.keymap.set("n", "<leader>s.", function()
+    require('fzf-lua').oldfiles({ 
+        winopts = {
+            preview = { hidden = "nohidden" },
+            fullscreen = true,
+        },
+    })
+end, { desc = "Wyszukiwanie ostatnio edytowanych plików" })
 -- Plugin todo-comments.nvim
 vim.keymap.set("n", "]t", function()
-  require("todo-comments").jump_next()
+    require("todo-comments").jump_next()
 end, { desc = "Next todo comment" })
 vim.keymap.set("n", "[t", function()
-  require("todo-comments").jump_prev()
+    require("todo-comments").jump_prev()
 end, { desc = "Previous todo comment" })
 -- You can also specify a list of valid jump keywords
 -- vim.keymap.set("n", "]t", function()
-  -- require("todo-comments").jump_next({keywords = { "ERROR", "WARNING" }})
+    -- require("todo-comments").jump_next({keywords = { "ERROR", "WARNING" }})
 -- end, { desc = "Next error/warning todo comment" })
 -- ZenMode
 vim.keymap.set("n", "<leader>z", function()
@@ -212,10 +220,10 @@ vim.keymap.set("n", "<leader>z", function()
         vim.cmd[[IBLToggle]]
     end
 end, { desc = "Zen Mode Toggle" })
--- Noice
---[[ vim.keymap.set("n", "<leader>nl", function()
-  require("noice").cmd("last")
-end)
-vim.keymap.set("n", "<leader>nh", function()
-  require("noice").cmd("history")
-end) ]]
+-- Noice - historia komunikatów
+-- vim.keymap.set("n", "<leader>nl", function()
+    -- require("noice").cmd("last")
+-- end)
+-- vim.keymap.set("n", "<leader>nh", function()
+    -- require("noice").cmd("history")
+-- end)
