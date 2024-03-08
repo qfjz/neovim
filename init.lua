@@ -28,6 +28,7 @@ require("config.lsp-zero-cnf")
 require("config.autocomplete-cnf")
 require("config.fauxClip-cnf")
 require("config.alpha-cnf")
+require("config/todo-comments-cnf")
 require("plugins.plugins")
 
 vim.cmd([[colorscheme tokyonight]])

@@ -1,6 +1,8 @@
 -- functions.lua
--- Aktualizacja: 2024-02-29 19:00:03, czwartek 29 lutego
+-- Aktualizacja: 2024-03-08 14:52:54, piątek 08 marca
 CD = function()
+    -- INFO: Standardowo zmienna $BM_DIRS zaweira nazwę pliku w której znajdują się często odwiedzane katalogi
+    -- INFO: Zazwyaczaj jest to plik `$HOME/.config/bmdirs`.
     local BmDirs = os.getenv("BM_DIRS")
     if BmDirs == nil then
         vim.notify("Brak zmiennej systemowej \"BM_DIRS\"")
