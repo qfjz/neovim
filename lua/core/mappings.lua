@@ -1,7 +1,6 @@
 -- mappings
--- Aktualizacja: 2024-03-08 14:29:50, piątek 08 marca
--- <space>sh fzf-lua.help_tags()
--- <space>sm fzf-lua.keymaps()
+-- Aktualizacja: 2024-03-08 14:30:37, piątek 08 marca
+-- <space>sk fzf-lua.keymaps()
 -- <space>sn <cmd>enew<cr>
 vim.keymap.set("n", [[<s-enter>]], "mzO<esc>`z", { desc = "Dodaje pustą linię powyżej bieżącej" })
 vim.keymap.set("n", [[<enter>]], "mzo<esc>`z", { desc = "Dodaje pustą linię poniżej bieżącej" })
