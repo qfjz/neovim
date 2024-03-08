@@ -1,6 +1,5 @@
 -- mappings
--- Aktualizacja: 2024-03-08 14:30:37, piątek 08 marca
--- <space>sk fzf-lua.keymaps()
+-- Aktualizacja: 2024-03-08 14:31:26, piątek 08 marca
 -- <space>sn <cmd>enew<cr>
 vim.keymap.set("n", [[<s-enter>]], "mzO<esc>`z", { desc = "Dodaje pustą linię powyżej bieżącej" })
 vim.keymap.set("n", [[<enter>]], "mzo<esc>`z", { desc = "Dodaje pustą linię poniżej bieżącej" })
@@ -207,6 +206,14 @@ vim.keymap.set("n", "<leader>sf", function()
         },
     })
 end, { desc = "Wyszukiwanie plików" })
+vim.keymap.set("n", "<leader>sk", function()
+    require('fzf-lua').keymaps({ 
+        winopts = {
+            preview = { hidden = "nohidden" },
+            fullscreen = true,
+        },
+    })
+end, { desc = "Mapowanie klawiszy" })
 -- Plugin todo-comments.nvim
 vim.keymap.set("n", "]t", function()
     require("todo-comments").jump_next()
