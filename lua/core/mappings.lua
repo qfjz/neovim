@@ -1,5 +1,10 @@
 -- mappings
--- Aktualizacja: 2024-03-08 14:23:15, piątek 08 marca
+-- Aktualizacja: 2024-03-08 14:28:10, piątek 08 marca
+-- <space>sf fzf-lua.files()
+-- <space>s. fzf-lua.oldfiles()
+-- <space>sh fzf-lua.help_tags()
+-- <space>sm fzf-lua.keymaps()
+-- <space>sn <cmd>enew<cr>
 vim.keymap.set("n", [[<s-enter>]], "mzO<esc>`z", { desc = "Dodaje pustą linię powyżej bieżącej" })
 vim.keymap.set("n", [[<enter>]], "mzo<esc>`z", { desc = "Dodaje pustą linię poniżej bieżącej" })
 vim.keymap.set("v", [[<enter>]], "y", { desc = "Kopiuje zaznaczony tekst" })
