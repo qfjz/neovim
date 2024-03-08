@@ -1,6 +1,6 @@
 # Przypisane skróty klawiszowe
 
-Aktualizacja: 2024-03-08 11:25:50, piątek 08 marca
+Aktualizacja: 2024-03-08 14:32:50, piątek 08 marca
 
 Przeszukiwanie skrótów klawiszowych: `:FzfLua keymaps`
 
@@ -23,6 +23,7 @@ Przeszukiwanie skrótów klawiszowych: `:FzfLua keymaps`
 | `<c-k>`          | Przechodzi do okna wyżej                                                  |
 | `<leader>so`     | Wczytuje bieżący plik Lua                                                 |
 | `<leader>sh`     | Przeszukiwanie stron pomocy                                               |
+| `<leader>sk`     | Wyszukiwanie skrótów klawiszowych                                         |
 | `<leader>d`      | Usuwa bufor                                                               |
 | `gf`             | Otwiera plik pod kursorem                                                 |
 | `<leader>sv`     | Dzieli okno w pionie                                                      |
