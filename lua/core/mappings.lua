@@ -1,5 +1,5 @@
 -- mappings
--- Aktualizacja: 2024-03-05 12:56:46, wtorek 05 marca
+-- Aktualizacja: 2024-03-08 11:24:34, piątek 08 marca
 vim.keymap.set("n", [[<s-enter>]], "mzO<esc>`z", { desc = "Dodaje pustą linię powyżej bieżącej" })
 vim.keymap.set("n", [[<enter>]], "mzo<esc>`z", { desc = "Dodaje pustą linię poniżej bieżącej" })
 vim.keymap.set("v", [[<enter>]], "y", { desc = "Kopiuje zaznaczony tekst" })
@@ -135,7 +135,7 @@ vim.keymap.set("n", "gx", "<cmd>silent execute '!$BROWSER ' . shellescape(expand
 vim.keymap.set("n", "<leader>sc", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Znajdź i zamień, wyraz pod kursorem" })
 -- w trybie VISUAL ('v') należy zacząć zaznaczanie od słowa, które chcemy zamienić
 vim.keymap.set("x", "<leader>sc", [[:s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
--- zamienia wyraz znajdujący się pod kursorem, wcześniej skopiowanym wyrazem w całym pliku
+-- zamienia wyraz znajdujący się pod kursorem, wcześniej skopiowanym wyrazem, operacja na całym pliku
 vim.keymap.set("n", "<leader>S", [[:%s/\<<c-r><c-w>\>/<c-r>0/gI<cr>]])
 -- tabs
 vim.keymap.set("n", "<leader><tab>l", "<cmd>tablast<cr>", { desc = "Last Tab" })
@@ -181,6 +181,14 @@ vim.keymap.set({ "n", "o", "x" }, "s", function()
         },
     })
 end)
+vim.keymap.set("n", "<leader>sh", function()
+    require('fzf-lua').help_tags({ 
+        winopts = {
+            preview = { hidden = "nohidden" },
+            fullscreen = true,
+        },
+    })
+end, { desc = "Przeszukiwanie stron pomocy" })
 -- Plugin todo-comments.nvim
 vim.keymap.set("n", "]t", function()
   require("todo-comments").jump_next()

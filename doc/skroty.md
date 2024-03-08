@@ -1,13 +1,13 @@
 # Przypisane skróty klawiszowe
 
-Aktualizacja: 2024-03-05 12:58:43, wtorek 05 marca
+Aktualizacja: 2024-03-08 11:25:50, piątek 08 marca
 
 Przeszukiwanie skrótów klawiszowych: `:FzfLua keymaps`
 
 | Skrót            | Opis                                                                      |
 |------------------|---------------------------------------------------------------------------|
 | `Shift+Enter`    | Dodaje pustą linię powyżej bieżącej                                       |
-| `Enter`          | Dodaje pustą linię poniżej bieżącej                                       |
+| `Enter`          | Dodaje pustą linię poniżej bieżącej                                       | 
 | `<leader>n`      | Uruchamia menadżer plików NeoTree                                         |
 | `\`              | Uruchamia menadżer plików NeoTree                                         |
 | `gh`             | Początek linii                                                            |
@@ -22,6 +22,7 @@ Przeszukiwanie skrótów klawiszowych: `:FzfLua keymaps`
 | `<c-j>`          | Przechodzi do okna niżej                                                  |
 | `<c-k>`          | Przechodzi do okna wyżej                                                  |
 | `<leader>so`     | Wczytuje bieżący plik Lua                                                 |
+| `<leader>sh`     | Przeszukiwanie stron pomocy                                               |
 | `<leader>d`      | Usuwa bufor                                                               |
 | `gf`             | Otwiera plik pod kursorem                                                 |
 | `<leader>sv`     | Dzieli okno w pionie                                                      |
