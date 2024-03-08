@@ -1,16 +1,16 @@
 -- autocommands
--- Aktualizacja: 2024-02-15 05:54:12, czwartek 15 lutego
+-- Aktualizacja: 2024-03-08 13:00:24, piątek 08 marca
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 
 -- wyróżnienie kopiowanego tekstu
 autocmd("TextYankPost", {
-    group = augroup('HighlightYank', {}),
+    group = augroup('HighlightYank', { clear = true }),
     pattern = '*',
     callback = function()
         vim.highlight.on_yank({
-            higroup = 'IncSearch',
-            timeout = 150,
+            higroup = 'IncSearch',  -- :h highlight-groups
+            timeout = 100,
         })
     end,
 })
