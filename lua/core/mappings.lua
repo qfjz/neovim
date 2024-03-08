@@ -1,6 +1,5 @@
 -- mappings
 -- Aktualizacja: 2024-03-08 14:29:50, piątek 08 marca
--- <space>s. fzf-lua.oldfiles()
 -- <space>sh fzf-lua.help_tags()
 -- <space>sm fzf-lua.keymaps()
 -- <space>sn <cmd>enew<cr>
