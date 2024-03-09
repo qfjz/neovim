@@ -1,5 +1,5 @@
 -- commands
--- Aktualizacja: 2024-03-09 13:19:48, sobota 09 marca
+-- Aktualizacja: 2024-03-09 13:40:09, sobota 09 marca
 vim.api.nvim_create_user_command("Kolory", "FzfLua colorschemes", {})
 vim.api.nvim_create_user_command("KolorPora", "lua KolorPora()", {})
 vim.api.nvim_create_user_command("CDFD", "lua CDFD()", {})
@@ -31,6 +31,8 @@ vim.api.nvim_create_user_command("EditGitConfig", "lua EditGitConfig()", {})
 vim.api.nvim_create_user_command("Docs", "lua Docs()", { desc = "Wyszukiwarka plików dokumentacji nvim-qfjz"})
 vim.api.nvim_create_user_command("LastMsg", "lua require('noice').cmd('last')", { desc = "Wyświetla ostatnie komunikaty"})
 vim.api.nvim_create_user_command("HistoryMsg", "lua require('noice').cmd('history')", { desc = "Wyświetla historię komunikatów"})
+vim.api.nvim_create_user_command("Light", "colorscheme tokyonight-day", { desc = "Zmienia kolor na jasny"})
+vim.api.nvim_create_user_command("Dark", "colorscheme tokyonight-moon", { desc = "Zmienia kolor na ciemny"})
 
 -- https://github.com/justinsgithub/Oh-My-LazyVim/blob/main/lua/_oml/config/commands/init.lua
 vim.api.nvim_create_user_command("BiPolar", function(_)
