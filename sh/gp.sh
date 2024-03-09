@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# data w formacie 2023-01-05-00:30:20
+# INFO: data w formacie 2023-01-05-00:30:20
 DATA=$(date +%F-%T)
 
 mkdir -p $HOME/tmp

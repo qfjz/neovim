@@ -1,5 +1,5 @@
 -- autocommands
--- Aktualizacja: 2024-03-08 13:00:24, piątek 08 marca
+-- Aktualizacja: 2024-03-09 15:18:52, sobota 09 marca
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 
@@ -71,7 +71,6 @@ autocmd("FileType", {
         vim.api.nvim_buf_set_keymap(0, "n", "3", "<cmd>norm I#### <cr>A", { noremap = true })
         vim.api.nvim_buf_set_keymap(0, "i", ",c", ":norm I```", { noremap = true })
     end,
-    group = "Markdown",
 })
 
 autocmd("FileType", {
@@ -86,9 +85,7 @@ autocmd("FileType", {
         vim.api.nvim_buf_set_keymap(0, "n", "3", [[o*** ]], { noremap = true })
         vim.api.nvim_buf_set_keymap(0, "n", "4", [[o**** ]], { noremap = true })
         vim.api.nvim_buf_set_keymap(0, "i", ",c", [[<esc>o@code@end<esc>O]], { noremap = true })
-
     end,
-    group = "Neorg",
 })
 
 autocmd("BufEnter", {
@@ -123,8 +120,8 @@ autocmd("FileType", {
 
 -- Automatically update changed file in Vim
 -- https://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim/383044#383044
+-- command = [[silent! if mode() != 'c' && !bufexists("[Command Line]") | checktime | endif]],
 autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" }, {
-    -- command = [[silent! if mode() != 'c' && !bufexists("[Command Line]") | checktime | endif]],
     callback = function()
         if vim.fn.mode() ~= "c" then
             for _, v in ipairs(vim.fn.getbufinfo("%")) do

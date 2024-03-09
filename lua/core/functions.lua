@@ -1,5 +1,5 @@
 -- functions.lua
--- Aktualizacja: 2024-03-09 13:04:49, sobota 09 marca
+-- Aktualizacja: 2024-03-09 14:49:39, sobota 09 marca
 CD = function()
     -- INFO: Standardowo zmienna $BM_DIRS zaweira nazwę pliku w której znajdują się często odwiedzane katalogi
     -- INFO: Zazwyaczaj jest to plik `$HOME/.config/bmdirs`.
@@ -398,4 +398,42 @@ end
 EditGitConfig = function()
     local git_config_dir = vim.fn.getbufinfo("%")[1].variables.gitsigns_status_dict.gitdir
     vim.cmd("e" .. git_config_dir .. "/config")
+end
+
+SysVersion = function()
+    local uv = vim.uv or vim.loop
+    vim.notify('System Information: ' .. vim.inspect(uv.os_uname()))
+end
+
+CheckVersion = function()
+    local verstr = string.format('%s.%s.%s', vim.version().major, vim.version().minor, vim.version().patch)
+    if not vim.version.cmp then
+        vim.notify(string.format("Neovim out of date: '%s'. Upgrade to latest stable or nightly", verstr))
+        return
+    end
+    if vim.version.cmp(vim.version(), { 0, 9, 4 }) >= 0 then
+        vim.notify(string.format("Neovim version is: '%s'", verstr))
+    else
+        vim.notify(string.format("Neovim out of date: '%s'. Upgrade to latest stable or nightly", verstr))
+    end
+end
+
+CheckExternalReqs = function()
+    for _, exe in ipairs { 'git', 'make', 'unzip', 'rg', 'fzf' } do
+        local is_executable = vim.fn.executable(exe) == 1
+        if is_executable then
+            MSG = string.format("Found executable: '%s'", exe)
+            vim.notify(MSG, "info", {
+                timeout = 6000,
+                -- title = "",
+            })
+        else
+            MSG = string.format("Could not find executable: '%s'", exe)
+            vim.notify(MSG, "error", {
+                timeout = 6000,
+                -- title = "",
+            })
+        end
+    end
+  return true
 end
