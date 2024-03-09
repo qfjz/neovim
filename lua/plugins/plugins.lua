@@ -47,6 +47,8 @@ return {
     'folke/todo-comments.nvim',
     "folke/which-key.nvim",
     "nvim-telescope/telescope.nvim",
+    "doctorfree/cheatsheet.nvim",
+    "nvim-lua/popup.nvim",
     "folke/flash.nvim",
     "folke/zen-mode.nvim",  -- tryb Zen
     "folke/twilight.nvim",  -- zakreśla tylko bieżący paragraf

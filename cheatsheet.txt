@@ -1,0 +1,3 @@
+Otwiara cheatsheet | <leader>?
+## file-vim
+Zamyka wszystkie bufory | :%bd
