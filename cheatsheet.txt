@@ -78,3 +78,25 @@ W trybie VISUAL tworzy wcięcie                                            | >
 W trybie VISUAL przenosi zaznaczony tekst linię wyżej                     | <c-k>
 W trybie VISUAL przenosi zaznaczony tekst linię niżej                     | <c-j>
 Zamienia wyraz pod kursorem w trybie VISUAL                               | <leader>sc
+## QFJZ-COPY
+Kopiuje zaznaczony tekst w trybie VISUAL                                              | [ENTER]
+Wkleja z wybrangeo rejestru                                                           | <leader>r
+Kopiuje linię pomijając puste znaki na początku i znak końca linii                    | <leader>yy
+Kopiuje do schowka systemowego, rozpoczynając sekwecję np. <leader>yap                | <leader>y
+VISUAL Kopiuje zaznaczenie do schowka systemowego                                     | <leader>y
+Kopiuje do schowka systemowego od kursora do końca linii                              | <leader>Y
+Wkleja tekst bez końca linii w linii poniżej                                          | <leader>p
+Wkleja tekst bez końca linii w linii powyżej                                          | <leader>P
+VISUAL Wkleja, nie podmieniając rejestru                                              | <leader>p
+Usuwa obiekt tekstowy nie kopiując go do rejestru np: <leader>xd lub <leader>xiw      | <leader>x
+VISUAL usuwa zaznaczenie nie kopiując go do rejestru                                  | <leader>x
+Usuwa linię nie kopując do rejestru                                                   | <leader>xx
+Wkleja ostatnio skopiowany tekst, NIE ten wycięty / usunięty                          | ,p
+Wkleja ostatnio skopiowany tekst, NIE ten wycięty / usunięty                          | ,P
+Usuwa od kursora do początku linii                                                    | dh
+Usuwa od kursora do końca linii                                                       | dl
+Kopiuje całą zawartość pliku do rejestru                                              | yA
+Kopiuje zawartość głównego rejestru do rejestru x                                     | <space>m
+Wkleja zawartość rejestru x, standardowo klawisz M przenosi kursor na środek ekranu   | M
+Dublowanie linii                                                                      | tt
+Klonuje cały paragraf                                                                 | <leader>cp
