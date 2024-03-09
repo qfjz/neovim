@@ -91,9 +91,9 @@ configs.setup {
             -- Rotate preview clockwise/counter-clockwise
             ["<F5>"]        = "toggle-preview-ccw",
             ["<F6>"]        = "toggle-preview-cw",
-            ["<c-j>"]    = "preview-page-down",
-            ["<c-k>"]      = "preview-page-up",
-            ["="]    = "preview-page-reset",
+            ["<c-j>"]       = "preview-page-down",
+            ["<c-k>"]       = "preview-page-up",
+            ["="]           = "preview-page-reset",
         },
         fzf = {
             -- fzf '--bind=' options

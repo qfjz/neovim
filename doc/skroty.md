@@ -1,8 +1,8 @@
 # Przypisane skróty klawiszowe
 
-Aktualizacja: 2024-03-08 14:32:50, piątek 08 marca
+Aktualizacja: 2024-03-09 17:09:48, sobota 09 marca
 
-Przeszukiwanie skrótów klawiszowych: `:FzfLua keymaps`
+Przeszukiwanie skrótów klawiszowych: `<spacja>sk`, lub `:FzfLua keymaps`
 
 | Skrót            | Opis                                                                      |
 |------------------|---------------------------------------------------------------------------|
@@ -21,11 +21,9 @@ Przeszukiwanie skrótów klawiszowych: `:FzfLua keymaps`
 | `<c-l>`          | Przechodzi do okna po prawej                                              |
 | `<c-j>`          | Przechodzi do okna niżej                                                  |
 | `<c-k>`          | Przechodzi do okna wyżej                                                  |
-| `<leader>so`     | Wczytuje bieżący plik Lua                                                 |
-| `<leader>sh`     | Przeszukiwanie stron pomocy                                               |
-| `<leader>sk`     | Wyszukiwanie skrótów klawiszowych                                         |
 | `<leader>d`      | Usuwa bufor                                                               |
 | `gf`             | Otwiera plik pod kursorem                                                 |
+| `<leader>so`     | Wczytuje bieżący plik Lua                                                 |
 | `<leader>sv`     | Dzieli okno w pionie                                                      |
 | `<leader>sp`     | Dzieli okno w poziomie                                                    |
 | `<leader>v`      | Wyszukiwarka plików konfiguracyjnych                                      |
@@ -49,8 +47,9 @@ Przeszukiwanie skrótów klawiszowych: `:FzfLua keymaps`
 | `gk`             | Poprzednia zmiana w pliku - Git                                           |
 | `<c-n>`          | Następna zmiana w pliku - Git                                             |
 | `<c-p>`          | Poprzednia zmiana w pliku - Git                                           |
-| `Alt+o`          | Hydra menu                                                                |
-| `Alt+t`          | Uruchamia menu dla pluginu pomo.nvim                                      |
+| `Alt-o`          | Hydra menu                                                                |
+| `Alt-t`          | Uruchamia menu dla pluginu pomo.nvim                                      |
+| `Alt-h,j,k,l`    | Zmienia rozmiar aktywnego okna                                            |
 | `s + 2 znaki`    | Rozpoczyna wyszukiwanie za pomocą pluginu `flash.nvim`                    |
 | `<leader>z`      | Uruchamia tryb Zen                                                        |
 | `vv`             | Zaznacza linię pomijając puste znaki na początku i znak końca linii       |
@@ -61,13 +60,18 @@ Przeszukiwanie skrótów klawiszowych: `:FzfLua keymaps`
 | `<leader>i`      | Pokazuje zmiany w repozytorium Git `FzfLua git_status`                    |
 | `<LeftRelease>`  | Kopiuje zaznaczony tekst myszką                                           |
 | `<c-r>p`         | W linii komend wkleja skopiowany ostatnio tekst                           |
+| `<c-v>`          | W linii komend wkleja skopiowany ostatnio tekst                           |
 | `g;`             | Porusza się pomiędzy zmianami w pliku, poprzednia zmiana                  |
 | `g,`             | Porusza się pomiędzy zmianami w pliku                                     |
-| `<c-k>`          | W trybie VISUAL przenosi zaznaczony tekst linię wyżej                     |
-| `<c-j>`          | W trybie VISUAL przenosi zaznaczony tekst linię niżej                     |
 | `gx`             | Otwiera adres WWW pod kursorem w przeglądarce                             |
+| `gs`             | Otwiera podpowiedzi słownika                                              |
+| `<leader>sf`     | Wyszukiwanie plików w bieżącej lokalizacji                                |
+| `<leader>sg`     | Wyszukiwanie plików w repozytorium Git `lua GitFiles()`                   |
+| `<leader>s.`     | Lista ostatnio edytowanych plików                                         |
+| `<leader>sh`     | Przeszukiwanie stron pomocy                                               |
+| `<leader>sk`     | Wyszukiwanie skrótów klawiszowych                                         |
+| `<leader>sw`     | Wyszukiwanie wyrazu znajdującego się pod kursorem w otwartym pliku        |
 | `<leader>sc`     | Znajdź i zamień, wyraz pod kursorem                                       |
-| `<leader>sc`     | Zamienia wyraz pod kursorem w trybie VISUAL                               |
 | `<leader>S`      | Zamienia wyraz pod kursorem skopiowanym wcześniej tekstem                 |
 | `<leader>L`      | Wyświetla informacje o pliku                                              |
 | `q:`             | Wyświetla historię komend                                                 |
@@ -75,6 +79,12 @@ Przeszukiwanie skrótów klawiszowych: `:FzfLua keymaps`
 | `<leader>tb`     | Uruchamia komendę `BiPolar`                                               |
 | `<leader>tt`     | Uruchamia terminal systemowy w oknie Neovim                               |
 | `<leader>A`      | Uruchamia Dashboard Alpha                                                 |
+| `<leader>a`      | Uruchamia polecenie `=ip gqap` wyrównuje paragraf                         |
+| `<`              | W trybie VISUAL tworzy wcięcie                                            |
+| `>`              | W trybie VISUAL tworzy wcięcie                                            |
+| `<c-k>`          | W trybie VISUAL przenosi zaznaczony tekst linię wyżej                     |
+| `<c-j>`          | W trybie VISUAL przenosi zaznaczony tekst linię niżej                     |
+| `<leader>sc`     | Zamienia wyraz pod kursorem w trybie VISUAL                               |
 
 ## Zarządzanie kartami
 
@@ -104,6 +114,24 @@ Przeszukiwanie skrótów klawiszowych: `:FzfLua keymaps`
 | `]t`   | Przechodzi do następnego znacznika obsługiwanego przez plugin             |
 | `[t`   | Przechodzi do poprzedniego znacznika obsługiwanego przez plugin           |
 
+## FzfLua
+
+| Skrót   | Opis                                                                      |
+|---------|---------------------------------------------------------------------------|
+| `<F1>`  | Wyświetla podręczną pomoc                                                 |
+| `<F2>`  | Zwiększa lub zmniejsza okno wyszukiwania                                  |
+| `<F3>`  | Włącza / wyłącza zawijanie linii w oknie podgladu                         |
+| `<F4>`  | Pokazuje / ukrywa podgląd                                                 |
+| `<F5>`  | Zmienia położenie okna wyszukiwania                                       |
+| `<F6>`  | Zmienia położenie okna wyszukiwania                                       |
+| `<c-j>` | Przewijanie w oknie podglądu                                              |
+| `<c-k>` | Przewijanie w oknie podglądu                                              |
+| `=`     | Wraca na początek pliku w oknie podglądu                                  |
+| `<c-z>` | Zamyka okno FzfLua                                                        |
+| `<c-u>` | Usuwa całą zawartość linii wyszukiwania                                   |
+| `<c-f>` | Przewijanie w oknie wyszukiwania w dół                                    |
+| `<c-b>` | Przewijanie w oknie wyszukiwania w górę                                   |
+
 ## Kopiowanie, usuwanie i wklejanie
 
 - Skopiowany tekst jest przechowywany w rejestrze `0`
@@ -111,7 +139,7 @@ Przeszukiwanie skrótów klawiszowych: `:FzfLua keymaps`
 
 | Skrót         | Opis                                                                                      |
 |---------------|-------------------------------------------------------------------------------------------|
-| `[ENTER]`     | Kopiuje zaznaczony tekst                                                                  |
+| `[ENTER]`     | Kopiuje zaznaczony tekst w trybie VISUAL                                                  |
 | `<leader>r`   | Wkleja z wybrangeo rejestru                                                               |
 | `<leader>yy`  | Kopiuje linię pomijając puste znaki na początku i znak końca linii                        |
 | `<leader>y`   | Kopiuje do schowka systemowego, rozpoczynając sekwecję np. `<leader>yap`                  |

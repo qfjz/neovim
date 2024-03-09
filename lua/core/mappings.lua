@@ -1,5 +1,5 @@
 -- mappings
--- Aktualizacja: 2024-03-09 13:28:35, sobota 09 marca
+-- Aktualizacja: 2024-03-09 16:37:14, sobota 09 marca
 vim.keymap.set("n", [[<s-enter>]], "mzO<esc>`z", { desc = "Dodaje pustą linię powyżej bieżącej" })
 vim.keymap.set("n", [[<enter>]], "mzo<esc>`z", { desc = "Dodaje pustą linię poniżej bieżącej" })
 vim.keymap.set("v", [[<enter>]], "y", { desc = "Kopiuje zaznaczony tekst" })
@@ -100,8 +100,7 @@ vim.keymap.set("n", "<m-j>", "<cmd>resize +2<cr>")
 vim.keymap.set("n", "<m-k>", "<cmd>resize -2<cr>")
 vim.keymap.set("n", "<m-l>", "<cmd>vertical resize +2<cr>")
 vim.keymap.set("n", "<space><space>", "<cmd>lua FindNotesDir()<cr>")
--- Wklejanie w linii komend
-vim.keymap.set("c", "<c-r>p", '<c-r>"')
+vim.keymap.set("c", "<c-v>", '<c-r>"', { desc = "Wkleja w linii komend"})
 vim.keymap.set("n", "<leader><cr>", "<cmd>.!bash<cr>", { desc = "Uruchamia komendę z bieżącej linii: echo 2+2 | bc" })
 -- Przechodzi do kolejnej / poprzedniej szukanej pozycji, dodatkowo wyśrodkowuje ekran i otwiera zagnieżdżenia
 vim.keymap.set("n", "n", "nzzzv")
