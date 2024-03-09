@@ -1,3 +1,12 @@
-Otwiara cheatsheet | <leader>?
-## file-vim
-Zamyka wszystkie bufory | :%bd
+## QFJZ
+Dodaje pustą linię powyżej bieżącej                                       | Shift-Enter
+Dodaje pustą linię poniżej bieżącej                                       | Enter
+Uruchamia menadżer plików NeoTree                                         | <leader>n
+Uruchamia menadżer plików NeoTree                                         | \
+Początek linii                                                            | gh
+Koniec linii                                                              | gl
+Poprzeni bufor                                                            | <leader>,
+Następny bufor                                                            | <leader>.
+Zapisanie zmian                                                           | <leader>w
+Wyjśćie                                                                   | qq
+Wejście do trybu COMMAND                                                  | <leader>;
