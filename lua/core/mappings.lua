@@ -1,5 +1,5 @@
 -- mappings
--- Aktualizacja: 2024-03-08 14:43:37, piątek 08 marca
+-- Aktualizacja: 2024-03-09 12:38:44, sobota 09 marca
 vim.keymap.set("n", [[<s-enter>]], "mzO<esc>`z", { desc = "Dodaje pustą linię powyżej bieżącej" })
 vim.keymap.set("n", [[<enter>]], "mzo<esc>`z", { desc = "Dodaje pustą linię poniżej bieżącej" })
 vim.keymap.set("v", [[<enter>]], "y", { desc = "Kopiuje zaznaczony tekst" })
@@ -182,7 +182,7 @@ vim.keymap.set({ "n", "o", "x" }, "s", function()
     })
 end)
 vim.keymap.set("n", "<leader>sw", function()
-    require('fzf-lua').grep_cWORD({ 
+    require('fzf-lua').grep_cWORD({
         winopts = {
             preview = { hidden = "nohidden" },
             fullscreen = true,
@@ -190,7 +190,7 @@ vim.keymap.set("n", "<leader>sw", function()
     })
 end, { desc = "Wyszukuje słowa znajdującego się pod kursorem" })
 vim.keymap.set("n", "<leader>sh", function()
-    require('fzf-lua').help_tags({ 
+    require('fzf-lua').help_tags({
         winopts = {
             preview = { hidden = "nohidden" },
             fullscreen = true,
@@ -198,7 +198,7 @@ vim.keymap.set("n", "<leader>sh", function()
     })
 end, { desc = "Przeszukiwanie stron pomocy" })
 vim.keymap.set("n", "<leader>s.", function()
-    require('fzf-lua').oldfiles({ 
+    require('fzf-lua').oldfiles({
         winopts = {
             preview = { hidden = "nohidden" },
             fullscreen = true,
@@ -206,7 +206,7 @@ vim.keymap.set("n", "<leader>s.", function()
     })
 end, { desc = "Wyszukiwanie ostatnio edytowanych plików" })
 vim.keymap.set("n", "<leader>sf", function()
-    require('fzf-lua').files({ 
+    require('fzf-lua').files({
         winopts = {
             preview = { hidden = "nohidden" },
             fullscreen = true,
@@ -214,7 +214,7 @@ vim.keymap.set("n", "<leader>sf", function()
     })
 end, { desc = "Wyszukiwanie plików" })
 vim.keymap.set("n", "<leader>sk", function()
-    require('fzf-lua').keymaps({ 
+    require('fzf-lua').keymaps({
         winopts = {
             preview = { hidden = "nohidden" },
             fullscreen = true,
