@@ -1,5 +1,5 @@
 -- functions.lua
--- Aktualizacja: 2024-03-08 14:52:54, piątek 08 marca
+-- Aktualizacja: 2024-03-09 13:04:49, sobota 09 marca
 CD = function()
     -- INFO: Standardowo zmienna $BM_DIRS zaweira nazwę pliku w której znajdują się często odwiedzane katalogi
     -- INFO: Zazwyaczaj jest to plik `$HOME/.config/bmdirs`.
@@ -8,8 +8,8 @@ CD = function()
         vim.notify("Brak zmiennej systemowej \"BM_DIRS\"")
         return
     end
-    command = 'cd'
-    opts = {}
+    local command = 'cd'
+    local opts = {}
     opts.prompt = "CD> "
     opts.actions = {
         ['default'] = function(selected)
@@ -27,8 +27,8 @@ CDE = function()
         vim.notify("Brak zmiennej systemowej \"BM_DIRS\"")
         return
     end
-    command = 'e'
-    opts = {}
+    local command = 'e'
+    local opts = {}
     opts.prompt = "CDE> "
     opts.actions = {
         ['default'] = function(selected)
@@ -88,9 +88,9 @@ Docs = function()
         prompt = prompt,
         cwd = cwd_dir,
         cmd = rg_cmd,
-        winopts = { 
+        winopts = {
             preview = { hidden = "nohidden" },
-            fullscreen = true, 
+            fullscreen = true,
         }
     })
 end
@@ -104,14 +104,14 @@ GitFiles = function()
         local prompt = "GitFiles> "
         require'fzf-lua'.git_files({
             prompt = prompt,
-            winopts = { 
+            winopts = {
                 preview = { hidden = "nohidden" },
-                fullscreen = true, 
+                fullscreen = true,
             }
         })
     else
         local rg_cmd = "rg --files --hidden --follow"
-        require'fzf-lua'.files({ 
+        require'fzf-lua'.files({
             cmd = rg_cmd,
             winopts = {
                 preview = { hidden = "nohidden" },
@@ -125,7 +125,7 @@ Files = function()
     -- Desc: Uruchamia FzfLua files
     CDFD()
     local rg_cmd = "rg --files --hidden --follow"
-    require'fzf-lua'.files({ 
+    require'fzf-lua'.files({
         cmd = rg_cmd,
         winopts = {
             preview = { hidden = "nohidden" },
@@ -156,9 +156,9 @@ NvimConfig = function()
         prompt = prompt,
         cwd = cwd_dir,
         cmd = rg_cmd,
-        winopts = { 
+        winopts = {
             preview = { hidden = "nohidden" },
-            fullscreen = true, 
+            fullscreen = true,
         }
     })
 end
@@ -173,14 +173,14 @@ KolorPora = function()
     -- Desc: funkcja zmieniająca schemat kolorystyczny w zależności od dygodnia roku i pory dnia
     local tydzien = (vim.fn.strftime("%V"))
     if tonumber(tydzien) > 35 then
-        rano = 6
-        wieczor = 16
+        Rano = 6
+        Wieczor = 16
     else
-        rano= 5
-        wieczor = 22
+        Rano= 5
+        Wieczor = 22
     end
     local godzina = (vim.fn.strftime("%H"))
-    if (tonumber(godzina) > rano) and (tonumber(godzina) < wieczor) then
+    if (tonumber(godzina) > Rano) and (tonumber(godzina) < Wieczor) then
         vim.cmd([[colorscheme rose-pine-main]])
     else
         vim.cmd([[colorscheme rose-pine-moon]])
@@ -193,7 +193,7 @@ P = function(v)
 end
 
 FileSize = function()
-    file = vim.fn.resolve(vim.fn.expand("%:p"))
+    local file = vim.fn.resolve(vim.fn.expand("%:p"))
     local size = vim.fn.getfsize(file)
     if size <= 0 then
         return ""
@@ -307,7 +307,7 @@ end
 SearchDir = function(dir)
     local rg_cmd = "rg --files --follow"
     local prompt = "Search> "
-    require'fzf-lua'.files({ 
+    require'fzf-lua'.files({
         prompt = prompt,
         cmd = rg_cmd,
         cwd = dir,
@@ -325,7 +325,7 @@ FindNotesDir = function()
         cwd_dir = vim.fn.resolve(vim.fn.expand("$HOME/Notes"))
     end
     local prompt = "Notatki> "
-    require'fzf-lua'.files({ 
+    require'fzf-lua'.files({
         prompt = prompt,
         cmd = rg_cmd,
         cwd = cwd_dir,
@@ -345,7 +345,7 @@ BmFiles = function()
         io.open(BmFiles, "a+")
     end
     local files = vim.fn.readfile(vim.fn.expand(BmFiles))
-    opts = {}
+    local opts = {}
     opts.prompt = "Files> "
     opts.actions = {
         ['default'] = function(selected)
