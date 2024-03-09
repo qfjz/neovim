@@ -46,6 +46,7 @@ return {
     "romgrk/barbar.nvim",
     'folke/todo-comments.nvim',
     "folke/which-key.nvim",
+    "nvim-telescope/telescope.nvim",
     "folke/flash.nvim",
     "folke/zen-mode.nvim",  -- tryb Zen
     "folke/twilight.nvim",  -- zakreśla tylko bieżący paragraf
