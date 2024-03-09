@@ -1,5 +1,5 @@
 -- commands
--- Aktualizacja: 2024-03-09 13:40:09, sobota 09 marca
+-- Aktualizacja: 2024-03-09 21:15:02, sobota 09 marca
 vim.api.nvim_create_user_command("Kolory", "FzfLua colorschemes", {})
 vim.api.nvim_create_user_command("KolorPora", "lua KolorPora()", {})
 vim.api.nvim_create_user_command("CDFD", "lua CDFD()", {})
