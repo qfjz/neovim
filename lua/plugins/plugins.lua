@@ -45,10 +45,6 @@ return {
     "nvim-lualine/lualine.nvim",
     "romgrk/barbar.nvim",
     'folke/todo-comments.nvim',
-    -- todo adfasdf
-    -- ToDo: aldsfj
-    -- TODO: ladjfasd
-    -- TODO alskfdjas
     "folke/which-key.nvim",
     "folke/flash.nvim",
     "folke/zen-mode.nvim",  -- tryb Zen

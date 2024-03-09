@@ -1,5 +1,5 @@
 -- mappings
--- Aktualizacja: 2024-03-09 12:38:44, sobota 09 marca
+-- Aktualizacja: 2024-03-09 13:28:35, sobota 09 marca
 vim.keymap.set("n", [[<s-enter>]], "mzO<esc>`z", { desc = "Dodaje pustą linię powyżej bieżącej" })
 vim.keymap.set("n", [[<enter>]], "mzo<esc>`z", { desc = "Dodaje pustą linię poniżej bieżącej" })
 vim.keymap.set("v", [[<enter>]], "y", { desc = "Kopiuje zaznaczony tekst" })
@@ -65,7 +65,6 @@ vim.keymap.set("n", "<left>", "h<cmd>echo 'Press h'<cr>")
 vim.keymap.set("n", "<right>", "l<cmd>echo 'Press l'<cr>")
 vim.keymap.set("n", "<c-n>", '<cmd>lua require"gitsigns.actions".next_hunk()<cr>zv')
 vim.keymap.set("n", "<c-p>", '<cmd>lua require"gitsigns.actions".prev_hunk()<cr>zv')
-vim.keymap.set("n", "<leader>i", "<cmd>FzfLua git_status<cr>", { desc = "Pokazuje zmiany w repozytorium Git" })
 vim.keymap.set("n", "<leader>l", "<cmd>lua require('lf').start({ border = 'none', width = vim.o.columns, height = vim.o.lines })<cr>")
 vim.keymap.set("n", "vv", "^vg_", { desc = "Zaznacza linię pomijając puste znaki na początku i znak końca linii" })
 vim.keymap.set("n", "tt", ":t.<cr>", { desc = "Dublowanie linii" })
@@ -181,6 +180,15 @@ vim.keymap.set({ "n", "o", "x" }, "s", function()
         },
     })
 end)
+vim.keymap.set("n", "<leader>i", function()
+    require('fzf-lua').git_status({
+        winopts = {
+            preview = { hidden = "nohidden" },
+            fullscreen = true,
+        },
+    })
+end, { desc = "Pokazuje zmiany w repozytorium Git" })
+vim.keymap.set("n", "<leader>sg", "<cmd>lua GitFiles()<cr>", { desc = "FzfLua git_files" })
 vim.keymap.set("n", "<leader>sw", function()
     require('fzf-lua').grep_cWORD({
         winopts = {
