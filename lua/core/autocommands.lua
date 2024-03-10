@@ -1,5 +1,5 @@
 -- autocommands
--- Aktualizacja: 2024-03-09 15:18:52, sobota 09 marca
+-- Aktualizacja: 2024-03-10 07:48:05, niedziela 10 marca
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 
@@ -147,4 +147,26 @@ autocmd("FileChangedShellPost", {
 -- wchodzi w tryb INSERT przy otworzeniu NOWEGO pliku
 autocmd({ "BufNewFile" }, {
     command = [[startinsert]],
+})
+
+-- Informacja o rozpoczęciu nagrywania makra
+autocmd({ "RecordingEnter", }, {
+    group = augroup("NotifyMacroStart", { clear = true }),
+    callback = function()
+        local msg = 'Nagrywam makro ' .. '[' .. vim.fn.reg_recording() .. ']'
+        vim.notify(msg, "info", {
+            timeout = 6000,
+        })
+    end,
+})
+
+-- Informacja o zakończeniu nagrywania makra
+autocmd({ "RecordingLeave", }, {
+    group = augroup("NotifyMacroStop", { clear = true }),
+    callback = function()
+        local msg = 'Zakończyłem nagrywać makro ' .. '[' .. vim.fn.reg_recording() .. ']'
+        vim.notify(msg, "info", {
+            timeout = 6000,
+        })
+    end,
 })
