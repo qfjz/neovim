@@ -24,7 +24,7 @@ local colors = {
 SSHClient = function()
     local SSH_Client = os.getenv("SSH_CLIENT")
     if SSH_Client ~= nil then
-        return "SSH"
+        return os.getenv("HOSTNAME")
     end
 end
 
@@ -205,16 +205,8 @@ ins_right {
     color = {},
 }
 
--- ins_right {
---     SSHClient
--- }
-
 ins_right {
-    "hostname",
-    color = { 
-        fg = colors.yellow,
-        bg = colors.black,
-    },
+    SSHClient
 }
 
 ins_right {
