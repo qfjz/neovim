@@ -1,5 +1,5 @@
 -- functions.lua
--- Aktualizacja: 2024-03-11 08:18:21, poniedziałek 11 marca
+-- Aktualizacja: 2024-03-11 11:58:10, poniedziałek 11 marca
 CD = function()
     -- INFO: Standardowo zmienna $BM_DIRS zaweira nazwę pliku w której znajdują się często odwiedzane katalogi
     -- INFO: Zazwyaczaj jest to plik `$HOME/.config/bmdirs`.
@@ -439,4 +439,19 @@ CheckExternalReqs = function()
         end
     end
   return true
+end
+
+-- Sprawdza czy pracuje na zdalnym połączeniu SSh
+SSHClient = function()
+    local SSH_Connection = os.getenv("SSH_CONNECTION")
+    if SSH_Connection ~= nil then
+        SSH_Tbl = {}
+        for word in SSH_Connection:gmatch("%S+") do
+            table.insert (SSH_Tbl, word)
+        end
+        local Local_IP = SSH_Tbl[3]
+        local Remote_IP = SSH_Tbl[1]
+        vim.notify(string.format("Z adresu %s, na adres %s", Remote_IP, Local_IP), "info", { timeout = 6000, title = "Połączenie SSH" })
+        return
+    end
 end
