@@ -206,7 +206,8 @@ ins_right {
 }
 
 ins_right {
-    SSHClient
+    SSHClient,
+    color = { fg = colors.green },
 }
 
 ins_right {
