@@ -1,5 +1,5 @@
 -- functions.lua
--- Aktualizacja: 2024-03-09 14:49:39, sobota 09 marca
+-- Aktualizacja: 2024-03-11 08:18:21, poniedziałek 11 marca
 CD = function()
     -- INFO: Standardowo zmienna $BM_DIRS zaweira nazwę pliku w której znajdują się często odwiedzane katalogi
     -- INFO: Zazwyaczaj jest to plik `$HOME/.config/bmdirs`.
@@ -51,9 +51,12 @@ CDFD = function()
     local pwd_dir = vim.fn.system[[pwd]]
     local pwd_dir = vim.trim(pwd_dir)
     if pwd_dir == directory then
+        local pwd = vim.fn.system[[pwd]]
+        vim.notify(pwd, "info", { timeout = 6000 })
         return
     else
         vim.cmd("cd " .. directory)
+        vim.notify(directory, "info", { timeout = 6000 })
     end
 end
 

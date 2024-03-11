@@ -1,8 +1,11 @@
 # Funkcje
 
-Aktualizacja: 2024-02-27 14:23:36, wtorek 27 lutego
+Aktualizacja: 2024-03-11 08:32:30, poniedziałek 11 marca
 
 ## CD
+
+Standardowo zmienna $BM_DIRS zaweira nazwę pliku w której znajdują się często odwiedzane katalogi.
+Zazwyaczaj jest to plik `$HOME/.config/bmdirs`.
 
 ```lua
 CD = function()
@@ -11,8 +14,8 @@ CD = function()
         vim.notify("Brak zmiennej systemowej \"BM_DIRS\"")
         return
     end
-    command = 'cd'
-    opts = {}
+    local command = 'cd'
+    local opts = {}
     opts.prompt = "CD> "
     opts.actions = {
         ['default'] = function(selected)
@@ -34,8 +37,8 @@ CDE = function()
         vim.notify("Brak zmiennej systemowej \"BM_DIRS\"")
         return
     end
-    command = 'e'
-    opts = {}
+    local command = 'e'
+    local opts = {}
     opts.prompt = "CDE> "
     opts.actions = {
         ['default'] = function(selected)
@@ -65,9 +68,12 @@ CDFD = function()
     local pwd_dir = vim.fn.system[[pwd]]
     local pwd_dir = vim.trim(pwd_dir)
     if pwd_dir == directory then
+        local pwd = vim.fn.system[[pwd]]
+        vim.notify(pwd, "info", { timeout = 6000 })
         return
     else
         vim.cmd("cd " .. directory)
+        vim.notify(directory, "info", { timeout = 6000 })
     end
 end
 ```
@@ -75,6 +81,32 @@ end
 ## CDG
 
 Funkcja wyświetla główny katalog repozytorium Git.
+
+```lua
+CDG = function()
+    -- Desc: Funkcja wyświetla główny katalog repozytorium Git
+    if package.loaded['gitsigns'] then
+        local root_dir = vim.inspect(vim.fn.getbufinfo("%")[1].variables.gitsigns_status_dict.root)
+        local MSG = ("Found git repository at" .. " " .. root_dir)
+        vim.notify(MSG, "info", {
+            timeout = 6000,
+            title = "Informacje o repozytorium",
+        })
+    else
+        local result = vim.fn.system("git rev-parse --is-inside-work-tree")
+        if vim.v.shell_error == 0 and result:find("true") then
+            local root_dir = vim.fn.system("git rev-parse --show-toplevel")
+            local MSG = ("Found git repository at" .. " " .. root_dir)
+            vim.notify(MSG, "info", {
+                timeout = 6000,
+                title = "Informacje o repozytorium",
+            })
+        end
+    end
+end
+```
+
+Stara wersja:
 
 ```lua
 CDG = function()
@@ -90,7 +122,6 @@ CDG = function()
 end
 ```
 
-Stara wersja:
 
 ```lua
 CDG = function()
@@ -121,9 +152,9 @@ Docs = function()
         prompt = prompt,
         cwd = cwd_dir,
         cmd = rg_cmd,
-        winopts = { 
+        winopts = {
             preview = { hidden = "nohidden" },
-            fullscreen = true, 
+            fullscreen = true,
         }
     })
 end
@@ -143,14 +174,14 @@ GitFiles = function()
         local prompt = "GitFiles> "
         require'fzf-lua'.git_files({
             prompt = prompt,
-            winopts = { 
+            winopts = {
                 preview = { hidden = "nohidden" },
-                fullscreen = true, 
+                fullscreen = true,
             }
         })
     else
         local rg_cmd = "rg --files --hidden --follow"
-        require'fzf-lua'.files({ 
+        require'fzf-lua'.files({
             cmd = rg_cmd,
             winopts = {
                 preview = { hidden = "nohidden" },
@@ -169,7 +200,7 @@ Uruchamia FzfLua files
 Files = function()
     CDFD()
     local rg_cmd = "rg --files --hidden --follow"
-    require'fzf-lua'.files({ 
+    require'fzf-lua'.files({
         cmd = rg_cmd,
         winopts = {
             preview = { hidden = "nohidden" },
@@ -214,9 +245,9 @@ NvimConfig = function()
         prompt = prompt,
         cwd = cwd_dir,
         cmd = rg_cmd,
-        winopts = { 
+        winopts = {
             preview = { hidden = "nohidden" },
-            fullscreen = true, 
+            fullscreen = true,
         }
     })
 end
@@ -229,6 +260,7 @@ Kopiuje zawartość standardowego rejestru `"` do rejestru `x`.
 ```lua
 CopyReg = function()
     vim.fn.setreg("x", vim.fn.getreg('"'))
+    vim.notify("Skopiowałem standardowy rejestr do rejestru 'x'")
 end
 ```
 
@@ -240,14 +272,14 @@ Funkcja zmieniająca schemat kolorystyczny w zależności od dygodnia roku i por
 KolorPora = function()
     local tydzien = (vim.fn.strftime("%V"))
     if tonumber(tydzien) > 35 then
-        rano = 6
-        wieczor = 16
+        Rano = 6
+        Wieczor = 16
     else
-        rano= 5
-        wieczor = 22
+        Rano= 5
+        Wieczor = 22
     end
     local godzina = (vim.fn.strftime("%H"))
-    if (tonumber(godzina) > rano) and (tonumber(godzina) < wieczor) then
+    if (tonumber(godzina) > Rano) and (tonumber(godzina) < Wieczor) then
         vim.cmd([[colorscheme rose-pine-main]])
     else
         vim.cmd([[colorscheme rose-pine-moon]])
@@ -264,23 +296,11 @@ P = function(v)
 end
 ```
 
-## FileInfo
-
-```lua
-FileInfo = function()
-    -- Desc: Wyświetla informacje o pliku
-    Filename=vim.fn.resolve(vim.fn.expand("%:p"))
-    Msg=""
-    Msg=Msg .. "Mod: " .. vim.fn.strftime("%F %T",vim.fn.getftime(Filename)) .. " " .. Filename .. ", Size: " ..  FileSize() .. ", TL# " .. TotalLines()
-    print(Msg)
-end
-```
-
 ## FileSize
 
 ```lua
 FileSize = function()
-    file = vim.fn.resolve(vim.fn.expand("%:p"))
+    local file = vim.fn.resolve(vim.fn.expand("%:p"))
     local size = vim.fn.getfsize(file)
     if size <= 0 then
         return ""
@@ -292,6 +312,22 @@ FileSize = function()
         i = i + 1
     end
     return string.format("%.1f%s", size, sufixes[i])
+end
+```
+
+## FileInfo
+
+```lua
+FileInfo = function()
+    -- Desc: Wyświetla informacje o pliku
+    Filename=vim.fn.resolve(vim.fn.expand("%:p"))
+    Msg=""
+    Msg=Msg .. "Mod: " .. vim.fn.strftime("%F %T",vim.fn.getftime(Filename)) .. " " .. Filename .. ", Size: " ..  FileSize() .. ", TL# " .. TotalLines()
+    print(Msg)
+    vim.notify(Msg, "info", {
+        timeout = 6000,
+        title = "Informacje o pliku",
+    })
 end
 ```
 
@@ -395,7 +431,10 @@ GI = function()
     local GI_SH = HOME_DIR .. "/.config/" .. NvimAppName() .. "/sh/gi.sh"
     local l = vim.fn.system(GI_SH .. " " .. "vim")
     local l = vim.fn.substitute(l, '\n$', '', '')
-    print(l)
+    vim.notify(l, "info", {
+        timeout = 6000,
+        title = "Informacje o repozytorium",
+    })
 end
 ```
 
@@ -417,7 +456,7 @@ end
 SearchDir = function(dir)
     local rg_cmd = "rg --files --follow"
     local prompt = "Search> "
-    require'fzf-lua'.files({ 
+    require'fzf-lua'.files({
         prompt = prompt,
         cmd = rg_cmd,
         cwd = dir,
@@ -439,7 +478,7 @@ FindNotesDir = function()
         cwd_dir = vim.fn.resolve(vim.fn.expand("$HOME/Notes"))
     end
     local prompt = "Notatki> "
-    require'fzf-lua'.files({ 
+    require'fzf-lua'.files({
         prompt = prompt,
         cmd = rg_cmd,
         cwd = cwd_dir,
@@ -463,7 +502,7 @@ BmFiles = function()
         io.open(BmFiles, "a+")
     end
     local files = vim.fn.readfile(vim.fn.expand(BmFiles))
-    opts = {}
+    local opts = {}
     opts.prompt = "Files> "
     opts.actions = {
         ['default'] = function(selected)
@@ -477,7 +516,7 @@ end
 ## AddBMFile
 
 ```lua
-AddBMFile = function()
+AddBmFile = function()
     local BmFiles = os.getenv("BM_FILES")
     if BmFiles == nil then
         BmFiles = vim.fn.resolve(vim.fn.expand("$HOME/.config/bmfilles"))
@@ -530,7 +569,69 @@ BufInfo = function()
 end
 ```
 
+## EditGitConfig
+
+```lua
+EditGitConfig = function()
+    local git_config_dir = vim.fn.getbufinfo("%")[1].variables.gitsigns_status_dict.gitdir
+    vim.cmd("e" .. git_config_dir .. "/config")
+end
+```
+
+## SysVersion
+
+```lua
+SysVersion = function()
+    local uv = vim.uv or vim.loop
+    vim.notify('System Information: ' .. vim.inspect(uv.os_uname()))
+end
+```
+
+## CheckVersion
+
+```lua
+CheckVersion = function()
+    local verstr = string.format('%s.%s.%s', vim.version().major, vim.version().minor, vim.version().patch)
+    if not vim.version.cmp then
+        vim.notify(string.format("Neovim out of date: '%s'. Upgrade to latest stable or nightly", verstr))
+        return
+    end
+    if vim.version.cmp(vim.version(), { 0, 9, 4 }) >= 0 then
+        vim.notify(string.format("Neovim version is: '%s'", verstr))
+    else
+        vim.notify(string.format("Neovim out of date: '%s'. Upgrade to latest stable or nightly", verstr))
+    end
+end
+```
+
+
+## CheckExternalReqs
+
+```lua
+CheckExternalReqs = function()
+    for _, exe in ipairs { 'git', 'make', 'unzip', 'rg', 'fzf' } do
+        local is_executable = vim.fn.executable(exe) == 1
+        if is_executable then
+            MSG = string.format("Found executable: '%s'", exe)
+            vim.notify(MSG, "info", {
+                timeout = 6000,
+                -- title = "",
+            })
+        else
+            MSG = string.format("Could not find executable: '%s'", exe)
+            vim.notify(MSG, "error", {
+                timeout = 6000,
+                -- title = "",
+            })
+        end
+    end
+  return true
+end
+```
+
 ## Redir
+
+Funkcja zastąpiona przez plugin `sbulav/nredir.nvim`.
 
 ```vim
 vim.cmd[[
@@ -554,13 +655,4 @@ vim.cmd[[
         call setline(1, split(output, "\n"))
     endfunction
 ]]
-```
-
-## EditGitConfig
-
-```lua
-EditGitConfig = function()
-    local git_config_dir = vim.fn.getbufinfo("%")[1].variables.gitsigns_status_dict.gitdir
-    vim.cmd("e" .. git_config_dir .. "/config")
-end
 ```
