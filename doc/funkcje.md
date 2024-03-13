@@ -1,7 +1,5 @@
 # Funkcje
 
-Aktualizacja: 2024-03-11 08:32:30, poniedziałek 11 marca
-
 ## CD
 
 Standardowo zmienna $BM_DIRS zaweira nazwę pliku w której znajdują się często odwiedzane katalogi.
@@ -655,4 +653,68 @@ vim.cmd[[
         call setline(1, split(output, "\n"))
     endfunction
 ]]
+```
+
+## ClearRegs
+
+```lua
+ClearRegs = function()
+    local str = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/-"'
+    local regs = {}
+    for i = 1, #str do
+        regs[i] = str:sub(i, i)
+    end
+    for _, v in ipairs(regs) do
+        vim.fn.setreg(v, '')
+    end
+end
+
+## GA
+
+```lua
+GA = function ()
+    CDFD()
+    local DateTime = vim.fn.strftime("%F %T")
+    vim.cmd("Git add -A")
+    vim.cmd("silent! Git commit -m '" .. DateTime .. "'")
+end
+```
+
+## GetSpell
+
+```lua
+GetSpell = function()
+    vim.cmd("!$HOME/bin/get-spell-pl.sh")
+end
+```
+
+## CopyFileName
+
+```lua
+CopyFileName = function()
+    Filename=vim.fn.resolve(vim.fn.expand("%:p"))
+    vim.fn.setreg([["]], Filename, 1)
+end
+```
+
+## Time
+
+```lua
+-- Time() wyświetla bieżącą datę i godzinę w formacie 20:53:27 2021-11-23, wtorek 23 październik
+Time = function()
+    local czas = vim.fn.strftime("%T %F, %A %d %B")
+    vim.notify(czas, "info", { timeout = 6000 })
+end
+```
+
+## RevBackground
+
+```lua
+RevBackground = function()
+    if vim.o.background == "dark" then
+        vim.o.background = "light"
+    else
+        vim.o.background = "dark"
+    end
+end
 ```

@@ -202,7 +202,7 @@ ins_right {
     function()
         local SSH_Client = os.getenv("SSH_CLIENT")
         if SSH_Client ~= nil then
-            return os.getenv("HOSTNAME")
+            return "[" .. os.getenv("HOSTNAME") .. "]"
         else
             return ""
         end
