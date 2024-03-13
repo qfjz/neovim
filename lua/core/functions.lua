@@ -1,7 +1,7 @@
 -- functions.lua
 CD = function()
-    -- INFO: Standardowo zmienna $BM_DIRS zaweira nazwę pliku w której znajdują się często odwiedzane katalogi
-    -- INFO: Zazwyaczaj jest to plik `$HOME/.config/bmdirs`.
+    -- DESC: Standardowo zmienna $BM_DIRS zaweira nazwę pliku w której znajdują się często odwiedzane katalogi
+    --Zazwyaczaj jest to plik `$HOME/.config/bmdirs`.
     local BmDirs = os.getenv("BM_DIRS")
     if BmDirs == nil then
         vim.notify("Brak zmiennej systemowej \"BM_DIRS\"")
@@ -40,7 +40,7 @@ CDE = function()
 end
 
 CDFD = function()
-    -- Desc: Funkcja przechodzi do katalogu w którym znajduje się edytorwany plik, potrafi podążać za linkami symbolicznymi
+    -- DESC: Funkcja przechodzi do katalogu w którym znajduje się edytorwany plik, potrafi podążać za linkami symbolicznymi
     local filename = vim.loop.fs_realpath(vim.api.nvim_buf_get_name(0))
     local directory = vim.fs.dirname(filename)
     if directory == nil then
@@ -60,7 +60,7 @@ CDFD = function()
 end
 
 CDG = function()
-    -- Desc: Funkcja wyświetla główny katalog repozytorium Git
+    -- DESC: Funkcja wyświetla główny katalog repozytorium Git
     if package.loaded['gitsigns'] then
         local root_dir = vim.inspect(vim.fn.getbufinfo("%")[1].variables.gitsigns_status_dict.root)
         local MSG = ("Found git repository at" .. " " .. root_dir)
@@ -82,7 +82,7 @@ CDG = function()
 end
 
 Docs = function()
-    -- Desc: Wyszukiwanie plików w katalogu docs
+    -- DESC: Wyszukiwanie plików w katalogu docs
     local rg_cmd = "rg --files --follow -g '*.md'"
     local cwd_dir = "$HOME/.config/" .. NvimAppName() .. "/doc"
     local prompt = "Docs> "
@@ -98,7 +98,7 @@ Docs = function()
 end
 
 GitFiles = function()
-    -- Desc: Uruchamia FzfLua git_files
+    -- DESC: Uruchamia FzfLua git_files
     -- W sytuacji kiedy jesteśmy w repozytorium Git wyszukiwane są wyłącznie pliki dodane do repozytorium!!!
     CDFD()
     local result = vim.fn.system("git rev-parse --is-inside-work-tree")
@@ -124,7 +124,7 @@ GitFiles = function()
 end
 
 Files = function()
-    -- Desc: Uruchamia FzfLua files
+    -- DESC: Uruchamia FzfLua files
     CDFD()
     local rg_cmd = "rg --files --hidden --follow"
     require'fzf-lua'.files({
@@ -141,7 +141,7 @@ PWD = function()
 end
 
 NvimAppName = function()
-    -- Desc: Funkcja zwraca wartość zmiennej systemowej NVIM_APPNAME
+    -- DESC: Funkcja zwraca wartość zmiennej systemowej NVIM_APPNAME
     local app_name = os.getenv("NVIM_APPNAME")
     if app_name == nil then
         app_name = "nvim"
@@ -150,7 +150,7 @@ NvimAppName = function()
 end
 
 NvimConfig = function()
-    -- Desc: edycja plików konfiguracyjnych
+    -- DESC: edycja plików konfiguracyjnych
     local rg_cmd = "rg --files --follow -g '!plugin/' -g '*.lua'"
     local cwd_dir = "$HOME/.config/" .. NvimAppName()
     local prompt = "NvimConfig> "
@@ -166,13 +166,13 @@ NvimConfig = function()
 end
 
 CopyReg = function()
-    -- Desc: kopiuje zawartość standardowego rejestru " do rejestru x
+    -- DESC: kopiuje zawartość standardowego rejestru " do rejestru x
     vim.fn.setreg("x", vim.fn.getreg('"'))
     vim.notify("Skopiowałem standardowy rejestr do rejestru 'x'")
 end
 
 KolorPora = function()
-    -- Desc: funkcja zmieniająca schemat kolorystyczny w zależności od dygodnia roku i pory dnia
+    -- DESC: funkcja zmieniająca schemat kolorystyczny w zależności od dygodnia roku i pory dnia
     local tydzien = (vim.fn.strftime("%V"))
     if tonumber(tydzien) > 35 then
         Rano = 6
@@ -210,7 +210,7 @@ FileSize = function()
 end
 
 FileInfo = function()
-    -- Desc: Wyświetla informacje o pliku
+    -- DESC: Wyświetla informacje o pliku
     Filename=vim.fn.resolve(vim.fn.expand("%:p"))
     Msg=""
     Msg=Msg .. "Mod: " .. vim.fn.strftime("%F %T",vim.fn.getftime(Filename)) .. " " .. Filename .. ", Size: " ..  FileSize() .. ", TL# " .. TotalLines()
@@ -234,7 +234,7 @@ MkDir = function()
 end
 
 Write = function()
-    -- Desc: Zapisuje plik Write()
+    -- DESC: Zapisuje plik Write()
     for _, v in ipairs(vim.fn.getbufinfo("%")) do
         if v.name == "" then
             vim.notify("Bufor bez nazwy, plik nie zostanie zapisany.")
@@ -270,7 +270,7 @@ Skroty = function()
 end
 
 GP = function()
-    -- Desc: Uruchamia skrypt `sh/gp.sh`
+    -- DESC: Uruchamia skrypt `sh/gp.sh`
     CDFD()
     local HOME_DIR = os.getenv("HOME")
     local GP_SH = HOME_DIR .. "/.config/" .. NvimAppName() .. "/sh/gp.sh"
@@ -482,8 +482,8 @@ CopyFileName = function()
     vim.fn.setreg([["]], Filename, 1)
 end
 
--- Time() wyświetla bieżącą datę i godzinę w formacie 20:53:27 2021-11-23, wtorek 23 październik
 Time = function()
+    -- DESC: Time() wyświetla bieżącą datę i godzinę w formacie 20:53:27 2021-11-23, wtorek 23 październik
     local czas = vim.fn.strftime("%T %F, %A %d %B")
     vim.notify(czas, "info", { timeout = 6000 })
 end
