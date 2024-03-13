@@ -21,13 +21,6 @@ local colors = {
     red      = '#ec5f67',
 }
 
-SSHClient = function()
-    local SSH_Client = os.getenv("SSH_CLIENT")
-    if SSH_Client ~= nil then
-        return os.getenv("HOSTNAME")
-    end
-end
-
 local function location()
     -- local line = vim.fn.line('.')
     local col = vim.fn.virtcol('.')
@@ -206,7 +199,14 @@ ins_right {
 }
 
 ins_right {
-    SSHClient,
+    function()
+        local SSH_Client = os.getenv("SSH_CLIENT")
+        if SSH_Client ~= nil then
+            return os.getenv("HOSTNAME")
+        else
+            return ""
+        end
+    end,
     color = { fg = colors.green },
 }
 
