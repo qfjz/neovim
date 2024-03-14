@@ -323,8 +323,12 @@ end
 FindNotesDir = function()
     local rg_cmd = "rg --files --follow -g '*.md' -g '*.norg'"
     local cwd_dir = os.getenv("NOTES_DIR")
+    local default_notes_dir = "$HOME/Notes"
     if cwd_dir == nil then
-        cwd_dir = vim.fn.resolve(vim.fn.expand("$HOME/Notes"))
+        if vim.fn.isdirectory(cwd_dir) == 1 then
+            vim.fn.mkdir(vim.fn.expand(default_notes_dir), "p")
+        end
+        cwd_dir = vim.fn.resolve(vim.fn.expand(default_notes_dir))
     end
     local prompt = "Notatki> "
     require'fzf-lua'.files({
