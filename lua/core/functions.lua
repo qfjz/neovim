@@ -214,7 +214,6 @@ FileInfo = function()
     Filename=vim.fn.resolve(vim.fn.expand("%:p"))
     Msg=""
     Msg=Msg .. "Mod: " .. vim.fn.strftime("%F %T",vim.fn.getftime(Filename)) .. " " .. Filename .. ", Size: " ..  FileSize() .. ", TL# " .. TotalLines()
-    print(Msg)
     vim.notify(Msg, "info", {
         timeout = 6000,
         title = "Informacje o pliku",
@@ -323,12 +322,8 @@ end
 FindNotesDir = function()
     local rg_cmd = "rg --files --follow -g '*.md' -g '*.norg'"
     local cwd_dir = os.getenv("NOTES_DIR")
-    local default_notes_dir = vim.fn.resolve(vim.fn.expand("$HOME/Notes"))
     if cwd_dir == nil then
-        if vim.fn.isdirectory(default_notes_dir) == 0 then
-            vim.fn.mkdir(default_notes_dir, "p")
-        end
-        cwd_dir = default_notes_dir
+        cwd_dir = vim.fn.resolve(vim.fn.expand("$HOME/Notes"))
     end
     local prompt = "Notatki> "
     require'fzf-lua'.files({
