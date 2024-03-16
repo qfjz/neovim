@@ -1,5 +1,4 @@
 -- autocommands
--- Aktualizacja: 2024-03-10 07:48:05, niedziela 10 marca
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 

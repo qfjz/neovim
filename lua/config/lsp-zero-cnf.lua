@@ -1,5 +1,4 @@
 -- lsp-zero
--- Aktualizacja: 2024-02-29 19:25:11, czwartek 29 lutego
 local ok_lsp_zero, lsp_zero = pcall(require, "lsp-zero")
 if not ok_lsp_zero then
     return

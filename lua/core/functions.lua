@@ -244,7 +244,7 @@ Write = function()
         vim.cmd("lcd %:p:h")
         for _, v in ipairs(vim.fn.getbufinfo("%")) do
             if v.changed == 1 then
-                OstatniaAktualizacja()
+                -- OstatniaAktualizacja()
                 vim.cmd("silent update")
                 vim.notify("Zapisałem" .. " " .. vim.fn.expand("%:p"))
             else

@@ -1,5 +1,4 @@
 -- mappings
--- Aktualizacja: 2024-03-09 16:37:14, sobota 09 marca
 vim.keymap.set("n", [[<s-enter>]], "mzO<esc>`z", { desc = "Dodaje pustą linię powyżej bieżącej" })
 vim.keymap.set("n", [[<enter>]], "mzo<esc>`z", { desc = "Dodaje pustą linię poniżej bieżącej" })
 vim.keymap.set("v", [[<enter>]], "y", { desc = "Kopiuje zaznaczony tekst" })

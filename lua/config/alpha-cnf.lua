@@ -1,5 +1,4 @@
 -- plugin-alpha.lua
--- Aktualizacja: 2024-02-28 06:09:30, środa 28 lutego
 local ok, alpha = pcall(require, 'alpha')
 if not ok then return end
 
