@@ -71,6 +71,8 @@ Wyświetla historię komend                                                 | q:
 Wyświetla historię komend                                                 | q;
 Uruchamia komendę `BiPolar`                                               | <leader>tb
 Uruchamia terminal systemowy w oknie Neovim                               | <leader>tt
+Uruchamia polecenie Telescope                                             | <leader>te
+Uruchamia polecenie FzfLua                                                | <leader>tf
 Uruchamia Dashboard Alpha                                                 | <leader>A
 Uruchamia polecenie `=ip gqap` wyrównuje paragraf                         | <leader>a
 W trybie VISUAL tworzy wcięcie                                            | <

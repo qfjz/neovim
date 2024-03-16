@@ -78,6 +78,8 @@ Przeszukiwanie skrótów klawiszowych: `<spacja>sk`, lub `:FzfLua keymaps`
 | `q;`             | Wyświetla historię komend                                                 |
 | `<leader>tb`     | Uruchamia komendę `BiPolar`                                               |
 | `<leader>tt`     | Uruchamia terminal systemowy w oknie Neovim                               |
+| `<leader>te`     | Uruchamia polecenie `Telescope`                                           |
+| `<leader>tf`     | Uruchamia polecenie `FzfLua`                                              |
 | `<leader>A`      | Uruchamia Dashboard Alpha                                                 |
 | `<leader>a`      | Uruchamia polecenie `=ip gqap` wyrównuje paragraf                         |
 | `<`              | W trybie VISUAL tworzy wcięcie                                            |

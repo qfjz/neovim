@@ -1,5 +1,6 @@
 -- plugins.lua
 return {
+    "AlexvZyl/nordic.nvim",
     "rose-pine/neovim",
     "catppuccin/nvim",
     "LunarVim/lunar.nvim",
