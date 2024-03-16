@@ -47,7 +47,7 @@ vim.keymap.set("n", "<leader>b", "<cmd>FzfLua buffers<cr>", { desc = "Przełącz
 vim.keymap.set("n", "<tab>", "<cmd>e #<cr>", { desc= "Przełączanie pomiędzy dwoma ostatnimi buforami" })
 vim.keymap.set("n", [[<s-tab>]], "<cmd>BufferPick<cr>", { desc = "Pozwala wybrać bufor za pomocą jednej litery" })
 vim.keymap.set("n", "<leader>o", "<cmd>only<cr>", { desc = "Pozostawia otwarte tylko aktywne okno" })
-vim.keymap.set("n", "<leader>c", "<cmd>close<cr>", { desc = "Zamyka aktywne okno" })
+vim.keymap.set("n", "<leader>cc", "<cmd>close<cr>", { desc = "Zamyka aktywne okno" })
 vim.keymap.set("n", "<esc>", "<cmd>nohl<cr>", { silent = true, desc = "Wyłącza wyróżnianie szukanego tekstu" })
 vim.keymap.set("n", "<leader>f", "<cmd>lua Files()<cr>", { desc = "FzfLua files" })
 vim.keymap.set("n", "<leader>g", "<cmd>FzfLua live_grep<cr>", { desc = "FzfLua live grep" })

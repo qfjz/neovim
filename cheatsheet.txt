@@ -29,7 +29,7 @@ Przełączanie pomiędzy buforami                                            | <
 Przełączanie pomiędzy dwoma ostatnimi buforami                            | <tab>
 Pozwala wybrać bufor za pomocą jednej litery `BufferPick`                 | <s-tab>
 Pozostawia otwarte tylko aktywne okno                                     | <leader>o
-Zamyka aktywne okno                                                       | <leader>c
+Zamyka aktywne okno                                                       | <leader>cc
 Wyłącza wyróżnianie szukanego tekstu                                      | <esc>
 FzfLua live grep                                                          | <leader>g
 FzfLua files                                                              | <leader>f

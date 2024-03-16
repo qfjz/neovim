@@ -36,7 +36,7 @@ Przeszukiwanie skrótów klawiszowych: `<spacja>sk`, lub `:FzfLua keymaps`
 | `<tab>`          | Przełączanie pomiędzy dwoma ostatnimi buforami                            |
 | `<s-tab>`        | Pozwala wybrać bufor za pomocą jednej litery `BufferPick`                 |
 | `<leader>o`      | Pozostawia otwarte tylko aktywne okno                                     |
-| `<leader>c`      | Zamyka aktywne okno                                                       |
+| `<leader>cc`     | Zamyka aktywne okno                                                       |
 | `<esc>`          | Wyłącza wyróżnianie szukanego tekstu                                      |
 | `<leader>g`      | FzfLua live grep                                                          |
 | `<leader>f`      | FzfLua files                                                              |
