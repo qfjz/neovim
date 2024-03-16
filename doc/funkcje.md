@@ -56,7 +56,6 @@ symbolicznymi.
 
 ```lua
 CDFD = function()
-    -- Desc: Funkcja przechodzi do katalogu w którym znajduje się edytorwany plik, potrafi podążać za linkami symbolicznymi
     local filename = vim.loop.fs_realpath(vim.api.nvim_buf_get_name(0))
     local directory = vim.fs.dirname(filename)
     if directory == nil then
@@ -64,8 +63,8 @@ CDFD = function()
         return
     end
     local pwd_dir = vim.fn.system[[pwd]]
-    local pwd_dir = vim.trim(pwd_dir)
-    if pwd_dir == directory then
+    local pwd_dir_trim = vim.trim(pwd_dir)
+    if pwd_dir_trim == directory then
         local pwd = vim.fn.system[[pwd]]
         vim.notify(pwd, "info", { timeout = 6000 })
         return
@@ -82,7 +81,6 @@ Funkcja wyświetla główny katalog repozytorium Git.
 
 ```lua
 CDG = function()
-    -- Desc: Funkcja wyświetla główny katalog repozytorium Git
     if package.loaded['gitsigns'] then
         local root_dir = vim.inspect(vim.fn.getbufinfo("%")[1].variables.gitsigns_status_dict.root)
         local MSG = ("Found git repository at" .. " " .. root_dir)
@@ -142,7 +140,6 @@ Przeszukuje katalog `~/.config/NvimAppName()/doc`
 
 ```lua
 Docs = function()
-    -- Desc: Wyszukiwanie plików w katalogu docs
     local rg_cmd = "rg --files --follow -g '*.md'"
     local cwd_dir = "$HOME/.config/" .. NvimAppName() .. "/doc"
     local prompt = "Docs> "
@@ -315,13 +312,13 @@ end
 
 ## FileInfo
 
+Wyświetla informacje o pliku
+
 ```lua
 FileInfo = function()
-    -- Desc: Wyświetla informacje o pliku
     Filename=vim.fn.resolve(vim.fn.expand("%:p"))
     Msg=""
     Msg=Msg .. "Mod: " .. vim.fn.strftime("%F %T",vim.fn.getftime(Filename)) .. " " .. Filename .. ", Size: " ..  FileSize() .. ", TL# " .. TotalLines()
-    print(Msg)
     vim.notify(Msg, "info", {
         timeout = 6000,
         title = "Informacje o pliku",
@@ -355,7 +352,6 @@ Zapisuje zmiany
 
 ```lua
 Write = function()
-    -- Desc: Zapisuje plik Write()
     for _, v in ipairs(vim.fn.getbufinfo("%")) do
         if v.name == "" then
             vim.notify("Bufor bez nazwy, plik nie zostanie zapisany.")
@@ -366,7 +362,7 @@ Write = function()
         vim.cmd("lcd %:p:h")
         for _, v in ipairs(vim.fn.getbufinfo("%")) do
             if v.changed == 1 then
-                OstatniaAktualizacja()
+                -- OstatniaAktualizacja()
                 vim.cmd("silent update")
                 vim.notify("Zapisałem" .. " " .. vim.fn.expand("%:p"))
             else
@@ -397,9 +393,10 @@ end
 
 ## GP
 
+Uruchamia skrypt `sh/gp.sh`
+
 ```lua
 GP = function()
-    -- Desc: Uruchamia skrypt `sh/gp.sh`
     CDFD()
     local HOME_DIR = os.getenv("HOME")
     local GP_SH = HOME_DIR .. "/.config/" .. NvimAppName() .. "/sh/gp.sh"
@@ -428,8 +425,8 @@ GI = function()
     local HOME_DIR = os.getenv("HOME")
     local GI_SH = HOME_DIR .. "/.config/" .. NvimAppName() .. "/sh/gi.sh"
     local l = vim.fn.system(GI_SH .. " " .. "vim")
-    local l = vim.fn.substitute(l, '\n$', '', '')
-    vim.notify(l, "info", {
+    local l_subs = vim.fn.substitute(l, '\n$', '', '')
+    vim.notify(l_subs, "info", {
         timeout = 6000,
         title = "Informacje o repozytorium",
     })
@@ -699,8 +696,9 @@ end
 
 ## Time
 
+Funcja Time() wyświetla bieżącą datę i godzinę w formacie 20:53:27 2021-11-23, wtorek 23 październik
+
 ```lua
--- Time() wyświetla bieżącą datę i godzinę w formacie 20:53:27 2021-11-23, wtorek 23 październik
 Time = function()
     local czas = vim.fn.strftime("%T %F, %A %d %B")
     vim.notify(czas, "info", { timeout = 6000 })
