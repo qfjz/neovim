@@ -33,3 +33,10 @@ require("config/telescope-cnf")
 require("plugins.plugins")
 
 vim.cmd([[colorscheme tokyonight]])
+
+-- Ustawienia użytkownika
+-- ~/.config/$NVIM_APPNAME/lua/user-settings.lua
+local status_ok, _ = pcall(require, "user-settings")
+if not status_ok then
+    return
+end
