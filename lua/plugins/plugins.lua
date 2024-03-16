@@ -39,7 +39,7 @@ return {
     "tpope/vim-surround",
     "sbulav/nredir.nvim",
     "lewis6991/gitsigns.nvim",
-    "Jorengarenar/fauxClip",
+    -- "Jorengarenar/fauxClip",
     "ojroques/vim-oscyank",
     "jamessan/vim-gnupg",
     "anuvyklack/hydra.nvim",

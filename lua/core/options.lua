@@ -1,4 +1,5 @@
 vim.cmd[[silent! language en_US]]
+vim.opt.timeoutlen = 600
 vim.opt.number = true
 vim.opt.relativenumber = false
 vim.opt.autowrite = false
