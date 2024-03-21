@@ -95,6 +95,8 @@ vim.keymap.set("n", "<leader>tb", "<cmd>BiPolar<cr>")
 vim.keymap.set("n", "<leader>tt", "<cmd>ToggleTerm<cr>")
 vim.keymap.set("n", "<leader>te", "<cmd>Telescope<cr>")
 vim.keymap.set("n", "<leader>tf", "<cmd>FzfLua<cr>")
+vim.keymap.set("n", "<leader>tc", "<cmd>Cheatsheet<cr>")
+vim.keymap.set("n", "<leader>tl", "<cmd>Lazy<cr>")
 -- Zmiana wielkości okna
 vim.keymap.set("n", "<m-h>", "<cmd>vertical resize -2<cr>")
 vim.keymap.set("n", "<m-j>", "<cmd>resize +2<cr>")

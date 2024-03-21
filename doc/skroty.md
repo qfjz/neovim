@@ -80,6 +80,8 @@ Przeszukiwanie skrótów klawiszowych: `<spacja>sk`, lub `:FzfLua keymaps`
 | `<leader>tt`     | Uruchamia terminal systemowy w oknie Neovim                               |
 | `<leader>te`     | Uruchamia polecenie `Telescope`                                           |
 | `<leader>tf`     | Uruchamia polecenie `FzfLua`                                              |
+| `<leader>tc`     | Uruchamia polecenie `Cheatsheet`                                          |
+| `<leader>tl`     | Uruchamia polecenie `Lazy`                                                |
 | `<leader>A`      | Uruchamia Dashboard Alpha                                                 |
 | `<leader>a`      | Uruchamia polecenie `=ip gqap` wyrównuje paragraf                         |
 | `<`              | W trybie VISUAL tworzy wcięcie                                            |

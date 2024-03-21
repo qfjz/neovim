@@ -50,6 +50,7 @@ return {
     "nvim-telescope/telescope.nvim",
     "doctorfree/cheatsheet.nvim",
     "nvim-lua/popup.nvim",
+    "mg979/vim-visual-multi",
     "folke/flash.nvim",
     "folke/zen-mode.nvim",  -- tryb Zen
     "folke/twilight.nvim",  -- zakreśla tylko bieżący paragraf
