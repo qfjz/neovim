@@ -21,6 +21,23 @@ local colors = {
     red      = '#ec5f67',
 }
 
+local function line_count()
+    if vim.fn.mode():find('[\22vV]') then
+        local ln_beg = vim.fn.line("v")
+        local ln_end = vim.fn.line(".")
+
+        local lines = ln_beg <= ln_end
+            and ln_end - ln_beg + 1
+            or ln_beg - ln_end + 1
+
+        return lines
+        -- znaki + linie
+        -- return tostring(vim.fn.wordcount().visual_chars) .. " chars" .. " / " .. tostring(lines) .. " lines"
+    else
+        return string.upper(vim.fn.mode())
+    end
+end
+
 local function location()
     -- local line = vim.fn.line('.')
     local col = vim.fn.virtcol('.')
@@ -132,6 +149,14 @@ ins_left({
 })
 
 ins_left({ location })
+
+ins_left({
+    function()
+        -- return char_and_line_count()
+        return line_count()
+    end,
+    color = { fg = colors.blue },
+})
 
 ins_left { 'progress', color = { fg = colors.fg, gui = 'bold' } }
 
