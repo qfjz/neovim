@@ -68,7 +68,7 @@ vim.keymap.set("n", "<leader>l", "<cmd>lua require('lf').start({ border = 'none'
 vim.keymap.set("n", "vv", "^vg_", { desc = "Zaznacza linię pomijając puste znaki na początku i znak końca linii" })
 vim.keymap.set("n", "tt", ":t.<cr>", { desc = "Dublowanie linii" })
 vim.keymap.set("n", "<leader>cp", "yap<s-}>p", { desc = "Klonuje cały paragraf" })
-vim.keymap.set("n", "vd", [[:norm vj<cr>:sort u<cr>]], { noremap = true, silent = true , desc = "Sprawdza czy kolejna linia jest identyczna, jeśli tak usuwa jedną z nich" })
+vim.keymap.set("n", "vd", [[:norm vj<cr>:sort u<cr>]], { noremap = true, silent = true , desc = "Porównuje linie, jeśli są identyczne usuwa jedną z nich" })
 -- Kopiowanie zaznaczonego tekstu myszką
 vim.keymap.set("v", "<LeftRelease>", '"+ygv<Esc>')
 vim.keymap.set("n", "<leader>r", '<cmd>FzfLua registers<cr>', { desc = "Wklej z wybranego rejestru" })
