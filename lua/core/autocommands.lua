@@ -21,7 +21,6 @@ autocmd({ "FileType", "BufEnter" }, {
 })
 
 -- Ustawia kursor tam gdzie go zostawiliśmy
--- https://github.com/adibhanna/nvim/blob/main/lua/config/autocmds.lua#L28
 autocmd("BufReadPost", {
     callback = function()
         local mark = vim.api.nvim_buf_get_mark(0, '"')
