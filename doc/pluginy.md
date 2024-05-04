@@ -1,0 +1,70 @@
+# Pluginy
+
+Aktualizacja: 2024-02-29 20:30:13, czwartek 29 lutego
+
+- alpha
+- barbar
+- cmp-buffer
+- cmp-nvim-lsp
+- cmp-path
+- fauxClip
+- flash.nvim
+- fzf-lua
+- gitsigns
+- harpoon
+- hydra
+- indent-blankline
+- kommentary
+- lf
+- lsp-zero.nvim
+- lualine
+- LuaSnip
+- mason
+- mason-lspconfig
+- neo-tree
+- neorg
+- noice
+- nredir
+- nui.nvim
+- nvim-cmp
+- nvim-lspconfig
+- nvim-notify
+- nvim-treesitter
+- nvim-web-devicons
+- pears
+- persistence.nvim
+- plenary
+- pomo
+- rainbow-delimiters
+- toggleterm
+- twilight
+- undotree
+- vim-eunuch
+- vim-fugitive
+- vim-gnupg
+- vim-oscyank
+- vim-repeat
+- vim-surround
+- which-key
+- zen-mode
+
+## Schematy kolorystyczne
+
+- rose-pine
+- catppuccin
+- lunar
+- kanagawa
+- everforest
+- nightfox
+- bamboo
+- horizon
+- srcery
+- ayu
+- nightfly
+- gruvbox
+- vim-hybrid-material
+- gruvbox-material
+- miasma
+- poimandres
+- rigel
+- tokyonight

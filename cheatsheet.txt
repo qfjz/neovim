@@ -1,0 +1,106 @@
+## QFJZ
+Dodaje pustą linię powyżej bieżącej                                       | Shift-Enter
+Dodaje pustą linię poniżej bieżącej                                       | Enter
+Uruchamia menadżer plików NeoTree                                         | <leader>n
+Uruchamia menadżer plików NeoTree                                         | \
+Początek linii                                                            | gh
+Koniec linii                                                              | gl
+Poprzeni bufor                                                            | <leader>,
+Następny bufor                                                            | <leader>.
+Zapisanie zmian                                                           | <leader>w
+Wyjśćie                                                                   | qq
+Wejście do trybu COMMAND                                                  | <leader>;
+Przechodzi do okna po lewej                                               | <c-h>
+Przechodzi do okna po prawej                                              | <c-l>
+Przechodzi do okna niżej                                                  | <c-j>
+Przechodzi do okna wyżej                                                  | <c-k>
+Usuwa bufor                                                               | <leader>d
+Otwiera plik pod kursorem                                                 | gf
+Wczytuje bieżący plik Lua                                                 | <leader>so
+Dzieli okno w pionie                                                      | <leader>sv
+Dzieli okno w poziomie                                                    | <leader>sp
+Wyszukiwarka plików konfiguracyjnych                                      | <leader>v
+Tworzy nowy plik                                                          | <leader>C
+Zmiana tematu kolorystycznego w zależności od pory dnia                   | <F9>
+Tworzy komentarz                                                          | Ctrl+/
+Zwiększa wartość liczby                                                   | +
+Zmniejsza wartość liczby                                                  | -
+Przełączanie pomiędzy buforami                                            | <leader>b
+Przełączanie pomiędzy dwoma ostatnimi buforami                            | <tab>
+Pozwala wybrać bufor za pomocą jednej litery `BufferPick`                 | <s-tab>
+Pozostawia otwarte tylko aktywne okno                                     | <leader>o
+Zamyka aktywne okno                                                       | <leader>cc
+Wyłącza wyróżnianie szukanego tekstu                                      | <esc>
+FzfLua live grep                                                          | <leader>g
+FzfLua files                                                              | <leader>f
+Uruchamia menadżer plików LF                                              | <leader>l
+Cofa zmiany (standardowy skrót)                                           | u
+Przywraca zmiany                                                          | U
+Następna zmiana w pliku - Git                                             | gj
+Poprzednia zmiana w pliku - Git                                           | gk
+Następna zmiana w pliku - Git                                             | <c-n>
+Poprzednia zmiana w pliku - Git                                           | <c-p>
+Hydra menu                                                                | Alt-o
+Uruchamia menu dla pluginu pomo.nvim                                      | Alt-t
+Zmienia rozmiar aktywnego okna                                            | Alt-h,j,k,l
+Rozpoczyna wyszukiwanie za pomocą pluginu `flash.nvim`                    | s + 2 znaki
+Uruchamia tryb Zen                                                        | <leader>z
+Zaznacza linię pomijając puste znaki na początku i znak końca linii       | vv
+Sprawdza czy kolejna linia jest identyczna, jeśli tak usuwa jedną z nich  | vd
+Otwiera zagnieżdżenia                                                     | zm
+Zamyka zagnieżdżenia                                                      | zn
+Przeszukuje katalog `$HOME/Notes` lub katalog w zmiennej `$NOTES_DIR`     | <space><space>
+Pokazuje zmiany w repozytorium Git `FzfLua git_status`                    | <leader>i
+Kopiuje zaznaczony tekst myszką                                           | <LeftRelease>
+W linii komend wkleja skopiowany ostatnio tekst                           | <c-r>p
+W linii komend wkleja skopiowany ostatnio tekst                           | <c-p>
+Porusza się pomiędzy zmianami w pliku, poprzednia zmiana                  | g;
+Porusza się pomiędzy zmianami w pliku                                     | g,
+Otwiera adres WWW pod kursorem w przeglądarce                             | gx
+Otwiera podpowiedzi słownika                                              | gs
+Wyszukiwanie plików w bieżącej lokalizacji                                | <leader>sf
+Wyszukiwanie plików w repozytorium Git `lua GitFiles()`                   | <leader>sg
+Lista ostatnio edytowanych plików                                         | <leader>s.
+Przeszukiwanie stron pomocy                                               | <leader>sh
+Wyszukiwanie skrótów klawiszowych                                         | <leader>sk
+Wyszukiwanie wyrazu znajdującego się pod kursorem w otwartym pliku        | <leader>sw
+Znajdź i zamień, wyraz pod kursorem                                       | <leader>sc
+Zamienia wyraz pod kursorem skopiowanym wcześniej tekstem                 | <leader>S
+Wyświetla informacje o pliku                                              | <leader>L
+Wyświetla historię komend                                                 | q:
+Wyświetla historię komend                                                 | q;
+Uruchamia komendę `BiPolar`                                               | <leader>tb
+Uruchamia terminal systemowy w oknie Neovim                               | <leader>tt
+Uruchamia polecenie Telescope                                             | <leader>te
+Uruchamia polecenie FzfLua                                                | <leader>tf
+Uruchamia polecenie Cheatsheet                                            | <leader>tc
+Uruchamia polecenie Lazy                                                  | <leader>tl
+Uruchamia Dashboard Alpha                                                 | <leader>A
+Uruchamia polecenie `=ip gqap` wyrównuje paragraf                         | <leader>a
+W trybie VISUAL tworzy wcięcie                                            | <
+W trybie VISUAL tworzy wcięcie                                            | >
+W trybie VISUAL przenosi zaznaczony tekst linię wyżej                     | <c-k>
+W trybie VISUAL przenosi zaznaczony tekst linię niżej                     | <c-j>
+Zamienia wyraz pod kursorem w trybie VISUAL                               | <leader>sc
+## QFJZ-COPY
+Kopiuje zaznaczony tekst w trybie VISUAL                                              | [ENTER]
+Wkleja z wybrangeo rejestru                                                           | <leader>r
+Kopiuje linię pomijając puste znaki na początku i znak końca linii                    | <leader>yy
+Kopiuje do schowka systemowego, rozpoczynając sekwecję np. <leader>yap                | <leader>y
+VISUAL Kopiuje zaznaczenie do schowka systemowego                                     | <leader>y
+Kopiuje do schowka systemowego od kursora do końca linii                              | <leader>Y
+Wkleja tekst bez końca linii w linii poniżej                                          | <leader>p
+Wkleja tekst bez końca linii w linii powyżej                                          | <leader>P
+VISUAL Wkleja, nie podmieniając rejestru                                              | <leader>p
+Usuwa obiekt tekstowy nie kopiując go do rejestru np: <leader>xd lub <leader>xiw      | <leader>x
+VISUAL usuwa zaznaczenie nie kopiując go do rejestru                                  | <leader>x
+Usuwa linię nie kopując do rejestru                                                   | <leader>xx
+Wkleja ostatnio skopiowany tekst, NIE ten wycięty / usunięty                          | ,p
+Wkleja ostatnio skopiowany tekst, NIE ten wycięty / usunięty                          | ,P
+Usuwa od kursora do początku linii                                                    | dh
+Usuwa od kursora do końca linii                                                       | dl
+Kopiuje całą zawartość pliku do rejestru                                              | yA
+Kopiuje zawartość głównego rejestru do rejestru x                                     | <space>m
+Wkleja zawartość rejestru x, standardowo klawisz M przenosi kursor na środek ekranu   | M
+Dublowanie linii                                                                      | tt
+Klonuje cały paragraf                                                                 | <leader>cp
