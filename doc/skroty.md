@@ -90,6 +90,7 @@ Przeszukiwanie skrótów klawiszowych: `<spacja>sk`, lub `:FzfLua keymaps`
 | `<c-k>`          | W trybie VISUAL przenosi zaznaczony tekst linię wyżej                     |
 | `<c-j>`          | W trybie VISUAL przenosi zaznaczony tekst linię niżej                     |
 | `<leader>sc`     | Zamienia wyraz pod kursorem w trybie VISUAL                               |
+| `<c-v>u00b7`     | Wkleja znak UTF-8 w tym wypadku `00b7` - `·`                              |
 
 ## Zarządzanie kartami
 

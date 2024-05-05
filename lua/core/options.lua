@@ -12,7 +12,7 @@ vim.opt.completeopt = ({"menu", "menuone", "noselect"})
 vim.opt.conceallevel = 0
 vim.opt.whichwrap:append("<,>,h,l")
 vim.opt.iskeyword:append("-,_,*")
-vim.opt.listchars = "nbsp:⦸,tab:▸ ,eol:¬,extends:»,precedes:«,trail:•" -- eol ↲
+vim.opt.listchars = "nbsp:⦸,tab:▸ ,eol:¬,extends:»,precedes:«,trail:•,space:·" -- eol ↲
 vim.opt.showbreak = "↪"
 vim.opt.confirm = true
 vim.opt.autochdir = false

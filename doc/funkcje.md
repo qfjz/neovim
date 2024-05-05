@@ -2,6 +2,10 @@
 
 ## AddBMFile
 
+Funkcja AddBMFile pobiera wartość zmiennej systemowej `BM_FILES` jeśli zmienna systemowa o tej
+nazwie nie istnieje, tworzy plik `$HOME/.config/bmfilles`, następnie dodaj obecnie edytowany plik
+do listy plików z których korzysta funkcja `BmFiles`.
+
 ```lua
 AddBmFile = function()
     local BmFiles = os.getenv("BM_FILES")
@@ -16,6 +20,9 @@ end
 ```
 
 ## BmFiles
+
+Otwiera plik określony w zmiennej systemowej `BM_FILES`, jeśli zmienna nie istnieje otwiera plik,
+`$HOME/.config/bmfilles`, następnie uruchamia wyszukiwator plików znajdujący się w tym pliku.
 
 ```lua
 BmFiles = function()

@@ -82,6 +82,8 @@ vim.keymap.set("x", "<leader>y", [["*y]], { desc = "Kopiuje zaznaczony tekst w t
 vim.keymap.set("n", "<leader>P", '<cmd>exe "put! " . v:register<cr>', { desc = "Wklej powyżej" })
 vim.keymap.set("n", "<leader>p", '<cmd>exe "put "  . v:register<cr>', { desc = "Wklej poniżej" })
 vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "Wkleja, nie podmieniając rejestru w trybie VISUAL" })
+-- vim.keymap.set("v", "p", [["_dp]])  -- W trybie VISUAL wkleja tekst bez kopiowania oryginalnego
+-- vim.keymap.set("v", "P", [["_dP]])  -- W trybie VISUAL wkleja tekst bez kopiowania oryginalnego
 -- Usuwa obiekt tekstowy nie kopiując go do standardowego rejestru
 -- Na przykład <leader>xd usuwa całą linię, <leader>xiw usuwa wyraz pod kursorem
 vim.keymap.set("n", "<leader>x", [["_d]])
