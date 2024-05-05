@@ -10,13 +10,23 @@ require("easy-commands").setup({
     ---@type EasyCommand.Command[]
     myCommands = {
         {
-            name = "BrowsingAllMarks",
+            name = "BookmarsAllMarks",
             callback = function()
                 local api = require("bookmarks.api")
                 local picker = require("bookmarks.adapter.picker")
                 picker.pick_bookmark(function(bookmark)
                     api.goto_bookmark(bookmark, { open_method = "vsplit" })
                 end, { all = true })
+            end,
+        },
+        {
+            name = "BookmarksDelete",
+            callback = function()
+                local repo = require("bookmarks.repo")
+                local picker = require("bookmarks.adapter.picker")
+                picker.pick_bookmark(function(bookmark)
+                    repo.mark.write.delete(bookmark)
+                end)
             end,
         },
         {
