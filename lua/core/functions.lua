@@ -167,7 +167,7 @@ end
 
 CopyFileName = function()
     Filename=vim.fn.resolve(vim.fn.expand("%:p"))
-    vim.fn.setreg([["]], Filename, 1)
+    vim.fn.setreg([[*]], Filename, 1)
 end
 
 -- DESC: kopiuje zawartość standardowego rejestru " do rejestru x
