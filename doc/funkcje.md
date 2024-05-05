@@ -471,7 +471,6 @@ Uruchamia skrypt `sh/gp.sh`
 
 ```lua
     CDFD()
-    require'fzf-lua'.git_status({ winopts = { height=1, width=1 } })
     local HOME_DIR = os.getenv("HOME")
     local GP_SH = HOME_DIR .. "/.config/" .. NvimAppName() .. "/sh/gp.sh"
     vim.fn.system({GP_SH, '-v', '-f %:p'})
@@ -483,7 +482,6 @@ Uruchamia skrypt `sh/gp.sh`
 ```lua
 GPS = function()
     CDFD()
-    require'fzf-lua'.git_status({ winopts = { height=1, width=1 } })
     local HOME_DIR = os.getenv("HOME")
     local GPS_SH = HOME_DIR .. "/.config/" .. NvimAppName() .. "/sh/gps.sh"
     vim.fn.system({GPS_SH, '-v', '-f %:p'})
