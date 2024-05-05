@@ -269,6 +269,34 @@ CopyReg = function()
 end
 ```
 
+## DesFree
+
+```lua
+DestractionFree = 0
+DesFree = function()
+    if DestractionFree == 0 then
+        DestractionFree = 1
+        vim.opt.number = false
+        vim.opt.relativenumber = false
+        vim.opt.cursorline = false
+        vim.opt.colorcolumn = "0"
+        vim.opt.signcolumn = "no"
+        vim.opt.foldcolumn = "0"
+        vim.opt.list = false
+    elseif DestractionFree == 1 then
+        DestractionFree = 0
+        vim.opt.number = true
+        vim.opt.relativenumber = true
+        vim.opt.cursorline = true
+        vim.opt.colorcolumn = "+1" 
+        vim.opt.signcolumn = "yes"
+        vim.opt.foldcolumn = "1"
+        vim.opt.list = true
+    end
+    vim.cmd[[IBLToggle]]
+end
+```
+
 ## Docs
 
 Przeszukuje katalog `~/.config/NvimAppName()/doc`

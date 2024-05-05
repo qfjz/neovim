@@ -1,6 +1,6 @@
 # Komendy
 
-Aktualizacja: 2024-02-27 13:30:15, wtorek 27 lutego
+Aktualizacja: 2024-05-05 09:01:14, niedziela 05 maja
 
 Lista dostępnych komend
 
@@ -11,6 +11,7 @@ Lista dostępnych komend
 | `CD`                   | Uruchamia menu z wyborem katalogu                                                          |
 | `CDE`                  | Uruchamia menu z wyborem katalogu a następnie uruchamia w nim menadżer plików              |
 | `CDG`                  | Sprawdza czy plik znajduje się w repozytoriujm Git i wyświetla jego główny katalog         |
+| `DesFree`              | Włącza / wyłącza ozdobne elementy `listchars`                                              |
 | `NvimAppName`          | Wyświetla nazwę konfiguracji Neovim                                                        |
 | `Config`               | Edycja plików konfiguracyjnych                                                             |
 | `Skroty`               | Otwiera okno listy skrótów klawiszowych                                                    |
