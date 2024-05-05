@@ -15,6 +15,8 @@ Przeszukiwanie skrótów klawiszowych: `<spacja>sk`, lub `:FzfLua keymaps`
 | `<leader>,`      | Poprzeni bufor                                                            |
 | `<leader>.`      | Następny bufor                                                            |
 | `<leader>w`      | Zapisanie zmian                                                           |
+| `<leader>W`      | Zapisuje plik pod wybraną nazwą w bieżącym katalogu                       |
+| `<alt-n>  `      | Otwiera pusty bufor (plik)                                                |
 | `qq`             | Wyjśćie                                                                   |
 | `<leader>;`      | Wejście do trybu COMMAND                                                  |
 | `<c-h>`          | Przechodzi do okna po lewej                                               |
