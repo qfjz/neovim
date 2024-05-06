@@ -11,7 +11,7 @@ require("easy-commands").setup({
     myCommands = {
         {
             name = "AddBmFile",
-            callback = "lua AddBMFile()",
+            callback = "lua AddBmFile()",
         },
         {
             -- https://github.com/justinsgithub/Oh-My-LazyVim/blob/main/lua/_oml/config/commands/init.lua
