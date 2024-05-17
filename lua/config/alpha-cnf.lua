@@ -4,6 +4,7 @@ if not ok then return end
 
 local dashboard = require("alpha.themes.dashboard")
 local plugins_count = vim.fn.len(vim.fn.globpath("~/.local/share/" .. NvimAppName() .. "/lazy", "*", 0, 1))
+local verstr = string.format('%s.%s.%s', vim.version().major, vim.version().minor, vim.version().patch)
 -- dashboard.section.header.val = { "-~= Neovim :•: QFJZ =~-" }
 dashboard.section.header.val = {}
 dashboard.section.buttons.val = {
@@ -19,6 +20,6 @@ dashboard.section.buttons.val = {
     dashboard.button("u", "  Aktualizacja pluginów", "<cmd>Lazy update<cr>"),
     dashboard.button("q", "  Exit", "<cmd>qa!<cr>"),
 }
-dashboard.section.footer.val = "liczba  ~ " .. plugins_count
+dashboard.section.footer.val = "liczba  ~ " .. plugins_count .. " : Version " .. verstr
 dashboard.opts.opts.noautocmd = true
 alpha.setup(dashboard.opts)
