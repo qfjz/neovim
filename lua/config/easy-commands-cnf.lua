@@ -14,6 +14,10 @@ require("easy-commands").setup({
             callback = "lua AddBmFile()",
         },
         {
+            name = "BackupNeovimConfig",
+            callback = "TermExec cmd='$HOME/bin/neovim-config-backup.sh " .. NvimAppName() .. "'",
+        },
+        {
             -- https://github.com/justinsgithub/Oh-My-LazyVim/blob/main/lua/_oml/config/commands/init.lua
             name = "BiPolar",
             callback = function(_)
