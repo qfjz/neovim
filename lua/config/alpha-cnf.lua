@@ -20,6 +20,6 @@ dashboard.section.buttons.val = {
     dashboard.button("u", "  Aktualizacja pluginów", "<cmd>Lazy update<cr>"),
     dashboard.button("q", "  Exit", "<cmd>qa!<cr>"),
 }
-dashboard.section.footer.val = "liczba  ~ " .. plugins_count .. " : Version " .. verstr
+dashboard.section.footer.val = "Liczba  ~ " .. plugins_count .. " : Neovim " .. verstr
 dashboard.opts.opts.noautocmd = true
 alpha.setup(dashboard.opts)

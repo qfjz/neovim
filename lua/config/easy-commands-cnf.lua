@@ -173,6 +173,12 @@ require("easy-commands").setup({
             callback = "lua require('noice').cmd('history')",
         },
         {
+            name = "Hostname",
+            callback = function()
+                vim.notify(vim.fn.system("hostname"))
+            end,
+        },
+        {
             name = "Keymaps",
             callback = "FzfLua keymaps",
             description = "Wyszukiwarka skrótów klawiszowych",

@@ -38,6 +38,7 @@ vim.keymap.set("n", "<leader>sv", "<cmd>vs<cr>", { desc = "Dzieli okno w pionie"
 vim.keymap.set("n", "<leader>sp", "<cmd>sp<cr>", { desc = "Dzieli okno w poziomie" })
 vim.keymap.set("n", "<leader>v", "<cmd>lua NvimConfig()<cr>", { desc = "Wyszukiwarka plików konfiguracyjnych" })
 vim.keymap.set("n", "yA", "<cmd>%yank<cr>", { desc = "Kopiuje całą zawartość pliku do rejestru" })
+vim.keymap.set("n", "dA", "<cmd>%delete<cr>", { desc = "Usuwa całą zawartość pliku" })
 vim.keymap.set("n", "<space>m", "<cmd>lua CopyReg()<cr>", { desc = "Kopiuje zawartość głównego rejestru do rejestru 'x'" })
 vim.keymap.set("n", "M", '"xp', { desc = "Wkleja zawartość rejestru 'x', standardowo klawisz 'M' przenosi kursor na środek ekranu" })
 -- vim.keymap.set("n", [[M]], [[`m]], { desc = "Przechodzi do znacznika `m`" })
