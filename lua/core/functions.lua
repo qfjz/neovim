@@ -474,7 +474,7 @@ Skroty = function()
     end
 end
 
--- DESC: Sprawdza czy pracuje na zdalnym połączeniu SSh
+-- DESC: Sprawdza czy pracuje na zdalnym połączeniu SSH
 SSHClient = function()
     local SSH_Connection = os.getenv("SSH_CONNECTION")
     if SSH_Connection ~= nil then
