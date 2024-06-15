@@ -2,7 +2,7 @@
 AddBmFile = function()
     local BmFiles = os.getenv("BM_FILES")
     if BmFiles == nil then
-        BmFiles = vim.fn.resolve(vim.fn.expand("$HOME/.config/bmfilles"))
+        BmFiles = vim.fn.resolve(vim.fn.expand("$HOME/.config/bmfiles"))
     end
     local BmFilesHandle = io.open(BmFiles, "a+")
     local FileName = vim.fn.resolve(vim.fn.expand("%:p"))
@@ -13,7 +13,7 @@ end
 BmFiles = function()
     local BmFiles = os.getenv("BM_FILES")
     if BmFiles == nil then
-        BmFiles = vim.fn.resolve(vim.fn.expand("$HOME/.config/bmfilles"))
+        BmFiles = vim.fn.resolve(vim.fn.expand("$HOME/.config/bmfiles"))
     end
     if vim.fn.filereadable(BmFiles) == 0 then
         io.open(BmFiles, "a+")
@@ -227,7 +227,7 @@ end
 EditBmFiles = function()
     local BmFiles = os.getenv("BM_FILES")
     if BmFiles == nil then
-        BmFiles = vim.fn.resolve(vim.fn.expand("$HOME/.config/bmfilles"))
+        BmFiles = vim.fn.resolve(vim.fn.expand("$HOME/.config/bmfiles"))
     end
     vim.cmd('e' .. BmFiles)
 end
