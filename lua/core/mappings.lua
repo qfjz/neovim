@@ -83,6 +83,7 @@ vim.keymap.set("n", "vd", [[:norm vj<cr>:sort u<cr>]], { noremap = true, silent 
 -- Kopiowanie zaznaczonego tekstu myszką
 vim.keymap.set("v", "<LeftRelease>", '"+ygv<Esc>')
 vim.keymap.set("n", "<leader>r", '<cmd>FzfLua registers<cr>', { desc = "Wklej z wybranego rejestru" })
+vim.keymap.set("x", "<leader>d", "\"_d", { desc = "Usuwa zaznaczony tekst nie kopiując go do standardowego rejestru" })
 vim.keymap.set("n", "<leader>yy", "^vg_y", { desc = "Kopiuje linię pomijając puste znaki na początku i znak końca linii" })
 -- kokopiujepiuje do schowka systemowego np: <leader>yap - kopiuje paragraf do schowka systemowego
 vim.keymap.set("n", "<leader>y", [["*y]], { desc = "Rozpoczyna sekwencję kopiowania (<leader>yap)" })
@@ -93,6 +94,7 @@ vim.keymap.set("x", "<leader>y", [["*y]], { desc = "Kopiuje zaznaczony tekst w t
 vim.keymap.set("n", "<leader>P", '<cmd>exe "put! " . v:register<cr>', { desc = "Wklej powyżej" })
 vim.keymap.set("n", "<leader>p", '<cmd>exe "put "  . v:register<cr>', { desc = "Wklej poniżej" })
 vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "Wkleja, nie podmieniając rejestru w trybie VISUAL" })
+-- vim.keymap.set("x", "p", '"_c<Esc>p')  -- Wkleja, nie podmieniając rejestru w trybie VISUAL
 -- vim.keymap.set("v", "p", [["_dp]])  -- W trybie VISUAL wkleja tekst bez kopiowania oryginalnego
 -- vim.keymap.set("v", "P", [["_dP]])  -- W trybie VISUAL wkleja tekst bez kopiowania oryginalnego
 -- Usuwa obiekt tekstowy nie kopiując go do standardowego rejestru
@@ -123,7 +125,7 @@ vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 -- zlicza ilość wystąpień wyrazu pod kursorem
 vim.keymap.set("n", "*", "*<C-O>:%s///gn<CR>")
-vim.keymap.set("n", "#", "#<C-O>:%s///gn<CR>")
+-- vim.keymap.set("n", "#", "#<C-O>:%s///gn<CR>")
 -- Poruszanie się pomiędzy zmianami w pliku
 vim.keymap.set("n", "g;", "g;zvzz")
 vim.keymap.set("n", "g,", "g,zvzz")
@@ -273,6 +275,13 @@ vim.keymap.set("n", "<leader>sW", ":norm ysiW", { desc = "Czeka na wprowadzenie 
 vim.keymap.set("n", "<leader>ssp", ":norm ysip", { desc = "Czeka na wprowadzenie znaku, który otoczy paragraf" })
 vim.keymap.set("n", "<leader>ss", ":norm yss", { desc = "Czeka na wprowadzenie znaku, którym otoczy linię" })
 vim.keymap.set("n", "<leader>sdd", ":norm ds", { desc = "Czeka na wprowadzenie znaku, którym zostanie usunięty" })
+vim.keymap.set("n", "<leader>5", "<cmd>!./%<cr>", { desc = "Uruchom skrypt" })
+vim.keymap.set("n", "<leader>7", "<cmd>setlocal spell! spell? spelllang=pl<cr>", { desc = "Włącz sprawdzanie pisowni" })
+-- Poruszanie się w trybie COMMAND
+vim.keymap.set("c", "<c-j>", "<down>")
+vim.keymap.set("c", "<c-k>", "<up>")
+vim.keymap.set("c", "<c-h>", "<left>")
+vim.keymap.set("c", "<c-l>", "<right>")
 -- Noice - historia komunikatów
 -- vim.keymap.set("n", "<leader>nl", function()
     -- require("noice").cmd("last")
