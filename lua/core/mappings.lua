@@ -6,6 +6,7 @@ vim.keymap.set("n", [[<leader>n]], "<cmd>Neotree reveal_force_cwd toggle<cr>", {
 vim.keymap.set("n", [[\]], "<cmd>Neotree reveal_force_cwd toggle<cr>", { desc = "Uruchamia menadżer plików NeoTree" })
 vim.keymap.set({"n", "x"}, [[gh]], "^", { desc = "Początek linii" })
 vim.keymap.set({"n", "x"}, [[gl]], "$", { desc = "Koniec linii" })
+-- vim.keymap.set({"n", "x" }, "$", "g_", { desc = "Przechodzi do ostatniego drukowalnego znaku w linii" })  -- 
 vim.keymap.set("n", "mm", "<cmd>BookmarksMark<cr>")
 vim.keymap.set("n", "mo", "<cmd>BookmarksGoto<cr>")
 vim.keymap.set("n", "<leader>B", "<cmd>BiPolar<cr>")
@@ -50,8 +51,8 @@ vim.keymap.set("n", "<F9>", "<cmd>lua KolorPora()<cr>", { desc = "Zmiana tematu 
 vim.keymap.set("n", "<c-_>", "<Plug>kommentary_line_default", { desc = "<Ctrl + /> Tworzy komentarz" })
 vim.keymap.set("x", "<c-_>", "<Plug>kommentary_visual_default", { desc = "<Ctrl + /> Tworzy komentarz" })
 vim.keymap.set("n", "<leader>u", "<cmd>UndotreeToggle<cr>", { desc = "Rejestr zmian Undotree" })
-vim.keymap.set({ "n", "x" }, "+", "<C-a>", { desc = "Zwiększa wartość liczby" })
-vim.keymap.set({ "n", "x" }, "-", "<C-x>", { desc = "Zmniejsza wartość liczby" })
+vim.keymap.set({ "n", "x" }, "+", "<C-a>", { silent = true, desc = "Zwiększa wartość liczby" })
+vim.keymap.set({ "n", "x" }, "-", "<C-x>", { silent = true, desc = "Zmniejsza wartość liczby" })
 vim.keymap.set("n", "<leader>b", "<cmd>FzfLua buffers<cr>", { desc = "Przełączanie pomiędzy buforami" })
 vim.keymap.set("n", "<tab>", "<cmd>e #<cr>", { desc= "Przełączanie pomiędzy dwoma ostatnimi buforami" })
 vim.keymap.set("n", [[<s-tab>]], "<cmd>BufferPick<cr>", { desc = "Pozwala wybrać bufor za pomocą jednej litery" })
@@ -203,7 +204,7 @@ vim.keymap.set("n", "<leader>i", function()
     })
 end, { desc = "Pokazuje zmiany w repozytorium Git" })
 vim.keymap.set("n", "<leader>sg", "<cmd>lua GitFiles()<cr>", { desc = "FzfLua git_files" })
-vim.keymap.set("n", "<leader>sw", function()
+vim.keymap.set("n", "#", function()
     require('fzf-lua').grep_cWORD({
         winopts = {
             preview = { hidden = "nohidden" },
@@ -266,6 +267,12 @@ vim.keymap.set("n", "<leader>z", function()
         vim.cmd[[IBLToggle]]
     end
 end, { desc = "Zen Mode Toggle" })
+-- Obsługa pluginu vim-surround
+vim.keymap.set("n", "<leader>sw", ":norm ysiw", { desc = "Czeka na wprowadzenie znaku, którym otoczy wyraz" })
+vim.keymap.set("n", "<leader>sW", ":norm ysiW", { desc = "Czeka na wprowadzenie znaku, którym otoczy WYRAZ" })
+vim.keymap.set("n", "<leader>ssp", ":norm ysip", { desc = "Czeka na wprowadzenie znaku, który otoczy paragraf" })
+vim.keymap.set("n", "<leader>ss", ":norm yss", { desc = "Czeka na wprowadzenie znaku, którym otoczy linię" })
+vim.keymap.set("n", "<leader>sdd", ":norm ds", { desc = "Czeka na wprowadzenie znaku, którym zostanie usunięty" })
 -- Noice - historia komunikatów
 -- vim.keymap.set("n", "<leader>nl", function()
     -- require("noice").cmd("last")
