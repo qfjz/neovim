@@ -287,13 +287,13 @@ vim.keymap.set({ "n", "v" }, "<leader>ci", function()
     vim.cmd[[cd $NOTES_DIR]]
     vim.fn.writefile(vim.fn.getreg('@', 1, 1), 'INBOX.md', 'a')
     vim.cmd[[cd %:p:h]]
-end, { desc = "Kopiuje bieżącą linię do pliku $NOTES_DIR/INBOX.md" })
+end, { desc = "Kopiuje bieżącą linię lub zaznaczenie do pliku $NOTES_DIR/INBOX.md" })
 vim.keymap.set({ "n", "v" }, "<leader>si", function()
     vim.cmd[[norm "kdd]]
     vim.cmd[[cd $NOTES_DIR]]
     vim.fn.writefile(vim.fn.getreg('@', 1, 1), 'INBOX.md', 'a')
     vim.cmd[[cd %:p:h]]
-end, { desc = "Przenosi bieżącą linię do pliku $NOTES_DIR/INBOX.md" })
+end, { desc = "Przenosi bieżącą linię lub zaznaczenie do pliku $NOTES_DIR/INBOX.md" })
 -- Noice - historia komunikatów
 -- vim.keymap.set("n", "<leader>nl", function()
     -- require("noice").cmd("last")
