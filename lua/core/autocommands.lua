@@ -73,7 +73,7 @@ autocmd("FileType", {
         vim.api.nvim_buf_set_keymap(0, "n", "1", "<cmd>norm I# <cr>A", { noremap = true })
         vim.api.nvim_buf_set_keymap(0, "n", "2", "<cmd>norm I## <cr>A", { noremap = true })
         vim.api.nvim_buf_set_keymap(0, "n", "3", "<cmd>norm I###  <cr>A", { noremap = true })
-        vim.api.nvim_buf_set_keymap(0, "n", "3", "<cmd>norm I#### <cr>A", { noremap = true })
+        vim.api.nvim_buf_set_keymap(0, "n", "4", "<cmd>norm I#### <cr>A", { noremap = true })
         vim.api.nvim_buf_set_keymap(0, "i", ",c", ":norm I```", { noremap = true })
         vim.api.nvim_buf_set_keymap(0, "n", "<leader>sh", [[/^##\+ .*<CR>]], { silent = true, noremap = true, desc = "Wyszukanie nagłówków ##" })
     end,
