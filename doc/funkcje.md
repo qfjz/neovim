@@ -318,10 +318,10 @@ Docs = function()
 end
 ```
 
-## EditBmDirs
+## EditCDDirs
 
 ```lua
-EditBmDirs = function()
+EditCDDirs = function()
     local BmDirs = os.getenv("BM_DIRS")
     if BmDirs == nil then
         BmDirs = vim.fn.resolve(vim.fn.expand("$HOME/.config/bmdirs"))

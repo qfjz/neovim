@@ -5,6 +5,7 @@ require("easy-commands").setup({
         { from = "HistoryMsg", to = "Messages" },
         { from = "F", to = "Files" },
         { from = "GitFiles", to = "GFiles" },
+        { from = "EditCDDirs", to = "EditBmDirs" },
     },
 
     ---@type EasyCommand.Command[]
@@ -116,8 +117,8 @@ require("easy-commands").setup({
             description = "Wyszukiwarka plików dokumentacji nvim-qfjz"
         },
         {
-            name = "EditBmDirs",
-            callback = "lua EditBmDirs()",
+            name = "EditCDDirs",
+            callback = "lua EditCDDirs()",
         },
         {
             name = "EditBmFiles",
@@ -221,7 +222,7 @@ require("easy-commands").setup({
             description = "Ostatnio edytowane pliki",
         },
         {
-            -- Otwiera plik pod kursorem dodając na początku ścieśki "src/"
+            -- DESC: Otwiera plik pod kursorem dodając na początku ścieśki "src/"
             name = "OpenFile",
             callback = function()
                 local cursor_word = "src/" .. vim.api.nvim_eval("expand('<cWORD>')")
@@ -231,6 +232,10 @@ require("easy-commands").setup({
         {
             name = "OstatniaAktualizacja",
             callback = "lua OstatniaAktualizacja()",
+        },
+        {
+            name = "OstatniaSesja",
+            callback = "lua OstatniaSesja()",
         },
         {
             name = "PU",
