@@ -15,6 +15,10 @@ require("easy-commands").setup({
             callback = "lua AddBmFile()",
         },
         {
+            name = "AddCDDir",
+            callback = "lua AddCDDir()",
+        },
+        {
             name = "BackupNeovimConfig",
             callback = "TermExec cmd='$HOME/bin/neovim-config-backup.sh " .. NvimAppName() .. "'",
         },

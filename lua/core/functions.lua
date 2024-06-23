@@ -1,4 +1,5 @@
 -- functions.lua
+-- DESC: Dodaje edytowany plik do bmfiles
 AddBmFile = function()
     local BmFiles = os.getenv("BM_FILES")
     if BmFiles == nil then
@@ -8,6 +9,23 @@ AddBmFile = function()
     local FileName = vim.fn.resolve(vim.fn.expand("%:p"))
     BmFilesHandle:write(FileName .. "\n")
     BmFilesHandle:close()
+end
+
+-- DESC: Dodaje bieżący katalog do pliku bmdirs
+AddCDDir = function()
+    local BmDirs = os.getenv("BM_DIRS")
+    if BmDirs == nil then
+        BmDirs = vim.fn.resolve(vim.fn.expand("$HOME/.config/bmdirs"))
+    end
+    local filename = vim.loop.fs_realpath(vim.api.nvim_buf_get_name(0))
+    local directory = vim.fs.dirname(filename)
+    if directory == nil then
+        print("Plik nie ma swojego miejsca na dysku")
+        return
+    end
+    local BmDirsHandle = io.open(BmDirs, "a+")
+    BmDirsHandle:write(directory .. "\n")
+    BmDirsHandle:close()
 end
 
 BmFiles = function()
@@ -56,11 +74,6 @@ CD = function()
     }
     local files = vim.fn.readfile(vim.fn.expand(BmDirs))
     require'fzf-lua'.fzf_exec(files, opts)
-end
-
--- DESC: Przywraca poprzednią sesję
-OstatniaSesja = function()
-    require('persistence').load({ last = true })
 end
 
 -- DESC: Otwiera menadżer plików w wybranej lokalizacji
@@ -261,6 +274,7 @@ Docs = function()
     })
 end
 
+-- DESC: Edycja pliku bmfiles
 EditBmFiles = function()
     local BmFiles = os.getenv("BM_FILES")
     if BmFiles == nil then
@@ -269,6 +283,7 @@ EditBmFiles = function()
     vim.cmd('e' .. BmFiles)
 end
 
+-- DESC: Edycja pliku bmdirs
 EditCDDirs = function()
     local BmDirs = os.getenv("BM_DIRS")
     if BmDirs == nil then
@@ -517,6 +532,7 @@ end
 Komendy = function()
     local lista_komend = {
         "AddBmFile",
+        "AddCDDir",
         "BackupNeovimConfig",
         "BiPolar",
         "BmFiles",
@@ -669,6 +685,11 @@ OstatniaAktualizacja = function()
     vim.api.nvim_win_set_cursor(0, {row, col})
     vim.cmd("norm ")
     vim.cmd[[silent! language en_US]]
+end
+
+-- DESC: Przywraca poprzednią sesję
+OstatniaSesja = function()
+    require('persistence').load({ last = true })
 end
 
 -- DESC: Wyświetla zawartość tablicy Lua: ':lua P(vim.api.nvim_get_keymap("n"))'
