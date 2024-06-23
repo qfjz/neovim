@@ -136,7 +136,7 @@ vim.keymap.set("n", "<leader>tc", "<cmd>Cheatsheet<cr>")
 vim.keymap.set("n", "<leader>tl", "<cmd>Lazy<cr>")
 vim.keymap.set("n", "<leader>tgi", "<cmd>belowright 10split term://$HOME/bin/gi.sh<cr>", { desc = "Uruchamia w terminalu skrypt gi.sh" })
 vim.keymap.set("n", "<leader>tgp", "<cmd>belowright 10split term://$HOME/bin/pu.sh<cr>", { desc = "Uruchamia w terminal skrypt pu.sh" })
-vim.keymap.set("n", "<leader>tga", "<cmd>belowright 10split term://$HOME/bin/ga.sh<cr>", { desc = "Uruchamia w terminal skrypt gp.sh" })
+vim.keymap.set("n", "<leader>tga", "<cmd>belowright 10split term://$HOME/bin/ga.sh<cr>", { desc = "Uruchamia w terminal skrypt ga.sh" })
 -- Zmiana wielkości okna
 vim.keymap.set("n", "<m-h>", "<cmd>vertical resize -2<cr>")
 vim.keymap.set("n", "<m-j>", "<cmd>resize +2<cr>")
