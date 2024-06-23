@@ -326,6 +326,7 @@ vim.keymap.set("c", "<c-l>", "<right>")
 vim.keymap.set({ "n", "v" }, "<leader>ci", function()
     vim.cmd[[norm "kyy]]
     vim.cmd[[cd $NOTES_DIR]]
+    vim.fn.writefile({ "--" }, 'INBOX.md', 'a')
     -- Wstawia nazwę pliku z którego pochodzi skopiowany tekst
     vim.fn.writefile(vim.fn.getreg('%', 1, 1), 'INBOX.md', 'a')
     vim.fn.writefile(vim.fn.getreg('@', 1, 1), 'INBOX.md', 'a')
@@ -334,6 +335,7 @@ end, { desc = "Kopiuje bieżącą linię lub zaznaczenie do pliku $NOTES_DIR/INB
 vim.keymap.set({ "n", "v" }, "<leader>si", function()
     vim.cmd[[norm "kdd]]
     vim.cmd[[cd $NOTES_DIR]]
+    vim.fn.writefile({ "--" }, 'INBOX.md', 'a')
     -- Wstawia nazwę pliku z którego pochodzi przeniesiony tekst
     vim.fn.writefile(vim.fn.getreg('%', 1, 1), 'INBOX.md', 'a')
     vim.fn.writefile(vim.fn.getreg('@', 1, 1), 'INBOX.md', 'a')
