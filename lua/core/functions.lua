@@ -58,6 +58,7 @@ CD = function()
     require'fzf-lua'.fzf_exec(files, opts)
 end
 
+-- DESC: Otwiera menadżer plików w wybranej lokalizacji
 CDE = function()
     local BmDirs = os.getenv("BM_DIRS")
     if BmDirs == nil then
@@ -168,6 +169,7 @@ end
 CopyFileName = function()
     Filename=vim.fn.resolve(vim.fn.expand("%:p"))
     vim.fn.setreg([[*]], Filename, 1)
+    -- vim.fn.setreg([[+]], Filename, 1)
 end
 
 -- DESC: kopiuje zawartość standardowego rejestru " do rejestru x
@@ -254,6 +256,19 @@ Files = function()
     local rg_cmd = "rg --files --hidden --follow"
     require'fzf-lua'.files({
         cmd = rg_cmd,
+        winopts = {
+            preview = { hidden = "nohidden" },
+            fullscreen = true,
+        }
+    })
+end
+
+-- DESC: Wyszukuje plików w przekazanym jako parametr katalogu
+FindFilesDir = function(dir)
+    require'fzf-lua'.files({
+        prompt="FFD> ",
+        cwd = dir,
+        cmd = "rg --files --hidden --follow -g  !.git",
         winopts = {
             preview = { hidden = "nohidden" },
             fullscreen = true,
@@ -394,7 +409,7 @@ NvimAppName = function()
     return app_name
 end
 
--- DESC: edycja plików konfiguracyjnych
+-- DESC: Wyszukiwanie plików konfiguracyjnych Neovim w katalogu $HOME/.config/nvim wyklucza katalog plugin
 NvimConfig = function()
     local rg_cmd = "rg --files --follow -g '!plugin/' -g '*.lua'"
     local cwd_dir = "$HOME/.config/" .. NvimAppName()
@@ -421,10 +436,11 @@ OstatniaAktualizacja = function()
     end
     vim.cmd("1," .. ln .. " g/Aktualizacja: /s/Aktualizacja: .*/Aktualizacja: " .. data_aktualizacji)
     vim.api.nvim_win_set_cursor(0, {row, col})
+    vim.cmd("norm ")
     vim.cmd[[silent! language en_US]]
-    vim.cmd("norm ")
 end
 
+-- DESC: Wyświetla zawartość tablicy Lua: ':lua P(vim.api.nvim_get_keymap("n"))'
 P = function(v)
     print(vim.inspect(v))
     return v
@@ -496,8 +512,10 @@ end
 
 -- DESC: Time() wyświetla bieżącą datę i godzinę w formacie 20:53:27 2021-11-23, wtorek 23 październik
 Time = function()
+    vim.cmd[[silent! language pl_PL.UTF-8]]
     local czas = vim.fn.strftime("%T %F, %A %d %B")
     vim.notify(czas, "info", { timeout = 6000 })
+    vim.cmd[[silent! language en_US]]
 end
 
 TotalLines = function()
@@ -528,5 +546,160 @@ Write = function()
         MkDir()
         vim.cmd("silent write")
         vim.notify("Utworzyłem" .. " " .. vim.fn.expand("%:p"))
+    end
+end
+
+-- DESC: Wstawia w miejscu kursora datę w formacie '# 26.07.23'
+Date = function()
+    local pos = vim.api.nvim_win_get_cursor(0)[2]
+    local line = vim.api.nvim_get_current_line()
+    local nline = line:sub(0, pos) .. "# " .. os.date("%d.%m.%y") .. line:sub(pos + 1)
+    vim.api.nvim_set_current_line(nline)
+    vim.api.nvim_feedkeys("o", "n", true)
+end
+
+-- DESC: Wstawia: "# 2023-07-23 10:15:13, #29, niedziela 23" lipca w miejscu kursora
+DateHeader = function()
+    vim.cmd[[silent! language pl_PL.UTF-8]]
+    local pos = vim.api.nvim_win_get_cursor(0)[2]
+    local line = vim.api.nvim_get_current_line()
+    local nline = line:sub(0, pos) .. "# " .. os.date("%F %T, #%W, %A %d %B") .. line:sub(pos + 1)
+    vim.api.nvim_set_current_line(nline)
+    vim.api.nvim_feedkeys("o", "n", true)
+    vim.cmd[[silent! language en_US]]
+end
+
+-- DESC: Kopiuje linię do podanego pliku w argumencie
+CopyLineToFile = function(plik)
+    vim.cmd("y")
+    -- vim.cmd("cd $NOTES_DIR")
+    vim.fn.writefile(vim.fn.getreg("@", 1, 1), plik, "a")
+    vim.cmd("cd %:p:h")
+end
+
+-- DESC: Kopiuje linię do podanego pliku w argumencie
+CopyVLineToFile = function(plik)
+    -- vim.cmd("'<,'>y")
+    vim.cmd("y")
+    -- vim.cmd("cd $NOTES_DIR")
+    vim.fn.writefile(vim.fn.getreg("@", 1, 1), plik, "a")
+    vim.cmd("cd %:p:h")
+end
+
+-- DESC: Przenosi linię do podanego pliku w argumencie
+SendLineToFile = function(plik)
+    local rejestr
+    vim.cmd("d")
+    -- vim.cmd("cd $NOTES_DIR")
+    rejestr = vim.fn.getreg("@", 1, 1)
+    vim.fn.writefile(rejestr, plik, "a")
+    vim.cmd("cd %:p:h")
+end
+
+-- DESC: Przenosi zaznaczone linie do podanego pliku w argumencie
+SendVLineToFile = function(plik)
+    local rejestr
+    -- vim.cmd[['<,'>d]]
+    -- vim.cmd("cd $NOTES_DIR")
+    rejestr = vim.fn.getreg("\"", 1, 1)
+    vim.fn.writefile(rejestr, plik, "a")
+    vim.cmd("cd %:p:h")
+end
+
+-- DESC: Sprawdza rozszerzenie pliku podanego w argumencie: lua GetFileExtension('%')
+GetFileExtension = function(file)
+    -- local file = file
+    if vim.fn.fnamemodify(vim.fn.expand(file), ":e") == 'md' then
+        print(vim.fn.fnamemodify(file, ":e"))
+        print("To jest plik Markdown")
+    elseif vim.fn.fnamemodify(vim.fn.expand(file), ":e") == 'lua' then
+        print(vim.fn.fnamemodify(file, ":e"))
+        print("To jest plik Lua")
+    else
+        print(vim.fn.fnamemodify(file, ":e"))
+        print("Nie wiem co to za plik")
+    end 
+end
+
+-- DESC: Przeszukuje katalog $NOTES_DIR
+GrepNotesDir = function()
+    local rg_cmd = "rg --line-number --column -g '*.md' -g '*.norg'"
+    local notes_dir = os.getenv("NOTES_DIR")
+    require'fzf-lua'.live_grep({ prompt = notes_dir .. "> ", cmd = rg_cmd, cwd = notes_dir })
+end
+
+-- DESC: Generuje losowy ciąg znaków w formacie "-- #xxxx-xxxx"
+-- https://vi.stackexchange.com/questions/39681/how-to-insert-text-from-lua-function-at-cursor-position-insert-mode
+Generate_ID = function()
+    math.randomseed(os.time())
+    local random = math.random
+    local template = "-- #xxxx-xxxx"
+    return string.gsub(template, "x", function()
+      local v = random(0, 0xf)  -- v is a decimal number 0 to 15
+      return string.format("%x", v) --formatted as a hex number
+    end)
+end
+
+-- DESC: Przeszukuje katalog $HOME/.config/NVIM_APPNAME z plikami *.lua
+GrepNvimConfigDir = function(opts)
+    local cwd_dir = "$HOME/.config/" .. NvimAppName()
+    local prompt = "Config> "
+    local rg_cmd = "rg --line-number --column -g '*.lua'"
+    require'fzf-lua'.grep_cWORD({ prompt = prompt, cmd = rg_cmd, cwd = cwd_dir })
+end
+
+-- DESC: Przeszukuje katalog $HOME/.config/NVIM_APPNAME/doc z plikami *.md
+GrepNvimDocsDir = function(opts)
+    local cwd_dir = "$HOME/.config/" .. NvimAppName() .. "/doc"
+    local prompt = "Docs> "
+    local rg_cmd = "rg --line-number --column -g '*.md'"
+    require'fzf-lua'.grep_cWORD({ prompt = prompt, cmd = rg_cmd, cwd = cwd_dir })
+end
+
+-- DESC: W zależności od pliku w którym się znajdumemy lua/md uruchamia odpowiednią dla niego funkcję
+GrepNvimHash = function()
+    if vim.bo.filetype == "lua" then
+        -- przeszukiwanie katalgou doc
+        GrepNvimDocsDir()
+    elseif vim.bo.filetype == "markdown" then
+        -- przeszukiwanie katalogu ~/.config/nvim/*.lua
+        GrepNvimConfigDir()
+    end
+end
+
+-- DESC: Wstawia losowy ciąg znaków w formacie określonym w funkcji Generate_ID
+Insert_ID = function()
+    local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+    local id = Generate_ID()
+    vim.api.nvim_buf_set_text(0, row - 1, col, row - 1, col, { id })
+end
+
+-- DESC: Wstawia w bieżącej linii: - [ ] (@2023-09-19 12:07)
+InsObsdianRemminder = function()
+    local pos = vim.api.nvim_win_get_cursor(0)[2]
+    local line = vim.api.nvim_get_current_line()
+    local nline = line:sub(0, pos) .. "- [ ] (@" .. os.date("%F %H:%M") .. ") " .. line:sub(pos + 1)
+    vim.api.nvim_set_current_line(nline)
+    vim.api.nvim_feedkeys("A", "n", true)
+end
+
+-- DESC: Skrócony zapis mapowania klawiszy
+-- map("n", "<leader>;", ":", { silent = false })
+map = function(mode, lhs, rhs, opts)
+    local options = { noremap = true }
+    if opts then
+        options = vim.tbl_extend("force", options, opts)
+    end
+    vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+end
+
+-- DESC: Wyświetla w dodatkowym oknie VimTips.md
+VimTips = function()
+    if MyVimTips == 1 then
+        MyVimTips = 0
+        vim.cmd("pclose")
+    else
+        MyVimTips = 1
+        vim.cmd("pedit $HOME/.config/" .. NvimAppName() .. "/docs/VimTips.md")
     end
 end
