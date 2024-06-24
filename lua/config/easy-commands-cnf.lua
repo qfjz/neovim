@@ -184,6 +184,10 @@ require("easy-commands").setup({
             end,
         },
         {
+            name = "InsObsdianRemminder",
+            callback = "lua InsObsdianRemminder()"
+        },
+        {
             name = "Keymaps",
             callback = "FzfLua keymaps",
             description = "Wyszukiwarka skrótów klawiszowych",

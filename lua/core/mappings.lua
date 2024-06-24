@@ -136,6 +136,8 @@ vim.keymap.set("n", "<leader>tf", "<cmd>FzfLua<cr>")
 vim.keymap.set("n", "<leader>tc", "<cmd>Cheatsheet<cr>")
 vim.keymap.set("n", "<leader>tl", "<cmd>Lazy<cr>")
 vim.keymap.set("n", "<leader>ti", "<cmd>belowright 10split term://$HOME/bin/gi.sh<cr>", { desc = "Uruchamia w terminalu skrypt gi.sh" })
+vim.keymap.set('n', '<leader>ty', [[<cmd>s/\[\s\]/[x]/<cr><cmd>nohl<cr>]], { silent = true , desc = "Checkbox Done"})
+vim.keymap.set('n', '<leader>tu', [[<cmd>s/\[x\]/[ ]/<cr><cmd>nohl<cr>]], { silent = true, desc = "Checkbox ToDo" })
 -- Zmiana wielkości okna
 vim.keymap.set("n", "<m-h>", "<cmd>vertical resize -2<cr>")
 vim.keymap.set("n", "<m-j>", "<cmd>resize +2<cr>")
