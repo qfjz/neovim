@@ -557,6 +557,7 @@ Komendy = function()
         "EditGitConfig",
         "Fileinfo",
         "Files",
+        "FzfLua commands",
         "FzfLua help_tags",
         "FzfLua keymaps",
         "FzfLua oldfiles",
@@ -619,6 +620,14 @@ Komendy = function()
         "TermGitStatus",
         "TermPs",
         "Time",
+        "TimerHide",
+        "TimerShow",
+        "TimerStart 10m",
+        "TimerStart 15m",
+        "TimerStart 1m",
+        "TimerStart 30m",
+        "TimerStart 5m",
+        "TimerStart 60m",
         "Wrap",
         "ZenMode",
     }
@@ -634,7 +643,7 @@ end
 
 -- DESC: Skrócony zapis mapowania klawiszy
 -- map("n", "<leader>;", ":", { silent = false })
-map = function(mode, lhs, rhs, opts)
+Map = function(mode, lhs, rhs, opts)
     local options = { noremap = true }
     if opts then
         options = vim.tbl_extend("force", options, opts)
@@ -836,6 +845,7 @@ Write = function()
     end
 end
 
+-- DESC: Wyświetla wszystkie ustawione opcje Neovim, :Messages wyświetla wynik funkcji
 Options = function()
     local all_options = vim.api.nvim_get_all_options_info()
     local win_number = vim.api.nvim_get_current_win()
