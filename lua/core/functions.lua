@@ -831,7 +831,7 @@ InputFilename = function()
         border = {
             style = "single",
             text = {
-                top = " [ Podaj nazwę pliku ] ",
+                top = " [ Podaj nazwę pliku ] .. [ <ctrl-c> zamyka okno ]",
                 top_align = "center",
             },
         },
