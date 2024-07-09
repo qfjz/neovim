@@ -501,6 +501,56 @@ Insert_ID = function()
     vim.api.nvim_buf_set_text(0, row - 1, col, row - 1, col, { id })
 end
 
+-- DESC: Funkcja wyświetla okno do wprowadzenia nazwy pliku do zapisania, wywoływana przez funcję Write()
+InputFilename = function()
+    local Input = require("nui.input")
+    local event = require("nui.utils.autocmd").event
+
+    local input = Input({
+        position = "50%",
+        size = {
+            width = 60,
+        },
+        border = {
+            style = "single",
+            text = {
+                top = " [ Podaj nazwę pliku ] .. [ <ctrl-c> zamyka okno ]",
+                top_align = "center",
+            },
+        },
+        win_options = {
+            winhighlight = "Normal:Normal,FloatBorder:Normal",
+        },
+    }, {
+        prompt = " > ",
+        default_value = vim.fn.expand("%:p:h") .. "/",
+        on_close = function()
+            print("Input Closed!")
+        end,
+        on_submit = function(value)
+            local dir = vim.fs.dirname(value)
+            if vim.fn.isdirectory(dir) == 0 then
+                vim.fn.mkdir(dir, "p")
+                vim.notify("Utworzyłem katalog" .. " " .. dir)
+            end
+            if vim.fn.isdirectory(value) == 1 then
+                vim.notify("Podaj nazwę pliku")
+                return
+            end
+            vim.cmd("silent write" .. value)
+            vim.notify("Utworzyłem" .. " " .. vim.fn.expand("%:p"))
+        end,
+    })
+
+    -- mount/open the component
+    input:mount()
+
+    -- unmount component when cursor leaves buffer
+    input:on(event.BufLeave, function()
+        input:unmount()
+    end)
+end
+
 -- DESC: Wstawia w bieżącej linii: - [ ] (@2023-09-19 12:07)
 InsObsdianRemminder = function()
     local pos = vim.api.nvim_win_get_cursor(0)[2]
@@ -817,55 +867,6 @@ VimTips = function()
         MyVimTips = 1
         vim.cmd("pedit $HOME/.config/" .. NvimAppName() .. "/docs/VimTips.md")
     end
-end
-
-InputFilename = function()
-    local Input = require("nui.input")
-    local event = require("nui.utils.autocmd").event
-
-    local input = Input({
-        position = "50%",
-        size = {
-            width = 60,
-        },
-        border = {
-            style = "single",
-            text = {
-                top = " [ Podaj nazwę pliku ] .. [ <ctrl-c> zamyka okno ]",
-                top_align = "center",
-            },
-        },
-        win_options = {
-            winhighlight = "Normal:Normal,FloatBorder:Normal",
-        },
-    }, {
-        prompt = " > ",
-        default_value = vim.fn.expand("%:p:h") .. "/",
-        on_close = function()
-            print("Input Closed!")
-        end,
-        on_submit = function(value)
-            local dir = vim.fs.dirname(value)
-            if vim.fn.isdirectory(dir) == 0 then
-                vim.fn.mkdir(dir, "p")
-                vim.notify("Utworzyłem katalog" .. " " .. dir)
-            end
-            if vim.fn.isdirectory(value) == 1 then
-                vim.notify("Podaj nazwę pliku")
-                return
-            end
-            vim.cmd("silent write" .. value)
-            vim.notify("Utworzyłem" .. " " .. vim.fn.expand("%:p"))
-        end,
-    })
-
-    -- mount/open the component
-    input:mount()
-
-    -- unmount component when cursor leaves buffer
-    input:on(event.BufLeave, function()
-        input:unmount()
-    end)
 end
 
 -- DESC: Zapisuje plik Write()
