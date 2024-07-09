@@ -848,6 +848,7 @@ InputFilename = function()
             local dir = vim.fs.dirname(value)
             if vim.fn.isdirectory(dir) == 0 then
                 vim.fn.mkdir(dir, "p")
+                vim.notify("Utworzyłem katalog" .. " " .. dir)
             end
             if vim.fn.isdirectory(value) == 1 then
                 vim.notify("Podaj nazwę pliku")
