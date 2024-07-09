@@ -849,6 +849,10 @@ InputFilename = function()
             if vim.fn.isdirectory(dir) == 0 then
                 vim.fn.mkdir(dir, "p")
             end
+            if vim.fn.isdirectory(value) == 1 then
+                vim.notify("Podaj nazwę pliku")
+                return
+            end
             vim.cmd("silent write" .. value)
             vim.notify("Utworzyłem" .. " " .. vim.fn.expand("%:p"))
         end,
