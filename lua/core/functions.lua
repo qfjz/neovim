@@ -819,11 +819,56 @@ VimTips = function()
     end
 end
 
+InputFilename = function()
+    local Input = require("nui.input")
+    local event = require("nui.utils.autocmd").event
+
+    local input = Input({
+        position = "50%",
+        size = {
+            width = 60,
+        },
+        border = {
+            style = "single",
+            text = {
+                top = " [ Podaj nazwę pliku ] ",
+                top_align = "center",
+            },
+        },
+        win_options = {
+            winhighlight = "Normal:Normal,FloatBorder:Normal",
+        },
+    }, {
+        prompt = " > ",
+        default_value = vim.fn.expand("%:p:h") .. "/",
+        on_close = function()
+            print("Input Closed!")
+        end,
+        on_submit = function(value)
+            local dir = vim.fs.dirname(value)
+            if vim.fn.isdirectory(dir) == 0 then
+                vim.fn.mkdir(dir, "p")
+            end
+            vim.cmd("silent write" .. value)
+            vim.notify("Utworzyłem" .. " " .. vim.fn.expand("%:p"))
+        end,
+    })
+
+    -- mount/open the component
+    input:mount()
+
+    -- unmount component when cursor leaves buffer
+    input:on(event.BufLeave, function()
+        input:unmount()
+    end)
+end
+
 -- DESC: Zapisuje plik Write()
 Write = function()
     for _, v in ipairs(vim.fn.getbufinfo("%")) do
         if v.name == "" then
             vim.notify("Bufor bez nazwy, plik nie zostanie zapisany.")
+            InputFilename()
             return
         end
     end
