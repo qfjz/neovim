@@ -494,13 +494,6 @@ GrepNvimHash = function()
     end
 end
 
--- DESC: Wstawia losowy ciąg znaków w formacie określonym w funkcji Generate_ID
-Insert_ID = function()
-    local row, col = unpack(vim.api.nvim_win_get_cursor(0))
-    local id = Generate_ID()
-    vim.api.nvim_buf_set_text(0, row - 1, col, row - 1, col, { id })
-end
-
 -- DESC: Funkcja wyświetla okno do wprowadzenia nazwy pliku do zapisania, wywoływana przez funcję Write()
 InputFilename = function()
     local Input = require("nui.input")
@@ -549,6 +542,13 @@ InputFilename = function()
     input:on(event.BufLeave, function()
         input:unmount()
     end)
+end
+
+-- DESC: Wstawia losowy ciąg znaków w formacie określonym w funkcji Generate_ID
+Insert_ID = function()
+    local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+    local id = Generate_ID()
+    vim.api.nvim_buf_set_text(0, row - 1, col, row - 1, col, { id })
 end
 
 -- DESC: Wstawia w bieżącej linii: - [ ] (@2023-09-19 12:07)
