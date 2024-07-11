@@ -7,7 +7,7 @@ end
 local actions = require "fzf-lua.actions"
 
 configs.setup {
-    fzf_bin = '$HOME/bin/sk',
+    fzf_bin = '/usr/bin/sk',
     -- fzf_bin         = 'sk',            -- use skim instead of fzf?
     -- https://github.com/lotabout/skim
     -- can also be set to 'fzf-tmux'
