@@ -494,53 +494,31 @@ GrepNvimHash = function()
     end
 end
 
+local function trim(str)
+  return str:gsub("^%s+", ""):gsub("%s+$", "")
+end
+
 -- DESC: Funkcja wyświetla okno do wprowadzenia nazwy pliku do zapisania, wywoływana przez funcję Write()
 InputFilename = function()
-    local Input = require("nui.input")
-    local event = require("nui.utils.autocmd").event
-
-    local input = Input({
-        position = "50%",
-        size = {
-            width = 60,
-        },
-        border = {
-            style = "single",
-            text = {
-                top = " [ Podaj nazwę pliku ] .. [ <ctrl-c> zamyka okno ]",
-                top_align = "center",
-            },
-        },
-        win_options = {
-            winhighlight = "Normal:Normal,FloatBorder:Normal",
-        },
-    }, {
-        prompt = " > ",
-        default_value = vim.fn.expand("%:p:h") .. "/",
-        on_close = function()
-            print("Input Closed!")
-        end,
-        on_submit = function(value)
-            local dir = vim.fs.dirname(value)
-            if vim.fn.isdirectory(dir) == 0 then
-                vim.fn.mkdir(dir, "p")
-                vim.notify("Utworzyłem katalog" .. " " .. dir)
-            end
-            if vim.fn.isdirectory(value) == 1 then
-                vim.notify("Podaj nazwę pliku")
-                return
-            end
-            vim.cmd("silent write" .. value)
-            vim.notify("Utworzyłem" .. " " .. vim.fn.expand("%:p"))
-        end,
-    })
-
-    -- mount/open the component
-    input:mount()
-
-    -- unmount component when cursor leaves buffer
-    input:on(event.BufLeave, function()
-        input:unmount()
+    vim.ui.input({ prompt = "Podaj nazwę pliku", default = vim.fn.expand("%:p:h") .. "/", },
+    function(input)
+        if not input then
+            return
+        end
+        if trim(input) == "" then
+            return vim.notify("Podaj nazwę pliku")
+        end
+        local dir = vim.fs.dirname(input)
+        if vim.fn.isdirectory(dir) == 0 then
+            vim.fn.mkdir(dir, "p")
+            vim.notify("Utworzyłem katalog" .. " " .. dir)
+        end
+        if vim.fn.isdirectory(input) == 1 then
+            vim.notify("Podaj nazwę pliku")
+            return
+        end
+        vim.cmd("silent write" .. input)
+        vim.notify("Utworzyłem" .. " " .. vim.fn.expand("%:p"))
     end)
 end
 
