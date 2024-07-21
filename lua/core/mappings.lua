@@ -128,6 +128,7 @@ vim.keymap.set("n", "d<space>", "daw", { desc = "Usuwa wyraz pod kursorem" })  -
 -- vim.keymap.set("n", "<leader>x", "<cmd>lua Write()<cr><cmd>q<cr>", { desc = "Zapisuje zmiany i wychodzi" })
 vim.keymap.set("n", ",p", '"0p', { desc = "Wkleja ostatnio skopiowany tekst, NIE ten wycięty / usunięty" })
 vim.keymap.set("n", ",P", '"0P', { desc = "Wkleja ostatnio skopiowany tekst, NIE ten wycięty / usunięty" })
+-- vim.keymap.set("n", "<F4>", ':let @+ = fnamemodify(expand("%"), ":~:.")<CR>')  -- kopiuje ścieżkę i nazwę pliku do rejestru +
 vim.keymap.set("n", "zn", "zm")
 vim.keymap.set("n", "zm", "zn")
 vim.keymap.set("n", "<leader>tb", "<cmd>BiPolar<cr>")
