@@ -888,3 +888,31 @@ MkDirSelect = function(dir)
     end)
 end
 ```
+
+## Komendy
+
+Wersja korzystająca z FzfLua
+
+```lua
+DESC: Przeszukiwalna lista komend
+Komendy = function()
+    local lista_komend = {
+        "AddBmFile",
+        "AddCDDir",
+        "BackupNeovimConfig",
+        "BiPolar",
+         -- ...
+        "TimerStart 60m",
+        "Wrap",
+        "ZenMode",
+    }
+    local opts = {}
+    opts.prompt = "Wyszukaj> "
+    opts.actions = {
+        ['default'] = function(selected)
+            vim.cmd(selected[1])
+        end
+    }
+    require'fzf-lua'.fzf_exec(lista_komend, opts)
+end
+```
