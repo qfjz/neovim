@@ -221,6 +221,27 @@ require("easy-commands").setup({
             callback = "Neorg workspace work",
         },
         {
+            name = "NewFileNoSplit",
+            callback = function()
+                vim.cmd[[enew]]
+                vim.cmd[[startinsert]]
+            end,
+        },
+        {
+            name = "NewFileHSplit",
+            callback = function()
+                vim.cmd[[new]]
+                vim.cmd[[startinsert]]
+            end,
+        },
+        {
+            name = "NewFileVSplit",
+            callback = function()
+                vim.cmd[[vnew]]
+                vim.cmd[[startinsert]]
+            end,
+        },
+        {
             name = "NvimAppName",
             callback = "lua vim.notify(NvimAppName())",
         },
