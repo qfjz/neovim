@@ -35,7 +35,6 @@ require("config.persistence-cnf")
 require("config.easy-commands-cnf")
 require("config.headlines-cnf")
 require("config.bookmarks-cnf")
-
 require("plugins.plugins")
 
 vim.cmd([[colorscheme tokyonight]])
