@@ -546,67 +546,58 @@ Komendy = function()
             "Pokazuje zmiany w repozytorium Git (FzfLua git_status)",
             "Dodaje i wysyła pliki do repozytorium Git (GP)",
             "Dodaje, podpisuje i wysyła pliki do repozytorium Git (GPS)",
-            "HideMiddleDot",
-            "HistoryMsg",
-            "Hostname",
-            "IBLDisable",
-            "IBLEnable",
-            "IBLToggle",
-            "InsObsdianRemminder",
-            "Keymaps",
-            "KolorPora",
-            "Kolory",
-            "language en_US",
-            "language pl_PL.UTF-8",
-            "LastMsg",
-            "Lazy clean",
-            "Lazy install",
-            "Lazy update",
-            "Light",
-            "List",
-            "lua CheckExternalReqs()",
-            "lua CheckVersion()",
-            "lua print('asdf')",
-            "lua vim.cmd[[echo \"asdf\"]]",
-            "lua vim.g.neovide_transparency = 0.2",
-            "lua vim.g.neovide_transparency = 1",
-            "lua vim.o.guifont = 'Source Code Pro:h12'",
-            "lua vim.o.guifont = 'Source Code Pro:h17'",
-            "lua vim.o.guifont = 'Source Code Pro:h21'",
-            "Messages",
-            "Neorg workspace home",
-            "Neorg workspace work",
-            "NeorgHome",
-            "NeorgWork",
-            "NewFileHSplit",
-            "NewFileNoSplit",
-            "NewFileVSplit",
-            "NvimAppName",
-            "OldFiles",
-            "OpenFile",
-            "OstatniaAktualizacja",
-            "OstatniaSesja",
+            "Ukrywa znak · wstawiony w miejsce spacji (HideMiddleDot)",
+            "Wyświetla nazwę systemu (Hostname)",
+            "Wyłącza prowadnice wcięć (IBLDisable)",
+            "Włącza prowadnice wcięć (IBLEnable)",
+            "Włącza / wyłącza prowadnice wcięć (IBLToggle)",
+            "Wstawia znacznik dla przypomnień w programie Obsidian (InsObsdianRemminder)",
+            "Zmienia schemat kolorystyczny biorąc pod uwagę porę dnia (KolorPora)",
+            "Zmiana schematu kolorystycznego (Kolory)",
+            "Zmiana języka Neovim na język angielski (language en_US)",
+            "Zmiana języka Neovim na język polski (language pl_PL.UTF-8)",
+            "Wyświetla ostatni komunikat (LastMsg)",
+            "Usunięcie nieużywanych pluginów (Lazy clean)",
+            "Instalacja nowych pluginów (Lazy install)",
+            "Aktualizacja pluginów (Lazy update)",
+            "Ustaw jasny schemat kolorystyczny (Light)",
+            "Wyświetla / ukrywa dekoratory list (List)",
+            "Sprawdza czy w systemie są wymagane programy (CheckExternalReqs)",
+            "Wyświetla wersję programu Neovim (CheckVersion)",
+            "Ustawia przezroczystość dla Neovide na 0.2",
+            "Ustawia przezroczystość dla Neovide na 1",
+            "Zmienia rozmiar czcionki dla Neovide na 12",
+            "Zmienia rozmiar czcionki dla Neovide na 17",
+            "Zmienia rozmiar czcionki dla Neovide na 21",
+            "Wyświetla komunikaty (Messages)",
+            "Neorg przejdź do workspace home",
+            "Neorg przejdź do workspace work",
+            "Otwórz nowy plik w podziale poziomym (NewFileHSplit)",
+            "Otwórz nowy plik w podziale pionowym (NewFileVSplit)",
+            "Otwórz nowy plik (NewFileNoSplit)",
+            "Wyświetla nazwę zmiennej NVIM_APPNAME",
+            "Otwiera plik pod kursorem dodając na początku ścieśki src/ (OpenFile)",
+            "Aktualizacja lini Ostatnia Aktualizacja (OstatniaAktualizacja)",
+            "Przywróc ostatnią sesję (OstatniaSesja)",
             "Pobiera zmiany z repozytorium Git (PU)",
             "RevBackground",
-            "set list!",
-            "set number!",
-            "set relativenumber!",
+            "Włącz / wyłącz numerowanie wierszy (number!)",
+            "Włącz / wyłącz relatywne numerowanie wierszy (set relativenumber!)",
             "set spell!",
-            "set wrap!",
             "ShowMiddleDot",
             "Skroty",
             "TermGitPull",
             "TermGitStatus",
             "TermPs",
             "Time",
-            "TimerHide",
-            "TimerShow",
+            "Ukryj Timer (TimerHide)",
+            "Pokaż Timer (TimerShow)",
             "Ustaw Timer na 1 minutę (TimerStart 1m)",
             "Ustaw Timer na 5 minut (TimerStart 5m)",
             "Ustaw Timer na 15 minut (TimerStart 15m)",
             "Ustaw Timer na 30 minut (TimerStart 30m)",
             "Ustaw Timer na 60 minut (TimerStart 60m)",
-            "Zatrzymaj Timer (TimerStop)",  -- ok
+            "Zatrzymaj Timer (TimerStop)",
             "Wrap",
             "ZenMode",
         }, {
@@ -704,6 +695,80 @@ Komendy = function()
                 GPS()
             elseif choice == "Pobiera zmiany z repozytorium Git (PU)" then
                 PU()
+            elseif choice == "Ukrywa znak · wstawiony w miejsce spacji (HideMiddleDot)" then
+                vim.cmd[[HideMiddleDot]]
+            elseif choice == "Wyświetla nazwę systemu (Hostname)" then
+                vim.cmd[[Hostname]]
+            elseif choice == "Wyłącza prowadnice wcięć (IBLDisable)" then
+                vim.cmd[[IBLDisable]]
+            elseif choice == "Włącza prowadnice wcięć (IBLEnable)" then
+                vim.cmd[[IBLEnable]]
+            elseif choice == "Włącza / wyłącza prowadnice wcięć (IBLToggle)" then
+                vim.cmd[[IBLToggle]]
+            elseif choice == "Wstawia znacznik dla przypomnień w programie Obsidian (InsObsdianRemminder)" then
+                InsObsdianRemminder()
+            elseif choice == "Zmienia schemat kolorystyczny biorąc pod uwagę porę dnia (KolorPora)" then
+                KolorPora()
+            elseif choice == "Zmiana schematu kolorystycznego (Kolory)" then
+                vim.cmd[[Kolory]]
+            elseif choice == "Zmiana języka Neovim na język angielski (language en_US)" then
+                vim.cmd[[language en_US]]
+            elseif choice == "Zmiana języka Neovim na język polski (language pl_PL.UTF-8)" then
+                vim.cmd[[language pl_PL.UTF-8]]
+            elseif choice == "Wyświetla ostatni komunikat (LastMsg)" then
+                vim.cmd[[LastMsg]]
+            elseif choice == "Usunięcie nieużywanych pluginów (Lazy clean)" then
+                vim.cmd[[Lazy clean]]
+            elseif choice == "Instalacja nowych pluginów (Lazy install)" then
+                vim.cmd[[Lazy install]]
+            elseif choice == "Aktualizacja pluginów (Lazy update)" then
+                vim.cmd[[Lazy update]]
+            elseif choice == "Ustaw jasny schemat kolorystyczny (Light)" then
+                vim.cmd[[Light]]
+            elseif choice == "Wyświetla / ukrywa dekoratory list (List)" then
+                vim.cmd[[List]]
+            elseif choice == "Sprawdza czy w systemie są wymagane programy (CheckExternalReqs)" then
+                CheckExternalReqs()
+            elseif choice == "Wyświetla wersję programu Neovim (CheckVersion)" then
+                CheckVersion()
+            elseif choice == "Ustawia przezroczystość dla Neovide na 0.2" then
+                vim.cmd[[lua vim.g.neovide_transparency = 0.2]]
+            elseif choice == "Ustawia przezroczystość dla Neovide na 1" then
+                vim.cmd[[lua vim.g.neovide_transparency = 1]]
+            elseif choice == "Zmienia rozmiar czcionki dla Neovide na 12" then
+                vim.cmd[[lua vim.o.guifont = 'Source Code Pro:h12']]
+            elseif choice == "Zmienia rozmiar czcionki dla Neovide na 17" then
+                vim.cmd[[lua vim.o.guifont = 'Source Code Pro:h17']]
+            elseif choice == "Zmienia rozmiar czcionki dla Neovide na 21" then
+                vim.cmd[[lua vim.o.guifont = 'Source Code Pro:h21']]
+            elseif choice == "Wyświetla komunikaty (Messages)" then
+                vim.cmd[[Messages]]
+            elseif choice == "Ukryj Timer (TimerHide)" then
+                vim.cmd[[TimerHide]]
+            elseif choice == "Pokaż Timer (TimerShow)" then
+                vim.cmd[[TimerShow]]
+            elseif choice == "Neorg przejdź do workspace home" then
+                vim.cmd[[Neorg workspace home]]
+            elseif choice == "Neorg przejdź do workspace work" then
+                vim.cmd[[Neorg workspace work]]
+            elseif choice == "Otwórz nowy plik w podziale poziomym (NewFileHSplit)" then
+                vim.cmd[[NewFileHSplit]]
+            elseif choice == "Otwórz nowy plik w podziale pionowym (NewFileVSplit)" then
+                vim.cmd[[NewFileVSplit]]
+            elseif choice == "Otwórz nowy plik (NewFileNoSplit)" then
+                vim.cmd[[NewFileNoSplit]]
+            elseif choice == "Wyświetla nazwę zmiennej NVIM_APPNAME" then
+                print(NvimAppName())
+            elseif choice == "Otwiera plik pod kursorem dodając na początku ścieśki src/ (OpenFile)" then
+                vim.cmd[[OpenFile]]
+            elseif choice == "Aktualizacja lini Ostatnia Aktualizacja (OstatniaAktualizacja)" then
+                OstatniaAktualizacja()
+            elseif choice == "Przywróc ostatnią sesję (OstatniaSesja)" then
+                OstatniaSesja()
+            elseif choice == "Włącz / wyłącz numerowanie wierszy (number!)" then
+                vim.cmd[[set number!]]
+            elseif choice == "Włącz / wyłącz relatywne numerowanie wierszy (set relativenumber!)" then
+                vim.cmd[[set relativenumber!]]
             end
 
         end)
