@@ -51,6 +51,7 @@ BufInfo = function()
     for _, v in ipairs(vim.fn.getbufinfo("%")) do
         P(v)
     end
+    vim.cmd[[Messages]]
 end
 
 -- DESC: Standardowo zmienna $BM_DIRS zaweira nazwę pliku w której znajdują się często odwiedzane katalogi
@@ -321,6 +322,16 @@ Files = function()
     })
 end
 
+-- DESC: Przeszukiwanie ostation edytowanych plików
+OldFiles = function()
+    require'fzf-lua'.oldfiles({
+        winopts = {
+            preview = { hidden = "nohidden" },
+            fullscreen = true,
+        }
+    })
+end
+
 -- DESC: Wyszukuje plików w przekazanym jako parametr katalogu
 FindFilesDir = function(dir)
     require'fzf-lua'.files({
@@ -494,6 +505,199 @@ GrepNvimHash = function()
     end
 end
 
+Komendy = function()
+    vim.ui.select(
+        {
+            "Dodaj plik do ulubionych (AddBmFile)",
+            "Dodaj katalog do ulubionych (AddCDDir)",
+            "Wykonaj kopię zapasową plików Neovim (BackupNeovimConfig)",
+            "Zamiana popularnych słów true / false (BiPolar)",
+            "Ulubione pliki (BmFiles)",
+            "Wyszukiwanie zakładek (BookmarksAllMarks)",
+            "Usuwanie zakładek (BookmarksDelete)",
+            "Zamknij wszystkie bufory poza aktywnym (BufferCloseAllButCurrent)",
+            "Sortuj bufory według numerów (BufferOrderByBufferNumber)",
+            "Informacje o buforze (BufInfo)",
+            "Przejdź do katalogu wybranego z ulubionych (CD)",
+            "Otwórz katalog wybrany z (CDE)",
+            "Przejdź do katalogu dla otwartego pliku (CDFD)",
+            "Pokaż główny katalog repozytorium Git (CDG)",
+            "Wyczyść wszystkie rejestry (ClearRegs)",
+            "Wyświetla historię komend (CommandLineHistory)",
+            "Wyszukiwanie plików konfiguracyjnych Neovim w katalogu $NVIM_APPNAME (Config)",
+            "Kopiuje katalog nazwę pliku do rejestru (CopyFileName)",
+            "Ustaw schemat kolorystyczny na tokyonight-moon (Dark)",
+            "Wyłącz wszystkie dekoracje (DesFree)",
+            "Przeszukiwanie dokumentacji nvim-qfjz (Docs)",
+            "Edytuj ulubione pliki ~/.config/bmfiles (EditBmFiles)",
+            "Edytuj ulubione katalogi ~/.config/bmdirs (EditCDDirs)",
+            "Edytuj plik konfiguracyjny repozytorium Git .git/config (EditGitConfig)",
+            "Wyświetla informacje o otwartym pliku (FileInfo)",
+            "Przeszukiwanie plików w bieżącej lokalizacji (Files)",
+            "Wyszukiwanie komend (FzfLua commands)",
+            "Wyszukiwanie pomocy Neovim (FzfLua helptags)",
+            "Wyszukiwanie skrótów klawiszowych (FzfLua keymaps)",
+            "Wyszukiwanie ostatnio edytowanych plików (FzfLua oldfiles - OldFiles())",
+            "Przeszukiwanie historii wyszukiwania (FzfLua search_history)",
+            "Dodaj pliki do repozytorium Git (GA)",
+            "GetSpell",
+            "GI",
+            "GitFiles",
+            "GitStatus",
+            "GP",
+            "GPS",
+            "HideMiddleDot",
+            "HistoryMsg",
+            "Hostname",
+            "IBLDisable",
+            "IBLEnable",
+            "IBLToggle",
+            "InsObsdianRemminder",
+            "Keymaps",
+            "KolorPora",
+            "Kolory",
+            "language en_US",
+            "language pl_PL.UTF-8",
+            "LastMsg",
+            "Lazy clean",
+            "Lazy install",
+            "Lazy update",
+            "Light",
+            "List",
+            "lua CheckExternalReqs()",
+            "lua CheckVersion()",
+            "lua print('asdf')",
+            "lua vim.cmd[[echo \"asdf\"]]",
+            "lua vim.g.neovide_transparency = 0.2",
+            "lua vim.g.neovide_transparency = 1",
+            "lua vim.o.guifont = 'Source Code Pro:h12'",
+            "lua vim.o.guifont = 'Source Code Pro:h17'",
+            "lua vim.o.guifont = 'Source Code Pro:h21'",
+            "Messages",
+            "Neorg workspace home",
+            "Neorg workspace work",
+            "NeorgHome",
+            "NeorgWork",
+            "NewFileHSplit",
+            "NewFileNoSplit",
+            "NewFileVSplit",
+            "NvimAppName",
+            "OldFiles",
+            "OpenFile",
+            "OstatniaAktualizacja",
+            "OstatniaSesja",
+            "PU",
+            "RevBackground",
+            "SearchHistory",
+            "set list!",
+            "set number!",
+            "set relativenumber!",
+            "set spell!",
+            "set wrap!",
+            "ShowMiddleDot",
+            "Skroty",
+            "TermGitPull",
+            "TermGitStatus",
+            "TermPs",
+            "Time",
+            "TimerHide",
+            "TimerShow",
+            "Ustaw Timer na 1 minutę (TimerStart 1m)",  -- ok
+            "Ustaw Timer na 5 minut (TimerStart 5m)",  -- ok
+            "Ustaw Timer na 15 minut (TimerStart 15m)",  -- ok
+            "Ustaw Timer na 30 minut (TimerStart 30m)",  -- ok
+            "Ustaw Timer na 60 minut (TimerStart 60m)",  -- ok
+            "Zatrzymaj Timer (TimerStop)",  -- ok
+            "Wrap",
+            "ZenMode",
+        }, {
+            prompt = "Lista komend",
+            format_item = function(item)
+                return item
+            end,
+
+        }, function(choice)
+            if choice == 'Dodaj plik do ulubionych (AddBmFile)' then
+                AddBmFile()
+            elseif choice == "Edytuj ulubione pliki ~/.config/bmfiles (EditBmFiles)" then
+                EditBmFiles()
+            elseif choice == "Dodaj katalog do ulubionych (AddCDDir)" then
+                AddCDDir()
+            elseif choice == "Wykonaj kopię zapasową plików Neovim (BackupNeovimConfig)" then
+                vim.cmd[[BackupNeovimConfig]]
+            elseif choice == "Zamiana popularnych słów true / false (BiPolar)" then
+                vim.cmd[[BiPolar]]
+            elseif choice == "Ulubione pliki (BmFiles)" then
+                BmFiles()
+            elseif choice == "Ustaw Timer na 1 minutę (TimerStart 1m)" then
+                vim.cmd[[TimerStart 1m]]
+            elseif choice == "Ustaw Timer na 5 minut (TimerStart 5m)" then
+                vim.cmd[[TimerStart 1m]]
+            elseif choice == "Ustaw Timer na 15 minut (TimerStart 15m)" then
+                vim.cmd[[TimerStart 1m]]
+            elseif choice == "Ustaw Timer na 30 minut (TimerStart 30m)" then
+                vim.cmd[[TimerStart 1m]]
+            elseif choice == "Ustaw Timer na 60 minut (TimerStart 60m)" then
+                vim.cmd[[TimerStart 1m]]
+            elseif choice == "Zatrzymaj Timer (TimerStop)" then
+                vim.cmd[[TimerStop]]
+            elseif choice == "Informacje o buforze (BufInfo)" then
+                BufInfo()
+            elseif choice == "Wyszukiwanie zakładek (BookmarksAllMarks)" then
+                vim.cmd[[BookmarksAllMarks]]
+            elseif choice == "Usuwanie zakładek (BookmarksDelete)" then
+                vim.cmd[[BookmarksDelete]]
+            elseif choice == "Zamknij wszystkie bufory poza aktywnym (BufferCloseAllButCurrent)" then
+                vim.cmd[[BufferCloseAllButCurrent]]
+            elseif choice == "Sortuj bufory według numerów (BufferOrderByBufferNumber)" then
+                vim.cmd[[BufferOrderByBufferNumber]]
+            elseif choice == "Przejdź do katalogu wybranego z ulubionych (CD)" then
+                CD()
+            elseif choice == "Otwórz katalog wybrany z (CDE)" then
+                CDE()
+            elseif choice == "Przejdź do katalogu dla otwartego pliku (CDFD)" then
+                CDFD()
+            elseif choice == "Wyczyść wszystkie rejestry (ClearRegs)" then
+                ClearRegs()
+            elseif choice == "Wyświetla historię komend (CommandLineHistory)" then
+                vim.cmd[[CommandLineHistory]]
+            elseif choice == "Wyszukiwanie plików konfiguracyjnych Neovim w katalogu $NVIM_APPNAME (Config)" then
+                vim.cmd[[Config]]
+            elseif choice == "Pokaż główny katalog repozytorium Git (CDG)" then
+                CDG()
+            elseif choice == "Kopiuje katalog nazwę pliku do rejestru (CopyFileName)" then
+                CopyFileName()
+            elseif choice == "Ustaw schemat kolorystyczny na tokyonight-moon (Dark)" then
+                vim.cmd[[Dark]]
+            elseif choice == "Wyłącz wszystkie dekoracje (DesFree)" then
+                DesFree()
+            elseif choice == "Przeszukiwanie dokumentacji nvim-qfjz (Docs)" then
+                Docs()
+            elseif choice == "Edytuj ulubione katalogi ~/.config/bmdirs (EditCDDirs)" then
+                EditCDDirs()
+            elseif choice == "Edytuj plik konfiguracyjny repozytorium Git .git/config (EditGitConfig)" then
+                EditGitConfig()
+            elseif choice == "Wyświetla informacje o otwartym pliku (FileInfo)" then
+                FileInfo()
+            elseif choice == "Przeszukiwanie plików w bieżącej lokalizacji (Files)" then
+                Files()
+            elseif choice == "Wyszukiwanie komend (FzfLua commands)" then
+                vim.cmd[[FzfLua commands]]
+            elseif choice == "Wyszukiwanie pomocy Neovim (FzfLua helptags)" then
+                vim.cmd[[FzfLua helptags]]
+            elseif choice == "Wyszukiwanie skrótów klawiszowych (FzfLua keymaps)" then
+                vim.cmd[[FzfLua keymaps]]
+            elseif choice == "Wyszukiwanie ostatnio edytowanych plików (FzfLua oldfiles)" then
+                OldFiles()
+            elseif choice == "Przeszukiwanie historii wyszukiwania (FzfLua search_history)" then
+                vim.cmd[[FzfLua search_history]]
+            elseif choice == "Dodaj pliki do repozytorium Git (GA)" then
+                GA()
+            end
+
+        end)
+end
+
 local function trim(str)
   return str:gsub("^%s+", ""):gsub("%s+$", "")
 end
@@ -558,120 +762,120 @@ KolorPora = function()
 end
 
 -- DESC: Przeszukiwalna lista komend
-Komendy = function()
-    local lista_komend = {
-        "AddBmFile",
-        "AddCDDir",
-        "BackupNeovimConfig",
-        "BiPolar",
-        "BmFiles",
-        "BookmarksAllMarks",
-        "BookmarksDelete",
-        "BufferCloseAllButCurrent",
-        "BufferOrderByBufferNumber",
-        "BufInfo",
-        "CD",
-        "CDE",
-        "CDFD",
-        "CDG",
-        "ClearRegs",
-        "CommandLineHistory",
-        "Config",
-        "CopyFileName",
-        "Dark",
-        "DesFree",
-        "Docs",
-        "EditBmFiles",
-        "EditCDDirs",
-        "EditGitConfig",
-        "Fileinfo",
-        "Files",
-        "FzfLua commands",
-        "FzfLua help_tags",
-        "FzfLua keymaps",
-        "FzfLua oldfiles",
-        "FzfLua search_history",
-        "GA",
-        "GetSpell",
-        "GI",
-        "GitFiles",
-        "GitStatus",
-        "GP",
-        "GPS",
-        "HideMiddleDot",
-        "HistoryMsg",
-        "Hostname",
-        "IBLDisable",
-        "IBLEnable",
-        "IBLToggle",
-        "InsObsdianRemminder",
-        "Keymaps",
-        "KolorPora",
-        "Kolory",
-        "language en_US",
-        "language pl_PL.UTF-8",
-        "LastMsg",
-        "Lazy clean",
-        "Lazy install",
-        "Lazy update",
-        "Light",
-        "List",
-        "lua CheckExternalReqs()",
-        "lua CheckVersion()",
-        "lua print('asdf')",
-        "lua vim.cmd[[echo \"asdf\"]]",
-        "lua vim.g.neovide_transparency = 0.2",
-        "lua vim.g.neovide_transparency = 1",
-        "lua vim.o.guifont = 'Source Code Pro:h12'",
-        "lua vim.o.guifont = 'Source Code Pro:h17'",
-        "lua vim.o.guifont = 'Source Code Pro:h21'",
-        "Messages",
-        "Neorg workspace home",
-        "Neorg workspace work",
-        "NeorgHome",
-        "NeorgWork",
-        "NewFileHSplit",
-        "NewFileNoSplit",
-        "NewFileVSplit",
-        "NvimAppName",
-        "OldFiles",
-        "OpenFile",
-        "OstatniaAktualizacja",
-        "OstatniaSesja",
-        "PU",
-        "RevBackground",
-        "SearchHistory",
-        "set list!",
-        "set number!",
-        "set relativenumber!",
-        "set spell!",
-        "set wrap!",
-        "ShowMiddleDot",
-        "Skroty",
-        "TermGitPull",
-        "TermGitStatus",
-        "TermPs",
-        "Time",
-        "TimerHide",
-        "TimerShow",
-        "TimerStart 10m",
-        "TimerStart 15m",
-        "TimerStart 1m",
-        "TimerStart 30m",
-        "TimerStart 5m",
-        "TimerStart 60m",
-        "Wrap",
-        "ZenMode",
-    }
-    local opts = {}
-    opts.prompt = "Wyszukaj> "
-    opts.actions = {
-        ['default'] = function(selected)
-            vim.cmd(selected[1])
-        end
-    }
-    require'fzf-lua'.fzf_exec(lista_komend, opts)
-end
+-- Komendy = function()
+--     local lista_komend = {
+--         "AddBmFile",
+--         "AddCDDir",
+--         "BackupNeovimConfig",
+--         "BiPolar",
+--         "BmFiles",
+--         "BookmarksAllMarks",
+--         "BookmarksDelete",
+--         "BufferCloseAllButCurrent",
+--         "BufferOrderByBufferNumber",
+--         "BufInfo",
+--         "CD",
+--         "CDE",
+--         "CDFD",
+--         "CDG",
+--         "ClearRegs",
+--         "CommandLineHistory",
+--         "Config",
+--         "CopyFileName",
+--         "Dark",
+--         "DesFree",
+--         "Docs",
+--         "EditBmFiles",
+--         "EditCDDirs",
+--         "EditGitConfig",
+--         "Fileinfo",
+--         "Files",
+--         "FzfLua commands",
+--         "FzfLua help_tags",
+--         "FzfLua keymaps",
+--         "FzfLua oldfiles",
+--         "FzfLua search_history",
+--         "GA",
+--         "GetSpell",
+--         "GI",
+--         "GitFiles",
+--         "GitStatus",
+--         "GP",
+--         "GPS",
+--         "HideMiddleDot",
+--         "HistoryMsg",
+--         "Hostname",
+--         "IBLDisable",
+--         "IBLEnable",
+--         "IBLToggle",
+--         "InsObsdianRemminder",
+--         "Keymaps",
+--         "KolorPora",
+--         "Kolory",
+--         "language en_US",
+--         "language pl_PL.UTF-8",
+--         "LastMsg",
+--         "Lazy clean",
+--         "Lazy install",
+--         "Lazy update",
+--         "Light",
+--         "List",
+--         "lua CheckExternalReqs()",
+--         "lua CheckVersion()",
+--         "lua print('asdf')",
+--         "lua vim.cmd[[echo \"asdf\"]]",
+--         "lua vim.g.neovide_transparency = 0.2",
+--         "lua vim.g.neovide_transparency = 1",
+--         "lua vim.o.guifont = 'Source Code Pro:h12'",
+--         "lua vim.o.guifont = 'Source Code Pro:h17'",
+--         "lua vim.o.guifont = 'Source Code Pro:h21'",
+--         "Messages",
+--         "Neorg workspace home",
+--         "Neorg workspace work",
+--         "NeorgHome",
+--         "NeorgWork",
+--         "NewFileHSplit",
+--         "NewFileNoSplit",
+--         "NewFileVSplit",
+--         "NvimAppName",
+--         "OldFiles",
+--         "OpenFile",
+--         "OstatniaAktualizacja",
+--         "OstatniaSesja",
+--         "PU",
+--         "RevBackground",
+--         "SearchHistory",
+--         "set list!",
+--         "set number!",
+--         "set relativenumber!",
+--         "set spell!",
+--         "set wrap!",
+--         "ShowMiddleDot",
+--         "Skroty",
+--         "TermGitPull",
+--         "TermGitStatus",
+--         "TermPs",
+--         "Time",
+--         "TimerHide",
+--         "TimerShow",
+--         "TimerStart 10m",
+--         "TimerStart 15m",
+--         "TimerStart 1m",
+--         "TimerStart 30m",
+--         "TimerStart 5m",
+--         "TimerStart 60m",
+--         "Wrap",
+--         "ZenMode",
+--     }
+--     local opts = {}
+--     opts.prompt = "Wyszukaj> "
+--     opts.actions = {
+--         ['default'] = function(selected)
+--             vim.cmd(selected[1])
+--         end
+--     }
+--     require'fzf-lua'.fzf_exec(lista_komend, opts)
+-- end
 
 -- DESC: Skrócony zapis mapowania klawiszy
 -- map("n", "<leader>;", ":", { silent = false })
