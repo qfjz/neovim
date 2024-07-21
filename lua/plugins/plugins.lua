@@ -51,6 +51,7 @@ return {
     "akinsho/toggleterm.nvim",
     "goolord/alpha-nvim",
     "b3nj5m1n/kommentary",
+    "lukas-reineke/headlines.nvim",
     "tpope/vim-fugitive",
     "tpope/vim-eunuch",
     "tpope/vim-repeat",
@@ -69,12 +70,12 @@ return {
     "nvim-lua/popup.nvim",
     "mg979/vim-visual-multi",
     "LintaoAmons/easy-commands.nvim",
-    {
-        "LintaoAmons/bookmarks.nvim",
-        dependencies = {
-            {"stevearc/dressing.nvim"} -- optional: to have the same UI shown in the GIF
-        }
-    },
+    -- {
+        -- "LintaoAmons/bookmarks.nvim",
+        -- dependencies = {
+            -- {"stevearc/dressing.nvim"} -- optional: to have the same UI shown in the GIF
+        -- }
+    -- },
     { "folke/persistence.nvim",
         event = "BufReadPre", -- this will only start session saving when an actual file was opened
     },

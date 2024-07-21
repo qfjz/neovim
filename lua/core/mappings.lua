@@ -76,7 +76,7 @@ vim.keymap.set("n", "<tab>", "<cmd>e #<cr>", { desc= "Przełączanie pomiędzy d
 vim.keymap.set("n", "<leader>o", "<cmd>only<cr>", { desc = "Pozostawia otwarte tylko aktywne okno" })
 vim.keymap.set("n", "<leader>cc", "<cmd>close<cr>", { desc = "Zamyka aktywne okno" })
 vim.keymap.set("n", "<esc>", "<cmd>nohl<cr>", { silent = true, desc = "Wyłącza wyróżnianie szukanego tekstu" })
--- vim.keymap.set("i", "kj", "<esc>")
+vim.keymap.set("i", "kj", "<esc>")
 vim.keymap.set("n", "<leader>k", "<cmd>lua Komendy()<cr>", { desc = "FzfLua live grep" })
 vim.keymap.set("n", "<leader>g", "<cmd>FzfLua live_grep<cr>", { desc = "FzfLua live grep" })
 vim.keymap.set("n", "<leader>A", "<cmd>Alpha<cr>", { desc = "Dashboard Alpha" })
