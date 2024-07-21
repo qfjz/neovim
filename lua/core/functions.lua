@@ -519,6 +519,7 @@ InputFilename = function()
         end
         vim.cmd("silent write" .. input)
         vim.notify("Utworzyłem" .. " " .. vim.fn.expand("%:p"))
+        CDFD()
     end)
 end
 
