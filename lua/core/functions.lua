@@ -541,10 +541,10 @@ Komendy = function()
             "Przeszukiwanie historii wyszukiwania (FzfLua search_history)",
             "Dodaj pliki do repozytorium Git (GA)",
             "Pobierze słownik pisowni języka polskiego (GetSpell)",
-            "GI",
-            "GitFiles",
-            "GitStatus",
-            "GP",
+            "Wyświetla informacje o repozytorium (GI)",
+            "Wyszukuje pliki znajdujące się w repozytorium Git (GitFiles)",
+            "Pokazuje zmiany w repozytorium Git (FzfLua git_status)",
+            "Dodaje i wysyła pliki do repozytorium Git (GP)",
             "GPS",
             "HideMiddleDot",
             "HistoryMsg",
@@ -693,6 +693,14 @@ Komendy = function()
                 vim.cmd[[FzfLua search_history]]
             elseif choice == "Dodaj pliki do repozytorium Git (GA)" then
                 GA()
+            elseif choice == "Wyświetla informacje o repozytorium (GI)" then
+                GI()
+            elseif choice == "Wyszukuje pliki znajdujące się w repozytorium Git (GitFiles)" then
+                GitFiles()
+            elseif choice == "Pokazuje zmiany w repozytorium Git (FzfLua git_status)" then
+                vim.cmd[[FzfLua git_status]]
+            elseif choice == "Dodaje i wysyła pliki do repozytorium Git (GP)" then
+                GP()
             end
 
         end)
