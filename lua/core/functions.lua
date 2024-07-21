@@ -545,7 +545,7 @@ Komendy = function()
             "Wyszukuje pliki znajdujące się w repozytorium Git (GitFiles)",
             "Pokazuje zmiany w repozytorium Git (FzfLua git_status)",
             "Dodaje i wysyła pliki do repozytorium Git (GP)",
-            "GPS",
+            "Dodaje, podpisuje i wysyła pliki do repozytorium Git (GPS)",
             "HideMiddleDot",
             "HistoryMsg",
             "Hostname",
@@ -586,9 +586,8 @@ Komendy = function()
             "OpenFile",
             "OstatniaAktualizacja",
             "OstatniaSesja",
-            "PU",
+            "Pobiera zmiany z repozytorium Git (PU)",
             "RevBackground",
-            "SearchHistory",
             "set list!",
             "set number!",
             "set relativenumber!",
@@ -602,11 +601,11 @@ Komendy = function()
             "Time",
             "TimerHide",
             "TimerShow",
-            "Ustaw Timer na 1 minutę (TimerStart 1m)",  -- ok
-            "Ustaw Timer na 5 minut (TimerStart 5m)",  -- ok
-            "Ustaw Timer na 15 minut (TimerStart 15m)",  -- ok
-            "Ustaw Timer na 30 minut (TimerStart 30m)",  -- ok
-            "Ustaw Timer na 60 minut (TimerStart 60m)",  -- ok
+            "Ustaw Timer na 1 minutę (TimerStart 1m)",
+            "Ustaw Timer na 5 minut (TimerStart 5m)",
+            "Ustaw Timer na 15 minut (TimerStart 15m)",
+            "Ustaw Timer na 30 minut (TimerStart 30m)",
+            "Ustaw Timer na 60 minut (TimerStart 60m)",
             "Zatrzymaj Timer (TimerStop)",  -- ok
             "Wrap",
             "ZenMode",
@@ -701,6 +700,10 @@ Komendy = function()
                 vim.cmd[[FzfLua git_status]]
             elseif choice == "Dodaje i wysyła pliki do repozytorium Git (GP)" then
                 GP()
+            elseif choice == "Dodaje, podpisuje i wysyła pliki do repozytorium Git (GPS)" then
+                GPS()
+            elseif choice == "Pobiera zmiany z repozytorium Git (PU)" then
+                PU()
             end
 
         end)
