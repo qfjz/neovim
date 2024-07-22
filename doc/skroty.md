@@ -7,7 +7,8 @@ Przeszukiwanie skrótów klawiszowych: `<spacja>sk`, lub `:FzfLua keymaps`
 | `Shift+Enter`    | Dodaje pustą linię powyżej bieżącej                                       |
 | `Enter`          | Dodaje pustą linię poniżej bieżącej                                       |
 | `<leader>n`      | Uruchamia menadżer plików NeoTree                                         |
-| `\`              | Uruchamia menadżer plików NeoTree                                         |
+| `<leader>k`      | Lista komend nvim-qfjz (wyszukiwarka)                                     |
+| `<leader>\`      | Otwiera listę buforów z tej samej lokalizacji w systemie plików           |
 | `gh`             | Początek linii                                                            |
 | `gl`             | Koniec linii                                                              |
 | `<leader>,`      | Poprzeni bufor                                                            |
@@ -49,8 +50,6 @@ Przeszukiwanie skrótów klawiszowych: `<spacja>sk`, lub `:FzfLua keymaps`
 | `gk`             | Poprzednia zmiana w pliku - Git                                           |
 | `<c-n>`          | Następna zmiana w pliku - Git                                             |
 | `<c-p>`          | Poprzednia zmiana w pliku - Git                                           |
-| `Alt-o`          | Hydra menu                                                                |
-| `Alt-t`          | Uruchamia menu dla pluginu pomo.nvim                                      |
 | `Alt-h,j,k,l`    | Zmienia rozmiar aktywnego okna                                            |
 | `s + 2 znaki`    | Rozpoczyna wyszukiwanie za pomocą pluginu `flash.nvim`                    |
 | `<leader>z`      | Uruchamia tryb Zen                                                        |
