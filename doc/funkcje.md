@@ -916,3 +916,35 @@ Komendy = function()
     require'fzf-lua'.fzf_exec(lista_komend, opts)
 end
 ```
+
+Funkcja `Komendy` wykorzystująca dostępny w standardzie interfejs
+
+```lua
+Komendy = function()
+    vim.ui.select(
+    {
+        "Dodaj plik do ulubionych (AddBmFile)",
+        "Dodaj katalog do ulubionych (AddCDDir)",
+        "Wykonaj kopię zapasową plików Neovim (BackupNeovimConfig)",
+        "Zamiana popularnych słów true / false (BiPolar)",
+        -- ...
+        "Ulubione pliki (BmFiles)",
+        "Wstaw znacznik czasu EPOCH",
+        "Wstaw aktualną datę i godzinę w formacie 2024-07-22 17:28:27",
+    }, {
+        prompt = "Lista komend",
+        format_item = function(item)
+            return item
+        end,
+    }, function(choice)
+        if choice == 'Dodaj plik do ulubionych (AddBmFile)' then
+            AddBmFile()
+        elseif choice == "Wstaw znacznik czasu EPOCH" then
+            InsertEPOCH()
+        -- ...
+        elseif choice == "Wstaw aktualną datę i godzinę w formacie 2024-07-22 17:28:27" then
+            InsertDate()
+        end
+    end)
+end
+```

@@ -514,8 +514,7 @@ GrepNvimDocs = function()
 end
 
 Komendy = function()
-    vim.ui.select(
-    {
+    local lista_komend = {
         "Dodaj plik do ulubionych (AddBmFile)",
         "Dodaj katalog do ulubionych (AddCDDir)",
         "Wykonaj kopię zapasową plików Neovim (BackupNeovimConfig)",
@@ -621,221 +620,223 @@ Komendy = function()
         "Wyświetl znacznik czasu EPOCH w czytelnej formie daty",
         "Wstaw znacznik czasu EPOCH",
         "Wstaw aktualną datę i godzinę w formacie 2024-07-22 17:28:27",
-    }, {
-        prompt = "Lista komend",
-        format_item = function(item)
-            return item
-        end,
-    }, function(choice)
-        if choice == 'Dodaj plik do ulubionych (AddBmFile)' then
-            AddBmFile()
-        elseif choice == "Przeszukiwanie dokumentacji nvim-qfjz (FzfLua live_grep)" then
-            GrepNvimDocs()
-        elseif choice == "Edytuj ulubione pliki ~/.config/bmfiles (EditBmFiles)" then
-            EditBmFiles()
-        elseif choice == "Dodaj katalog do ulubionych (AddCDDir)" then
-            AddCDDir()
-        elseif choice == "Wykonaj kopię zapasową plików Neovim (BackupNeovimConfig)" then
-            vim.cmd[[BackupNeovimConfig]]
-        elseif choice == "Zamiana popularnych słów true / false (BiPolar)" then
-            vim.cmd[[BiPolar]]
-        elseif choice == "Ulubione pliki (BmFiles)" then
-            BmFiles()
-        elseif choice == "Ustaw Timer na 1 minutę (TimerStart 1m)" then
-            vim.cmd[[TimerStart 1m]]
-        elseif choice == "Ustaw Timer na 5 minut (TimerStart 5m)" then
-            vim.cmd[[TimerStart 1m]]
-        elseif choice == "Ustaw Timer na 15 minut (TimerStart 15m)" then
-            vim.cmd[[TimerStart 1m]]
-        elseif choice == "Ustaw Timer na 30 minut (TimerStart 30m)" then
-            vim.cmd[[TimerStart 1m]]
-        elseif choice == "Ustaw Timer na 60 minut (TimerStart 60m)" then
-            vim.cmd[[TimerStart 1m]]
-        elseif choice == "Zatrzymaj Timer (TimerStop)" then
-            vim.cmd[[TimerStop]]
-        elseif choice == "Informacje o buforze (BufInfo)" then
-            BufInfo()
-        elseif choice == "Wyszukiwanie zakładek (BookmarksAllMarks)" then
-            vim.cmd[[BookmarksAllMarks]]
-        elseif choice == "Usuwanie zakładek (BookmarksDelete)" then
-            vim.cmd[[BookmarksDelete]]
-        elseif choice == "Zamknij wszystkie bufory poza aktywnym (BufferCloseAllButCurrent)" then
-            vim.cmd[[BufferCloseAllButCurrent]]
-        elseif choice == "Sortuj bufory według numerów (BufferOrderByBufferNumber)" then
-            vim.cmd[[BufferOrderByBufferNumber]]
-        elseif choice == "Przejdź do katalogu wybranego z ulubionych (CD)" then
-            CD()
-        elseif choice == "Otwórz katalog wybrany z (CDE)" then
-            CDE()
-        elseif choice == "Przejdź do katalogu dla otwartego pliku (CDFD)" then
-            CDFD()
-        elseif choice == "Wyczyść wszystkie rejestry (ClearRegs)" then
-            ClearRegs()
-        elseif choice == "Wyświetla historię komend (CommandLineHistory)" then
-            vim.cmd[[CommandLineHistory]]
-        elseif choice == "Wyszukiwanie plików konfiguracyjnych Neovim w katalogu $NVIM_APPNAME (Config)" then
-            vim.cmd[[Config]]
-        elseif choice == "Pokaż główny katalog repozytorium Git (CDG)" then
-            CDG()
-        elseif choice == "Kopiuje katalog nazwę pliku do rejestru (CopyFileName)" then
-            CopyFileName()
-        elseif choice == "Ustaw schemat kolorystyczny na tokyonight-moon (Dark)" then
-            vim.cmd[[Dark]]
-        elseif choice == "Wyłącz wszystkie dekoracje (DesFree)" then
-            DesFree()
-        elseif choice == "Wyszukiwanie dokumentacji nvim-qfjz (Docs)" then
-            Docs()
-        elseif choice == "Edytuj ulubione katalogi ~/.config/bmdirs (EditCDDirs)" then
-            EditCDDirs()
-        elseif choice == "Edytuj plik konfiguracyjny repozytorium Git .git/config (EditGitConfig)" then
-            EditGitConfig()
-        elseif choice == "Wyświetla informacje o otwartym pliku (FileInfo)" then
-            FileInfo()
-        elseif choice == "Wyszukiwanie plików w bieżącej lokalizacji (Files)" then
-            Files()
-        elseif choice == "Wyszukiwanie komend (FzfLua commands)" then
-            vim.cmd[[FzfLua commands]]
-        elseif choice == "Wyszukiwanie pomocy Neovim (FzfLua helptags)" then
-            vim.cmd[[FzfLua helptags]]
-        elseif choice == "Wyszukiwanie skrótów klawiszowych (FzfLua keymaps)" then
-            vim.cmd[[FzfLua keymaps]]
-        elseif choice == "Wyszukiwanie ostatnio edytowanych plików (FzfLua oldfiles)" then
-            OldFiles()
-        elseif choice == "Przeszukiwanie historii wyszukiwania (FzfLua search_history)" then
-            vim.cmd[[FzfLua search_history]]
-        elseif choice == "Dodaj pliki do repozytorium Git (GA)" then
-            GA()
-        elseif choice == "Wyświetla informacje o repozytorium (GI)" then
-            GI()
-        elseif choice == "Wyszukuje pliki znajdujące się w repozytorium Git (GitFiles)" then
-            GitFiles()
-        elseif choice == "Pokazuje zmiany w repozytorium Git (FzfLua git_status)" then
-            vim.cmd[[FzfLua git_status]]
-        elseif choice == "Dodaje i wysyła pliki do repozytorium Git (GP)" then
-            GP()
-        elseif choice == "Dodaje, podpisuje i wysyła pliki do repozytorium Git (GPS)" then
-            GPS()
-        elseif choice == "Pobiera zmiany z repozytorium Git (PU)" then
-            PU()
-        elseif choice == "Ukrywa znak · wstawiony w miejsce spacji (HideMiddleDot)" then
-            vim.cmd[[HideMiddleDot]]
-        elseif choice == "Pokazuje znak · wstawiony w miejsce spacji (ShowMiddleDot)" then
-            vim.cmd[[ShowMiddleDot]]
-        elseif choice == "Wyświetla nazwę systemu (Hostname)" then
-            vim.cmd[[Hostname]]
-        elseif choice == "Wyłącza prowadnice wcięć (IBLDisable)" then
-            vim.cmd[[IBLDisable]]
-        elseif choice == "Włącza prowadnice wcięć (IBLEnable)" then
-            vim.cmd[[IBLEnable]]
-        elseif choice == "Włącza / wyłącza prowadnice wcięć (IBLToggle)" then
-            vim.cmd[[IBLToggle]]
-        elseif choice == "Wstawia znacznik dla przypomnień w programie Obsidian (InsObsdianRemminder)" then
-            InsObsdianRemminder()
-        elseif choice == "Zmienia schemat kolorystyczny biorąc pod uwagę porę dnia (KolorPora)" then
-            KolorPora()
-        elseif choice == "Zmiana schematu kolorystycznego (Kolory)" then
-            vim.cmd[[Kolory]]
-        elseif choice == "Zmiana języka Neovim na język angielski (language en_US)" then
-            vim.cmd[[language en_US]]
-        elseif choice == "Zmiana języka Neovim na język polski (language pl_PL.UTF-8)" then
-            vim.cmd[[language pl_PL.UTF-8]]
-        elseif choice == "Wyświetla ostatni komunikat (LastMsg)" then
-            vim.cmd[[LastMsg]]
-        elseif choice == "Usunięcie nieużywanych pluginów (Lazy clean)" then
-            vim.cmd[[Lazy clean]]
-        elseif choice == "Instalacja nowych pluginów (Lazy install)" then
-            vim.cmd[[Lazy install]]
-        elseif choice == "Aktualizacja pluginów (Lazy update)" then
-            vim.cmd[[Lazy update]]
-        elseif choice == "Ustaw jasny schemat kolorystyczny (Light)" then
-            vim.cmd[[Light]]
-        elseif choice == "Wyświetla / ukrywa dekoratory list (List)" then
-            vim.cmd[[List]]
-        elseif choice == "Sprawdza czy w systemie są wymagane programy (CheckExternalReqs)" then
-            CheckExternalReqs()
-        elseif choice == "Wyświetla wersję programu Neovim (CheckVersion)" then
-            CheckVersion()
-        elseif choice == "Ustawia przezroczystość dla Neovide na 0.2" then
-            vim.cmd[[lua vim.g.neovide_transparency = 0.2]]
-        elseif choice == "Ustawia przezroczystość dla Neovide na 1" then
-            vim.cmd[[lua vim.g.neovide_transparency = 1]]
-        elseif choice == "Zmienia rozmiar czcionki dla Neovide na 12" then
-            vim.cmd[[lua vim.o.guifont = 'Source Code Pro:h12']]
-        elseif choice == "Zmienia rozmiar czcionki dla Neovide na 17" then
-            vim.cmd[[lua vim.o.guifont = 'Source Code Pro:h17']]
-        elseif choice == "Zmienia rozmiar czcionki dla Neovide na 21" then
-            vim.cmd[[lua vim.o.guifont = 'Source Code Pro:h21']]
-        elseif choice == "Wyświetla komunikaty (Messages)" then
-            vim.cmd[[Messages]]
-        elseif choice == "Ukryj Timer (TimerHide)" then
-            vim.cmd[[TimerHide]]
-        elseif choice == "Pokaż Timer (TimerShow)" then
-            vim.cmd[[TimerShow]]
-        elseif choice == "Neorg przejdź do workspace home" then
-            vim.cmd[[Neorg workspace home]]
-        elseif choice == "Neorg przejdź do workspace work" then
-            vim.cmd[[Neorg workspace work]]
-        elseif choice == "Otwórz nowy plik w podziale poziomym (NewFileHSplit)" then
-            vim.cmd[[NewFileHSplit]]
-        elseif choice == "Otwórz nowy plik w podziale pionowym (NewFileVSplit)" then
-            vim.cmd[[NewFileVSplit]]
-        elseif choice == "Otwórz nowy plik (NewFileNoSplit)" then
-            vim.cmd[[NewFileNoSplit]]
-        elseif choice == "Wyświetla nazwę zmiennej NVIM_APPNAME" then
-            print(NvimAppName())
-        elseif choice == "Otwiera plik pod kursorem dodając na początku ścieśki src/ (OpenFile)" then
-            vim.cmd[[OpenFile]]
-        elseif choice == "Aktualizacja lini Ostatnia Aktualizacja (OstatniaAktualizacja)" then
-            OstatniaAktualizacja()
-        elseif choice == "Przywróc ostatnią sesję (OstatniaSesja)" then
-            OstatniaSesja()
-        elseif choice == "Włącz / wyłącz numerowanie wierszy (number!)" then
-            vim.cmd[[set number!]]
-        elseif choice == "Włącz / wyłącz relatywne numerowanie wierszy (set relativenumber!)" then
-            vim.cmd[[set relativenumber!]]
-        elseif choice == "Włącz sprawdzanie pisowni" then
-            vim.cmd[[setlocal spell! spell? spelllang=pl]]
-        elseif choice == "Pobierz zmiany z repozytorium Git w terminalu (TermGitPull)" then
-            vim.cmd[[TermGitPull]]
-        elseif choice == "Wyświetl zmiany w repozytorium Git w terminalu (TermGitStatus)" then
-            vim.cmd[[TermGitStatus]]
-        elseif choice == "Zmień kolorystyke Jasny / Ciemny (RevBackground)" then
-            vim.cmd[[RevBackground]]
-        elseif choice == "Wyświetl procesy systemowe (TermPs)" then
-            vim.cmd[[TermPs]]
-        elseif choice == "Pokaż datę i godzinę (Time)" then
-            vim.cmd[[Time]]
-        elseif choice == "Włącz / wyłącz zawijanie linii (Wrap)" then
-            vim.cmd[[Wrap]]
-        elseif choice == "Włącz / wyłącz tryb ZenMode" then
-            vim.cmd[[ZenMode]]
-        elseif choice == "Zapisz zmiany" then
-            Write()
-        elseif choice == "Zapisz i wyjdź" then
-            Write()
-            vim.cmd[[q]]
-        elseif choice == "Wyjdź bez zapisywania" then
-            vim.cmd[[qa!]]
-        elseif choice == "Menadżer plików Neotree" then
-            vim.cmd[[Neotree reveal_force_cwd toggle]]
-        elseif choice == "Zamknij aktywny bufor" then
-            vim.cmd[[bdelete]]
-        elseif choice == "Usuń bieżący plik z systemu plików" then
-            vim.cmd[[Delete!]]
-        elseif choice == "Usuń wszystkie puste linie w pliku" then
-            vim.cmd[[g/^$/d]]
-        elseif choice == "Usuń wszystkie puste linie oraz linie wypełnione znakiem spacji w pliku" then
-            vim.cmd[[g/^\s*$/d]]
-        elseif choice == "Zmiana znacznika czasu EPOCH na czytelną formę daty" then
-            EPOCH2Date()
-        elseif choice == "Wyświetl znacznik czasu EPOCH w czytelnej formie daty" then
-            EPOCH2DatePrint()
-        elseif choice == "Wstaw znacznik czasu EPOCH" then
-            InsertEPOCH()
-        elseif choice == "Wstaw aktualną datę i godzinę w formacie 2024-07-22 17:28:27" then
-            InsertDate()
+    }
+    local opts = {}
+    opts.prompt = "Wyszukaj> "
+    opts.actions = {
+        ['default'] = function(selected)
+            local choice = selected[1]
+            if choice == 'Dodaj plik do ulubionych (AddBmFile)' then
+                AddBmFile()
+            elseif choice == "Przeszukiwanie dokumentacji nvim-qfjz (FzfLua live_grep)" then
+                GrepNvimDocs()
+            elseif choice == "Edytuj ulubione pliki ~/.config/bmfiles (EditBmFiles)" then
+                EditBmFiles()
+            elseif choice == "Dodaj katalog do ulubionych (AddCDDir)" then
+                AddCDDir()
+            elseif choice == "Wykonaj kopię zapasową plików Neovim (BackupNeovimConfig)" then
+                vim.cmd[[BackupNeovimConfig]]
+            elseif choice == "Zamiana popularnych słów true / false (BiPolar)" then
+                vim.cmd[[BiPolar]]
+            elseif choice == "Ulubione pliki (BmFiles)" then
+                BmFiles()
+            elseif choice == "Ustaw Timer na 1 minutę (TimerStart 1m)" then
+                vim.cmd[[TimerStart 1m]]
+            elseif choice == "Ustaw Timer na 5 minut (TimerStart 5m)" then
+                vim.cmd[[TimerStart 1m]]
+            elseif choice == "Ustaw Timer na 15 minut (TimerStart 15m)" then
+                vim.cmd[[TimerStart 1m]]
+            elseif choice == "Ustaw Timer na 30 minut (TimerStart 30m)" then
+                vim.cmd[[TimerStart 1m]]
+            elseif choice == "Ustaw Timer na 60 minut (TimerStart 60m)" then
+                vim.cmd[[TimerStart 1m]]
+            elseif choice == "Zatrzymaj Timer (TimerStop)" then
+                vim.cmd[[TimerStop]]
+            elseif choice == "Informacje o buforze (BufInfo)" then
+                BufInfo()
+            elseif choice == "Wyszukiwanie zakładek (BookmarksAllMarks)" then
+                vim.cmd[[BookmarksAllMarks]]
+            elseif choice == "Usuwanie zakładek (BookmarksDelete)" then
+                vim.cmd[[BookmarksDelete]]
+            elseif choice == "Zamknij wszystkie bufory poza aktywnym (BufferCloseAllButCurrent)" then
+                vim.cmd[[BufferCloseAllButCurrent]]
+            elseif choice == "Sortuj bufory według numerów (BufferOrderByBufferNumber)" then
+                vim.cmd[[BufferOrderByBufferNumber]]
+            elseif choice == "Przejdź do katalogu wybranego z ulubionych (CD)" then
+                CD()
+            elseif choice == "Otwórz katalog wybrany z (CDE)" then
+                CDE()
+            elseif choice == "Przejdź do katalogu dla otwartego pliku (CDFD)" then
+                CDFD()
+            elseif choice == "Wyczyść wszystkie rejestry (ClearRegs)" then
+                ClearRegs()
+            elseif choice == "Wyświetla historię komend (CommandLineHistory)" then
+                vim.cmd[[CommandLineHistory]]
+            elseif choice == "Wyszukiwanie plików konfiguracyjnych Neovim w katalogu $NVIM_APPNAME (Config)" then
+                vim.cmd[[Config]]
+            elseif choice == "Pokaż główny katalog repozytorium Git (CDG)" then
+                CDG()
+            elseif choice == "Kopiuje katalog nazwę pliku do rejestru (CopyFileName)" then
+                CopyFileName()
+            elseif choice == "Ustaw schemat kolorystyczny na tokyonight-moon (Dark)" then
+                vim.cmd[[Dark]]
+            elseif choice == "Wyłącz wszystkie dekoracje (DesFree)" then
+                DesFree()
+            elseif choice == "Wyszukiwanie dokumentacji nvim-qfjz (Docs)" then
+                Docs()
+            elseif choice == "Edytuj ulubione katalogi ~/.config/bmdirs (EditCDDirs)" then
+                EditCDDirs()
+            elseif choice == "Edytuj plik konfiguracyjny repozytorium Git .git/config (EditGitConfig)" then
+                EditGitConfig()
+            elseif choice == "Wyświetla informacje o otwartym pliku (FileInfo)" then
+                FileInfo()
+            elseif choice == "Wyszukiwanie plików w bieżącej lokalizacji (Files)" then
+                Files()
+            elseif choice == "Wyszukiwanie komend (FzfLua commands)" then
+                vim.cmd[[FzfLua commands]]
+            elseif choice == "Wyszukiwanie pomocy Neovim (FzfLua helptags)" then
+                vim.cmd[[FzfLua helptags]]
+            elseif choice == "Wyszukiwanie skrótów klawiszowych (FzfLua keymaps)" then
+                vim.cmd[[FzfLua keymaps]]
+            elseif choice == "Wyszukiwanie ostatnio edytowanych plików (FzfLua oldfiles)" then
+                OldFiles()
+            elseif choice == "Przeszukiwanie historii wyszukiwania (FzfLua search_history)" then
+                vim.cmd[[FzfLua search_history]]
+            elseif choice == "Dodaj pliki do repozytorium Git (GA)" then
+                GA()
+            elseif choice == "Wyświetla informacje o repozytorium (GI)" then
+                GI()
+            elseif choice == "Wyszukuje pliki znajdujące się w repozytorium Git (GitFiles)" then
+                GitFiles()
+            elseif choice == "Pokazuje zmiany w repozytorium Git (FzfLua git_status)" then
+                vim.cmd[[FzfLua git_status]]
+            elseif choice == "Dodaje i wysyła pliki do repozytorium Git (GP)" then
+                GP()
+            elseif choice == "Dodaje, podpisuje i wysyła pliki do repozytorium Git (GPS)" then
+                GPS()
+            elseif choice == "Pobiera zmiany z repozytorium Git (PU)" then
+                PU()
+            elseif choice == "Ukrywa znak · wstawiony w miejsce spacji (HideMiddleDot)" then
+                vim.cmd[[HideMiddleDot]]
+            elseif choice == "Pokazuje znak · wstawiony w miejsce spacji (ShowMiddleDot)" then
+                vim.cmd[[ShowMiddleDot]]
+            elseif choice == "Wyświetla nazwę systemu (Hostname)" then
+                vim.cmd[[Hostname]]
+            elseif choice == "Wyłącza prowadnice wcięć (IBLDisable)" then
+                vim.cmd[[IBLDisable]]
+            elseif choice == "Włącza prowadnice wcięć (IBLEnable)" then
+                vim.cmd[[IBLEnable]]
+            elseif choice == "Włącza / wyłącza prowadnice wcięć (IBLToggle)" then
+                vim.cmd[[IBLToggle]]
+            elseif choice == "Wstawia znacznik dla przypomnień w programie Obsidian (InsObsdianRemminder)" then
+                InsObsdianRemminder()
+            elseif choice == "Zmienia schemat kolorystyczny biorąc pod uwagę porę dnia (KolorPora)" then
+                KolorPora()
+            elseif choice == "Zmiana schematu kolorystycznego (Kolory)" then
+                vim.cmd[[Kolory]]
+            elseif choice == "Zmiana języka Neovim na język angielski (language en_US)" then
+                vim.cmd[[language en_US]]
+            elseif choice == "Zmiana języka Neovim na język polski (language pl_PL.UTF-8)" then
+                vim.cmd[[language pl_PL.UTF-8]]
+            elseif choice == "Wyświetla ostatni komunikat (LastMsg)" then
+                vim.cmd[[LastMsg]]
+            elseif choice == "Usunięcie nieużywanych pluginów (Lazy clean)" then
+                vim.cmd[[Lazy clean]]
+            elseif choice == "Instalacja nowych pluginów (Lazy install)" then
+                vim.cmd[[Lazy install]]
+            elseif choice == "Aktualizacja pluginów (Lazy update)" then
+                vim.cmd[[Lazy update]]
+            elseif choice == "Ustaw jasny schemat kolorystyczny (Light)" then
+                vim.cmd[[Light]]
+            elseif choice == "Wyświetla / ukrywa dekoratory list (List)" then
+                vim.cmd[[List]]
+            elseif choice == "Sprawdza czy w systemie są wymagane programy (CheckExternalReqs)" then
+                CheckExternalReqs()
+            elseif choice == "Wyświetla wersję programu Neovim (CheckVersion)" then
+                CheckVersion()
+            elseif choice == "Ustawia przezroczystość dla Neovide na 0.2" then
+                vim.cmd[[lua vim.g.neovide_transparency = 0.2]]
+            elseif choice == "Ustawia przezroczystość dla Neovide na 1" then
+                vim.cmd[[lua vim.g.neovide_transparency = 1]]
+            elseif choice == "Zmienia rozmiar czcionki dla Neovide na 12" then
+                vim.cmd[[lua vim.o.guifont = 'Source Code Pro:h12']]
+            elseif choice == "Zmienia rozmiar czcionki dla Neovide na 17" then
+                vim.cmd[[lua vim.o.guifont = 'Source Code Pro:h17']]
+            elseif choice == "Zmienia rozmiar czcionki dla Neovide na 21" then
+                vim.cmd[[lua vim.o.guifont = 'Source Code Pro:h21']]
+            elseif choice == "Wyświetla komunikaty (Messages)" then
+                vim.cmd[[Messages]]
+            elseif choice == "Ukryj Timer (TimerHide)" then
+                vim.cmd[[TimerHide]]
+            elseif choice == "Pokaż Timer (TimerShow)" then
+                vim.cmd[[TimerShow]]
+            elseif choice == "Neorg przejdź do workspace home" then
+                vim.cmd[[Neorg workspace home]]
+            elseif choice == "Neorg przejdź do workspace work" then
+                vim.cmd[[Neorg workspace work]]
+            elseif choice == "Otwórz nowy plik w podziale poziomym (NewFileHSplit)" then
+                vim.cmd[[NewFileHSplit]]
+            elseif choice == "Otwórz nowy plik w podziale pionowym (NewFileVSplit)" then
+                vim.cmd[[NewFileVSplit]]
+            elseif choice == "Otwórz nowy plik (NewFileNoSplit)" then
+                vim.cmd[[NewFileNoSplit]]
+            elseif choice == "Wyświetla nazwę zmiennej NVIM_APPNAME" then
+                print(NvimAppName())
+            elseif choice == "Otwiera plik pod kursorem dodając na początku ścieśki src/ (OpenFile)" then
+                vim.cmd[[OpenFile]]
+            elseif choice == "Aktualizacja lini Ostatnia Aktualizacja (OstatniaAktualizacja)" then
+                OstatniaAktualizacja()
+            elseif choice == "Przywróc ostatnią sesję (OstatniaSesja)" then
+                OstatniaSesja()
+            elseif choice == "Włącz / wyłącz numerowanie wierszy (number!)" then
+                vim.cmd[[set number!]]
+            elseif choice == "Włącz / wyłącz relatywne numerowanie wierszy (set relativenumber!)" then
+                vim.cmd[[set relativenumber!]]
+            elseif choice == "Włącz sprawdzanie pisowni" then
+                vim.cmd[[setlocal spell! spell? spelllang=pl]]
+            elseif choice == "Pobierz zmiany z repozytorium Git w terminalu (TermGitPull)" then
+                vim.cmd[[TermGitPull]]
+            elseif choice == "Wyświetl zmiany w repozytorium Git w terminalu (TermGitStatus)" then
+                vim.cmd[[TermGitStatus]]
+            elseif choice == "Zmień kolorystyke Jasny / Ciemny (RevBackground)" then
+                vim.cmd[[RevBackground]]
+            elseif choice == "Wyświetl procesy systemowe (TermPs)" then
+                vim.cmd[[TermPs]]
+            elseif choice == "Pokaż datę i godzinę (Time)" then
+                vim.cmd[[Time]]
+            elseif choice == "Włącz / wyłącz zawijanie linii (Wrap)" then
+                vim.cmd[[Wrap]]
+            elseif choice == "Włącz / wyłącz tryb ZenMode" then
+                vim.cmd[[ZenMode]]
+            elseif choice == "Zapisz zmiany" then
+                Write()
+            elseif choice == "Zapisz i wyjdź" then
+                Write()
+                vim.cmd[[q]]
+            elseif choice == "Wyjdź bez zapisywania" then
+                vim.cmd[[qa!]]
+            elseif choice == "Menadżer plików Neotree" then
+                vim.cmd[[Neotree reveal_force_cwd toggle]]
+            elseif choice == "Zamknij aktywny bufor" then
+                vim.cmd[[bdelete]]
+            elseif choice == "Usuń bieżący plik z systemu plików" then
+                vim.cmd[[Delete!]]
+            elseif choice == "Usuń wszystkie puste linie w pliku" then
+                vim.cmd[[g/^$/d]]
+            elseif choice == "Usuń wszystkie puste linie oraz linie wypełnione znakiem spacji w pliku" then
+                vim.cmd[[g/^\s*$/d]]
+            elseif choice == "Zmiana znacznika czasu EPOCH na czytelną formę daty" then
+                EPOCH2Date()
+            elseif choice == "Wyświetl znacznik czasu EPOCH w czytelnej formie daty" then
+                EPOCH2DatePrint()
+            elseif choice == "Wstaw znacznik czasu EPOCH" then
+                InsertEPOCH()
+            elseif choice == "Wstaw aktualną datę i godzinę w formacie 2024-07-22 17:28:27" then
+                InsertDate()
+            end
         end
-    end)
+    }
+    require'fzf-lua'.fzf_exec(lista_komend, opts)
 end
 
 EPOCH2Date = function()
