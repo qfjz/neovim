@@ -547,6 +547,7 @@ Komendy = function()
             "Dodaje i wysyła pliki do repozytorium Git (GP)",
             "Dodaje, podpisuje i wysyła pliki do repozytorium Git (GPS)",
             "Ukrywa znak · wstawiony w miejsce spacji (HideMiddleDot)",
+            "Pokazuje znak · wstawiony w miejsce spacji (ShowMiddleDot)",
             "Wyświetla nazwę systemu (Hostname)",
             "Wyłącza prowadnice wcięć (IBLDisable)",
             "Włącza prowadnice wcięć (IBLEnable)",
@@ -580,16 +581,15 @@ Komendy = function()
             "Aktualizacja lini Ostatnia Aktualizacja (OstatniaAktualizacja)",
             "Przywróc ostatnią sesję (OstatniaSesja)",
             "Pobiera zmiany z repozytorium Git (PU)",
-            "RevBackground",
+            "Zmień kolorystyke Jasny / Ciemny (RevBackground)",
             "Włącz / wyłącz numerowanie wierszy (number!)",
             "Włącz / wyłącz relatywne numerowanie wierszy (set relativenumber!)",
-            "set spell!",
-            "ShowMiddleDot",
-            "Skroty",
-            "TermGitPull",
-            "TermGitStatus",
-            "TermPs",
-            "Time",
+            "Wyświetla podręczną pomoc dla skrótów klawiszowych (Skroty)",
+            "Włącz sprawdzanie pisowni",
+            "Pobierz zmiany z repozytorium Git w terminalu (TermGitPull)",
+            "Wyświetl zmiany w repozytorium Git w terminalu (TermGitStatus)",
+            "Wyświetl procesy systemowe (TermPs)",
+            "Pokaż datę i godzinę (Time)",
             "Ukryj Timer (TimerHide)",
             "Pokaż Timer (TimerShow)",
             "Ustaw Timer na 1 minutę (TimerStart 1m)",
@@ -598,8 +598,8 @@ Komendy = function()
             "Ustaw Timer na 30 minut (TimerStart 30m)",
             "Ustaw Timer na 60 minut (TimerStart 60m)",
             "Zatrzymaj Timer (TimerStop)",
-            "Wrap",
-            "ZenMode",
+            "Włącz / wyłącz zawijanie linii (Wrap)",
+            "Włącz / wyłącz tryb ZenMode",
         }, {
             prompt = "Lista komend",
             format_item = function(item)
@@ -697,6 +697,8 @@ Komendy = function()
                 PU()
             elseif choice == "Ukrywa znak · wstawiony w miejsce spacji (HideMiddleDot)" then
                 vim.cmd[[HideMiddleDot]]
+            elseif choice == "Pokazuje znak · wstawiony w miejsce spacji (ShowMiddleDot)" then
+                vim.cmd[[ShowMiddleDot]]
             elseif choice == "Wyświetla nazwę systemu (Hostname)" then
                 vim.cmd[[Hostname]]
             elseif choice == "Wyłącza prowadnice wcięć (IBLDisable)" then
@@ -769,8 +771,23 @@ Komendy = function()
                 vim.cmd[[set number!]]
             elseif choice == "Włącz / wyłącz relatywne numerowanie wierszy (set relativenumber!)" then
                 vim.cmd[[set relativenumber!]]
+            elseif choice == "Włącz sprawdzanie pisowni" then
+                vim.cmd[[setlocal spell! spell? spelllang=pl]]
+            elseif choice == "Pobierz zmiany z repozytorium Git w terminalu (TermGitPull)" then
+                vim.cmd[[TermGitPull]]
+            elseif choice == "Wyświetl zmiany w repozytorium Git w terminalu (TermGitStatus)" then
+                vim.cmd[[TermGitStatus]]
+            elseif choice == "Zmień kolorystyke Jasny / Ciemny (RevBackground)" then
+                vim.cmd[[RevBackground]]
+            elseif choice == "Wyświetl procesy systemowe (TermPs)" then
+                vim.cmd[[TermPs]]
+            elseif choice == "Pokaż datę i godzinę (Time)" then
+                vim.cmd[[Time]]
+            elseif choice == "Włącz / wyłącz zawijanie linii (Wrap)" then
+                vim.cmd[[Wrap]]
+            elseif choice == "Włącz / wyłącz tryb ZenMode" then
+                vim.cmd[[ZenMode]]
             end
-
         end)
 end
 
