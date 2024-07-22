@@ -65,6 +65,27 @@ local time = vim.fn.strftime("%s")
 vim.api.nvim_put({time}, "c", true, true)
 ```
 
+## Porównanie dwóch plików
+
+Jeśli chcemy porównać dwa pliki najlepiej otworzyć je w podziale pionowym a następnie uruchomić
+polecenie wyświetlające różnice:
+
+```vim
+:windo diffthis
+```
+
+Po zakończeniu przeglądania różnic możemy zamknąć ten tryb używając komendy:
+
+```vim
+:diffoff!
+```
+
+Jeśli chcemy porównać kilka buforów, ale one nie są w podzielonym oknie, to w każdym pliku,
+których chcemy porównywać wykonujemy komendę:
+
+```vim
+:diffthis
+```
 ## Opcje
 
 ```vim
