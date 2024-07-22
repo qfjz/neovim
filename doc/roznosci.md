@@ -9,6 +9,10 @@ Aktualizacja: 2024-07-22 17:02:26, poniedziałek 22 lipca
 
 Wyjście zostanie wyświetlone w postaci komunikatu edytora
 
+```
+:messages
+```
+
 ## Wstawienie do pliku wyjścia komendy systemowej za bieżącą linią
 
 Wstawienie do pliku wyniku komendy `ls`
@@ -29,27 +33,19 @@ skroty.md
 src.md
 ```
 
-## Wstawienie do pliku wyjścia komendy systemowej w bieżącej linii
+## Wykonanie polecenia na bieżącej linii
 
 Wynik komendy usunie zawartość bieżącej linii
 
 ```
-:.!ls
+:.!base64 -
+V3luaWsga29tZW5keSB1c3VuaWUgemF3YXJ0b8WbxIcgYmllxbzEhWNlaiBsaW5paQo=
+
+:.!base64 -d
+Wynik komendy usunie zawartość bieżącej linii
 ```
 
-Wynik polecenia
-
-```
-funkcje.md
-komendy.md
-pluginy.md
-roznosci.md
-screenshot.png
-skroty.md
-src.md
-```
-
-## Nadpisanie pliku wynikie komendy
+## Nadpisanie pliku wynikiem komendy
 
 ```
 :%!ls

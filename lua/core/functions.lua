@@ -620,6 +620,7 @@ Komendy = function()
         "Zmiana znacznika czasu EPOCH na czytelną formę daty",
         "Wyświetl znacznik czasu EPOCH w czytelnej formie daty",
         "Wstaw znacznik czasu EPOCH",
+        "Wstaw aktualną datę i godzinę w formacie 2024-07-22 17:28:27",
     }, {
         prompt = "Lista komend",
         format_item = function(item)
@@ -831,6 +832,8 @@ Komendy = function()
             EPOCH2DatePrint()
         elseif choice == "Wstaw znacznik czasu EPOCH" then
             InsertEPOCH()
+        elseif choice == "Wstaw aktualną datę i godzinę w formacie 2024-07-22 17:28:27" then
+            InsertDate()
         end
     end)
 end
@@ -849,6 +852,12 @@ end
 
 InsertEPOCH = function()
     local time = vim.fn.strftime("%s")
+    vim.api.nvim_put({time}, "c", true, true)
+end
+
+-- Wstawia aktualną datę i godzinę w formacie 2024-07-22 17:28:27
+InsertDate = function()
+    local time = vim.fn.strftime("%F %T")
     vim.api.nvim_put({time}, "c", true, true)
 end
 
