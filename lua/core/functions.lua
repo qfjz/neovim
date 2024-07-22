@@ -611,6 +611,7 @@ Komendy = function()
         "Zapisz i wyjdź",
         "Wyjdź bez zapisywania",
         "Menadżer plików Neotree",
+        "Menadżer plików Oil.nvim",
         "Zamknij aktywny bufor",
         "Przeszukiwanie dokumentacji nvim-qfjz (FzfLua live_grep)",
         "Usuń bieżący plik z systemu plików",
@@ -817,6 +818,8 @@ Komendy = function()
                 vim.cmd[[qa!]]
             elseif choice == "Menadżer plików Neotree" then
                 vim.cmd[[Neotree reveal_force_cwd toggle]]
+            elseif choice == "Menadżer plików Oil.nvim" then
+                vim.cmd[[Oil]]
             elseif choice == "Zamknij aktywny bufor" then
                 vim.cmd[[bdelete]]
             elseif choice == "Usuń bieżący plik z systemu plików" then
