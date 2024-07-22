@@ -621,6 +621,10 @@ Komendy = function()
         "Wyświetl znacznik czasu EPOCH w czytelnej formie daty",
         "Wstaw znacznik czasu EPOCH",
         "Wstaw aktualną datę i godzinę w formacie 2024-07-22 17:28:27",
+        "Wstaw znacznik ID",
+        "Wyszukaj znacznik ID",
+        "Skopiuj całą zawartość pliku",
+        "Usuń całą zawartość pliku",
     }
     local opts = {}
     opts.prompt = "Wyszukaj> "
@@ -836,6 +840,14 @@ Komendy = function()
                 InsertEPOCH()
             elseif choice == "Wstaw aktualną datę i godzinę w formacie 2024-07-22 17:28:27" then
                 InsertDate()
+            elseif choice == "Wstaw znacznik ID" then
+                Insert_ID()
+            elseif choice == "Wyszukaj znacznik ID" then
+                GrepNvimHash()
+            elseif choice == "Skopiuj całą zawartość pliku" then
+                vim.cmd[[%yank]]
+            elseif choice == "Usuń całą zawartość pliku" then
+                vim.cmd[[%delete]]
             end
         end
     }
@@ -896,9 +908,9 @@ end
 
 -- DESC: Wstawia losowy ciąg znaków w formacie określonym w funkcji Generate_ID
 Insert_ID = function()
-    local row, col = unpack(vim.api.nvim_win_get_cursor(0))
     local id = Generate_ID()
-    vim.api.nvim_buf_set_text(0, row - 1, col, row - 1, col, { id })
+    vim.cmd[[norm $]]
+    vim.api.nvim_put({id}, "c", true, true)
 end
 
 -- DESC: Wstawia w bieżącej linii: - [ ] (@2023-09-19 12:07)
