@@ -613,6 +613,7 @@ Komendy = function()
         "Menadżer plików Neotree",
         "Menadżer plików Oil.nvim",
         "Zamknij aktywny bufor",
+        "Wyszukiwarka rejestrów",
         "Przeszukiwanie dokumentacji nvim-qfjz (FzfLua live_grep)",
         "Usuń bieżący plik z systemu plików",
         "Usuń wszystkie puste linie w pliku",
@@ -625,14 +626,22 @@ Komendy = function()
         "Wyszukaj znacznik ID",
         "Skopiuj całą zawartość pliku",
         "Usuń całą zawartość pliku",
+        "Wybierz bufor (BufferPick)",
+        "Alpha Dashboard",
     }
     local opts = {}
     opts.prompt = "Wyszukaj> "
     opts.actions = {
         ['default'] = function(selected)
             local choice = selected[1]
-            if choice == 'Dodaj plik do ulubionych (AddBmFile)' then
+            if choice == "Dodaj plik do ulubionych (AddBmFile)" then
                 AddBmFile()
+            elseif choice == "Wybierz bufor (BufferPick)" then
+                vim.cmd[[BufferPick]]
+            elseif choice == "Wyszukiwarka rejestrów" then
+                vim.cmd[[FzfLua registers]]
+            elseif choice == "Alpha Dashboard" then
+                vim.cmd[[Alpha]]
             elseif choice == "Przeszukiwanie dokumentacji nvim-qfjz (FzfLua live_grep)" then
                 GrepNvimDocs()
             elseif choice == "Edytuj ulubione pliki ~/.config/bmfiles (EditBmFiles)" then
