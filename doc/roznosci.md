@@ -1,5 +1,13 @@
 # Różności
-Aktualizacja: 2024-07-22 14:34:02, poniedziałek 22 lipca
+Aktualizacja: 2024-07-22 17:02:26, poniedziałek 22 lipca
+
+## Uruchomienie komendy systemowej
+
+```
+:!ls
+```
+
+Wyjście zostanie wyświetlone w postaci komunikatu edytora
 
 ## Wstawienie do pliku wyjścia komendy systemowej za bieżącą linią
 
@@ -39,4 +47,24 @@ roznosci.md
 screenshot.png
 skroty.md
 src.md
+```
+
+## Nadpisanie pliku wynikie komendy
+
+```
+:%!ls
+```
+
+## Zastąpienie zaznaczenia wynikiem komendy
+
+```
+:'<,'>!ls
+```
+
+## Wstawienie zmiennej do pliki z poziomu funkcji
+
+
+```lua
+local time = vim.fn.strftime("%s")
+vim.api.nvim_put({time}, "c", true, true)
 ```
