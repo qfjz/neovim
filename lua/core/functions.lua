@@ -600,6 +600,10 @@ Komendy = function()
             "Zatrzymaj Timer (TimerStop)",
             "Włącz / wyłącz zawijanie linii (Wrap)",
             "Włącz / wyłącz tryb ZenMode",
+            "Zapisz zmiany",
+            "Zapisz i wyjdź",
+            "Wyjdź bez zapisywania",
+            "Menadżer plików Neotree"
         }, {
             prompt = "Lista komend",
             format_item = function(item)
@@ -787,6 +791,15 @@ Komendy = function()
                 vim.cmd[[Wrap]]
             elseif choice == "Włącz / wyłącz tryb ZenMode" then
                 vim.cmd[[ZenMode]]
+            elseif choice == "Zapisz zmiany" then
+                Write()
+            elseif choice == "Zapisz i wyjdź" then
+                Write()
+                vim.cmd[[q]]
+            elseif choice == "Wyjdź bez zapisywania" then
+                vim.cmd[[qa!]]
+            elseif choice == "Menadżer plików Neotree" then
+                vim.cmd[[Neotree reveal_force_cwd toggle]]
             end
         end)
 end
