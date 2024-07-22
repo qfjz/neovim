@@ -86,6 +86,23 @@ których chcemy porównywać wykonujemy komendę:
 ```vim
 :diffthis
 ```
+## Powrót to wcześniej edytowanego miejsca
+
+```
+g;
+2g;
+```
+
+W drugą stronę
+
+```
+g,
+2g,
+```
+
+Inny sposób to `Ctrl-^` jednak ten skrót przemieszcza nas pomiędzy dwoma ostatnio edytowanymi plikami
+
+Komenda `gi` przechodzi do miejsca ostatniej edycji jednocześnie wchodząc w tryb wprowadzania
 ## Opcje
 
 ```vim
