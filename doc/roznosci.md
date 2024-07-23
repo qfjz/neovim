@@ -33,6 +33,44 @@ skroty.md
 src.md
 ```
 
+## Wczytanie kilku pierwszych linii pliku
+Wstawienie pierwszych 5 linii pliku `plik.txt` do bieżącego bufora
+
+```vim
+:r !head -n5 plik.txt
+```
+## Praca w linii komend
+
+- `[Enter]` zatwierdza komendę
+- `[ESC]` wychodzi z linii komend
+- `<Ctrl-f>` pokazuje historię komend
+- `%` znak procenta oznacza otwarty plik `:!cp % %.txt`
+- `!` po znaku `!` komenda będzie uruchomiona w powłoce systemowej
+
+
+## Połączenie kilku linii jednocześnie
+
+```
+"Pon",
+"Wto",
+"Śro",
+```
+
+Następnie wydajemy komendę:
+
+```
+vipgJ
+```
+
+Komenda `vip` zaznacza paragraf
+Komenda `gJ` łączy zaznaczone wiersze w jedną linię
+
+Wynik
+
+```
+"Pon","Wto","Śro",
+```
+
 ## Wykonanie polecenia na bieżącej linii
 
 Wynik komendy usunie zawartość bieżącej linii
