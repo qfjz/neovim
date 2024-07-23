@@ -185,6 +185,31 @@ Odszyfrowanie całego pliku
 :r!gpg -a -c -o- plik_odszyfrowany.txt
 ```
 
+## Wyszukanie linii nie zawierających wybranego znaku
+
+Wyszukaj wszystkie linie, które nie zawierają litery `a`
+
+```vim
+/\v^.+(^.*a.*$)@<!$
+```
+
+Wyszukaj linie, które nie mają znaku `a` na początku
+
+```vim
+/\v^.+(^a.*$)@<!$
+```
+### Konwertowanie znaków końca linii z ^M (DOS) do normalnego formttu (Unix)
+
+```vim
+:e ++ff=unix
+```
+
+w drugą stronę
+
+```vim
+:e ++ff=dos
+```
+
 ## Opcje
 
 ```vim
