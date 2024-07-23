@@ -7,8 +7,12 @@ AddBmFile = function()
     end
     local BmFilesHandle = io.open(BmFiles, "a+")
     local FileName = vim.fn.resolve(vim.fn.expand("%:p"))
-    BmFilesHandle:write(FileName .. "\n")
-    BmFilesHandle:close()
+    if BmFilesHandle ~= nil then
+        BmFilesHandle:write(FileName .. "\n")
+        BmFilesHandle:close()
+    else
+        vim.notify("Brak pliku " .. BmFiles)
+    end
 end
 
 -- DESC: Dodaje bieżący katalog do pliku bmdirs
@@ -24,8 +28,12 @@ AddCDDir = function()
         return
     end
     local BmDirsHandle = io.open(BmDirs, "a+")
-    BmDirsHandle:write(directory .. "\n")
-    BmDirsHandle:close()
+    if BmDirsHandle ~= nil then
+        BmDirsHandle:write(directory .. "\n")
+        BmDirsHandle:close()
+    else
+        vim.notify("Brak pliku " .. BmDirs)
+    end
 end
 
 BmFiles = function()
@@ -198,6 +206,48 @@ CopyLineToFile = function(plik)
     -- vim.cmd("cd $NOTES_DIR")
     vim.fn.writefile(vim.fn.getreg("@", 1, 1), plik, "a")
     vim.cmd("cd %:p:h")
+end
+
+CopyLineToSelectedFile = function()
+    local notes_dir = os.getenv("NOTES_DIR")
+    if notes_dir == nil then
+        notes_dir = vim.fn.resolve(vim.fn.expand("$HOME/Notes"))
+    end
+    local pliki_scan = vim.fn.system("rg --files -g '*.md' " .. notes_dir)
+    local pliki_notatek = vim.fn.substitute(pliki_scan, '\n$', '', '')  -- usunięcie ostatniej pustej linii w tablicy
+    local pliki_notatek_table = vim.split(pliki_notatek, " ")
+    local opts = {}
+    opts.prompt = "Wybierz plik> "
+    opts.actions = {
+        ['default'] = function(selected)
+            local plik = selected[1]
+            vim.cmd("y")
+            vim.fn.writefile(vim.fn.getreg("@", 1, 1), vim.fn.resolve(vim.fn.expand(plik)), "a")
+            vim.cmd("cd %:p:h")
+        end
+    }
+    require'fzf-lua'.fzf_exec(pliki_notatek_table, opts)
+end
+
+CopyVLineToSelectedFile = function()
+    local notes_dir = os.getenv("NOTES_DIR")
+    if notes_dir == nil then
+        notes_dir = vim.fn.resolve(vim.fn.expand("$HOME/Notes"))
+    end
+    local pliki_scan = vim.fn.system("rg --files -g '*.md' " .. notes_dir)
+    local pliki_notatek = vim.fn.substitute(pliki_scan, '\n$', '', '')  -- usunięcie ostatniej pustej linii w tablicy
+    local pliki_notatek_table = vim.split(pliki_notatek, " ")
+    local opts = {}
+    opts.prompt = "Wybierz plik> "
+    opts.actions = {
+        ['default'] = function(selected)
+            local plik = selected[1]
+            vim.cmd("'<,'>y")
+            vim.fn.writefile(vim.fn.getreg("@", 1, 1), vim.fn.resolve(vim.fn.expand(plik)), "a")
+            vim.cmd("cd %:p:h")
+        end
+    }
+    require'fzf-lua'.fzf_exec(pliki_notatek_table, opts)
 end
 
 -- DESC: kopiuje zawartość standardowego rejestru " do rejestru x
@@ -580,9 +630,9 @@ Komendy = function()
         "Wyświetla komunikaty (Messages)",
         "Neorg przejdź do workspace home",
         "Neorg przejdź do workspace work",
-        "Otwórz nowy plik w podziale poziomym (NewFileHSplit)",
-        "Otwórz nowy plik w podziale pionowym (NewFileVSplit)",
-        "Otwórz nowy plik (NewFileNoSplit)",
+        "Nowy plik w podziale poziomym (NewFileHSplit)",
+        "Nowy plik w podziale pionowym (NewFileVSplit)",
+        "Nowy plik (NewFileNoSplit)",
         "Wyświetla nazwę zmiennej NVIM_APPNAME",
         "Otwiera plik pod kursorem dodając na początku ścieśki src/ (OpenFile)",
         "Aktualizacja lini Ostatnia Aktualizacja (OstatniaAktualizacja)",
@@ -627,6 +677,8 @@ Komendy = function()
         "Skopiuj całą zawartość pliku",
         "Usuń całą zawartość pliku",
         "Wybierz bufor (BufferPick)",
+        "Kopiuj bieżącą linię do wybranego pliku Notatek",
+        "Kopiuj zaznaczenie do wybranego pliku Notatek",
         "Alpha Dashboard",
     }
     local opts = {}
@@ -857,6 +909,10 @@ Komendy = function()
                 vim.cmd[[%yank]]
             elseif choice == "Usuń całą zawartość pliku" then
                 vim.cmd[[%delete]]
+            elseif choice == "Kopiuj bieżącą linię do wybranego pliku Notatek" then
+                CopyLineToSelectedFile()
+            elseif choice == "Kopiuj zaznaczenie do wybranego pliku Notatek" then
+                CopyVLineToSelectedFile()
             end
         end
     }
