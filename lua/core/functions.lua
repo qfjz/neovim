@@ -709,13 +709,13 @@ Komendy = function()
             elseif choice == "Ustaw Timer na 1 minutę (TimerStart 1m)" then
                 vim.cmd[[TimerStart 1m]]
             elseif choice == "Ustaw Timer na 5 minut (TimerStart 5m)" then
-                vim.cmd[[TimerStart 1m]]
+                vim.cmd[[TimerStart 5m]]
             elseif choice == "Ustaw Timer na 15 minut (TimerStart 15m)" then
-                vim.cmd[[TimerStart 1m]]
+                vim.cmd[[TimerStart 15m]]
             elseif choice == "Ustaw Timer na 30 minut (TimerStart 30m)" then
-                vim.cmd[[TimerStart 1m]]
+                vim.cmd[[TimerStart 30m]]
             elseif choice == "Ustaw Timer na 60 minut (TimerStart 60m)" then
-                vim.cmd[[TimerStart 1m]]
+                vim.cmd[[TimerStart 60m]]
             elseif choice == "Zatrzymaj Timer (TimerStop)" then
                 vim.cmd[[TimerStop]]
             elseif choice == "Informacje o buforze (BufInfo)" then
