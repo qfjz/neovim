@@ -103,6 +103,50 @@ g,
 Inny sposób to `Ctrl-^` jednak ten skrót przemieszcza nas pomiędzy dwoma ostatnio edytowanymi plikami
 
 Komenda `gi` przechodzi do miejsca ostatniej edycji jednocześnie wchodząc w tryb wprowadzania
+
+## Szyfrowanie za pomocą GPG
+
+Zaszyfrowanie linii 117
+
+```vim
+:117 ! gpg -a -c -
+```
+
+Otrzymujemy:
+
+```
+-----BEGIN PGP MESSAGE-----
+
+jA0ECQMIUNh5NuoQAOnw0k0BODyqJH0rX5m/qsw10cClXqCqS+6YPgNs9VAHMfSu
+oM9Qn1SqnsO8S3hdhHow6t16NAvXoe578kG2Q/uZdxIRzAJ/mqMv2tJXjI1eTg==
+=WXl4
+-----END PGP MESSAGE-----
+```
+
+Odszyfrowanie wymaga podania linii pomiędzy którymi znajduje się zaszyfrowany tekst
+
+```vim
+:121,127 ! gpg -d -
+```
+
+Zaszyfrowanie całego pliku
+
+```vim
+:!gpg -a -c %
+```
+
+Inna wersja zaszyfrowania całego pliku
+
+```vim
+:r!gpg -a -c -o- %
+```
+
+Odszyfrowanie całego pliku
+
+```vim
+:r!gpg -a -c -o- plik_odszyfrowany.txt
+```
+
 ## Opcje
 
 ```vim
