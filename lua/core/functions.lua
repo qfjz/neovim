@@ -680,6 +680,8 @@ Komendy = function()
         "Kopiuj bieżącą linię do wybranego pliku Notatek",
         "Kopiuj zaznaczenie do wybranego pliku Notatek",
         "Alpha Dashboard",
+        "Wyłącz autopairs",
+        "Włącz autopairs",
     }
     local opts = {}
     opts.prompt = "Wyszukaj> "
@@ -913,6 +915,10 @@ Komendy = function()
                 CopyLineToSelectedFile()
             elseif choice == "Kopiuj zaznaczenie do wybranego pliku Notatek" then
                 CopyVLineToSelectedFile()
+            elseif choice == "Wyłącz autopairs" then
+                require('nvim-autopairs').disable()
+            elseif choice == "Włącz autopairs" then
+                require('nvim-autopairs').enable()
             end
         end
     }

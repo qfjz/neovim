@@ -87,11 +87,13 @@ return {
     "rcarriga/nvim-notify",
     "folke/noice.nvim",
     "epwalsh/pomo.nvim",
-    "steelsojka/pears.nvim",
-    {
-        "nvim-treesitter/nvim-treesitter",
-        enabled = true,
-    },
+    "windwp/nvim-autopairs",
+    "nvim-treesitter/nvim-treesitter",
+    -- "steelsojka/pears.nvim",
+    -- {
+    --     "nvim-treesitter/nvim-treesitter",
+    --     enabled = true,
+    -- },
     {
         "nvim-neorg/neorg",
         version = "v7.0.0",
