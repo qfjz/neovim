@@ -89,11 +89,6 @@ return {
     "epwalsh/pomo.nvim",
     "windwp/nvim-autopairs",
     "nvim-treesitter/nvim-treesitter",
-    -- "steelsojka/pears.nvim",
-    -- {
-    --     "nvim-treesitter/nvim-treesitter",
-    --     enabled = true,
-    -- },
     {
         "nvim-neorg/neorg",
         version = "v7.0.0",
