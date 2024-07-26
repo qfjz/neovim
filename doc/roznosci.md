@@ -227,6 +227,41 @@ w drugą stronę
 - `:g/Cos[A-Z]\+[0-9]/norm dd` Usuwa linie które zawierają się w wyszukiwaniu `Cos[A-Z]….`
 - `:g/Cos[A-Z]\+[0-9]/norm $da<0P` Przenosi wyszukiwany tekst z końca linii na jej początek
 
+Zamiana
+
+```
+| zsh.md | powłoka shell |
+```
+
+Na
+
+```
+| [zsh](zsh.md) | powłoka shell |
+```
+
+**Klawisz ESC uzyskujemy za pmocą skrótu Ctrl-v ESC w linii komend występuje on jako `^[`**
+
+```vim
+:'<,'>:g/md/norm ^wvt.yPa](^[Ea)^[Bi[
+```
+
+Występują tu dwa wyjścia z trybu **INSERT** czyli `^[`.
+
+- `md` wyszukuje `md` w zaznaczonych liniach<
+- `^` przechodzi na początek linii
+- `w` przechodzi na początek słowa `zsh`
+- `vt.` zaznacza tekst do kropki, bez niej
+- `y` kopiuje zaznaczony tekst
+- `P` wkleja zaznaczony tekst przed kursorem
+- `a](` wprowadza tekst `](`
+- `^[` klawisz `ESC` wychodzi z trybu **INSERT** (Ctrl-v ESC)
+- `Ea)` przechodzi na koniec wyrażenia i wstawia znak `)`
+- `^[` klawisz `ESC` wychodzi w trybu **INSERT** (Ctrl-v ESC)
+- `Bi[` cofa się na początek wyrażenia i wstawia znak `[`
+
+W skrócie polecenie kopiuje nazwę pliku bez jego rozszerzenia, dodaje nawiasy i wkleja nazwę na
+początku nazwy pliku.
+
 ## Opcje
 
 ```vim
