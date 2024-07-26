@@ -459,7 +459,7 @@ GetFileExtension = function(file)
     else
         print(vim.fn.fnamemodify(file, ":e"))
         print("Nie wiem co to za plik")
-    end 
+    end
 end
 
 GetSpell = function()
@@ -529,7 +529,7 @@ GrepNotesDir = function()
 end
 
 -- DESC: Przeszukuje katalog $HOME/.config/NVIM_APPNAME z plikami *.lua dla funkcji GrepNvimHash
-GrepNvimConfigDir = function(opts)
+GrepNvimConfigDir = function()
     local cwd_dir = "$HOME/.config/" .. NvimAppName()
     local prompt = "Config> "
     local rg_cmd = "rg --line-number --column -g '*.lua'"
@@ -537,7 +537,7 @@ GrepNvimConfigDir = function(opts)
 end
 
 -- DESC: Przeszukuje katalog $HOME/.config/NVIM_APPNAME/doc z plikami *.md dla funkcji GrepNvimHash
-GrepNvimDocsDir = function(opts)
+GrepNvimDocsDir = function()
     local cwd_dir = "$HOME/.config/" .. NvimAppName() .. "/doc"
     local prompt = "Docs> "
     local rg_cmd = "rg --line-number --column -g '*.md'"
@@ -1056,7 +1056,6 @@ end
 
 -- DESC: Wyświetla wszystkie ustawione opcje Neovim, :Messages wyświetla wynik funkcji
 Options = function()
-    local all_options = vim.api.nvim_get_all_options_info()
     local win_number = vim.api.nvim_get_current_win()
     local v = vim.wo[win_number]
     local all_options = vim.api.nvim_get_all_options_info()
