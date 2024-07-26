@@ -36,6 +36,7 @@ AddCDDir = function()
     end
 end
 
+-- DESC: Pokazuje okno wyboru ulubionych plików
 BmFiles = function()
     local BmFiles = os.getenv("BM_FILES")
     if BmFiles == nil then
@@ -55,6 +56,7 @@ BmFiles = function()
     require'fzf-lua'.fzf_exec(files, opts)
 end
 
+-- DESC: Wyświetla informacje o bieżącym buforze, informacje można przeglądać za pomocą polecenia Messages
 BufInfo = function()
     for _, v in ipairs(vim.fn.getbufinfo("%")) do
         P(v)
