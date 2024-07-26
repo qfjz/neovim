@@ -1,5 +1,6 @@
 # Różności
-Aktualizacja: 2024-07-22 17:02:26, poniedziałek 22 lipca
+
+Aktualizacja: 2024-07-26 20:05:51, piątek 26 lipca
 
 ## Uruchomienie komendy systemowej
 
@@ -224,6 +225,7 @@ w drugą stronę
   znalezionych liniach zawierających `PATTERN`
 - `:g/Sales/d` Usuwa wszystkie linie zawierające słowo Sales
 - `:g!/Sales/d` Usuwa wszystkie linie oprócz linii zawierających słowo Sales
+- `:v/Sales/d` Skrót dla `:g!/Sales/d`
 - `:g/Cos[A-Z]\+[0-9]/norm dd` Usuwa linie które zawierają się w wyszukiwaniu `Cos[A-Z]….`
 - `:g/Cos[A-Z]\+[0-9]/norm $da<0P` Przenosi wyszukiwany tekst z końca linii na jej początek
 
