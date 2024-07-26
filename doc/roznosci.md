@@ -198,7 +198,7 @@ Wyszukaj linie, które nie mają znaku `a` na początku
 ```vim
 /\v^.+(^a.*$)@<!$
 ```
-### Konwertowanie znaków końca linii z ^M (DOS) do normalnego formttu (Unix)
+## Konwertowanie znaków końca linii z ^M (DOS) do normalnego formttu (Unix)
 
 ```vim
 :e ++ff=unix
@@ -209,6 +209,23 @@ w drugą stronę
 ```vim
 :e ++ff=dos
 ```
+
+## Komenda global
+
+- `:g/^$/d` Usuń wszystkie puste linie w pliku
+- `:g/^\s*$/d` Usuń wszystkie puste linie oraz linie wypełnione znakiem spacji w pliku
+- `:g/^$/,/./-j` Usuwa puste linie występujące po sobie zostawiając tylko jedną
+- `:g/pattern/d` Usuwa znalezione linie
+- `:g/pattern/ . w>>filename` Kopiuje znalezione linie do osobnego pliku (plik musi istnieć)
+- `:g/^/m0` Odwraca kolejność linii w pliku
+- `:g/^\s*PATTERN /exe "norm! I/* \<ESC>A */\<ESC>"` Wstawia komentarz ( `/* text */` ) w
+  znalezionych liniach zaczynającyh się od `PATTERN`
+- `:g/PATTERN/exe "norm! I/* \<ESC>A */\<ESC>"` Wstawia komentarz ( `/* text */` ) w
+  znalezionych liniach zawierających `PATTERN`
+- `:g/Sales/d` Usuwa wszystkie linie zawierające słowo Sales
+- `:g!/Sales/d` Usuwa wszystkie linie oprócz linii zawierających słowo Sales
+- `:g/Cos[A-Z]\+[0-9]/norm dd` Usuwa linie które zawierają się w wyszukiwaniu `Cos[A-Z]….`
+- `:g/Cos[A-Z]\+[0-9]/norm $da<0P` Przenosi wyszukiwany tekst z końca linii na jej początek
 
 ## Opcje
 

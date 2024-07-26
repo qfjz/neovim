@@ -51,7 +51,7 @@ return {
     "akinsho/toggleterm.nvim",
     "goolord/alpha-nvim",
     "b3nj5m1n/kommentary",
-    "lukas-reineke/headlines.nvim",
+    -- "lukas-reineke/headlines.nvim",
     "tpope/vim-fugitive",
     "tpope/vim-eunuch",
     "tpope/vim-repeat",
