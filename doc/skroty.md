@@ -202,18 +202,20 @@ Przeszukiwanie skrótów klawiszowych: `<spacja>sk`, lub `:FzfLua keymaps`
 
 ## FzfLua
 
-| Skrót   | Opis                                                |
-|---------|-----------------------------------------------------|
-| `<F1>`  | Wyświetla podręczną pomoc                           |
-| `<F2>`  | Zwiększa lub zmniejsza okno wyszukiwania            |
-| `<F3>`  | Włącza / wyłącza zawijanie linii w oknie podgladu   |
-| `<F4>`  | Pokazuje / ukrywa podgląd                           |
-| `<F5>`  | Zmienia położenie okna wyszukiwania                 |
-| `<F6>`  | Zmienia położenie okna wyszukiwania                 |
-| `<c-j>` | Przewijanie w oknie podglądu                        |
-| `<c-k>` | Przewijanie w oknie podglądu                        |
-| `=`     | Wraca na początek pliku w oknie podglądu            |
-| `<c-z>` | Zamyka okno FzfLua                                  |
-| `<c-u>` | Usuwa całą zawartość linii wyszukiwania             |
-| `<c-f>` | Przewijanie w oknie wyszukiwania w dół              |
-| `<c-b>` | Przewijanie w oknie wyszukiwania w górę             |
+| Skrót   | Opis                                                                          |
+|---------|-------------------------------------------------------------------------------|
+| `<F1>`  | Wyświetla podręczną pomoc                                                     |
+| `<F2>`  | Zwiększa lub zmniejsza okno wyszukiwania                                      |
+| `<F3>`  | Włącza / wyłącza zawijanie linii w oknie podgladu                             |
+| `<F4>`  | Pokazuje / ukrywa podgląd                                                     |
+| `<F5>`  | Zmienia położenie okna wyszukiwania                                           |
+| `<F6>`  | Zmienia położenie okna wyszukiwania                                           |
+| `<c-j>` | Przewijanie w oknie podglądu                                                  |
+| `<c-k>` | Przewijanie w oknie podglądu                                                  |
+| `=`     | Wraca na początek pliku w oknie podglądu                                      |
+| `<c-z>` | Zamyka okno FzfLua                                                            |
+| `<c-u>` | Usuwa całą zawartość linii wyszukiwania                                       |
+| `<c-f>` | Przewijanie w oknie wyszukiwania w dół                                        |
+| `<c-b>` | Przewijanie w oknie wyszukiwania w górę                                       |
+| `<a-a>` | Zaznacza wszystkie znalezione wyniki, `<ENTER>` przenosi je do listy quickfix |
+| `<a-q>` | Dodaje pojedynczy wiersz do listy quickfix                                    |

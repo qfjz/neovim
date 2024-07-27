@@ -74,17 +74,17 @@ CD = function()
     if vim.fn.filereadable(BmDirs) == 0 then
         io.open(BmDirs, "a+")
     end
-    local command = 'cd'
+    local command = "cd"
     local opts = {}
     opts.prompt = "CD> "
     opts.actions = {
-        ['default'] = function(selected)
+        ["default"] = function(selected)
             -- wywołanie komendy na wybranym katalogu
             vim.cmd(command .. " " .. selected[1])
         end
     }
     local files = vim.fn.readfile(vim.fn.expand(BmDirs))
-    require'fzf-lua'.fzf_exec(files, opts)
+    require"fzf-lua".fzf_exec(files, opts)
 end
 
 -- DESC: Otwiera menadżer plików w wybranej lokalizacji
@@ -96,17 +96,17 @@ CDE = function()
     if vim.fn.filereadable(BmDirs) == 0 then
         io.open(BmDirs, "a+")
     end
-    local command = 'e'
+    local command = "e"
     local opts = {}
     opts.prompt = "CDE> "
     opts.actions = {
-        ['default'] = function(selected)
+        ["default"] = function(selected)
             -- wywołanie komendy na wybranym katalogu
             vim.cmd(command .. " " .. selected[1])
         end
     }
     local files = vim.fn.readfile(vim.fn.expand(BmDirs))
-    require'fzf-lua'.fzf_exec(files, opts)
+    require"fzf-lua".fzf_exec(files, opts)
 end
 
 -- DESC: Funkcja przechodzi do katalogu w którym znajduje się edytorwany plik, potrafi podążać za linkami symbolicznymi
@@ -131,7 +131,7 @@ end
 
 -- DESC: Funkcja wyświetla główny katalog repozytorium Git
 CDG = function()
-    if package.loaded['gitsigns'] then
+    if package.loaded["gitsigns"] then
         local root_dir = vim.inspect(vim.fn.getbufinfo("%")[1].variables.gitsigns_status_dict.root)
         local MSG = ("Found git repository at" .. " " .. root_dir)
         vim.notify(MSG, "info", {
@@ -153,7 +153,7 @@ end
 
 -- DESC: Sprawdza czy w systemie są zainstalowane wymagane programy
 CheckExternalReqs = function()
-    for _, exe in ipairs { 'git', 'make', 'unzip', 'rg', 'fzf' } do
+    for _, exe in ipairs { "git", "make", "unzip", "rg", "fzf" } do
         local is_executable = vim.fn.executable(exe) == 1
         if is_executable then
             MSG = string.format("Found executable: '%s'", exe)
@@ -365,7 +365,7 @@ end
 Files = function()
     CDFD()
     local rg_cmd = "rg --files --hidden --follow"
-    require'fzf-lua'.files({
+    require"fzf-lua".files({
         cmd = rg_cmd,
         winopts = {
             preview = { hidden = "nohidden" },
@@ -376,7 +376,7 @@ end
 
 -- DESC: Przeszukiwanie ostation edytowanych plików
 OldFiles = function()
-    require'fzf-lua'.oldfiles({
+    require"fzf-lua".oldfiles({
         winopts = {
             preview = { hidden = "nohidden" },
             fullscreen = true,
@@ -487,7 +487,7 @@ GitFiles = function()
     local result = vim.fn.system("git rev-parse --is-inside-work-tree")
     if vim.v.shell_error == 0 and result:find("true") then
         local prompt = "GitFiles> "
-        require'fzf-lua'.git_files({
+        require"fzf-lua".git_files({
             prompt = prompt,
             winopts = {
                 preview = { hidden = "nohidden" },
@@ -496,7 +496,7 @@ GitFiles = function()
         })
     else
         local rg_cmd = "rg --files --hidden --follow"
-        require'fzf-lua'.files({
+        require"fzf-lua".files({
             cmd = rg_cmd,
             winopts = {
                 preview = { hidden = "nohidden" },
@@ -604,6 +604,7 @@ Komendy = function()
         "Przejdź do katalogu wybranego z ulubionych (CD)",
         "Przeszukiwanie dokumentacji nvim-qfjz (FzfLua live_grep)",
         "Przeszukiwanie historii wyszukiwania (FzfLua search_history)",
+        "Przeszukiwanie listy quick fix (FzfLua quickfix)",
         "Przywróc ostatnią sesję (OstatniaSesja)",
         "Skopiuj całą zawartość pliku",
         "Sortuj bufory według numerów (BufferOrderByBufferNumber)",
@@ -918,9 +919,11 @@ Komendy = function()
             elseif choice == "Kopiuj zaznaczenie do wybranego pliku Notatek" then
                 CopyVLineToSelectedFile()
             elseif choice == "Wyłącz autopairs" then
-                require('nvim-autopairs').disable()
+                require("nvim-autopairs").disable()
             elseif choice == "Włącz autopairs" then
-                require('nvim-autopairs').enable()
+                require("nvim-autopairs").enable()
+            elseif choice == "Przeszukiwanie listy quick fix (FzfLua quickfix)" then
+                vim.cmd[[FzfLua quickfix]]
             end
         end
     }
