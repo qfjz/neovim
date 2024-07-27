@@ -137,6 +137,18 @@ require("easy-commands").setup({
             callback = "lua EditGitConfig()",
         },
         {
+            name = "InsertDate",
+            callback = "lua InsertDate()"
+        },
+        {
+            name = "InsertEPOCH",
+            callback = "lua InsertEPOCH()"
+        },
+        {
+            name = "InsertID",
+            callback = "lua Insert_ID()"
+        },
+        {
             name = "Fileinfo",
             callback = "lua FileInfo()",
         },

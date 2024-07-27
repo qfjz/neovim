@@ -172,6 +172,7 @@ CheckExternalReqs = function()
   return true
 end
 
+-- DESC: Wyświetla wersję Neovim
 CheckVersion = function()
     local verstr = string.format('%s.%s.%s', vim.version().major, vim.version().minor, vim.version().patch)
     if not vim.version.cmp then
@@ -185,6 +186,7 @@ CheckVersion = function()
     end
 end
 
+-- DESC: Czyści rejestry
 ClearRegs = function()
     local str = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/-"'
     local regs = {}
@@ -196,6 +198,7 @@ ClearRegs = function()
     end
 end
 
+-- DESC: Kopiuje nazwę pliku do schowka systemowego
 CopyFileName = function()
     Filename=vim.fn.resolve(vim.fn.expand("%:p"))
     vim.fn.setreg([[*]], Filename, 1)
@@ -210,6 +213,7 @@ CopyLineToFile = function(plik)
     vim.cmd("cd %:p:h")
 end
 
+-- DESC: Kopiuje linię do wybranego pliku (*.md) z katalogu $NOTES_DIR
 CopyLineToSelectedFile = function()
     local notes_dir = os.getenv("NOTES_DIR")
     if notes_dir == nil then
@@ -231,6 +235,7 @@ CopyLineToSelectedFile = function()
     require'fzf-lua'.fzf_exec(pliki_notatek_table, opts)
 end
 
+-- DESC: Kopiuje zaznaczone linie do wybranego pliku (*.md) z katalogu $NOTES_DIR
 CopyVLineToSelectedFile = function()
     local notes_dir = os.getenv("NOTES_DIR")
     if notes_dir == nil then
