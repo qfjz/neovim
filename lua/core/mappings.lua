@@ -345,6 +345,8 @@ vim.keymap.set({ "n", "v" }, "<leader>si", function()
     vim.fn.writefile(vim.fn.getreg('@', 1, 1), 'INBOX.md', 'a')
     vim.cmd[[cd %:p:h]]
 end, { desc = "Przenosi bieżącą linię lub zaznaczenie do pliku $NOTES_DIR/INBOX.md" })
+vim.keymap.set({ "i", "n" }, "<C-x><C-s>", "<esc><cmd>lua require('fzf-lua').spell_suggest()<cr>")
+vim.keymap.set("n", [[<leader>D]], "<cmd>BufferPickDelete<cr>", { desc = "Pozwala wybrać bufor, który chcemy zamknąć" })
 -- vim.keymap.set("n", "<leader>ef", "<cmd>lua FindNotesDir()<cr>")
 -- vim.keymap.set(
     -- "v",
