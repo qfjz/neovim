@@ -174,7 +174,7 @@ end
 
 -- DESC: Wyświetla wersję Neovim
 CheckVersion = function()
-    local verstr = string.format('%s.%s.%s', vim.version().major, vim.version().minor, vim.version().patch)
+    local verstr = string.format("%s.%s.%s", vim.version().major, vim.version().minor, vim.version().patch)
     if not vim.version.cmp then
         vim.notify(string.format("Neovim out of date: '%s'. Upgrade to latest stable or nightly", verstr))
         return
@@ -194,7 +194,7 @@ ClearRegs = function()
         regs[i] = str:sub(i, i)
     end
     for _, v in ipairs(regs) do
-        vim.fn.setreg(v, '')
+        vim.fn.setreg(v, "")
     end
 end
 
@@ -220,7 +220,7 @@ CopyLineToSelectedFile = function()
         notes_dir = vim.fn.resolve(vim.fn.expand("$HOME/Notes"))
     end
     local pliki_scan = vim.fn.system("rg --files -g '*.md' " .. notes_dir)
-    local pliki_notatek = vim.fn.substitute(pliki_scan, '\n$', '', '')  -- usunięcie ostatniej pustej linii w tablicy
+    local pliki_notatek = vim.fn.substitute(pliki_scan, "\n$", "", "")  -- usunięcie ostatniej pustej linii w tablicy
     local pliki_notatek_table = vim.split(pliki_notatek, " ")
     local opts = {}
     opts.prompt = "Wybierz plik> "
