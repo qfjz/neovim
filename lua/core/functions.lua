@@ -667,7 +667,7 @@ Komendy = function()
         "Włącz / wyłącz tryb ZenMode",
         "Włącz / wyłącz zawijanie linii (Wrap)",
         "Włącz autopairs",
-        "Włącz sprawdzanie pisowni",
+        "Włącz sprawdzanie pisowni (spell)",
         "Włącza / wyłącza prowadnice wcięć (IBLToggle)",
         "Włącza prowadnice wcięć (IBLEnable)",
         "Zamiana popularnych słów true / false (BiPolar)",
@@ -863,7 +863,7 @@ Komendy = function()
                 vim.cmd[[set number!]]
             elseif choice == "Włącz / wyłącz relatywne numerowanie wierszy (set relativenumber!)" then
                 vim.cmd[[set relativenumber!]]
-            elseif choice == "Włącz sprawdzanie pisowni" then
+            elseif choice == "Włącz sprawdzanie pisowni (spell)" then
                 vim.cmd[[setlocal spell! spell? spelllang=pl]]
             elseif choice == "Pobierz zmiany z repozytorium Git w terminalu (TermGitPull)" then
                 vim.cmd[[TermGitPull]]
