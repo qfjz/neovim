@@ -225,14 +225,14 @@ CopyLineToSelectedFile = function()
     local opts = {}
     opts.prompt = "Wybierz plik> "
     opts.actions = {
-        ['default'] = function(selected)
+        ["default"] = function(selected)
             local plik = selected[1]
             vim.cmd("y")
             vim.fn.writefile(vim.fn.getreg("@", 1, 1), vim.fn.resolve(vim.fn.expand(plik)), "a")
             vim.cmd("cd %:p:h")
         end
     }
-    require'fzf-lua'.fzf_exec(pliki_notatek_table, opts)
+    require"fzf-lua".fzf_exec(pliki_notatek_table, opts)
 end
 
 -- DESC: Kopiuje zaznaczone linie do wybranego pliku (*.md) z katalogu $NOTES_DIR
@@ -242,19 +242,19 @@ CopyVLineToSelectedFile = function()
         notes_dir = vim.fn.resolve(vim.fn.expand("$HOME/Notes"))
     end
     local pliki_scan = vim.fn.system("rg --files -g '*.md' " .. notes_dir)
-    local pliki_notatek = vim.fn.substitute(pliki_scan, '\n$', '', '')  -- usunięcie ostatniej pustej linii w tablicy
+    local pliki_notatek = vim.fn.substitute(pliki_scan, "\n$", "", "")  -- usunięcie ostatniej pustej linii w tablicy
     local pliki_notatek_table = vim.split(pliki_notatek, " ")
     local opts = {}
     opts.prompt = "Wybierz plik> "
     opts.actions = {
-        ['default'] = function(selected)
+        ["default"] = function(selected)
             local plik = selected[1]
             vim.cmd("'<,'>y")
             vim.fn.writefile(vim.fn.getreg("@", 1, 1), vim.fn.resolve(vim.fn.expand(plik)), "a")
             vim.cmd("cd %:p:h")
         end
     }
-    require'fzf-lua'.fzf_exec(pliki_notatek_table, opts)
+    require"fzf-lua".fzf_exec(pliki_notatek_table, opts)
 end
 
 -- DESC: kopiuje zawartość standardowego rejestru " do rejestru x
@@ -321,7 +321,7 @@ Docs = function()
     local rg_cmd = "rg --files --follow -g '*.md'"
     local cwd_dir = "$HOME/.config/" .. NvimAppName() .. "/doc"
     local prompt = "Docs> "
-    require'fzf-lua'.files({
+    require"fzf-lua".files({
         prompt = prompt,
         cwd = cwd_dir,
         cmd = rg_cmd,
@@ -338,7 +338,7 @@ EditBmFiles = function()
     if BmFiles == nil then
         BmFiles = vim.fn.resolve(vim.fn.expand("$HOME/.config/bmfiles"))
     end
-    vim.cmd('e' .. BmFiles)
+    vim.cmd("e" .. BmFiles)
 end
 
 -- DESC: Edycja pliku bmdirs
@@ -347,7 +347,7 @@ EditCDDirs = function()
     if BmDirs == nil then
         BmDirs = vim.fn.resolve(vim.fn.expand("$HOME/.config/bmdirs"))
     end
-    vim.cmd('e' .. BmDirs)
+    vim.cmd("e" .. BmDirs)
 end
 
 EditGitConfig = function()
@@ -391,7 +391,7 @@ end
 
 -- DESC: Wyszukuje plików w przekazanym jako parametr katalogu
 FindFilesDir = function(dir)
-    require'fzf-lua'.files({
+    require"fzf-lua".files({
         prompt="FFD> ",
         cwd = dir,
         cmd = "rg --files --hidden --follow -g  !.git",
@@ -424,7 +424,7 @@ FindNotesDir = function()
         cwd_dir = vim.fn.resolve(vim.fn.expand("$HOME/Notes"))
     end
     local prompt = "Notatki> "
-    require'fzf-lua'.files({
+    require"fzf-lua".files({
         prompt = prompt,
         cmd = rg_cmd,
         cwd = cwd_dir,
@@ -457,10 +457,10 @@ end
 -- DESC: Sprawdza rozszerzenie pliku podanego w argumencie: lua GetFileExtension('%')
 GetFileExtension = function(file)
     -- local file = file
-    if vim.fn.fnamemodify(vim.fn.expand(file), ":e") == 'md' then
+    if vim.fn.fnamemodify(vim.fn.expand(file), ":e") == "md" then
         print(vim.fn.fnamemodify(file, ":e"))
         print("To jest plik Markdown")
-    elseif vim.fn.fnamemodify(vim.fn.expand(file), ":e") == 'lua' then
+    elseif vim.fn.fnamemodify(vim.fn.expand(file), ":e") == "lua" then
         print(vim.fn.fnamemodify(file, ":e"))
         print("To jest plik Lua")
     else
@@ -478,7 +478,7 @@ GI = function()
     local HOME_DIR = os.getenv("HOME")
     local GI_SH = HOME_DIR .. "/.config/" .. NvimAppName() .. "/sh/gi.sh"
     local l = vim.fn.system(GI_SH .. " " .. "vim")
-    local l_subs = vim.fn.substitute(l, '\n$', '', '')
+    local l_subs = vim.fn.substitute(l, "\n$", "", "")
     vim.notify(l_subs, "info", {
         timeout = 6000,
         title = "Informacje o repozytorium",
@@ -516,7 +516,7 @@ GP = function()
     CDFD()
     local HOME_DIR = os.getenv("HOME")
     local GP_SH = HOME_DIR .. "/.config/" .. NvimAppName() .. "/sh/gp.sh"
-    vim.fn.system({GP_SH, '-v', '-f %:p'})
+    vim.fn.system({GP_SH, "-v", "-f %:p"})
     vim.cmd("redraw!")
 end
 
@@ -524,7 +524,7 @@ GPS = function()
     CDFD()
     local HOME_DIR = os.getenv("HOME")
     local GPS_SH = HOME_DIR .. "/.config/" .. NvimAppName() .. "/sh/gps.sh"
-    vim.fn.system({GPS_SH, '-v', '-f %:p'})
+    vim.fn.system({GPS_SH, "-v", "-f %:p"})
     vim.cmd("redraw!")
 end
 
@@ -532,7 +532,7 @@ end
 GrepNotesDir = function()
     local rg_cmd = "rg --line-number --column -g '*.md' -g '*.norg'"
     local notes_dir = os.getenv("NOTES_DIR")
-    require'fzf-lua'.live_grep({ prompt = notes_dir .. "> ", cmd = rg_cmd, cwd = notes_dir })
+    require"fzf-lua".live_grep({ prompt = notes_dir .. "> ", cmd = rg_cmd, cwd = notes_dir })
 end
 
 -- DESC: Przeszukuje katalog $HOME/.config/NVIM_APPNAME z plikami *.lua dla funkcji GrepNvimHash
@@ -540,7 +540,7 @@ GrepNvimConfigDir = function()
     local cwd_dir = "$HOME/.config/" .. NvimAppName()
     local prompt = "Config> "
     local rg_cmd = "rg --line-number --column -g '*.lua'"
-    require'fzf-lua'.grep_cWORD({ prompt = prompt, cmd = rg_cmd, cwd = cwd_dir })
+    require"fzf-lua".grep_cWORD({ prompt = prompt, cmd = rg_cmd, cwd = cwd_dir })
 end
 
 -- DESC: Przeszukuje katalog $HOME/.config/NVIM_APPNAME/doc z plikami *.md dla funkcji GrepNvimHash
@@ -548,7 +548,7 @@ GrepNvimDocsDir = function()
     local cwd_dir = "$HOME/.config/" .. NvimAppName() .. "/doc"
     local prompt = "Docs> "
     local rg_cmd = "rg --line-number --column -g '*.md'"
-    require'fzf-lua'.grep_cWORD({ prompt = prompt, cmd = rg_cmd, cwd = cwd_dir })
+    require"fzf-lua".grep_cWORD({ prompt = prompt, cmd = rg_cmd, cwd = cwd_dir })
 end
 
 -- DESC: W zależności od pliku w którym się znajdumemy lua/md uruchamia odpowiednią dla niego funkcję
@@ -567,7 +567,7 @@ GrepNvimDocs = function()
     local cwd_dir = "$HOME/.config/" .. NvimAppName() .. "/doc"
     local prompt = "Docs> "
     local rg_cmd = "rg --line-number --column -g '*.md'"
-    require'fzf-lua'.live_grep({ prompt = prompt, cmd = rg_cmd, cwd = cwd_dir, winopts = { fullscreen = true } })
+    require"fzf-lua".live_grep({ prompt = prompt, cmd = rg_cmd, cwd = cwd_dir, winopts = { fullscreen = true } })
 end
 
 Komendy = function()
@@ -694,7 +694,7 @@ Komendy = function()
     local opts = {}
     opts.prompt = "Wyszukaj> "
     opts.actions = {
-        ['default'] = function(selected)
+        ["default"] = function(selected)
             local choice = selected[1]
             if choice == "Dodaj plik do ulubionych (AddBmFile)" then
                 AddBmFile()
@@ -835,11 +835,11 @@ Komendy = function()
             elseif choice == "Ustawia przezroczystość dla Neovide na 1" then
                 vim.cmd[[lua vim.g.neovide_transparency = 1]]
             elseif choice == "Zmienia rozmiar czcionki dla Neovide na 12" then
-                vim.cmd[[lua vim.o.guifont = 'Source Code Pro:h12']]
+                vim.cmd[[lua vim.o.guifont = "Source Code Pro:h12"]]
             elseif choice == "Zmienia rozmiar czcionki dla Neovide na 17" then
-                vim.cmd[[lua vim.o.guifont = 'Source Code Pro:h17']]
+                vim.cmd[[lua vim.o.guifont = "Source Code Pro:h17"]]
             elseif choice == "Zmienia rozmiar czcionki dla Neovide na 21" then
-                vim.cmd[[lua vim.o.guifont = 'Source Code Pro:h21']]
+                vim.cmd[[lua vim.o.guifont = "Source Code Pro:h21"]]
             elseif choice == "Wyświetla komunikaty (Messages)" then
                 vim.cmd[[Messages]]
             elseif choice == "Ukryj Timer (TimerHide)" then
@@ -932,7 +932,7 @@ Komendy = function()
             end
         end
     }
-    require'fzf-lua'.fzf_exec(lista_komend, opts)
+    require"fzf-lua".fzf_exec(lista_komend, opts)
 end
 
 EPOCH2Date = function()
@@ -1053,7 +1053,7 @@ NvimConfig = function()
     local rg_cmd = "rg --files --follow -g '!plugin/' -g '*.lua'"
     local cwd_dir = "$HOME/.config/" .. NvimAppName()
     local prompt = "NvimConfig> "
-    require'fzf-lua'.files({
+    require"fzf-lua".files({
         prompt = prompt,
         cwd = cwd_dir,
         cmd = rg_cmd,
@@ -1096,7 +1096,7 @@ end
 
 -- DESC: Przywraca poprzednią sesję
 OstatniaSesja = function()
-    require('persistence').load({ last = true })
+    require("persistence").load({ last = true })
 end
 
 -- DESC: Wyświetla zawartość tablicy Lua: ':lua P(vim.api.nvim_get_keymap("n"))'
@@ -1128,7 +1128,7 @@ end
 SearchDir = function(dir)
     local rg_cmd = "rg --files --follow"
     local prompt = "Search> "
-    require'fzf-lua'.files({
+    require"fzf-lua".files({
         prompt = prompt,
         cmd = rg_cmd,
         cwd = dir,
@@ -1186,7 +1186,7 @@ end
 
 SysVersion = function()
     local uv = vim.uv or vim.loop
-    vim.notify('System Information: ' .. vim.inspect(uv.os_uname()))
+    vim.notify("System Information: " .. vim.inspect(uv.os_uname()))
 end
 
 -- DESC: Time() wyświetla bieżącą datę i godzinę w formacie 20:53:27 2021-11-23, wtorek 23 październik
