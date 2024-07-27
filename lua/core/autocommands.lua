@@ -4,11 +4,11 @@ local autocmd = vim.api.nvim_create_autocmd
 
 -- wyróżnienie kopiowanego tekstu
 autocmd("TextYankPost", {
-    group = augroup('HighlightYank', { clear = true }),
-    pattern = '*',
+    group = augroup("HighlightYank", { clear = true }),
+    pattern = "*",
     callback = function()
         vim.highlight.on_yank({
-            higroup = 'IncSearch',  -- :h highlight-groups
+            higroup = "IncSearch",  -- :h highlight-groups
             timeout = 100,
         })
     end,
@@ -16,7 +16,7 @@ autocmd("TextYankPost", {
 
  -- wyłącza parametry `cro` czyli nie wstawia automatycznie komentarza w kolejnej linii
 autocmd({ "FileType", "BufEnter" }, {
-    pattern = '*',
+    pattern = "*",
     command = [[setlocal formatoptions-=cro]]
 })
 
@@ -112,7 +112,7 @@ autocmd("BufEnter", {
 
 autocmd("BufNewFile", {
     pattern = { "*.sh" },
-    command = [[0r ~/.config/nvim/templates/bash.sh]]
+    command = "0r $HOME/.config/" .. NvimAppName() .. "/templates/bash.sh"
 })
 
 autocmd("FileType", {
@@ -160,10 +160,8 @@ autocmd({ "BufNewFile" }, {
 autocmd({ "RecordingEnter", }, {
     group = augroup("NotifyMacroStart", { clear = true }),
     callback = function()
-        local msg = 'Nagrywam makro ' .. '[' .. vim.fn.reg_recording() .. ']'
-        vim.notify(msg, "info", {
-            timeout = 6000,
-        })
+        local msg = "Nagrywam makro " .. "[" .. vim.fn.reg_recording() .. "]"
+        vim.notify(msg, "info", { timeout = 6000, })
     end,
 })
 
@@ -171,7 +169,7 @@ autocmd({ "RecordingEnter", }, {
 autocmd({ "RecordingLeave", }, {
     group = augroup("NotifyMacroStop", { clear = true }),
     callback = function()
-        local msg = 'Zakończyłem nagrywać makro ' .. '[' .. vim.fn.reg_recording() .. ']'
+        local msg = "Zakończyłem nagrywać makro " .. "[" .. vim.fn.reg_recording() .. "]"
         vim.notify(msg, "info", {
             timeout = 6000,
         })

@@ -49,11 +49,11 @@ BmFiles = function()
     local opts = {}
     opts.prompt = "Files> "
     opts.actions = {
-        ['default'] = function(selected)
+        ["default"] = function(selected)
             vim.cmd("e " .. selected[1])
         end
     }
-    require'fzf-lua'.fzf_exec(files, opts)
+    require"fzf-lua".fzf_exec(files, opts)
 end
 
 -- DESC: Wyświetla informacje o bieżącym buforze, informacje można przeglądać za pomocą polecenia Messages

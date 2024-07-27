@@ -33,7 +33,7 @@ vim.opt.textwidth = 100
 vim.opt.colorcolumn = "+1"  -- textwidth + 1
 vim.opt.conceallevel = 0
 vim.opt.confirm = true
-vim.opt.fillchars = { eob = ' ' }
+vim.opt.fillchars = { eob = " " }
 vim.opt.incsearch = true
 vim.opt.inccommand = "split"
 vim.opt.redrawtime = 1000
