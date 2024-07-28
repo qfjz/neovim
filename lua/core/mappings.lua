@@ -167,7 +167,7 @@ end, { desc = "Wyszukuje słowa znajdującego się pod kursorem" })
 -- Poruszanie się pomiędzy zmianami w pliku
 vim.keymap.set("n", "g;", "g;zvzz")
 vim.keymap.set("n", "g,", "g,zvzz")
-vim.keymap.set("n", "gs", "<cmd>FzfLua spell_suggest<cr>", { desc = "Sugestie sprawdzania pisowni" })
+vim.keymap.set({ "i", "n" }, "gs", "<esc><cmd>lua require('fzf-lua').spell_suggest({ winopts = { relative='cursor',row=1.01, col=0, height=0.2, width=0.2 } })<cr>",   { desc = "Spelling Suggestions" })
 -- poruszanie się po podmenu podpowiedzi <c-y> zatwierdza; <c-e> przerywa
 vim.api.nvim_set_keymap('i', '<Tab>',   [[pumvisible() ? "\<C-n>" : "\<Tab>"]],   { noremap = true, expr = true })
 vim.api.nvim_set_keymap('i', '<S-Tab>', [[pumvisible() ? "\<C-p>" : "\<S-Tab>"]], { noremap = true, expr = true })
@@ -345,7 +345,6 @@ vim.keymap.set({ "n", "v" }, "<leader>si", function()
     vim.fn.writefile(vim.fn.getreg('@', 1, 1), 'INBOX.md', 'a')
     vim.cmd[[cd %:p:h]]
 end, { desc = "Przenosi bieżącą linię lub zaznaczenie do pliku $NOTES_DIR/INBOX.md" })
-vim.keymap.set({ "i", "n" }, "<C-x><C-s>", "<esc><cmd>lua require('fzf-lua').spell_suggest()<cr>")
 vim.keymap.set("n", [[<leader>D]], "<cmd>BufferPickDelete<cr>", { desc = "Pozwala wybrać bufor, który chcemy zamknąć" })
 -- vim.keymap.set("n", "<leader>ef", "<cmd>lua FindNotesDir()<cr>")
 -- vim.keymap.set(
