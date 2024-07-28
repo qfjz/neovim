@@ -349,7 +349,11 @@ vim.keymap.set({ "n", "v" }, "<leader>si", function()
     vim.cmd[[cd %:p:h]]
 end, { desc = "Przenosi bieżącą linię lub zaznaczenie do pliku $NOTES_DIR/INBOX.md" })
 vim.keymap.set("n", [[<leader>D]], "<cmd>BufferPickDelete<cr>", { desc = "Pozwala wybrać bufor, który chcemy zamknąć" })
-local wk = require("which-key")
+-- Nie nadpisuje rejestru przy wklejaniu w trybie VISUAL
+-- vim.keymap.set("x", "p", function()
+  -- return 'pgv"' .. vim.v.register .. "y"
+-- end, { remap = false, expr = true })
+-- local wk = require("which-key")
 -- wk.register({
 --   ["<Leader>"] = {
 --     c = {
