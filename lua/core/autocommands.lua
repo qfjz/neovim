@@ -14,6 +14,16 @@ autocmd("TextYankPost", {
     end,
 })
 
+local SSH_Client = os.getenv("SSH_CLIENT")
+if SSH_Client ~= nil then
+    autocmd("TextYankPost", {
+        group = augroup("OSC", { clear = true }),
+        pattern = "*",
+        callback = function()
+            vim.cmd[[OSCYankRegister "]]
+        end,
+    })
+end
  -- wyłącza parametry `cro` czyli nie wstawia automatycznie komentarza w kolejnej linii
 autocmd({ "FileType", "BufEnter" }, {
     pattern = "*",
