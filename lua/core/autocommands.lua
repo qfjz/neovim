@@ -2,7 +2,7 @@
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 
--- wyróżnienie kopiowanego tekstu
+-- DESC: wyróżnienie kopiowanego tekstu
 autocmd("TextYankPost", {
     group = augroup("HighlightYank", { clear = true }),
     pattern = "*",
@@ -24,13 +24,13 @@ if SSH_Client ~= nil then
         end,
     })
 end
- -- wyłącza parametry `cro` czyli nie wstawia automatycznie komentarza w kolejnej linii
+ -- DESC: wyłącza parametry `cro` czyli nie wstawia automatycznie komentarza w kolejnej linii
 autocmd({ "FileType", "BufEnter" }, {
     pattern = "*",
     command = [[setlocal formatoptions-=cro]]
 })
 
--- Ustawia kursor tam gdzie go zostawiliśmy
+-- DESC: Ustawia kursor tam gdzie go zostawiliśmy
 autocmd("BufReadPost", {
     callback = function()
         local mark = vim.api.nvim_buf_get_mark(0, '"')
@@ -41,7 +41,7 @@ autocmd("BufReadPost", {
     end,
 })
 
--- zamyka pliki przy pomocy 'q'
+-- DESC: zamyka pliki przy pomocy 'q'
 -- https://github.com/loqusion/dotfiles
 autocmd("FileType", {
     group = augroup("close_with_q", {}),
@@ -66,7 +66,7 @@ autocmd("FileType", {
     end,
 })
 
--- Klawisz `K` w plikach sh wywołuje pomoc dla wyrazu pod kursorem
+-- DESC: Klawisz `K` w plikach sh wywołuje pomoc dla wyrazu pod kursorem
 autocmd("FileType", {
     pattern = { "sh" },
     callback = function()
@@ -135,7 +135,7 @@ autocmd("FileType", {
     end,
 })
 
--- Automatically update changed file in Vim
+--  DESC:Automatically update changed file in Vim
 -- https://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim/383044#383044
 -- command = [[silent! if mode() != 'c' && !bufexists("[Command Line]") | checktime | endif]],
 autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" }, {
@@ -150,7 +150,7 @@ autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" }, {
     end
 })
 
--- Notification after file change
+-- DESC: Notification after file change
 autocmd("FileChangedShellPost", {
     callback = function()
         MSG = "File changed on disk. Buffer reloaded."
@@ -161,12 +161,12 @@ autocmd("FileChangedShellPost", {
     end,
 })
 
--- wchodzi w tryb INSERT przy otworzeniu NOWEGO pliku
+-- DESC: wchodzi w tryb INSERT przy otworzeniu NOWEGO pliku
 autocmd({ "BufNewFile" }, {
     command = [[startinsert]],
 })
 
--- Informacja o rozpoczęciu nagrywania makra
+-- DESC: Informacja o rozpoczęciu nagrywania makra
 autocmd({ "RecordingEnter", }, {
     group = augroup("NotifyMacroStart", { clear = true }),
     callback = function()
@@ -175,7 +175,7 @@ autocmd({ "RecordingEnter", }, {
     end,
 })
 
--- Informacja o zakończeniu nagrywania makra
+-- DESC: Informacja o zakończeniu nagrywania makra
 autocmd({ "RecordingLeave", }, {
     group = augroup("NotifyMacroStop", { clear = true }),
     callback = function()
