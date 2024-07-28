@@ -14,16 +14,22 @@ autocmd("TextYankPost", {
     end,
 })
 
+-- DESC: Kopiuje dane z rejestru " do schowka systemowego przy połączeniu SSH
 local SSH_Client = os.getenv("SSH_CLIENT")
 if SSH_Client ~= nil then
     autocmd("TextYankPost", {
         group = augroup("OSC", { clear = true }),
         pattern = "*",
         callback = function()
-            vim.cmd[[OSCYankRegister "]]
+            -- Kopiuje do hosta tylko operacje (y)ank, użycie komend c, d nie kopiuje do hosta
+            if vim.api.nvim_eval("v:event.operator") == "y" then
+                vim.cmd[[OSCYankRegister "]]
+            end
+            -- vim.cmd[[OSCYankRegister "]]
         end,
     })
 end
+
  -- DESC: wyłącza parametry `cro` czyli nie wstawia automatycznie komentarza w kolejnej linii
 autocmd({ "FileType", "BufEnter" }, {
     pattern = "*",
