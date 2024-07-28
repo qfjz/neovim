@@ -203,12 +203,14 @@ Wyszukaj linie, które nie mają znaku `a` na początku
 
 ```vim
 :e ++ff=unix
+:set ff=unix
 ```
 
 w drugą stronę
 
 ```vim
 :e ++ff=dos
+:set ff=dos
 ```
 
 ## Komenda global

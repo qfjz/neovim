@@ -744,6 +744,8 @@ Komendy = function()
         "Zmiana języka Neovim na język polski (language pl_PL.UTF-8)",
         "Zmiana schematu kolorystycznego (Kolory)",
         "Zmiana znacznika czasu EPOCH na czytelną formę daty",
+        "Zamienia koniec linii na CRLF (DOS)",
+        "Zamienia koniec linii na LF (Unix)",
         "Zmienia rozmiar czcionki dla Neovide na 12",
         "Zmienia rozmiar czcionki dla Neovide na 17",
         "Zmienia rozmiar czcionki dla Neovide na 21",
@@ -1003,6 +1005,10 @@ Komendy = function()
                 vim.cmd[[set scrolloff=3]]
             elseif choice == "Ustaw scrolloff na 999" then
                 vim.cmd[[set scrolloff=999]]
+            elseif choice == "Zamienia koniec linii na CRLF (DOS)" then
+                vim.cmd[[set ff=dos]]
+            elseif choice == "Zamienia koniec linii na LF (Unix)" then
+                vim.cmd[[set ff=unix]]
             end
         end
     }
