@@ -380,6 +380,7 @@ Files = function()
         cmd = rg_cmd,
         winopts = {
             preview = { hidden = "nohidden" },
+            title = " Wyszukiwarka plików ",
             fullscreen = true,
         }
     })
@@ -388,8 +389,11 @@ end
 -- DESC: Przeszukiwanie ostation edytowanych plików
 OldFiles = function()
     require"fzf-lua".oldfiles({
+        prompt = " History > ",
+        file_icons = false,
         winopts = {
             preview = { hidden = "nohidden" },
+            title = " Wyszukiwarka plików ",
             fullscreen = true,
         }
     })
@@ -403,6 +407,7 @@ FindFilesDir = function(dir)
         cmd = "rg --files --hidden --follow -g  !.git",
         winopts = {
             preview = { hidden = "nohidden" },
+            title = " Wyszukiwarka plików ",
             fullscreen = true,
         }
     })
@@ -436,6 +441,7 @@ FindNotesDir = function()
         cwd = cwd_dir,
         winopts = {
             preview = { hidden = "nohidden" },
+            title = " Notatki ",
             fullscreen = true,
         }
     })
@@ -497,20 +503,26 @@ GitFiles = function()
     CDFD()
     local result = vim.fn.system("git rev-parse --is-inside-work-tree")
     if vim.v.shell_error == 0 and result:find("true") then
-        local prompt = "GitFiles> "
+        local prompt = " GitFiles > "
         require"fzf-lua".git_files({
             prompt = prompt,
+            file_icons = false,
             winopts = {
                 preview = { hidden = "nohidden" },
+                title = " Git Files ",
                 fullscreen = true,
             }
         })
     else
         local rg_cmd = "rg --files --hidden --follow"
+        local prompt = " Files > "
         require"fzf-lua".files({
+            prompt = prompt,
             cmd = rg_cmd,
+            file_icons = false,
             winopts = {
                 preview = { hidden = "nohidden" },
+                title = " Files ",
                 fullscreen = true,
             }
         })
@@ -538,23 +550,49 @@ end
 GrepNotesDir = function()
     local rg_cmd = "rg --line-number --column -g '*.md' -g '*.norg'"
     local notes_dir = os.getenv("NOTES_DIR")
-    require"fzf-lua".live_grep({ prompt = notes_dir .. "> ", cmd = rg_cmd, cwd = notes_dir })
+    require"fzf-lua".live_grep({
+        prompt = notes_dir .. " > ",
+        cmd = rg_cmd,
+        cwd = notes_dir,
+        file_icons = false,
+        winopts = {
+            preview = { hidden = "nohidden" },
+            title = " Grep Notes ",
+            fullscreen = true,
+        }
+    })
 end
 
 -- DESC: Przeszukuje katalog $HOME/.config/NVIM_APPNAME z plikami *.lua dla funkcji GrepNvimHash
 GrepNvimConfigDir = function()
     local cwd_dir = "$HOME/.config/" .. NvimAppName()
-    local prompt = "Config> "
+    local prompt = " Config > "
     local rg_cmd = "rg --line-number --column -g '*.lua'"
-    require"fzf-lua".grep_cWORD({ prompt = prompt, cmd = rg_cmd, cwd = cwd_dir })
+    require"fzf-lua".grep_cWORD({
+        prompt = prompt,
+        file_icons = false,
+        cmd = rg_cmd,
+        cwd = cwd_dir,
+        winopts = {
+            title = " Grep Config Dir ",
+        }
+    })
 end
 
 -- DESC: Przeszukuje katalog $HOME/.config/NVIM_APPNAME/doc z plikami *.md dla funkcji GrepNvimHash
 GrepNvimDocsDir = function()
     local cwd_dir = "$HOME/.config/" .. NvimAppName() .. "/doc"
-    local prompt = "Docs> "
+    local prompt = " Docs > "
     local rg_cmd = "rg --line-number --column -g '*.md'"
-    require"fzf-lua".grep_cWORD({ prompt = prompt, cmd = rg_cmd, cwd = cwd_dir })
+    require"fzf-lua".grep_cWORD({
+        prompt = prompt,
+        file_icons = false,
+        cmd = rg_cmd,
+        cwd = cwd_dir,
+        winopts = {
+            title = " Grep Docs Dir ",
+        }
+    })
 end
 
 -- DESC: W zależności od pliku w którym się znajdumemy lua/md uruchamia odpowiednią dla niego funkcję
@@ -571,9 +609,17 @@ end
 -- DESC: Przeszukuje katalog $HOME/.config/NVIM_APPNAME/doc z plikami *.md
 GrepNvimDocs = function()
     local cwd_dir = "$HOME/.config/" .. NvimAppName() .. "/doc"
-    local prompt = "Docs> "
+    local prompt = " Docs > "
     local rg_cmd = "rg --line-number --column -g '*.md'"
-    require"fzf-lua".live_grep({ prompt = prompt, cmd = rg_cmd, cwd = cwd_dir, winopts = { fullscreen = true } })
+    require"fzf-lua".live_grep({
+        prompt = prompt,
+        cmd = rg_cmd,
+        cwd = cwd_dir,
+        winopts = {
+            fullscreen = true,
+            title = " Grep Docs "
+        }
+    })
 end
 
 Komendy = function()
@@ -617,6 +663,7 @@ Komendy = function()
         "Przejdź do katalogu wybranego z ulubionych (CD)",
         "Przeszukiwanie dokumentacji nvim-qfjz (FzfLua live_grep)",
         "Przeszukiwanie historii wyszukiwania (FzfLua search_history)",
+        "Przeszukiwanie katalogu $NOTES_DIR (GrepNotesDir)",
         "Przeszukiwanie listy quick fix (FzfLua quickfix)",
         "Przeszukiwanie location list (FzfLua loclist)",
         "Przywróc ostatnią sesję (OstatniaSesja)",
@@ -652,6 +699,7 @@ Komendy = function()
         "Wyszukaj znacznik ID",
         "Wyszukiwanie dokumentacji nvim-qfjz (Docs)",
         "Wyszukiwanie komend (FzfLua commands)",
+        "Wyszukiwanie notatek (FindNotesDir)",
         "Wyszukiwanie ostatnio edytowanych plików (FzfLua oldfiles - OldFiles())",
         "Wyszukiwanie plików konfiguracyjnych Neovim w katalogu $NVIM_APPNAME (Config)",
         "Wyszukiwanie plików w bieżącej lokalizacji (Files)",
@@ -701,7 +749,8 @@ Komendy = function()
         "Zmień kolorystyke Jasny / Ciemny (RevBackground)",
     }
     local opts = {}
-    opts.prompt = "Wyszukaj> "
+    opts.prompt = " Wyszukaj > "
+    opts.winopts = { title = " Komendy " }
     opts.actions = {
         ["default"] = function(selected)
             local choice = selected[1]
@@ -944,6 +993,10 @@ Komendy = function()
                 vim.cmd[[lua CopyVLineToSelectedFile()]]
             elseif choice ==  "Przeszukiwanie location list (FzfLua loclist)" then
                 vim.cmd[[FzfLua loclist]]
+            elseif choice == "Przeszukiwanie katalogu $NOTES_DIR (GrepNotesDir)" then
+                vim.cmd[[lua GrepNotesDir()]]
+            elseif choice == "Wyszukiwanie notatek (FindNotesDir)" then
+                vim.cmd[[lua FindNotesDir()]]
             end
         end
     }
@@ -1067,13 +1120,14 @@ end
 NvimConfig = function()
     local rg_cmd = "rg --files --follow -g '!plugin/' -g '*.lua'"
     local cwd_dir = "$HOME/.config/" .. NvimAppName()
-    local prompt = "NvimConfig> "
+    local prompt = " NvimConfig > "
     require"fzf-lua".files({
         prompt = prompt,
         cwd = cwd_dir,
         cmd = rg_cmd,
         winopts = {
             preview = { hidden = "nohidden" },
+            title = " Neovim Config ",
             fullscreen = true,
         }
     })
@@ -1142,13 +1196,14 @@ end
 
 SearchDir = function(dir)
     local rg_cmd = "rg --files --follow"
-    local prompt = "Search> "
+    local prompt = " Files > "
     require"fzf-lua".files({
         prompt = prompt,
         cmd = rg_cmd,
         cwd = dir,
         winopts = {
             preview = { hidden = "nohidden" },
+            title = " Files ",
             fullscreen = true,
         }
     })
