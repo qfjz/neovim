@@ -71,7 +71,6 @@ return {
     -- "Jorengarenar/fauxClip",
     "ojroques/vim-oscyank",
     "jamessan/vim-gnupg",
-    "anuvyklack/hydra.nvim",
     "nvim-lualine/lualine.nvim",
     "romgrk/barbar.nvim",
     'folke/todo-comments.nvim',

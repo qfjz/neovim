@@ -675,6 +675,8 @@ Komendy = function()
         "Ulubione pliki (BmFiles)",
         "Ustaw jasny schemat kolorystyczny (Light)",
         "Ustaw schemat kolorystyczny na tokyonight-moon (Dark)",
+        "Ustaw scrolloff na 3",
+        "Ustaw scrolloff na 999",
         "Ustaw Timer na 1 minutę (TimerStart 1m)",
         "Ustaw Timer na 15 minut (TimerStart 15m)",
         "Ustaw Timer na 30 minut (TimerStart 30m)",
@@ -997,6 +999,10 @@ Komendy = function()
                 vim.cmd[[lua GrepNotesDir()]]
             elseif choice == "Wyszukiwanie notatek (FindNotesDir)" then
                 vim.cmd[[lua FindNotesDir()]]
+            elseif choice == "Ustaw scrolloff na 3" then
+                vim.cmd[[set scrolloff=3]]
+            elseif choice == "Ustaw scrolloff na 999" then
+                vim.cmd[[set scrolloff=999]]
             end
         end
     }
