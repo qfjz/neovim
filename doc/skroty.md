@@ -219,3 +219,7 @@ Przeszukiwanie skrótów klawiszowych: `<spacja>sk`, lub `:FzfLua keymaps`
 | `<c-b>` | Przewijanie w oknie wyszukiwania w górę                                       |
 | `<a-a>` | Zaznacza wszystkie znalezione wyniki, `<ENTER>` przenosi je do listy quickfix |
 | `<a-q>` | Dodaje pojedynczy wiersz do listy quickfix                                    |
+| `<a-l>` | Dodaje pojedynczy wiersz do location list                                     |
+| `<TAB>` | Zaznacza poszczególne wiersze                                                 |
+| `<c-s>` | Otwiera plik w podziale poziomym                                              |
+| `<c-v>` | Otwiera plik w podziale pionowym                                              |

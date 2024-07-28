@@ -42,6 +42,16 @@ return {
             require("neo-tree").setup()
         end,
     },
+    {
+        "kylechui/nvim-surround",
+        version = "*", -- Use for stability; omit to use `main` branch for the latest features
+        event = "VeryLazy",
+        config = function()
+        require("nvim-surround").setup({
+            -- Configuration here, or leave empty to use defaults
+            })
+         end
+    },
     "stevearc/oil.nvim",
     "lmburns/lf.nvim",
     "ThePrimeagen/harpoon",
@@ -55,7 +65,7 @@ return {
     "tpope/vim-fugitive",
     "tpope/vim-eunuch",
     "tpope/vim-repeat",
-    "tpope/vim-surround",
+    -- "tpope/vim-surround",
     "sbulav/nredir.nvim",
     "lewis6991/gitsigns.nvim",
     -- "Jorengarenar/fauxClip",

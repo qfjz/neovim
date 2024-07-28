@@ -10,7 +10,7 @@ vim.keymap.set("n", "<M-f>", require("oil").open, { desc = "Menadżer plików Oi
 vim.keymap.set("n", "<leader>f", "<cmd>lua Files()<cr>", { desc = "FzfLua files" })
 vim.keymap.set({"n", "x"}, [[gh]], "^", { desc = "Początek linii" })
 vim.keymap.set({"n", "x"}, [[gl]], "$", { desc = "Koniec linii" })
--- vim.keymap.set({"n", "x" }, "$", "g_", { desc = "Przechodzi do ostatniego drukowalnego znaku w linii" })  -- 
+-- vim.keymap.set({"n", "x" }, "$", "g_", { desc = "Przechodzi do ostatniego drukowalnego znaku w linii" })
 -- vim.keymap.set("n", "H", "0")
 -- vim.keymap.set("n", "M", "gM")
 -- vim.keymap.set("n", "L", "$")

@@ -47,7 +47,8 @@ BmFiles = function()
     end
     local files = vim.fn.readfile(vim.fn.expand(BmFiles))
     local opts = {}
-    opts.prompt = "Files> "
+    opts.prompt = "Files > "
+    opts.winopts = { title = " Ulubione pliki " }
     opts.actions = {
         ["default"] = function(selected)
             vim.cmd("e " .. selected[1])
@@ -76,7 +77,8 @@ CD = function()
     end
     local command = "cd"
     local opts = {}
-    opts.prompt = "CD> "
+    opts.prompt = "CD > "
+    opts.winopts = { title = " Katalogi " }
     opts.actions = {
         ["default"] = function(selected)
             -- wywołanie komendy na wybranym katalogu
@@ -98,7 +100,8 @@ CDE = function()
     end
     local command = "e"
     local opts = {}
-    opts.prompt = "CDE> "
+    opts.prompt = "CDE > "
+    opts.winopts = { title = " Katalogi " }
     opts.actions = {
         ["default"] = function(selected)
             -- wywołanie komendy na wybranym katalogu
@@ -223,7 +226,8 @@ CopyLineToSelectedFile = function()
     local pliki_notatek = vim.fn.substitute(pliki_scan, "\n$", "", "")  -- usunięcie ostatniej pustej linii w tablicy
     local pliki_notatek_table = vim.split(pliki_notatek, " ")
     local opts = {}
-    opts.prompt = "Wybierz plik> "
+    opts.prompt = " Wybierz plik > "
+    opts.winopts = { title = " Copy Line To Selected File " }
     opts.actions = {
         ["default"] = function(selected)
             local plik = selected[1]
@@ -245,7 +249,8 @@ CopyVLineToSelectedFile = function()
     local pliki_notatek = vim.fn.substitute(pliki_scan, "\n$", "", "")  -- usunięcie ostatniej pustej linii w tablicy
     local pliki_notatek_table = vim.split(pliki_notatek, " ")
     local opts = {}
-    opts.prompt = "Wybierz plik> "
+    opts.prompt = " Wybierz plik > "
+    opts.winopts = { title = " Copy Line To Selected File " }
     opts.actions = {
         ["default"] = function(selected)
             local plik = selected[1]
@@ -327,6 +332,7 @@ Docs = function()
         cmd = rg_cmd,
         winopts = {
             preview = { hidden = "nohidden" },
+            title = " Dokumentacja ",
             fullscreen = true,
         }
     })
@@ -572,7 +578,7 @@ end
 
 Komendy = function()
     local lista_komend = {
-        "Aktualizacja lini Ostatnia Aktualizacja (OstatniaAktualizacja)",
+        "Aktualizacja lini Aktualizacja (OstatniaAktualizacja)",
         "Aktualizacja pluginów (Lazy update)",
         "Alpha Dashboard",
         "Dodaj katalog do ulubionych (AddCDDir)",
@@ -585,31 +591,34 @@ Komendy = function()
         "Edytuj ulubione pliki ~/.config/bmfiles (EditBmFiles)",
         "Informacje o buforze (BufInfo)",
         "Instalacja nowych pluginów (Lazy install)",
+        "Kopiuj bieżącą linię do wybranego pliku (CopyLineToSelectedFile)",
         "Kopiuj bieżącą linię do wybranego pliku Notatek",
         "Kopiuj zaznaczenie do wybranego pliku Notatek",
+        "Kopiuj zaznaczone linie do wybranego pliku (CopyVLineToSelectedFile)",
         "Kopiuje katalog nazwę pliku do rejestru (CopyFileName)",
         "Menadżer plików Neotree",
         "Menadżer plików Oil.nvim",
         "Neorg przejdź do workspace home",
         "Neorg przejdź do workspace work",
+        "Otwiera plik pod kursorem dodając na początku ścieśki src/ (OpenFile)",
+        "Otwórz katalog wybrany z (CDE)",
         "Otwórz nowy plik (NewFileNoSplit)",
         "Otwórz nowy plik w podziale pionowym (NewFileVSplit)",
         "Otwórz nowy plik w podziale poziomym (NewFileHSplit)",
-        "Otwiera plik pod kursorem dodając na początku ścieśki src/ (OpenFile)",
-        "Otwórz katalog wybrany z (CDE)",
         "Pobiera zmiany z repozytorium Git (PU)",
         "Pobierz zmiany z repozytorium Git w terminalu (TermGitPull)",
         "Pobierze słownik pisowni języka polskiego (GetSpell)",
         "Pokazuje zmiany w repozytorium Git (FzfLua git_status)",
         "Pokazuje znak · wstawiony w miejsce spacji (ShowMiddleDot)",
-        "Pokaż Timer (TimerShow)",
         "Pokaż datę i godzinę (Time)",
         "Pokaż główny katalog repozytorium Git (CDG)",
+        "Pokaż Timer (TimerShow)",
         "Przejdź do katalogu dla otwartego pliku (CDFD)",
         "Przejdź do katalogu wybranego z ulubionych (CD)",
         "Przeszukiwanie dokumentacji nvim-qfjz (FzfLua live_grep)",
         "Przeszukiwanie historii wyszukiwania (FzfLua search_history)",
         "Przeszukiwanie listy quick fix (FzfLua quickfix)",
+        "Przeszukiwanie location list (FzfLua loclist)",
         "Przywróc ostatnią sesję (OstatniaSesja)",
         "Skopiuj całą zawartość pliku",
         "Sortuj bufory według numerów (BufferOrderByBufferNumber)",
@@ -617,13 +626,13 @@ Komendy = function()
         "Ukryj Timer (TimerHide)",
         "Ukrywa znak · wstawiony w miejsce spacji (HideMiddleDot)",
         "Ulubione pliki (BmFiles)",
+        "Ustaw jasny schemat kolorystyczny (Light)",
+        "Ustaw schemat kolorystyczny na tokyonight-moon (Dark)",
         "Ustaw Timer na 1 minutę (TimerStart 1m)",
         "Ustaw Timer na 15 minut (TimerStart 15m)",
         "Ustaw Timer na 30 minut (TimerStart 30m)",
         "Ustaw Timer na 5 minut (TimerStart 5m)",
         "Ustaw Timer na 60 minut (TimerStart 60m)",
-        "Ustaw jasny schemat kolorystyczny (Light)",
-        "Ustaw schemat kolorystyczny na tokyonight-moon (Dark)",
         "Ustawia przezroczystość dla Neovide na 0.2",
         "Ustawia przezroczystość dla Neovide na 1",
         "Usunięcie nieużywanych pluginów (Lazy clean)",
@@ -633,8 +642,8 @@ Komendy = function()
         "Usuń wszystkie puste linie oraz linie wypełnione znakiem spacji w pliku",
         "Usuń wszystkie puste linie w pliku",
         "Wstaw aktualną datę i godzinę w formacie 2024-07-22 17:28:27",
-        "Wstaw znacznik ID",
         "Wstaw znacznik czasu EPOCH",
+        "Wstaw znacznik ID",
         "Wstawia znacznik dla przypomnień w programie Obsidian (InsObsdianRemminder)",
         "Wybierz bufor (BufferPick)",
         "Wyczyść wszystkie rejestry (ClearRegs)",
@@ -929,6 +938,12 @@ Komendy = function()
                 require("nvim-autopairs").enable()
             elseif choice == "Przeszukiwanie listy quick fix (FzfLua quickfix)" then
                 vim.cmd[[FzfLua quickfix]]
+            elseif choice == "Kopiuj bieżącą linię do wybranego pliku (CopyLineToSelectedFile)" then
+                vim.cmd[[lua CopyLineToSelectedFile()]]
+            elseif choice == "Kopiuj zaznaczone linie do wybranego pliku (CopyVLineToSelectedFile)" then
+                vim.cmd[[lua CopyVLineToSelectedFile()]]
+            elseif choice ==  "Przeszukiwanie location list (FzfLua loclist)" then
+                vim.cmd[[FzfLua loclist]]
             end
         end
     }

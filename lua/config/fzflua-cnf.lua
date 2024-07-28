@@ -31,8 +31,8 @@ configs.setup {
         -- requires neovim > v0.9.0, passed as is to `nvim_open_win`
         -- can be sent individually to any provider to set the win title
         title         = " FzfLua ",
-        title_pos     = "center",    -- 'left', 'center' or 'right'
-        fullscreen       = false,           -- start fullscreen?
+        title_pos     = "center",             -- 'left', 'center' or 'right'
+        fullscreen    = false,                -- start fullscreen?
         preview = {
             -- default     = 'bat',           -- override the default previewer?
             -- default uses the 'builtin' previewer
