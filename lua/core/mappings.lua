@@ -2,7 +2,7 @@
 vim.keymap.set("n", [[<s-enter>]], "mzO<esc>`z", { desc = "Dodaje pustą linię powyżej bieżącej" })
 vim.keymap.set("n", [[<enter>]], "mzo<esc>`z", { desc = "Dodaje pustą linię poniżej bieżącej" })
 -- vim.keymap.set("n", "<enter>", "<cmd>lua Write()<cr>", { desc = "Zapisuje zmiany" })
-vim.keymap.set("v", [[<enter>]], "y", { desc = "Kopiuje zaznaczony tekst" })
+vim.keymap.set("v", [[<enter>]], "ygv<esc>", { desc = "Kopiuje zaznaczony tekst" })
 vim.keymap.set("n", "<leader>cy", "<Plug>OSCYankOperator", { desc = "OSCYANK" })
 vim.keymap.set("n", "<leader>cY", "<leader>c_", { remap = true, desc = "Kopiuje całą linię (OSCYank)" })
 vim.keymap.set("v", "<leader>cy", "<Plug>OSCYankVisual", { desc = "OSCYANK" })
@@ -349,6 +349,19 @@ vim.keymap.set({ "n", "v" }, "<leader>si", function()
     vim.cmd[[cd %:p:h]]
 end, { desc = "Przenosi bieżącą linię lub zaznaczenie do pliku $NOTES_DIR/INBOX.md" })
 vim.keymap.set("n", [[<leader>D]], "<cmd>BufferPickDelete<cr>", { desc = "Pozwala wybrać bufor, który chcemy zamknąć" })
+local wk = require("which-key")
+-- wk.register({
+--   ["<Leader>"] = {
+--     c = {
+--       -- name = " □  Boxes",
+--       b = { "<Cmd>CBccbox<CR>", "Box Title" },
+--       t = { "<Cmd>CBllline<CR>", "Titled Line" },
+--       l = { "<Cmd>CBline<CR>", "Simple Line" },
+--       m = { "<Cmd>CBllbox14<CR>", "Marked" },
+--       -- d = { "<Cmd>CBd<CR>", "Remove a box" },
+--     },
+--   },
+-- })
 -- vim.keymap.set("n", "<leader>ef", "<cmd>lua FindNotesDir()<cr>")
 -- vim.keymap.set(
     -- "v",

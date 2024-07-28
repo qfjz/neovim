@@ -27,6 +27,7 @@ return {
             -- vim.cmd.colorscheme[[tokyonight]]
         end,
     },
+    "LudoPinelli/comment-box.nvim",
     {
         "nvim-neo-tree/neo-tree.nvim",
         -- keys = {
