@@ -217,6 +217,14 @@ w drugą stronę
 
 - `:%s/znajdź/zamień/g` - zamienia `znajdź` na `zamień` w całym pliku
 - `:s/wyraz.*inny-wyraz//` - usuwa treść od słowa `wyraz` do `inny-wyraz`
+- `:s/pliku$//` - usuwa ostatnie słowo `pliku` w linii 
+- `:s/^Start/Początek/` - zamienia słowo `Start` na `Początek` jeśli jest to pierwsze słowo w linii
+- `:%s/<begin>\_.\{-}<end>/treść/g` - zamienia blok od `<begin>` do `<end>` na `treść`
+- `:%s/\[\(\d\+\)\]/\1/g` - zamienia `[123]` na `123`
+- `:%s/START.\{-}END//` - usunięcie tekstu pomiędzy słowami `START` i `END` w tej samej linii
+- `:%s/^/Prefix: /` - dodanie słowa `Prefix` na początku każdej linii
+- `:%s/$/ :Suffix/` - dodanie słowa `Suffix` na końcu każdej linii
+- `:%s/^/\=line('.') . ' '` - dodaje numerowanie linii w całym pliku
 
 ## Komenda global
 
