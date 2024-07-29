@@ -628,6 +628,7 @@ Komendy = function()
         "Aktualizacja pluginów (Lazy update)",
         "Alpha Dashboard",
         "Dodaj katalog do ulubionych (AddCDDir)",
+        "Dodaj Modeline",
         "Dodaj plik do ulubionych (AddBmFile)",
         "Dodaj pliki do repozytorium Git (GA)",
         "Dodaje i wysyła pliki do repozytorium Git (GP)",
@@ -735,6 +736,8 @@ Komendy = function()
         "Włącza / wyłącza prowadnice wcięć (IBLToggle)",
         "Włącza prowadnice wcięć (IBLEnable)",
         "Zamiana popularnych słów true / false (BiPolar)",
+        "Zamienia koniec linii EOL na CRLF (DOS)",
+        "Zamienia koniec linii EOL na LF (Unix)",
         "Zamknij aktywny bufor",
         "Zamknij wszystkie bufory poza aktywnym (BufferCloseAllButCurrent)",
         "Zapisz i wyjdź",
@@ -744,8 +747,6 @@ Komendy = function()
         "Zmiana języka Neovim na język polski (language pl_PL.UTF-8)",
         "Zmiana schematu kolorystycznego (Kolory)",
         "Zmiana znacznika czasu EPOCH na czytelną formę daty",
-        "Zamienia koniec linii na CRLF (DOS)",
-        "Zamienia koniec linii na LF (Unix)",
         "Zmienia rozmiar czcionki dla Neovide na 12",
         "Zmienia rozmiar czcionki dla Neovide na 17",
         "Zmienia rozmiar czcionki dla Neovide na 21",
@@ -1005,10 +1006,12 @@ Komendy = function()
                 vim.cmd[[set scrolloff=3]]
             elseif choice == "Ustaw scrolloff na 999" then
                 vim.cmd[[set scrolloff=999]]
-            elseif choice == "Zamienia koniec linii na CRLF (DOS)" then
+            elseif choice == "Zamienia koniec linii EOL na CRLF (DOS)" then
                 vim.cmd[[set ff=dos]]
-            elseif choice == "Zamienia koniec linii na LF (Unix)" then
+            elseif choice == "Zamienia koniec linii EOL na LF (Unix)" then
                 vim.cmd[[set ff=unix]]
+            elseif choice == "Dodaj Modeline" then
+                vim.cmd[[lua Modeline()]]
             end
         end
     }
@@ -1117,6 +1120,25 @@ MkDir = function()
     if vim.fn.isdirectory(dir) == 0 then
         vim.fn.mkdir(dir, "p")
     end
+end
+
+-- DESC: Dodaje na końcu pliku ustawienia
+Modeline = function()
+    local expandtab = vim.api.nvim_get_option("expandtab")
+    local tabstop = vim.api.nvim_get_option("tabstop")
+    local shiftwidth = vim.api.nvim_get_option("shiftwidth")
+    local textwidth = vim.api.nvim_get_option("textwidth")
+    local filetype = vim.opt.filetype:get()
+    local commentstring = vim.opt.commentstring:get()
+    if expandtab == true then
+        expandtab = "expandtab"
+    end
+    if expandtab == false then
+        expandtab = "noexpandtab"
+    end
+    local ml = string.format("vim: set ft=%s ts=%d sw=%d tw=%d %s :", filetype, tabstop, shiftwidth, textwidth, expandtab)
+    local modeline = vim.fn.substitute(commentstring, "%s", ml, "")
+    vim.fn.append(("$"), modeline)
 end
 
 -- DESC: Funkcja zwraca wartość zmiennej systemowej NVIM_APPNAME
