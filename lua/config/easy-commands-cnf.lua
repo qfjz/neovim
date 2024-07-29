@@ -254,6 +254,10 @@ require("easy-commands").setup({
             end,
         },
         {
+            name = "Modeline",
+            callback = "lua Modeline()",
+        },
+        {
             name = "NvimAppName",
             callback = "lua vim.notify(NvimAppName())",
         },
