@@ -1,6 +1,6 @@
 # Różności
 
-Aktualizacja: 2024-07-29 10:50:03, poniedziałek 29 lipca
+Aktualizacja: 2024-07-29 10:58:22, poniedziałek 29 lipca
 
 ## Uruchomienie komendy systemowej
 
@@ -256,7 +256,7 @@ Na
 | [zsh](zsh.md) | powłoka shell |
 ```
 
-**Klawisz ESC uzyskujemy za pmocą skrótu Ctrl-v ESC w linii komend występuje on jako `^[`**
+**Klawisz ESC uzyskujemy za pomocą skrótu `Ctrl-v` `ESC` w linii komend występuje on jako `^[`**
 
 ```vim
 :'<,'>:g/md/norm ^wvt.yPa](^[Ea)^[Bi[

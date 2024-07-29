@@ -4,7 +4,7 @@ vim.keymap.set("n", [[<enter>]], "mzo<esc>`z", { desc = "Dodaje pustą linię po
 -- vim.keymap.set("n", "<enter>", "<cmd>lua Write()<cr>", { desc = "Zapisuje zmiany" })
 vim.keymap.set("v", [[<enter>]], "ygv<esc>", { desc = "Kopiuje zaznaczony tekst" })
 vim.keymap.set("n", "<leader>cy", "<Plug>OSCYankOperator", { desc = "OSCYANK" })
-vim.keymap.set("n", "<leader>cY", "<leader>c_", { remap = true, desc = "Kopiuje całą linię (OSCYank)" })
+vim.keymap.set("n", "<leader>cY", "<leader>y_", { remap = true, desc = "Kopiuje całą linię (OSCYank)" })
 vim.keymap.set("v", "<leader>cy", "<Plug>OSCYankVisual", { desc = "OSCYANK" })
 vim.keymap.set("n", [[<leader>n]], "<cmd>Neotree reveal_force_cwd toggle<cr>", { desc = "Uruchamia menadżer plików NeoTree" })
 -- vim.keymap.set("n", [[\]], "<cmd>Neotree reveal_force_cwd toggle<cr>", { desc = "Uruchamia menadżer plików NeoTree" })
