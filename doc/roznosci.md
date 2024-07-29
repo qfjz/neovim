@@ -213,6 +213,11 @@ w drugą stronę
 :set ff=dos
 ```
 
+## Znajdź i zamień
+
+- `:%s/znajdź/zamień/g` - zamienia `znajdź` na `zamień` w całym pliku
+- `:s/wyraz.*inny-wyraz//` - usuwa treść od słowa `wyraz` do `inny-wyraz`
+
 ## Komenda global
 
 - `:g/^$/d` Usuń wszystkie puste linie w pliku

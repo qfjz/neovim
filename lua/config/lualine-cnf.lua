@@ -21,6 +21,16 @@ local colors = {
     red      = '#ec5f67',
 }
 
+-- adapted from https://www.reddit.com/r/neovim/comments/xy0tu1/cmdheight0_recording_macros_message/
+local function show_macro_recording()
+    local recording_register = vim.fn.reg_recording()
+    if recording_register == "" then
+        return ""
+    else
+        return "󰑋  " .. recording_register
+    end
+end
+
 local function line_count()
     if vim.fn.mode():find('[\22vV]') then
         local ln_beg = vim.fn.line("v")
@@ -83,7 +93,13 @@ local config = {
         lualine_y = {},
         lualine_z = {},
         -- These will be filled later
-        lualine_c = {},
+        lualine_c = {
+            {
+                show_macro_recording,
+                color = { fg = "#333333", bg = "#ff6666" },
+                separator = { left = "", right = "" },
+            },
+        },
         lualine_x = {},
     },
     inactive_sections = {
@@ -234,6 +250,16 @@ ins_right {
     end,
     color = { fg = colors.green },
 }
+
+-- ins_right {
+--     "fileformat",
+--     icons_enabled = true,
+--     symbols = {
+--         unix = "LF",
+--         dos = "CRLF",
+--         mac = "CR",
+--     },
+-- }
 
 ins_right {
     function()

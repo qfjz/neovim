@@ -49,6 +49,8 @@ vim.opt.signcolumn = "yes"  -- Always show the signcolumn, otherwise it would sh
 vim.opt.foldmethod = "marker"
 vim.opt.foldenable = true
 vim.opt.updatetime = 300
+vim.opt.splitbelow = true
+vim.opt.splitright = true
 -- Neovide
 if vim.g.neovide then
     local function alpha()

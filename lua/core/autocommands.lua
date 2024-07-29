@@ -173,13 +173,13 @@ autocmd({ "BufNewFile" }, {
 })
 
 -- DESC: Informacja o rozpoczęciu nagrywania makra
-autocmd({ "RecordingEnter", }, {
-    group = augroup("NotifyMacroStart", { clear = true }),
-    callback = function()
-        local msg = "Nagrywam makro " .. "[" .. vim.fn.reg_recording() .. "]"
-        vim.notify(msg, "info", { timeout = 6000, })
-    end,
-})
+-- autocmd({ "RecordingEnter", }, {
+--     group = augroup("NotifyMacroStart", { clear = true }),
+--     callback = function()
+--         local msg = "Nagrywam makro " .. "[" .. vim.fn.reg_recording() .. "]"
+--         vim.notify(msg, "info", { timeout = 6000, })
+--     end,
+-- })
 
 -- DESC: Informacja o zakończeniu nagrywania makra
 autocmd({ "RecordingLeave", }, {
@@ -191,3 +191,30 @@ autocmd({ "RecordingLeave", }, {
         })
     end,
 })
+
+-- DESC: Odświerzanie lualine przy nagrywaniu makra
+local lualine = require("lualine")
+autocmd("RecordingEnter", {
+    callback = function()
+        lualine.refresh()
+    end,
+})
+
+-- DESC: Odświerzanie lualine przy zakończeniu nagrania makra
+autocmd("RecordingLeave", {
+    callback = function()
+        local timer = vim.loop.new_timer()
+        timer:start(
+        50,
+        0,
+        vim.schedule_wrap(function()
+            lualine.refresh()
+        end)
+        )
+    end,
+})
+
+-- DESC: Show cursor line only in active window
+local cursorGrp = augroup("CursorLine", { clear = true })
+autocmd({ "InsertLeave", "WinEnter" }, { pattern = "*", command = "set cursorline", group = cursorGrp })
+autocmd({ "InsertEnter", "WinLeave" }, { pattern = "*", command = "set nocursorline", group = cursorGrp })
