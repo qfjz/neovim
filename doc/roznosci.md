@@ -1,6 +1,6 @@
 # Różności
 
-Aktualizacja: 2024-07-26 20:05:51, piątek 26 lipca
+Aktualizacja: 2024-07-29 10:50:03, poniedziałek 29 lipca
 
 ## Uruchomienie komendy systemowej
 
@@ -199,7 +199,7 @@ Wyszukaj linie, które nie mają znaku `a` na początku
 ```vim
 /\v^.+(^a.*$)@<!$
 ```
-## Konwertowanie znaków końca linii z ^M (DOS) do normalnego formttu (Unix)
+## Konwertowanie znaków końca linii z ^M (DOS) do normalnego formatu (Unix)
 
 ```vim
 :e ++ff=unix
@@ -235,7 +235,7 @@ w drugą stronę
 - `:g/pattern/ . w>>filename` Kopiuje znalezione linie do osobnego pliku (plik musi istnieć)
 - `:g/^/m0` Odwraca kolejność linii w pliku
 - `:g/^\s*PATTERN /exe "norm! I/* \<ESC>A */\<ESC>"` Wstawia komentarz ( `/* text */` ) w
-  znalezionych liniach zaczynającyh się od `PATTERN`
+  znalezionych liniach zaczynających się od `PATTERN`
 - `:g/PATTERN/exe "norm! I/* \<ESC>A */\<ESC>"` Wstawia komentarz ( `/* text */` ) w
   znalezionych liniach zawierających `PATTERN`
 - `:g/Sales/d` Usuwa wszystkie linie zawierające słowo Sales

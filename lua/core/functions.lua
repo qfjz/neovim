@@ -923,7 +923,7 @@ Komendy = function()
                 print(NvimAppName())
             elseif choice == "Otwiera plik pod kursorem dodając na początku ścieśki src/ (OpenFile)" then
                 vim.cmd[[OpenFile]]
-            elseif choice == "Aktualizacja lini Ostatnia Aktualizacja (OstatniaAktualizacja)" then
+            elseif choice == "Aktualizacja lini Aktualizacja (OstatniaAktualizacja)" then
                 OstatniaAktualizacja()
             elseif choice == "Przywróc ostatnią sesję (OstatniaSesja)" then
                 OstatniaSesja()
