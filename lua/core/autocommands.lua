@@ -2,6 +2,15 @@
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 
+-- DESC: Automatyczne włączenie sprawdzania pisowni dla określonych plików
+autocmd("FileType", {
+    pattern = { "neorg", "markdown", "text" },
+    callback = function()
+        vim.opt_local.spell = true
+        vim.opt_local.spelllang = "pl"
+    end,
+})
+
 -- DESC: wyróżnienie kopiowanego tekstu
 autocmd("TextYankPost", {
     group = augroup("HighlightYank", { clear = true }),
