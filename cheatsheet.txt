@@ -83,6 +83,7 @@ Uruchamia polecenie FzfLua                                                   | <
 Uruchamia polecenie Cheatsheet                                               | <leader>tc
 Uruchamia polecenie Lazy                                                     | <leader>tl
 Uruchamia w terminalu skrypt gi.sh                                           | <leader>ti
+Uruchamia w terminalu skrypt gp.sh                                           | <leader>tp
 Uruchamia Dashboard Alpha                                                    | <leader>A
 Uruchamia polecenie `=ip gqap` wyrównuje paragraf                            | <leader>a
 W trybie VISUAL tworzy wcięcie                                               | <
