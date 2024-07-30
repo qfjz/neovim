@@ -18,6 +18,7 @@ return {
     "xero/miasma.nvim",
     "olivercederborg/poimandres.nvim",
     "Rigellute/rigel",
+    "rootiest/astral.nvim",
     {
         "folke/tokyonight.nvim",
         lazy = false, -- make sure we load this during startup if it is your main colorscheme
