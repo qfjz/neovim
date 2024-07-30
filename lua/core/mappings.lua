@@ -10,7 +10,7 @@ vim.keymap.set("n", [[<enter>]], "mzo<esc>`z", { desc = "Dodaje pustą linię po
 vim.keymap.set("v", [[<enter>]], "ygv<esc>", { desc = "Kopiuje zaznaczony tekst" })
 vim.keymap.set("n", "yA", "<cmd>%yank<cr>", { desc = "Kopiuje całą zawartość pliku do rejestru" })
 vim.keymap.set("n", "dA", "<cmd>%delete<cr>", { desc = "Usuwa całą zawartość pliku" })
-vim.keymap.set("n", "gV", "v`[o`]", { desc = "Przechodzi do ostateniego zaznaczenia lub skopiowanego tekstu" })
+vim.keymap.set("n", "gV", "v`[o`]", { desc = "Przechodzi do ostatniego zaznaczenia lub skopiowanego tekstu" })
 vim.keymap.set("n", [[dh]], "xd0", { desc = "Usuwa od kursora do początku linii" })
 vim.keymap.set("n", [[dl]], "d$", { desc = "Usuwa od kursora do końca linii" })
 -- Kopiuje do schowka systemowego np: <leader>yap - kopiuje paragraf do schowka systemowego
@@ -21,7 +21,7 @@ vim.keymap.set("x", "<leader>y", [["*y]], { desc = "Kopiuje zaznaczony tekst w t
 -- Na przykład <leader>xd usuwa całą linię, <leader>xiw usuwa wyraz pod kursorem
 vim.keymap.set("n", "<leader>x", [["_d]])
 vim.keymap.set("x", "<leader>x", [["_d]])
-vim.keymap.set("n", "d<space>", "daw", { desc = "Usuwa wyraz pod kursorem" })  -- #0c9d04f3
+vim.keymap.set("n", "d<space>", "daw", { desc = "Usuwa wyraz pod kursorem" })
 vim.keymap.set("v", "<LeftRelease>", '"+ygv<Esc>', { desc = "Kopiowanie zaznaczonego tekstu myszką" })
 vim.keymap.set("x", "<leader>d", [["_d]], { desc = "Usuwa zaznaczony tekst nie kopiując go do standardowego rejestru" })
 vim.keymap.set("n", "<leader>yy", "^vg_y", { desc = "Kopiuje linię pomijając puste znaki na początku i znak końca linii" })
@@ -198,6 +198,7 @@ vim.keymap.set("n", "<leader>tc", "<cmd>Cheatsheet<cr>")
 -- ## Lazy menadżer pluginów
 vim.keymap.set("n", "<leader>tl", "<cmd>Lazy<cr>")
 vim.keymap.set("n", "<leader>ti", "<cmd>belowright 10split term://$HOME/bin/gi.sh<cr>", { desc = "Uruchamia w terminalu skrypt gi.sh" })
+vim.keymap.set("n", "<leader>tp", "<cmd>belowright 10split term://$HOME/bin/gp.sh<cr>", { desc = "Uruchamia w terminalu skrypt gp.sh" })
 vim.keymap.set('n', '<leader>ty', [[<cmd>s/\[\s\]/[x]/<cr><cmd>nohl<cr>]], { silent = true , desc = "Checkbox Done"})
 vim.keymap.set('n', '<leader>tu', [[<cmd>s/\[x\]/[ ]/<cr><cmd>nohl<cr>]], { silent = true, desc = "Checkbox ToDo" })
 -- ## Poruszanie się po podmenu podpowiedzi <c-y> zatwierdza; <c-e> przerywa
