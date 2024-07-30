@@ -1,4 +1,7 @@
 -- mappings
+vim.keymap.set("n", "<c-q>", [[<cmd>copen<cr>]], { desc = "Otwiera listę quickfix" })
+vim.keymap.set("n", "]q", [[<cmd>cnext<cr>]], { desc = "Przechodzi do następnego elementu na liście quickfix" })
+vim.keymap.set("n", "[q", [[<cmd>cprev<cr>]], { desc = "Przechodzi do poprzedniego elementu na liście quickfix" })
 vim.keymap.set("n", [[<s-enter>]], "mzO<esc>`z", { desc = "Dodaje pustą linię powyżej bieżącej" })
 vim.keymap.set("n", [[<enter>]], "mzo<esc>`z", { desc = "Dodaje pustą linię poniżej bieżącej" })
 -- vim.keymap.set("n", "<enter>", "<cmd>lua Write()<cr>", { desc = "Zapisuje zmiany" })
@@ -233,6 +236,11 @@ local undo_ch = { ",", ".", "!", "?", ";", ":" }
 for _, ch in ipairs(undo_ch) do
     vim.keymap.set("i", ch, ch .. "<c-g>u")
 end
+-- Przenoszenie linii góra / dów w trybie INSERT i NORMAL
+-- vim.keymap.set("i", "<a-j>", "<Esc>:m .+1<CR>==gi")
+-- vim.keymap.set("i", "<a-k>", "<Esc>:m .-2<CR>==gi")
+-- vim.keymap.set("n", "<a-j>", ":m .+1<CR>==")
+-- vim.keymap.set("n", "<a-k>", ":m .-2<CR>==")
 -- Plugin flash.nvim wyszukiwanie za pomocą "s"
 vim.keymap.set({ "n", "o", "x" }, "s", function()
     require("flash").jump({
