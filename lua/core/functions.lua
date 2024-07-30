@@ -627,6 +627,8 @@ Komendy = function()
         "Aktualizacja lini Aktualizacja (OstatniaAktualizacja)",
         "Aktualizacja pluginów (Lazy update)",
         "Alpha Dashboard",
+        "Cheatsheet QFJZ Edit",
+        "Cheatsheet QFJZ",
         "Dodaj katalog do ulubionych (AddCDDir)",
         "Dodaj Modeline",
         "Dodaj plik do ulubionych (AddBmFile)",
@@ -1012,6 +1014,10 @@ Komendy = function()
                 vim.cmd[[set ff=unix]]
             elseif choice == "Dodaj Modeline" then
                 vim.cmd[[lua Modeline()]]
+            elseif choice == "Cheatsheet QFJZ" then
+                vim.cmd[[Cheatsheet]]
+            elseif choice == "Cheatsheet QFJZ Edit" then
+                vim.cmd[[CheatsheetEdit]]
             end
         end
     }
