@@ -3,12 +3,13 @@ vim.keymap.set("n", [[<s-enter>]], "mzO<esc>`z", { desc = "Dodaje pustą linię 
 vim.keymap.set("n", [[<enter>]], "mzo<esc>`z", { desc = "Dodaje pustą linię poniżej bieżącej" })
 -- vim.keymap.set("n", "<enter>", "<cmd>lua Write()<cr>", { desc = "Zapisuje zmiany" })
 vim.keymap.set("v", [[<enter>]], "ygv<esc>", { desc = "Kopiuje zaznaczony tekst" })
-vim.keymap.set("n", "<leader>cy", "<Plug>OSCYankOperator", { desc = "OSCYANK" })
-vim.keymap.set("n", "<leader>cY", "<leader>y_", { remap = true, desc = "Kopiuje całą linię (OSCYank)" })
-vim.keymap.set("v", "<leader>cy", "<Plug>OSCYankVisual", { desc = "OSCYANK" })
+-- vim.keymap.set("n", "<leader>cy", "<Plug>OSCYankOperator", { desc = "OSCYANK" })
+-- vim.keymap.set("n", "<leader>cY", "<leader>y_", { remap = true, desc = "Kopiuje całą linię (OSCYank)" })
+-- vim.keymap.set("v", "<leader>cy", "<Plug>OSCYankVisual", { desc = "OSCYANK" })
 vim.keymap.set("n", [[<leader>n]], "<cmd>Neotree reveal_force_cwd toggle<cr>", { desc = "Uruchamia menadżer plików NeoTree" })
 -- vim.keymap.set("n", [[\]], "<cmd>Neotree reveal_force_cwd toggle<cr>", { desc = "Uruchamia menadżer plików NeoTree" })
 vim.keymap.set("n", [[<leader>\]], "<cmd>Neotree source=buffers reveal_force_cwd=true position=right action=focus toggle<cr>", { desc = "NeoTree otwarte bufory" })
+vim.keymap.set("n", "<leader>e", require("oil").open, { desc = "Menadżer plików Oil" })
 vim.keymap.set("n", "<M-f>", require("oil").open, { desc = "Menadżer plików Oil" })
 vim.keymap.set("n", "<leader>f", "<cmd>lua Files()<cr>", { desc = "FzfLua files" })
 vim.keymap.set({"n", "x"}, [[gh]], "^", { desc = "Początek linii" })
@@ -189,6 +190,7 @@ vim.keymap.set("x", "J", ":m '>+1<cr>gv=gv", { silent = true, desc = "Przenosi z
 vim.keymap.set("n", "gx", "<cmd>silent execute '!$BROWSER ' . shellescape(expand('<cfile>'), 1)<cr>")
 -- zaznacza wyraz pod kursorem i przechodzi do modyfikacji wszystkich znalezionych wyrazów
 vim.keymap.set("n", "<leader>sc", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Znajdź i zamień, wyraz pod kursorem" })
+-- vim.keymap.set("n", "<leader>sc", [[:%s:<C-r><C-w>::gI<Left><Left><Left>]])
 -- w trybie VISUAL ('v') należy zacząć zaznaczanie od słowa, które chcemy zamienić
 vim.keymap.set("x", "<leader>sc", [[:s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 -- zamienia wyraz znajdujący się pod kursorem, wcześniej skopiowanym wyrazem, operacja na całym pliku

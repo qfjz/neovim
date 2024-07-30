@@ -35,11 +35,13 @@ src.md
 ```
 
 ## Wczytanie kilku pierwszych linii pliku
+
 Wstawienie pierwszych 5 linii pliku `plik.txt` do bieżącego bufora
 
 ```vim
 :r !head -n5 plik.txt
 ```
+
 ## Praca w linii komend
 
 - `[Enter]` zatwierdza komendę
@@ -47,7 +49,6 @@ Wstawienie pierwszych 5 linii pliku `plik.txt` do bieżącego bufora
 - `<Ctrl-f>` pokazuje historię komend
 - `%` znak procenta oznacza otwarty plik `:!cp % %.txt`
 - `!` po znaku `!` komenda będzie uruchomiona w powłoce systemowej
-
 
 ## Połączenie kilku linii jednocześnie
 
@@ -186,19 +187,6 @@ Odszyfrowanie całego pliku
 :r!gpg -a -c -o- plik_odszyfrowany.txt
 ```
 
-## Wyszukanie linii nie zawierających wybranego znaku
-
-Wyszukaj wszystkie linie, które nie zawierają litery `a`
-
-```vim
-/\v^.+(^.*a.*$)@<!$
-```
-
-Wyszukaj linie, które nie mają znaku `a` na początku
-
-```vim
-/\v^.+(^a.*$)@<!$
-```
 ## Konwertowanie znaków końca linii z ^M (DOS) do normalnego formatu (Unix)
 
 ```vim
@@ -213,6 +201,57 @@ w drugą stronę
 :set ff=dos
 ```
 
+## Wyrażenia regularne
+
+- https://learnbyexample.gitbooks.io/vim-reference/content/Regular_Expressions.html
+
+### Flag
+
+Flagi mogą być łączone
+
+- `g` zamienia wszystkie wystąpienia w pojedynczej linii
+- `c` pyta o potwierdzenie przez zastąpieniem
+- `i` ignoruje wielkość liter
+- `I` nie ignoruje wielkości liter dla szukanego wzorca
+
+Pomoc, `:h :s_flags`
+
+Skróty klawiszowe przy fladze `c`
+
+Pojawia się okno z wyborem:
+
+```
+replace with  (y/n/a/q/l/^E/^Y)?
+```
+
+- `y` zezwala na zamianę znalezionego wzorca
+- `n` nie zezwala na zamianę i przechodzi dalej
+- `l` zezwala na zamianę znalezionego wzorca i kończy pracę
+- `<Esc>`, `q` kończy zamianę
+- `a` zezwala na zamianę znalezionego wzorca i każdego kolejnego jego wystąpienia
+
+### Dopasowanie wzorca
+
+- `/^Start` wyszukuje `Start` na początku linii
+- `/Stop$` wyszukuje `Stop` na końcu linii
+- `.` znak `.` oznacza dowolny znak `/S..p`
+- `*` znak `*` oznacza dowolną ilość znaków
+- `s/\v\d{1,3}\.\v\d{1,3}\.\v\d{1,3}\.\v\d{1,3}//` adres IP
+- `s/\v(\d{1,3}\.){3}\d{1,3}` adres IP wersja krótsza, gdzie `{3}` to powtórzenie pierwszego wzorca
+
+## Wyszukanie linii nie zawierających wybranego znaku
+
+Wyszukaj wszystkie linie, które nie zawierają litery `a`
+
+```vim
+/\v^.+(^.*a.*$)@<!$
+```
+
+Wyszukaj linie, które nie mają znaku `a` na początku
+
+```vim
+/\v^.+(^a.*$)@<!$
+```
 ## Znajdź i zamień
 
 - `:%s/znajdź/zamień/g` - zamienia `znajdź` na `zamień` w całym pliku
@@ -225,6 +264,13 @@ w drugą stronę
 - `:%s/^/Prefix: /` - dodanie słowa `Prefix` na początku każdej linii
 - `:%s/$/ :Suffix/` - dodanie słowa `Suffix` na końcu każdej linii
 - `:%s/^/\=line('.') . ' '` - dodaje numerowanie linii w całym pliku
+
+Używając skrótu `<ctrl-r><ctrl-w>` w linii poleceń zostanie wstawiony wyraz znajdujący się pod
+kursorem. Tego samego rozwiązania można użyć przy skrótach klawiszowych.
+
+Skrót `<ctrl-r><ctrl-l>` w linii poleceń wstawia całą linię.
+
+Skrót `<ctrl-r><ctrl-g>` w linii poleceń wstawia pełną ścieżkę i nazwę pliku.
 
 ## Komenda global
 
