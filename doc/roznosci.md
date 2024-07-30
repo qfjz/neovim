@@ -331,11 +331,11 @@ początku nazwy pliku.
 - `:let @+=@1` Kopiuje zawartość rejestru `1` do schowka systemowego
 
 
-## Plugin `nredir.nvim`
+## Plugin nredir.nvim
 
 Nredir przekierowuje wynik polecenia do nowego bufora
 
-Przykłąd komendy:
+Przykład użycia komendy:
 
 ```lua
 Nredir lua print(vim.inspect(vim.fn.api_info()))
