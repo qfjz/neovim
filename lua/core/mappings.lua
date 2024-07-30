@@ -163,7 +163,7 @@ vim.keymap.set("n", "q:", "<cmd>FzfLua command_history<cr>")
 vim.keymap.set("n", "q;", "<cmd>FzfLua command_history<cr>")
 -- ## Pliki konfiguracyjne i dokumentacja
 vim.keymap.set("n", "<leader>v", "<cmd>lua NvimConfig()<cr>", { desc = "Wyszukiwarka plików konfiguracyjnych" })
-vim.keymap.set("n", "<leader>?", "<cmd>lua Docs()<cr>", { desc = "Przeszukiwanie lokalnej dokumentacji" })
+vim.keymap.set("n", "<leader>?", "<cmd>Cheatsheet<cr>", { desc = "Przeszukiwanie lokalnej dokumentacji" })
 -- ## UndotreeToggle
 vim.keymap.set("n", "<leader>u", "<cmd>UndotreeToggle<cr>", { desc = "Rejestr zmian Undotree" })
 -- ## Zmiana wartości liczby
