@@ -127,6 +127,9 @@ vim.keymap.set("n", [[qq]], [[<cmd>qa<cr>]], { desc = "Wyjście" })
 -- ## Tryb COMMAND
 vim.keymap.set({"n", "x"}, [[<leader>;]], [[:]], { desc = "Wejście do trybu COMMAND" })
 vim.keymap.set("c", "<c-p>", [[<c-r>"]], { desc = "Wkleja w linii komend"})
+vim.keymap.set("c", "<S-Enter>", function()
+    require("noice").redirect(vim.fn.getcmdline())
+end, { desc = "Redirect Cmdline" })
 -- Poruszanie się w trybie COMMAND
 vim.keymap.set("c", "<c-j>", "<down>")
 vim.keymap.set("c", "<c-k>", "<up>")

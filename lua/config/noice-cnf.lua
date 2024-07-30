@@ -2,17 +2,19 @@
 local ok, configs = pcall(require, 'noice')
 if not ok then return end
 
--- if package.loaded['noice'] then
-    -- vim.notify("Plugin noice załadowany", "info", {
-        -- timeout = 6000,
-    -- })
--- end
-
 configs.setup({
     cmdline = {
         enabled = true, -- enables the Noice cmdline UI
-        view = "cmdline_popup", -- view for rendering the cmdline. Change to `cmdline` to get a classic cmdline at the bottom
-        opts = {}, -- global options for the cmdline. See section on views
+        opts = {
+            position = {
+                row = "15%",
+                col = "50%"
+            },
+            size = {
+                width = 70,
+                height = 1,
+            },
+        }, -- global options for the cmdline. See section on views
         ---@type table<string, CmdlineFormat>
         format = {
             -- conceal: (default=true) This will hide the text in the cmdline that matches the pattern.

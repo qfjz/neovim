@@ -2,6 +2,7 @@
 return {
     "AlexvZyl/nordic.nvim",
     "gbprod/nord.nvim",
+    "loctvl842/monokai-pro.nvim",
     "rose-pine/neovim",
     "catppuccin/nvim",
     "LunarVim/lunar.nvim",
@@ -76,6 +77,7 @@ return {
     "jamessan/vim-gnupg",
     "nvim-lualine/lualine.nvim",
     "romgrk/barbar.nvim",
+    "tiagovla/scope.nvim",
     'folke/todo-comments.nvim',
     "folke/which-key.nvim",
     "doctorfree/cheatsheet.nvim",
