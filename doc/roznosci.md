@@ -325,6 +325,21 @@ Występują tu dwa wyjścia z trybu **INSERT** czyli `^[`.
 W skrócie polecenie kopiuje nazwę pliku bez jego rozszerzenia, dodaje nawiasy i wkleja nazwę na
 początku nazwy pliku.
 
+## Kopiowanie do schowka systemowego z linii komend
+
+- `:let @+=@%` Kopiuje nazwę pliku do schowka systemowego
+- `:let @+=@1` Kopiuje zawartość rejestru `1` do schowka systemowego
+
+
+## Plugin `nredir.nvim`
+
+Nredir przekierowuje wynik polecenia do nowego bufora
+
+Przykłąd komendy:
+
+```lua
+Nredir lua print(vim.inspect(vim.fn.api_info()))
+```
 ## Opcje
 
 ```vim
