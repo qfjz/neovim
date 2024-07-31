@@ -10,7 +10,6 @@ vim.keymap.set("n", [[<enter>]], "mzo<esc>`z", { desc = "Dodaje pustą linię po
 vim.keymap.set("v", [[<enter>]], "ygv<esc>", { desc = "Kopiuje zaznaczony tekst" })
 vim.keymap.set("n", "yA", "<cmd>%yank<cr>", { desc = "Kopiuje całą zawartość pliku do rejestru" })
 vim.keymap.set("n", "dA", "<cmd>%delete<cr>", { desc = "Usuwa całą zawartość pliku" })
-vim.keymap.set("n", "gV", "v`[o`]", { desc = "Przechodzi do ostatniego zaznaczenia lub skopiowanego tekstu" })
 vim.keymap.set("n", [[dh]], "xd0", { desc = "Usuwa od kursora do początku linii" })
 vim.keymap.set("n", [[dl]], "d$", { desc = "Usuwa od kursora do końca linii" })
 -- Kopiuje do schowka systemowego np: <leader>yap - kopiuje paragraf do schowka systemowego
