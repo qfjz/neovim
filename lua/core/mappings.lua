@@ -41,7 +41,7 @@ vim.keymap.set("n", "<space>m", "<cmd>lua CopyReg()<cr>", { desc = "Kopiuje zawa
 vim.keymap.set("n", "M", '"xp', { desc = "Wkleja zawartość rejestru 'x', standardowo klawisz 'M' przenosi kursor na środek ekranu" })
 -- ## Pliki
 vim.keymap.set("n", "<leader>f", "<cmd>lua Files()<cr>", { desc = "FzfLua files lista plików w bieżącej lokalizacji" })
-vim.keymap.set("n", [[<leader>n]], "<cmd>Neotree reveal_force_cwd toggle<cr>", { desc = "Uruchamia menadżer plików NeoTree" })
+vim.keymap.set("n", [[<leader>n]], "<cmd>lua CDFD()<cr><cmd>Neotree reveal_force_cwd toggle<cr>", { desc = "Uruchamia menadżer plików NeoTree" })
 vim.keymap.set("n", "<leader>e", require("oil").open, { desc = "Menadżer plików Oil" })
 vim.keymap.set("n", "<M-f>", require("oil").open, { desc = "Menadżer plików Oil" })
 vim.keymap.set("n", "<leader>l", "<cmd>lua require('lf').start({ border = 'none', width = vim.o.columns, height = vim.o.lines })<cr>")
