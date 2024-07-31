@@ -196,8 +196,8 @@ require("easy-commands").setup({
             end,
         },
         {
-            name = "InsObsdianRemminder",
-            callback = "lua InsObsdianRemminder()"
+            name = "InsObsdianReminder",
+            callback = "lua InsObsdianReminder()"
         },
         {
             name = "Keymaps",

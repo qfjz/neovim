@@ -102,6 +102,8 @@ Zapisuje zmiany i wychodzi                                                   | <
 Zwiększa wartość liczby pod kursorem                                         | <c-a>
 Zmniejsza wartość liczby pod kursorem                                        | <c-x>
 ESC w trybie INSERT                                                          | kj
+Zaznacza Checkbox Done                                                       | <leader>ty
+Zaznacza Checkbox ToDo                                                       | <leader>tu
 ## QFJZ-COPY
 Kopiuje zaznaczony tekst w trybie VISUAL                                              | [ENTER]
 Wkleja z wybranego rejestru                                                           | <leader>r

@@ -696,7 +696,7 @@ Komendy = function()
         "Wstaw aktualną datę i godzinę w formacie 2024-07-22 17:28:27",
         "Wstaw znacznik czasu EPOCH",
         "Wstaw znacznik ID",
-        "Wstawia znacznik dla przypomnień w programie Obsidian (InsObsdianRemminder)",
+        "Wstawia znacznik dla przypomnień w programie Obsidian (InsObsdianReminder)",
         "Wybierz bufor (BufferPick)",
         "Wyczyść wszystkie rejestry (ClearRegs)",
         "Wyjdź bez zapisywania",
@@ -869,8 +869,8 @@ Komendy = function()
                 vim.cmd[[IBLEnable]]
             elseif choice == "Włącza / wyłącza prowadnice wcięć (IBLToggle)" then
                 vim.cmd[[IBLToggle]]
-            elseif choice == "Wstawia znacznik dla przypomnień w programie Obsidian (InsObsdianRemminder)" then
-                InsObsdianRemminder()
+            elseif choice == "Wstawia znacznik dla przypomnień w programie Obsidian (InsObsdianReminder)" then
+                InsObsdianReminder()
             elseif choice == "Zmienia schemat kolorystyczny biorąc pod uwagę porę dnia (KolorPora)" then
                 KolorPora()
             elseif choice == "Zmiana schematu kolorystycznego (Kolory)" then
@@ -1084,7 +1084,7 @@ Insert_ID = function()
 end
 
 -- DESC: Wstawia w bieżącej linii: - [ ] (@2023-09-19 12:07)
-InsObsdianRemminder = function()
+InsObsdianReminder = function()
     local pos = vim.api.nvim_win_get_cursor(0)[2]
     local line = vim.api.nvim_get_current_line()
     local nline = line:sub(0, pos) .. "- [ ] (@" .. os.date("%F %H:%M") .. ") " .. line:sub(pos + 1)
