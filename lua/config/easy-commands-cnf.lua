@@ -129,6 +129,10 @@ require("easy-commands").setup({
             callback = "lua EditBmFiles()",
         },
         {
+            name = "NeovimDocs",
+            callback = "lua FindFilesDir(\"/usr/share/nvim/runtime/doc/\")",
+        },
+        {
             name = "F",
             callback = "lua Files()",
         },

@@ -649,6 +649,7 @@ Komendy = function()
         "Menadżer plików Oil.nvim",
         "Neorg przejdź do workspace home",
         "Neorg przejdź do workspace work",
+        "Neovim Docs",
         "Otwiera plik pod kursorem dodając na początku ścieśki src/ (OpenFile)",
         "Otwórz katalog wybrany z (CDE)",
         "Otwórz nowy plik (NewFileNoSplit)",
@@ -1018,6 +1019,8 @@ Komendy = function()
                 vim.cmd[[Cheatsheet]]
             elseif choice == "Cheatsheet QFJZ Edit" then
                 vim.cmd[[CheatsheetEdit]]
+            elseif choice == "Neovim Docs" then
+                vim.cmd[[NeovimDocs]]
             end
         end
     }
