@@ -51,6 +51,7 @@ vim.opt.foldenable = true
 vim.opt.updatetime = 300
 vim.opt.splitbelow = true
 vim.opt.splitright = true
+vim.opt.mouse = ""
 -- Neovide
 if vim.g.neovide then
     local function alpha()

@@ -66,7 +66,7 @@ end, { desc = "Wyszukiwanie plików" })
 -- ## Bufory
 vim.keymap.set("n", [[<tab>]], "<cmd>e #<cr>", { desc= "Przełączanie pomiędzy dwoma ostatnimi buforami" })
 vim.keymap.set("n", [[<s-tab>]], "<cmd>BufferPick<cr>", { desc = "Pozwala wybrać bufor za pomocą jednej litery" })
-vim.keymap.set("n", [[leader>b]], "<cmd>FzfLua buffers<cr>", { desc = "Przełączanie pomiędzy buforami" })
+vim.keymap.set("n", [[<leader>b]], "<cmd>FzfLua buffers<cr>", { desc = "Przełączanie pomiędzy buforami" })
 vim.keymap.set("n", [[<leader>,]], [[<cmd>bp<cr>]], { desc = "Poprzeni bufor" })
 vim.keymap.set("n", [[<leader>.]], [[<cmd>bn<cr>]], { desc = "Następny bufor" })
 vim.keymap.set("n", [[<leader>\]], "<cmd>Neotree source=buffers reveal_force_cwd=true position=right action=focus toggle<cr>", { desc = "NeoTree otwarte bufory" })
