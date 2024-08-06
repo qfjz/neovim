@@ -14,6 +14,8 @@ M.komendy = function()
         "CDGitRoot - przechodzi do katalogu głównego repozytorium Git",
         "Cheatsheet QFJZ Edit",
         "Cheatsheet QFJZ",
+        "CheckExternalReqs - sprawdza czy w systemie są wymagane programy",
+        "CheckVersion - wyświetla wersję programu Neovim",
         "CopyFileName - kopiuje katalog nazwę pliku do rejestru",
         "CopyLineToSelectedFile - kopiuj bieżącą linię do wybranego pliku",
         "CopyVLineToSelectedFile - kopiuj zaznaczone linie do wybranego pliku",
@@ -32,6 +34,7 @@ M.komendy = function()
         "GPS - dodaje, podpisuje i wysyła pliki do repozytorium Git",
         "GrepGitRoot - przeszukiwanie repozytorium Git",
         "GrepNeovimDocs - przeszukiwanie dokumentacji Neovim /usr/share/nvim/runtime/doc/",
+        "GrepNotesDir - przeszukiwanie katalogu $NOTES_DIR",
         "InsObsdianReminder - wstawia znacznik dla przypomnień w programie Obsidian",
         "Lazy clean - usunięcie nieużywanych pluginów",
         "Lazy install - instalacja nowych pluginów",
@@ -49,7 +52,6 @@ M.komendy = function()
         "OstatniaAktualizacja - aktualizacja lini 'Aktualizacja: '",
         "Pokaż Timer (TimerShow)",
         "Przeszukiwanie historii wyszukiwania (FzfLua search_history)",
-        "Przeszukiwanie katalogu $NOTES_DIR (GrepNotesDir)",
         "Przeszukiwanie listy quick fix (FzfLua quickfix)",
         "Przeszukiwanie location list (FzfLua loclist)",
         "Przywróc ostatnią sesję (OstatniaSesja)",
@@ -57,8 +59,8 @@ M.komendy = function()
         "Reload user module",
         "ShowMiddleDot - pokazuje znak · wstawiony w miejsce spacji",
         "Skopiuj całą zawartość pliku",
-        "Sprawdza czy w systemie są wymagane programy (CheckExternalReqs)",
         "TermGitPull - pobierz zmiany z repozytorium Git w terminalu",
+        "TermGitStatus - wyświetl zmiany w repozytorium Git w terminalu",
         "Time - Pokaż datę i godzinę",
         "TimerHide - ukryj Timer",
         "TimerStart 15m - ustaw Timer na 15 minut",
@@ -101,7 +103,6 @@ M.komendy = function()
         "Wyłącz wszystkie dekoracje (DesFree)",
         "Wyłącza prowadnice wcięć (IBLDisable)",
         "Wyświetl procesy systemowe (TermPs)",
-        "Wyświetl zmiany w repozytorium Git w terminalu (TermGitStatus)",
         "Wyświetl znacznik czasu EPOCH w czytelnej formie daty",
         "Wyświetla / ukrywa dekoratory list (List)",
         "Wyświetla historię komend (CommandLineHistory)",
@@ -111,7 +112,6 @@ M.komendy = function()
         "Wyświetla nazwę systemu (Hostname)",
         "Wyświetla nazwę zmiennej NVIM_APPNAME",
         "Wyświetla ostatni komunikat (LastMsg)",
-        "Wyświetla wersję programu Neovim (CheckVersion)",
         "Włącz / wyłącz numerowanie wierszy (number!)",
         "Włącz / wyłącz relatywne numerowanie wierszy (set relativenumber!)",
         "Włącz / wyłącz tryb ZenMode",
@@ -313,9 +313,9 @@ M.komendy = function()
                 vim.cmd[[colorscheme tokyonight-day]]
             elseif choice == "Wyświetla / ukrywa dekoratory list (List)" then
                 vim.cmd[[set list!]]
-            elseif choice == "Sprawdza czy w systemie są wymagane programy (CheckExternalReqs)" then
+            elseif choice == "CheckExternalReqs - sprawdza czy w systemie są wymagane programy" then
                 require("user_functions.misc").CheckExternalReqs()
-            elseif choice == "Wyświetla wersję programu Neovim (CheckVersion)" then
+            elseif choice == "CheckVersion - wyświetla wersję programu Neovim" then
                 require("user_functions.misc").CheckVersion()
             elseif choice == "Ustawia przezroczystość dla Neovide na 0.2" then
                 vim.cmd[[lua vim.g.neovide_transparency = 0.2]]
@@ -362,7 +362,7 @@ M.komendy = function()
                 vim.cmd[[setlocal spell! spell? spelllang=pl]]
             elseif choice == "TermGitPull - pobierz zmiany z repozytorium Git w terminalu" then
                 vim.cmd("lua require'toggleterm'.exec('git pull', 1, 12)")
-            elseif choice == "Wyświetl zmiany w repozytorium Git w terminalu (TermGitStatus)" then
+            elseif choice == "TermGitStatus - wyświetl zmiany w repozytorium Git w terminalu" then
                 vim.cmd[[lua require'toggleterm'.exec('git status', 1, 22)]]
             elseif choice == "Zmień kolorystyke Jasny / Ciemny (RevBackground)" then
                 vim.cmd[[lua require("user_functions.misc").RevBackground()]]
@@ -424,7 +424,7 @@ M.komendy = function()
                 require("user_functions.notatki").FindNotesDir()
             elseif choice ==  "Przeszukiwanie location list (FzfLua loclist)" then
                 vim.cmd[[FzfLua loclist]]
-            elseif choice == "Przeszukiwanie katalogu $NOTES_DIR (GrepNotesDir)" then
+            elseif choice == "GrepNotesDir - przeszukiwanie katalogu $NOTES_DIR" then
                 require("user_functions.notatki").GrepNotesDir()
             elseif choice == "Ustaw scrolloff na 3" then
                 vim.cmd[[set scrolloff=3]]
