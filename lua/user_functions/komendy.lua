@@ -5,7 +5,10 @@ M.komendy = function()
         "AddBmFile - dodaj plik do ulubionych",
         "AddCDDir - dodaj katalog do ulubionych",
         "Alpha Dashboard",
+        "BufferOrderByBufferNumber - sortuj bufory według numerów",
         "BufInfo - informacje o buforze",
+        "CDE - otwórz katalog wybrany z listy",
+        "CDG - pokaż główny katalog repozytorium Git",
         "CDGitRoot - przechodzi do katalogu głównego repozytorium Git",
         "Cheatsheet QFJZ Edit",
         "Cheatsheet QFJZ",
@@ -34,17 +37,14 @@ M.komendy = function()
         "Modeline - dodaje na końcu pliku Modeline",
         "Neorg przejdź do workspace home",
         "Neorg przejdź do workspace work",
+        "NewFileHSplit - otwórz nowy plik w podziale poziomym",
+        "NewFileNoSplit - otwórz nowy plik",
+        "NewFileVSplit - otwórz nowy plik w podziale pionowym",
         "OpenFile",
         "OstatniaAktualizacja - aktualizacja lini 'Aktualizacja: '",
-        "Otwórz katalog wybrany z (CDE)",
-        "Otwórz nowy plik (NewFileNoSplit)",
-        "Otwórz nowy plik w podziale pionowym (NewFileVSplit)",
-        "Otwórz nowy plik w podziale poziomym (NewFileHSplit)",
-        "Pobierz zmiany z repozytorium Git w terminalu (TermGitPull)",
         "Pobierze słownik pisowni języka polskiego (GetSpell)",
         "Pokazuje zmiany w repozytorium Git (FzfLua git_status)",
         "Pokazuje znak · wstawiony w miejsce spacji (ShowMiddleDot)",
-        "Pokaż główny katalog repozytorium Git (CDG)",
         "Pokaż Timer (TimerShow)",
         "Przejdź do katalogu dla otwartego pliku (CDFD)",
         "Przejdź do katalogu wybranego z ulubionych (CD)",
@@ -56,8 +56,8 @@ M.komendy = function()
         "PU - pobiera zmiany z repozytorium Git",
         "Reload user module",
         "Skopiuj całą zawartość pliku",
-        "Sortuj bufory według numerów (BufferOrderByBufferNumber)",
         "Sprawdza czy w systemie są wymagane programy (CheckExternalReqs)",
+        "TermGitPull - pobierz zmiany z repozytorium Git w terminalu",
         "Time - Pokaż datę i godzinę",
         "TimerHide - ukryj Timer",
         "TimerStart 15m - ustaw Timer na 15 minut",
@@ -230,11 +230,11 @@ M.komendy = function()
                 end)
             elseif choice == "Zamknij wszystkie bufory poza aktywnym (BufferCloseAllButCurrent)" then
                 vim.cmd[[BufferCloseAllButCurrent]]
-            elseif choice == "Sortuj bufory według numerów (BufferOrderByBufferNumber)" then
+            elseif choice == "BufferOrderByBufferNumber - sortuj bufory według numerów" then
                 vim.cmd[[BufferOrderByBufferNumber]]
             elseif choice == "Przejdź do katalogu wybranego z ulubionych (CD)" then
                 require("user_functions.bookmarks").CD()
-            elseif choice == "Otwórz katalog wybrany z (CDE)" then
+            elseif choice == "CDE - otwórz katalog wybrany z listy" then
                 require("user_functions.bookmarks").CDE()
             elseif choice == "Przejdź do katalogu dla otwartego pliku (CDFD)" then
                 require("user_functions.misc").CDFD()
@@ -244,7 +244,7 @@ M.komendy = function()
                 vim.cmd[[CommandLineHistory]]
             elseif choice == "Wyszukiwanie plików konfiguracyjnych Neovim w katalogu $NVIM_APPNAME (Config)" then
                 require("user_functions.misc").NvimConfig()
-            elseif choice == "Pokaż główny katalog repozytorium Git (CDG)" then
+            elseif choice == "CDG - pokaż główny katalog repozytorium Git" then
                 require("user_functions.git").CDG()
             elseif choice == "Kopiuje katalog nazwę pliku do rejestru (CopyFileName)" then
                 require("user_functions.misc").CopyFileName()
@@ -342,13 +342,13 @@ M.komendy = function()
                 vim.cmd[[Neorg workspace home]]
             elseif choice == "Neorg przejdź do workspace work" then
                 vim.cmd[[Neorg workspace work]]
-            elseif choice == "Otwórz nowy plik w podziale poziomym (NewFileHSplit)" then
+            elseif choice == "NewFileHSplit - otwórz nowy plik w podziale poziomym" then
                 vim.cmd[[new]]
                 vim.cmd[[startinsert]]
-            elseif choice == "Otwórz nowy plik w podziale pionowym (NewFileVSplit)" then
+            elseif choice == "NewFileVSplit - otwórz nowy plik w podziale pionowym" then
                 vim.cmd[[vnew]]
                 vim.cmd[[startinsert]]
-            elseif choice == "Otwórz nowy plik (NewFileNoSplit)" then
+            elseif choice == "NewFileNoSplit - otwórz nowy plik" then
                 vim.cmd[[enew]]
                 vim.cmd[[startinsert]]
             elseif choice == "Wyświetla nazwę zmiennej NVIM_APPNAME" then
@@ -363,7 +363,7 @@ M.komendy = function()
                 vim.cmd[[set relativenumber!]]
             elseif choice == "Włącz sprawdzanie pisowni (spell)" then
                 vim.cmd[[setlocal spell! spell? spelllang=pl]]
-            elseif choice == "Pobierz zmiany z repozytorium Git w terminalu (TermGitPull)" then
+            elseif choice == "TermGitPull - pobierz zmiany z repozytorium Git w terminalu" then
                 vim.cmd("lua require'toggleterm'.exec('git pull', 1, 12)")
             elseif choice == "Wyświetl zmiany w repozytorium Git w terminalu (TermGitStatus)" then
                 vim.cmd[[lua require'toggleterm'.exec('git status', 1, 22)]]
