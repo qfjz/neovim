@@ -32,6 +32,8 @@ M.komendy = function()
         "GPS - dodaje, podpisuje i wysyła pliki do repozytorium Git",
         "GrepGitRoot - przeszukiwanie repozytorium Git",
         "GrepNeovimDocs - przeszukiwanie dokumentacji Neovim /usr/share/nvim/runtime/doc/",
+        "InsObsdianReminder - wstawia znacznik dla przypomnień w programie Obsidian",
+        "Lazy clean - usunięcie nieużywanych pluginów",
         "Lazy install - instalacja nowych pluginów",
         "Lazy update - aktualizacja pluginów",
         "Light - ustaw jasny schemat kolorystyczny",
@@ -71,7 +73,6 @@ M.komendy = function()
         "Ustaw scrolloff na 999",
         "Ustawia przezroczystość dla Neovide na 0.2",
         "Ustawia przezroczystość dla Neovide na 1",
-        "Lazy clean - usunięcie nieużywanych pluginów",
         "Usuwanie zakładek (BookmarksDelete)",
         "Usuń bieżący plik z systemu plików",
         "Usuń całą zawartość pliku",
@@ -82,7 +83,6 @@ M.komendy = function()
         "Wstaw aktualną datę i godzinę w formacie 2024-07-22 17:28:27",
         "Wstaw znacznik czasu EPOCH",
         "Wstaw znacznik ID",
-        "Wstawia znacznik dla przypomnień w programie Obsidian (InsObsdianReminder)",
         "Wybierz bufor (BufferPick)",
         "Wyczyść wszystkie rejestry (ClearRegs)",
         "Wykonaj kopię zapasową plików Neovim (BackupNeovimConfig)",
@@ -293,7 +293,7 @@ M.komendy = function()
                 vim.cmd[[IBLEnable]]
             elseif choice == "Włącza / wyłącza prowadnice wcięć (IBLToggle)" then
                 vim.cmd[[IBLToggle]]
-            elseif choice == "Wstawia znacznik dla przypomnień w programie Obsidian (InsObsdianReminder)" then
+            elseif choice == "InsObsdianReminder - wstawia znacznik dla przypomnień w programie Obsidian" then
                 require("user_functions.notatki").InsObsdianReminder()
             elseif choice == "Zmienia schemat kolorystyczny biorąc pod uwagę porę dnia (KolorPora)" then
                 require("user_functions.misc").KolorPora()
