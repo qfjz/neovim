@@ -35,6 +35,7 @@ M.komendy = function()
         "GrepGitRoot - przeszukiwanie repozytorium Git",
         "GrepNeovimDocs - przeszukiwanie dokumentacji Neovim /usr/share/nvim/runtime/doc/",
         "GrepNotesDir - przeszukiwanie katalogu $NOTES_DIR",
+        "HideMiddleDot - ukrywa znak · wstawiony w miejsce spacji",
         "InsObsdianReminder - wstawia znacznik dla przypomnień w programie Obsidian",
         "Lazy clean - usunięcie nieużywanych pluginów",
         "Lazy install - instalacja nowych pluginów",
@@ -51,12 +52,12 @@ M.komendy = function()
         "OpenFile",
         "OstatniaAktualizacja - aktualizacja lini 'Aktualizacja: '",
         "Pokaż Timer (TimerShow)",
-        "Przeszukiwanie historii wyszukiwania (FzfLua search_history)",
         "Przeszukiwanie listy quick fix (FzfLua quickfix)",
         "Przeszukiwanie location list (FzfLua loclist)",
         "Przywróc ostatnią sesję (OstatniaSesja)",
         "PU - pobiera zmiany z repozytorium Git",
         "Reload user module",
+        "Search history - przeszukiwanie historii wyszukiwania",
         "ShowMiddleDot - pokazuje znak · wstawiony w miejsce spacji",
         "Skopiuj całą zawartość pliku",
         "TermGitPull - pobierz zmiany z repozytorium Git w terminalu",
@@ -68,7 +69,6 @@ M.komendy = function()
         "TimerStart 30m - ustaw Timer na 30 minut",
         "TimerStart 5m - ustaw Timer na 5 minut",
         "TimerStart 60m - ustaw Timer na 60 minut",
-        "Ukrywa znak · wstawiony w miejsce spacji (HideMiddleDot)",
         "Ulubione katalogi (BmDirs i CD)",
         "Ulubione pliki (BmFiles)",
         "Ustaw scrolloff na 3",
@@ -267,7 +267,7 @@ M.komendy = function()
                 vim.cmd[[FzfLua keymaps]]
             elseif choice == "Wyszukiwanie ostatnio edytowanych plików (FzfLua oldfiles)" then
                 require("user_functions.misc").OldFiles()
-            elseif choice == "Przeszukiwanie historii wyszukiwania (FzfLua search_history)" then
+            elseif choice == "Search history - przeszukiwanie historii wyszukiwania" then
                 vim.cmd[[FzfLua search_history]]
             elseif choice == "GA - dodaj pliki do repozytorium Git" then
                 require("user_functions.git").GA()
@@ -281,7 +281,7 @@ M.komendy = function()
                 require("user_functions.git").GPS()
             elseif choice == "PU - pobiera zmiany z repozytorium Git" then
                 require("user_functions.git").PU()
-            elseif choice == "Ukrywa znak · wstawiony w miejsce spacji (HideMiddleDot)" then
+            elseif choice == "HideMiddleDot - ukrywa znak · wstawiony w miejsce spacji" then
                 vim.cmd("lua vim.opt.listchars:remove('space')")
             elseif choice == "ShowMiddleDot - pokazuje znak · wstawiony w miejsce spacji" then
                 vim.cmd("lua vim.opt.listchars:append('space:·')")
