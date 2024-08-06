@@ -7,7 +7,9 @@ M.komendy = function()
         "Alpha Dashboard",
         "BufferOrderByBufferNumber - sortuj bufory według numerów",
         "BufInfo - informacje o buforze",
+        "CD - przejdź do katalogu wybranego z ulubionych",
         "CDE - otwórz katalog wybrany z listy",
+        "CDFD - przejdź do katalogu dla otwartego pliku",
         "CDG - pokaż główny katalog repozytorium Git",
         "CDGitRoot - przechodzi do katalogu głównego repozytorium Git",
         "Cheatsheet QFJZ Edit",
@@ -26,9 +28,9 @@ M.komendy = function()
         "GPS - dodaje, podpisuje i wysyła pliki do repozytorium Git",
         "GrepGitRoot - przeszukiwanie repozytorium Git",
         "GrepNeovimDocs - przeszukiwanie dokumentacji Neovim /usr/share/nvim/runtime/doc/",
-        "Kopiuj bieżącą linię do wybranego pliku (CopyLineToSelectedFile)",
-        "Kopiuj zaznaczone linie do wybranego pliku (CopyVLineToSelectedFile)",
-        "Kopiuje katalog nazwę pliku do rejestru (CopyFileName)",
+        "CopyLineToSelectedFile - kopiuj bieżącą linię do wybranego pliku",
+        "CopyVLineToSelectedFile - kopiuj zaznaczone linie do wybranego pliku",
+        "CopyFileName - kopiuje katalog nazwę pliku do rejestru",
         "Lazy install - instalacja nowych pluginów",
         "Lazy update - aktualizacja pluginów",
         "Light - ustaw jasny schemat kolorystyczny",
@@ -43,11 +45,8 @@ M.komendy = function()
         "OpenFile",
         "OstatniaAktualizacja - aktualizacja lini 'Aktualizacja: '",
         "Pobierze słownik pisowni języka polskiego (GetSpell)",
-        "Pokazuje zmiany w repozytorium Git (FzfLua git_status)",
-        "Pokazuje znak · wstawiony w miejsce spacji (ShowMiddleDot)",
+        "ShowMiddleDot - pokazuje znak · wstawiony w miejsce spacji",
         "Pokaż Timer (TimerShow)",
-        "Przejdź do katalogu dla otwartego pliku (CDFD)",
-        "Przejdź do katalogu wybranego z ulubionych (CD)",
         "Przeszukiwanie historii wyszukiwania (FzfLua search_history)",
         "Przeszukiwanie katalogu $NOTES_DIR (GrepNotesDir)",
         "Przeszukiwanie listy quick fix (FzfLua quickfix)",
@@ -232,11 +231,11 @@ M.komendy = function()
                 vim.cmd[[BufferCloseAllButCurrent]]
             elseif choice == "BufferOrderByBufferNumber - sortuj bufory według numerów" then
                 vim.cmd[[BufferOrderByBufferNumber]]
-            elseif choice == "Przejdź do katalogu wybranego z ulubionych (CD)" then
+            elseif choice == "CD - przejdź do katalogu wybranego z ulubionych" then
                 require("user_functions.bookmarks").CD()
             elseif choice == "CDE - otwórz katalog wybrany z listy" then
                 require("user_functions.bookmarks").CDE()
-            elseif choice == "Przejdź do katalogu dla otwartego pliku (CDFD)" then
+            elseif choice == "CDFD - przejdź do katalogu dla otwartego pliku" then
                 require("user_functions.misc").CDFD()
             elseif choice == "Wyczyść wszystkie rejestry (ClearRegs)" then
                 require("user_functions.misc").ClearRegs()
@@ -246,7 +245,7 @@ M.komendy = function()
                 require("user_functions.misc").NvimConfig()
             elseif choice == "CDG - pokaż główny katalog repozytorium Git" then
                 require("user_functions.git").CDG()
-            elseif choice == "Kopiuje katalog nazwę pliku do rejestru (CopyFileName)" then
+            elseif choice == "CopyFileName - kopiuje katalog nazwę pliku do rejestru" then
                 require("user_functions.misc").CopyFileName()
             elseif choice == "Dark - ustaw schemat kolorystyczny na tokyonight-moon" then
                 vim.cmd[[colorscheme tokyonight-moon]]
@@ -276,8 +275,6 @@ M.komendy = function()
                 require("user_functions.git").GI()
             elseif choice == "Wyszukuje pliki znajdujące się w repozytorium Git (GitFiles)" then
                 require("user_functions.misc").GitFiles()
-            elseif choice == "Pokazuje zmiany w repozytorium Git (FzfLua git_status)" then
-                vim.cmd[[FzfLua git_status]]
             elseif choice == "GP - dodaje i wysyła pliki do repozytorium Git" then
                 require("user_functions.git").GP()
             elseif choice == "GPS - dodaje, podpisuje i wysyła pliki do repozytorium Git" then
@@ -286,7 +283,7 @@ M.komendy = function()
                 require("user_functions.git").PU()
             elseif choice == "Ukrywa znak · wstawiony w miejsce spacji (HideMiddleDot)" then
                 vim.cmd("lua vim.opt.listchars:remove('space')")
-            elseif choice == "Pokazuje znak · wstawiony w miejsce spacji (ShowMiddleDot)" then
+            elseif choice == "ShowMiddleDot - pokazuje znak · wstawiony w miejsce spacji" then
                 vim.cmd("lua vim.opt.listchars:append('space:·')")
             elseif choice == "Wyświetla nazwę systemu (Hostname)" then
                 vim.notify(vim.fn.system('hostname'))
@@ -419,9 +416,9 @@ M.komendy = function()
                 require("nvim-autopairs").enable()
             elseif choice == "Przeszukiwanie listy quick fix (FzfLua quickfix)" then
                 vim.cmd[[FzfLua quickfix]]
-            elseif choice == "Kopiuj bieżącą linię do wybranego pliku (CopyLineToSelectedFile)" then
+            elseif choice == "CopyLineToSelectedFile - kopiuj bieżącą linię do wybranego pliku" then
                 require("user_functions.notatki").CopyLineToSelectedFile()
-            elseif choice == "Kopiuj zaznaczone linie do wybranego pliku (CopyVLineToSelectedFile)" then
+            elseif choice == "CopyVLineToSelectedFile - kopiuj zaznaczone linie do wybranego pliku" then
                 require("user_functions.notatki").CopyVLineToSelectedFile()
             elseif choice == "Wyszukiwanie notatek (FindNotesDir)" then
                 require("user_functions.notatki").FindNotesDir()
