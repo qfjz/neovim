@@ -8,18 +8,18 @@ M.komendy = function()
         "CDGitRoot - przechodzi do katalogu głównego repozytorium Git",
         "Cheatsheet QFJZ Edit",
         "Cheatsheet QFJZ",
-        "Dodaj Modeline",
-        "Dodaj pliki do repozytorium Git (GA)",
-        "Dodaje, podpisuje i wysyła pliki do repozytorium Git (GPS)",
-        "Edytuj plik konfiguracyjny repozytorium Git .git/config (EditGitConfig)",
-        "Edytuj ulubione katalogi ~/.config/bmdirs (EditCDDirs)",
-        "Edytuj ulubione pliki ~/.config/bmfiles (EditBmFiles)",
-        "Exit",
-        "FileNeovimDocs",
+        "Dark - ustaw schemat kolorystyczny na tokyonight-moon",
+        "EditBmFiles - edytuj ulubione pliki ~/.config/bmfiles",
+        "EditCDDirs - edytuj ulubione katalogi ~/.config/bmdirs",
+        "EditGitConfig - edytuj plik konfiguracyjny repozytorium Git .git/config",
+        "Exit - zapisanie i wyjście",
+        "FileNeovimDocs - wyszukiwanie dokumentacji Neovim /usr/share/nvim/runtime/doc/",
         "FindGitRoot",
         "Force Quit - wyjdź bez zapisywania",
+        "GA - dodaj pliki do repozytorium Git",
         "GitStatus",
         "GP - dodaje i wysyła pliki do repozytorium Git",
+        "GPS - dodaje, podpisuje i wysyła pliki do repozytorium Git",
         "GrepGitRoot",
         "GrepNeovimDocs",
         "Informacje o buforze (BufInfo)",
@@ -28,8 +28,10 @@ M.komendy = function()
         "Kopiuj zaznaczone linie do wybranego pliku (CopyVLineToSelectedFile)",
         "Kopiuje katalog nazwę pliku do rejestru (CopyFileName)",
         "Lazy update - aktualizacja pluginów",
+        "Light - ustaw jasny schemat kolorystyczny",
         "Menadżer plików Neotree",
         "Menadżer plików Oil.nvim",
+        "Modeline - dodaje na końcu pliku Modeline",
         "Neorg przejdź do workspace home",
         "Neorg przejdź do workspace work",
         "OpenFile",
@@ -56,18 +58,16 @@ M.komendy = function()
         "Skopiuj całą zawartość pliku",
         "Sortuj bufory według numerów (BufferOrderByBufferNumber)",
         "Sprawdza czy w systemie są wymagane programy (CheckExternalReqs)",
-        "Time - Pokaż datę i godzinę (Time)",
+        "Time - Pokaż datę i godzinę",
+        "TimerHide - ukryj Timer",
         "TimerStart 15m - ustaw Timer na 15 minut",
         "TimerStart 1m - ustaw Timer na 1 minutę",
         "TimerStart 30m - ustaw Timer na 30 minut",
         "TimerStart 5m - ustaw Timer na 5 minut",
         "TimerStart 60m - ustaw Timer na 60 minut",
-        "Ukryj Timer (TimerHide)",
         "Ukrywa znak · wstawiony w miejsce spacji (HideMiddleDot)",
         "Ulubione katalogi (BmDirs i CD)",
         "Ulubione pliki (BmFiles)",
-        "Ustaw jasny schemat kolorystyczny (Light)",
-        "Ustaw schemat kolorystyczny na tokyonight-moon (Dark)",
         "Ustaw scrolloff na 3",
         "Ustaw scrolloff na 999",
         "Ustawia przezroczystość dla Neovide na 0.2",
@@ -162,9 +162,9 @@ M.komendy = function()
                 vim.cmd[[Alpha]]
             elseif choice == "GrepGitRoot" then
                 require("user_functions.misc").GrepGitRoot()
-            elseif choice == "Edytuj ulubione pliki ~/.config/bmfiles (EditBmFiles)" then
+            elseif choice == "EditBmFiles - edytuj ulubione pliki ~/.config/bmfiles" then
                 require("user_functions.bookmarks").EditBmFiles()
-            elseif choice == "FileNeovimDocs" then
+            elseif choice == "FileNeovimDocs - wyszukiwanie dokumentacji Neovim /usr/share/nvim/runtime/doc/" then
                 require("user_functions.misc").FindFilesDir("/usr/share/nvim/runtime/doc/")
             elseif choice == "GrepNeovimDocs" then
                 require("user_functions.misc").GrepDirectory("/usr/share/nvim/runtime/doc/")
@@ -193,7 +193,7 @@ M.komendy = function()
                 end
             elseif choice == "Ulubione pliki (BmFiles)" then
                 require("user_functions.bookmarks").BmFiles()
-            elseif choice == "Exit" then
+            elseif choice == "Exit - zapisanie i wyjście" then
                 vim.cmd.wa()
                 vim.cmd.qa()
             elseif choice == "Pobierze słownik pisowni języka polskiego (GetSpell)" then
@@ -248,13 +248,13 @@ M.komendy = function()
                 require("user_functions.git").CDG()
             elseif choice == "Kopiuje katalog nazwę pliku do rejestru (CopyFileName)" then
                 require("user_functions.misc").CopyFileName()
-            elseif choice == "Ustaw schemat kolorystyczny na tokyonight-moon (Dark)" then
+            elseif choice == "Dark - ustaw schemat kolorystyczny na tokyonight-moon" then
                 vim.cmd[[colorscheme tokyonight-moon]]
             elseif choice == "Wyłącz wszystkie dekoracje (DesFree)" then
                 require("user_functions.misc").DesFree()
-            elseif choice == "Edytuj ulubione katalogi ~/.config/bmdirs (EditCDDirs)" then
+            elseif choice == "EditCDDirs - edytuj ulubione katalogi ~/.config/bmdirs" then
                 require("user_functions.bookmarks").EditCDDirs()
-            elseif choice == "Edytuj plik konfiguracyjny repozytorium Git .git/config (EditGitConfig)" then
+            elseif choice == "EditGitConfig - edytuj plik konfiguracyjny repozytorium Git .git/config" then
                 require("user_functions.git").EditGitConfig()
             elseif choice == "Wyświetla informacje o otwartym pliku (FileInfo)" then
                 require("user_functions.misc").FileInfo()
@@ -270,7 +270,7 @@ M.komendy = function()
                 require("user_functions.misc").OldFiles()
             elseif choice == "Przeszukiwanie historii wyszukiwania (FzfLua search_history)" then
                 vim.cmd[[FzfLua search_history]]
-            elseif choice == "Dodaj pliki do repozytorium Git (GA)" then
+            elseif choice == "GA - dodaj pliki do repozytorium Git" then
                 require("user_functions.git").GA()
             elseif choice == "Wyświetla informacje o repozytorium (GI)" then
                 require("user_functions.git").GI()
@@ -280,7 +280,7 @@ M.komendy = function()
                 vim.cmd[[FzfLua git_status]]
             elseif choice == "GP - dodaje i wysyła pliki do repozytorium Git" then
                 require("user_functions.git").GP()
-            elseif choice == "Dodaje, podpisuje i wysyła pliki do repozytorium Git (GPS)" then
+            elseif choice == "GPS - dodaje, podpisuje i wysyła pliki do repozytorium Git" then
                 require("user_functions.git").GPS()
             elseif choice == "PU - pobiera zmiany z repozytorium Git" then
                 require("user_functions.git").PU()
@@ -312,7 +312,7 @@ M.komendy = function()
                 vim.cmd[[Lazy install]]
             elseif choice == "Aktualizacja pluginów (Lazy update)" then
                 vim.cmd[[Lazy update]]
-            elseif choice == "Ustaw jasny schemat kolorystyczny (Light)" then
+            elseif choice == "Light - ustaw jasny schemat kolorystyczny" then
                 vim.cmd[[colorscheme tokyonight-day]]
             elseif choice == "Wyświetla / ukrywa dekoratory list (List)" then
                 vim.cmd[[set list!]]
@@ -334,7 +334,7 @@ M.komendy = function()
                 vim.cmd("lua require('noice').cmd('history')")
             elseif choice == "Wyświetla ostatni komunikat (LastMsg)" then
                 vim.cmd("lua require('noice').cmd('last')")
-            elseif choice == "Ukryj Timer (TimerHide)" then
+            elseif choice == "TimerHide - ukryj Timer" then
                 vim.cmd[[TimerHide]]
             elseif choice == "Pokaż Timer (TimerShow)" then
                 vim.cmd[[TimerShow]]
@@ -371,7 +371,7 @@ M.komendy = function()
                 vim.cmd[[lua require("user_functions.misc").RevBackground()]]
             elseif choice == "Wyświetl procesy systemowe (TermPs)" then
                 vim.cmd("lua require'toggleterm'.exec('ps ax', 1, 12)")
-            elseif choice == "Time - Pokaż datę i godzinę (Time)" then
+            elseif choice == "Time - Pokaż datę i godzinę" then
                 require("user_functions.misc").Time()
             elseif choice == "Włącz / wyłącz zawijanie linii (Wrap)" then
                 vim.cmd[[set wrap!]]
@@ -437,7 +437,7 @@ M.komendy = function()
                 vim.cmd[[set ff=dos]]
             elseif choice == "Zamienia koniec linii EOL na LF (Unix)" then
                 vim.cmd[[set ff=unix]]
-            elseif choice == "Dodaj Modeline" then
+            elseif choice == "Modeline - dodaje na końcu pliku Modeline" then
                 require("user_functions.misc").Modeline()
             elseif choice == "Cheatsheet QFJZ" then
                 vim.cmd[[Cheatsheet]]
