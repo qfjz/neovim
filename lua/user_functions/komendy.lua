@@ -36,6 +36,7 @@ M.komendy = function()
         "GrepNeovimDocs - przeszukiwanie dokumentacji Neovim /usr/share/nvim/runtime/doc/",
         "GrepNotesDir - przeszukiwanie katalogu $NOTES_DIR",
         "HideMiddleDot - ukrywa znak · wstawiony w miejsce spacji",
+        "Hostname - wyświetla nazwę systemu",
         "InsObsdianReminder - wstawia znacznik dla przypomnień w programie Obsidian",
         "Lazy clean - usunięcie nieużywanych pluginów",
         "Lazy install - instalacja nowych pluginów",
@@ -109,7 +110,6 @@ M.komendy = function()
         "Wyświetla informacje o otwartym pliku (FileInfo)",
         "Wyświetla informacje o repozytorium (GI)",
         "Wyświetla komunikaty (Messages)",
-        "Wyświetla nazwę systemu (Hostname)",
         "Wyświetla nazwę zmiennej NVIM_APPNAME",
         "Wyświetla ostatni komunikat (LastMsg)",
         "Włącz / wyłącz numerowanie wierszy (number!)",
@@ -285,7 +285,7 @@ M.komendy = function()
                 vim.cmd("lua vim.opt.listchars:remove('space')")
             elseif choice == "ShowMiddleDot - pokazuje znak · wstawiony w miejsce spacji" then
                 vim.cmd("lua vim.opt.listchars:append('space:·')")
-            elseif choice == "Wyświetla nazwę systemu (Hostname)" then
+            elseif choice == "Hostname - wyświetla nazwę systemu" then
                 vim.notify(vim.fn.system('hostname'))
             elseif choice == "Wyłącza prowadnice wcięć (IBLDisable)" then
                 vim.cmd[[IBLDisable]]
