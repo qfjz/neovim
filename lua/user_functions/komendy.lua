@@ -57,6 +57,11 @@ M.komendy = function()
         "Sortuj bufory według numerów (BufferOrderByBufferNumber)",
         "Sprawdza czy w systemie są wymagane programy (CheckExternalReqs)",
         "Time - Pokaż datę i godzinę (Time)",
+        "TimerStart 15m - ustaw Timer na 15 minut",
+        "TimerStart 1m - ustaw Timer na 1 minutę",
+        "TimerStart 30m - ustaw Timer na 30 minut",
+        "TimerStart 5m - ustaw Timer na 5 minut",
+        "TimerStart 60m - ustaw Timer na 60 minut",
         "Ukryj Timer (TimerHide)",
         "Ukrywa znak · wstawiony w miejsce spacji (HideMiddleDot)",
         "Ulubione katalogi (BmDirs i CD)",
@@ -65,11 +70,6 @@ M.komendy = function()
         "Ustaw schemat kolorystyczny na tokyonight-moon (Dark)",
         "Ustaw scrolloff na 3",
         "Ustaw scrolloff na 999",
-        "Ustaw Timer na 1 minutę (TimerStart 1m)",
-        "Ustaw Timer na 15 minut (TimerStart 15m)",
-        "Ustaw Timer na 30 minut (TimerStart 30m)",
-        "Ustaw Timer na 5 minut (TimerStart 5m)",
-        "Ustaw Timer na 60 minut (TimerStart 60m)",
         "Ustawia przezroczystość dla Neovide na 0.2",
         "Ustawia przezroczystość dla Neovide na 1",
         "Usunięcie nieużywanych pluginów (Lazy clean)",
@@ -200,15 +200,15 @@ M.komendy = function()
                 require("user_functions.misc").GetSpell()
             elseif choice == "Ulubione katalogi (BmDirs i CD)" then
                 require("user_functions.bookmarks").CD()
-            elseif choice == "Ustaw Timer na 1 minutę (TimerStart 1m)" then
+            elseif choice == "TimerStart 1m - ustaw Timer na 1 minutę" then
                 vim.cmd[[TimerStart 1m]]
-            elseif choice == "Ustaw Timer na 5 minut (TimerStart 5m)" then
+            elseif choice == "TimerStart 5m - ustaw Timer na 5 minut" then
                 vim.cmd[[TimerStart 5m]]
-            elseif choice == "Ustaw Timer na 15 minut (TimerStart 15m)" then
+            elseif choice == "TimerStart 15m - ustaw Timer na 15 minut" then
                 vim.cmd[[TimerStart 15m]]
-            elseif choice == "Ustaw Timer na 30 minut (TimerStart 30m)" then
+            elseif choice == "TimerStart 30m - ustaw Timer na 30 minut" then
                 vim.cmd[[TimerStart 30m]]
-            elseif choice == "Ustaw Timer na 60 minut (TimerStart 60m)" then
+            elseif choice == "TimerStart 60m - ustaw Timer na 60 minut" then
                 vim.cmd[[TimerStart 60m]]
             elseif choice == "Zatrzymaj Timer (TimerStop)" then
                 vim.cmd[[TimerStop]]
