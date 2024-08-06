@@ -83,13 +83,8 @@ return {
     "doctorfree/cheatsheet.nvim",
     "nvim-lua/popup.nvim",
     "mg979/vim-visual-multi",
-    "LintaoAmons/easy-commands.nvim",
-    {
-        "LintaoAmons/bookmarks.nvim",
-        dependencies = {
-            {"stevearc/dressing.nvim"} -- optional: to have the same UI shown in the GIF
-        }
-    },
+    "LintaoAmons/bookmarks.nvim",
+    "stevearc/dressing.nvim",
     { "folke/persistence.nvim",
         event = "BufReadPre", -- this will only start session saving when an actual file was opened
     },

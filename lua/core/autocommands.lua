@@ -137,7 +137,7 @@ autocmd("BufEnter", {
 
 autocmd("BufNewFile", {
     pattern = { "*.sh" },
-    command = "0r $HOME/.config/" .. NvimAppName() .. "/templates/bash.sh"
+    command = "0r $HOME/.config/" .. require("user_functions.misc").NvimAppName() .. "/templates/bash.sh"
 })
 
 autocmd("FileType", {

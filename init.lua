@@ -4,14 +4,12 @@ vim.g.maplocalleader = " "
 require("core.lazy")
 require("core.options")
 require("core.mappings")
-require("core.functions")
 require("core.autocommands")
 require("core.docker-yank")
 require("config.alpha-cnf")
 require("config.autocomplete-cnf")
 require("config.barbar-cnf")
 require("config.bookmarks-cnf")
-require("config.easy-commands-cnf")
 require("config.fauxClip-cnf")
 require("config.flash-cnf")
 require("config.fzflua-cnf")
@@ -38,6 +36,11 @@ require('config.nvim-autopairs-cnf')
 require("plugins.plugins")
 
 vim.cmd([[colorscheme tokyonight]])
+
+-- Funkcje
+for _, file in ipairs(vim.fn.readdir(vim.fn.stdpath "config" .. "/lua/user_functions", [[v:val =~ '\.lua$']])) do
+  require("user_functions." .. file:gsub("%.lua$", ""))
+end
 
 -- Ustawienia użytkownika
 -- ~/.config/$NVIM_APPNAME/lua/user-settings.lua

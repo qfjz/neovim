@@ -37,11 +37,18 @@ vim.keymap.set("n", "<leader>P", '<cmd>exe "put! " . v:register<cr>', { desc = "
 vim.keymap.set("n", "<leader>p", '<cmd>exe "put "  . v:register<cr>', { desc = "Wklej poniżej" })
 vim.keymap.set("x", "<leader>p", [["_dP]], { desc = "Wkleja, nie podmieniając rejestru w trybie VISUAL" })
 -- ## Rejestr x
-vim.keymap.set("n", "<space>m", "<cmd>lua CopyReg()<cr>", { desc = "Kopiuje zawartość głównego rejestru do rejestru 'x'" })
+vim.keymap.set("n", "<space>m", function()
+    require('user_functions.misc').CopyReg()
+end, { desc = "Kopiuje zawartość głównego rejestru do rejestru 'x'" })
 vim.keymap.set("n", "M", '"xp', { desc = "Wkleja zawartość rejestru 'x', standardowo klawisz 'M' przenosi kursor na środek ekranu" })
 -- ## Pliki
-vim.keymap.set("n", "<leader>f", "<cmd>lua Files()<cr>", { desc = "FzfLua files lista plików w bieżącej lokalizacji" })
-vim.keymap.set("n", [[<leader>n]], "<cmd>lua CDFD()<cr><cmd>Neotree reveal_force_cwd toggle<cr>", { desc = "Uruchamia menadżer plików NeoTree" })
+vim.keymap.set("n", "<leader>f", function()
+    require("user_functions.misc").Files()
+end, { desc = "FzfLua files lista plików w bieżącej lokalizacji" })
+vim.keymap.set("n", [[<leader>n]], function()
+    require("user_functions.misc").CDFD()
+    vim.cmd[[Neotree reveal_force_cwd toggle]]
+end, { desc = "Uruchamia menadżer plików NeoTree" })
 vim.keymap.set("n", "<leader>e", require("oil").open, { desc = "Menadżer plików Oil" })
 vim.keymap.set("n", "<M-f>", require("oil").open, { desc = "Menadżer plików Oil" })
 vim.keymap.set("n", "<leader>l", "<cmd>lua require('lf').start({ border = 'none', width = vim.o.columns, height = vim.o.lines })<cr>")
@@ -65,14 +72,16 @@ vim.keymap.set("n", "<leader>sf", function()
 end, { desc = "Wyszukiwanie plików" })
 -- ## Bufory
 vim.keymap.set("n", [[<tab>]], "<cmd>e #<cr>", { desc= "Przełączanie pomiędzy dwoma ostatnimi buforami" })
-vim.keymap.set("n", [[<s-tab>]], "<cmd>BufferPick<cr>", { desc = "Pozwala wybrać bufor za pomocą jednej litery" })
-vim.keymap.set("n", [[<leader>b]], "<cmd>FzfLua buffers<cr>", { desc = "Przełączanie pomiędzy buforami" })
+vim.keymap.set("n", [[<s-tab>]], "<cmd>FzfLua buffers<cr>", { desc = "Pozwala wybrać bufor za pomocą jednej litery" })
+vim.keymap.set("n", [[<leader>b]], "<cmd>BufferPick<cr>", { desc = "Przełączanie pomiędzy buforami" })
 vim.keymap.set("n", [[<leader>,]], [[<cmd>bp<cr>]], { desc = "Poprzeni bufor" })
 vim.keymap.set("n", [[<leader>.]], [[<cmd>bn<cr>]], { desc = "Następny bufor" })
+vim.keymap.set("n", [[<m-h>]], [[<cmd>bp<cr>]], { desc = "Poprzeni bufor" })
+vim.keymap.set("n", [[<m-l>]], [[<cmd>bn<cr>]], { desc = "Następny bufor" })
 vim.keymap.set("n", [[<leader>\]], "<cmd>Neotree source=buffers reveal_force_cwd=true position=right action=focus toggle<cr>", { desc = "NeoTree otwarte bufory" })
 vim.keymap.set("n", [[<leader>d]], [[<cmd>bd<cr>]], { desc = "Zamyka bufor" })
 vim.keymap.set("n", [[<leader>BB]], function()
-    CDFD()
+    require("user_functions.misc").CDFD()
     require("fzf-lua").buffers({ cwd_only = true })
 end, { desc = "Pokazuje bufory znajdujące się w bieżącym katalogu co aktualnie otwarty plik" })
 vim.keymap.set("n", [[<leader>D]], "<cmd>BufferPickDelete<cr>", { desc = "Pozwala wybrać bufor, który chcemy zamknąć" })
@@ -86,12 +95,13 @@ vim.keymap.set("n", [[<c-k>]], [[<c-w><c-k>]], { desc = "Przechodzi do okna wyż
 vim.keymap.set("n", [[<leader>o]], "<cmd>only<cr>", { desc = "Pozostawia otwarte tylko aktywne okno" })
 vim.keymap.set("n", [[<leader>cc]], "<cmd>close<cr>", { desc = "Zamyka aktywne okno" })
 -- Zmiana wielkości okna
-vim.keymap.set("n", "<m-h>", "<cmd>vertical resize -2<cr>")
-vim.keymap.set("n", "<m-j>", "<cmd>resize +2<cr>")
-vim.keymap.set("n", "<m-k>", "<cmd>resize -2<cr>")
-vim.keymap.set("n", "<m-l>", "<cmd>vertical resize +2<cr>")
+vim.keymap.set("n", "<s-m-h>", "<cmd>vertical resize -2<cr>")
+vim.keymap.set("n", "<s-m-j>", "<cmd>resize +2<cr>")
+vim.keymap.set("n", "<s-m-k>", "<cmd>resize -2<cr>")
+vim.keymap.set("n", "<s-m-l>", "<cmd>vertical resize +2<cr>")
 -- ## Notatki
-vim.keymap.set("n", "<space><space>", "<cmd>lua FindNotesDir()<cr>", { desc = "Wyszukiwanie w katalogu notatek" })
+-- vim.keymap.set("n", "<space><space>", "<cmd>lua FindNotesDir()<cr>", { desc = "Wyszukiwanie w katalogu notatek" })
+vim.keymap.set("n", "<space><space>", require("user_functions.notatki").FindNotesDir, { desc = "Wyszukiwanie w katalogu notatek" })
 vim.keymap.set({ "n", "v" }, "<leader>ci", function()
     vim.cmd[[norm "kyy]]
     vim.cmd[[cd $NOTES_DIR]]
@@ -116,11 +126,17 @@ vim.keymap.set({"n", "x"}, [[gl]], "$", { desc = "Koniec linii" })
 -- ## Bookmarks
 vim.keymap.set("n", "mm", "<cmd>BookmarksMark<cr>")
 vim.keymap.set("n", "mo", "<cmd>BookmarksGoto<cr>")
--- ## BiPolar
-vim.keymap.set("n", "<leader>B", "<cmd>BiPolar<cr>")
 -- ## Zapisywanie i wyjście
-vim.keymap.set("n", [[<leader>w]], [[<cmd>lua Write()<cr>]], { desc = "Zapisanie zmian" })
-vim.keymap.set("n", [[<leader>q]], [[<cmd>lua Write()<cr><cmd>q<cr>]], { desc = "Zapisuje zmiany i wychodzi" })
+vim.keymap.set("n", [[<leader>w]], require("user_functions.write").write_file, { desc = "Zapisanie zmian" })
+-- vim.keymap.set("n", [[<leader>q]], function()
+--     require("user_functions.write").write_file()
+--     vim.cmd[[q]]
+-- end, { desc = "Zapisuje zmiany i wychodzi" })
+-- vim.keymap.set("n", [[<leader>q]], [[<cmd>lua Write()<cr><cmd>q<cr>]], { desc = "Zapisuje zmiany i wychodzi" })
+vim.keymap.set("n", [[<leader>q]], function()
+    require("user_functions.write").write_file()
+    vim.cmd[[q]]
+end, { desc = "Zapisuje zmiany i wychodzi" })
 vim.keymap.set("n", [[<leader>W]], [[:w %:p:h/]], { desc = "Zapisuje plik pod wybraną nazwą w bieżącym katalogu" })
 vim.keymap.set("n", [[qq]], [[<cmd>qa<cr>]], { desc = "Wyjście" })
 -- ## Tryb COMMAND
@@ -145,7 +161,9 @@ vim.keymap.set("n", [[<leader>so]], [[<cmd>luafile %<cr><cmd>lua vim.notify("Prz
 -- ## Łączenie linii
 vim.keymap.set("n", "J", "mzJ`z", { desc = "Pozostawia kursor po łączeniu linii" })
 -- ## Kolory
-vim.keymap.set("n", "<leader><F9>", "<cmd>lua KolorPora()<cr>", { desc = "Zmiana tematu kolorystycznego w zależności od pory dnia" })
+vim.keymap.set("n", "<leader><F9>", function()
+    require("user_functions.misc").KolorPora()
+end, { desc = "Zmiana tematu kolorystycznego w zależności od pory dnia" })
 vim.keymap.set("n", "<F9>", "<cmd>FzfLua colorschemes<cr>", { desc = "FzfLua colorschemes" })
 -- ## Tabs
 vim.keymap.set("n", "<leader><tab>l", "<cmd>tablast<cr>", { desc = "Last Tab" })
@@ -161,7 +179,9 @@ vim.keymap.set("n", "q:", "<nop>")
 vim.keymap.set("n", "q:", "<cmd>FzfLua command_history<cr>")
 vim.keymap.set("n", "q;", "<cmd>FzfLua command_history<cr>")
 -- ## Pliki konfiguracyjne i dokumentacja
-vim.keymap.set("n", "<leader>v", "<cmd>lua NvimConfig()<cr>", { desc = "Wyszukiwarka plików konfiguracyjnych" })
+vim.keymap.set("n", "<leader>v", function()
+    require("user_functions.misc").NvimConfig()
+end, { desc = "Wyszukiwarka plików konfiguracyjnych" })
 vim.keymap.set("n", "<leader>?", "<cmd>Cheatsheet<cr>", { desc = "Przeszukiwanie lokalnej dokumentacji" })
 -- ## UndotreeToggle
 vim.keymap.set("n", "<leader>u", "<cmd>UndotreeToggle<cr>", { desc = "Rejestr zmian Undotree" })
@@ -169,7 +189,7 @@ vim.keymap.set("n", "<leader>u", "<cmd>UndotreeToggle<cr>", { desc = "Rejestr zm
 vim.keymap.set({ "n", "x" }, "+", "<C-a>", { silent = true, desc = "Zwiększa wartość liczby" })
 vim.keymap.set({ "n", "x" }, "-", "<C-x>", { silent = true, desc = "Zmniejsza wartość liczby" })
 -- ## Komendy
-vim.keymap.set({ "n", "v" }, "<leader>k", "<cmd>lua Komendy()<cr>", { desc = "Lista komend" })
+vim.keymap.set({ "n", "v" }, "<leader>k", require("user_functions.komendy").komendy, { desc = "Lista komend" })
 -- ## Live Grep
 vim.keymap.set("n", "<leader>g", "<cmd>FzfLua live_grep<cr>", { desc = "FzfLua live grep" })
 -- ## ESC
@@ -188,7 +208,7 @@ vim.keymap.set("n", "<c-p>", '<cmd>lua require"gitsigns.actions".prev_hunk()<cr>
 vim.keymap.set("n", "gj", '<cmd>lua require"gitsigns.actions".next_hunk()<cr>zv', { desc = "Następna zmiana w pliku - Git" })
 vim.keymap.set("n", "gk", '<cmd>lua require"gitsigns.actions".prev_hunk()<cr>zv', { silent = true }, { desc = "Poprzednia zmiana w pliku - git" })
 -- ## BiPolar
-vim.keymap.set("n", "<leader>tb", "<cmd>BiPolar<cr>")
+vim.keymap.set("n", "<leader>tb", require("user_functions.misc").BiPolar)
 -- ## Uruchomienie terminala
 vim.keymap.set("n", "<leader>tt", "<cmd>ToggleTerm<cr>")
 -- ## Uruchomienie Telescope

@@ -1,0 +1,47 @@
+{
+  "bookmark_lists": [
+    {
+      "bookmarks": [
+        {
+          "content": "        \"Przeszukiwanie listy quick fix (FzfLua quickfix)\",",
+          "created_at": 1722804610,
+          "githash": "fatal: not a git repository (or any parent up to mount point /)Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).",
+          "id": 1722804610,
+          "location": {
+            "col": 41,
+            "line": 46,
+            "path": "/home/red/workspace/git/qfjz/neovim/lua/user_functions/komendy.lua",
+            "project_name": "neovim",
+            "relative_path": "lua/user_functions/komendy.lua"
+          },
+          "name": "",
+          "visited_at": 1722804610
+        },
+        {
+          "content": "        \"Przeszukiwanie location list (FzfLua loclist)\",",
+          "created_at": 1722804611,
+          "githash": "fatal: not a git repository (or any parent up to mount point /)Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).",
+          "id": 1722804611,
+          "location": {
+            "col": 41,
+            "line": 47,
+            "path": "/home/red/workspace/git/qfjz/neovim/lua/user_functions/komendy.lua",
+            "project_name": "neovim",
+            "relative_path": "lua/user_functions/komendy.lua"
+          },
+          "name": "",
+          "visited_at": 1722804611
+        }
+      ],
+      "id": "2024072119372590941803",
+      "is_active": true,
+      "name": "Default"
+    }
+  ],
+  "projects": [
+    {
+      "name": "neovim",
+      "path": "/home/red/workspace/git/qfjz/neovim"
+    }
+  ]
+}
