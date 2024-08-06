@@ -5,6 +5,7 @@ M.komendy = function()
         "AddBmFile - dodaj plik do ulubionych",
         "AddCDDir - dodaj katalog do ulubionych",
         "Alpha Dashboard",
+        "BufInfo - informacje o buforze",
         "CDGitRoot - przechodzi do katalogu głównego repozytorium Git",
         "Cheatsheet QFJZ Edit",
         "Cheatsheet QFJZ",
@@ -17,16 +18,15 @@ M.komendy = function()
         "FindGitRoot",
         "Force Quit - wyjdź bez zapisywania",
         "GA - dodaj pliki do repozytorium Git",
-        "GitStatus",
+        "GitStatus - pokazuje zmiany w repozytorium Git",
         "GP - dodaje i wysyła pliki do repozytorium Git",
         "GPS - dodaje, podpisuje i wysyła pliki do repozytorium Git",
-        "GrepGitRoot",
-        "GrepNeovimDocs",
-        "Informacje o buforze (BufInfo)",
-        "Instalacja nowych pluginów (Lazy install)",
+        "GrepGitRoot - przeszukiwanie repozytorium Git",
+        "GrepNeovimDocs - przeszukiwanie dokumentacji Neovim /usr/share/nvim/runtime/doc/",
         "Kopiuj bieżącą linię do wybranego pliku (CopyLineToSelectedFile)",
         "Kopiuj zaznaczone linie do wybranego pliku (CopyVLineToSelectedFile)",
         "Kopiuje katalog nazwę pliku do rejestru (CopyFileName)",
+        "Lazy install - instalacja nowych pluginów",
         "Lazy update - aktualizacja pluginów",
         "Light - ustaw jasny schemat kolorystyczny",
         "Menadżer plików Neotree",
@@ -147,7 +147,7 @@ M.komendy = function()
                 require("user_functions.bookmarks").AddBmFile()
             elseif choice == "Wybierz bufor (BufferPick)" then
                 vim.cmd[[BufferPick]]
-            elseif choice == "GrepGitRoot" then
+            elseif choice == "GrepGitRoot - przeszukiwanie repozytorium Git" then
                 require("user_functions.misc").GrepGitRoot()
             elseif choice == "FindGitRoot" then
                 require("user_functions.misc").FindGitRoot()
@@ -166,7 +166,7 @@ M.komendy = function()
                 require("user_functions.bookmarks").EditBmFiles()
             elseif choice == "FileNeovimDocs - wyszukiwanie dokumentacji Neovim /usr/share/nvim/runtime/doc/" then
                 require("user_functions.misc").FindFilesDir("/usr/share/nvim/runtime/doc/")
-            elseif choice == "GrepNeovimDocs" then
+            elseif choice == "GrepNeovimDocs - przeszukiwanie dokumentacji Neovim /usr/share/nvim/runtime/doc/" then
                 require("user_functions.misc").GrepDirectory("/usr/share/nvim/runtime/doc/")
             elseif choice == "AddCDDir - dodaj katalog do ulubionych" then
                 require("user_functions.bookmarks").AddCDDir()
@@ -212,9 +212,9 @@ M.komendy = function()
                 vim.cmd[[TimerStart 60m]]
             elseif choice == "Zatrzymaj Timer (TimerStop)" then
                 vim.cmd[[TimerStop]]
-            elseif choice == "GitStatus" then
+            elseif choice == "GitStatus - pokazuje zmiany w repozytorium Git" then
                 vim.cmd("lua require'fzf-lua'.git_status({ winopts = { height=1, width=1 } })")
-            elseif choice == "Informacje o buforze (BufInfo)" then
+            elseif choice == "BufInfo - informacje o buforze" then
                 require("user_functions.misc").BufInfo()
             elseif choice == "Wyszukiwanie zakładek (BookmarksAllMarks)" then
                 local api = require("bookmarks.api")
@@ -308,7 +308,7 @@ M.komendy = function()
                 vim.cmd[[language pl_PL.UTF-8]]
             elseif choice == "Lazy update - aktualizacja pluginów" then
                 vim.cmd[[Lazy clean]]
-            elseif choice == "Instalacja nowych pluginów (Lazy install)" then
+            elseif choice == "Lazy install - instalacja nowych pluginów" then
                 vim.cmd[[Lazy install]]
             elseif choice == "Aktualizacja pluginów (Lazy update)" then
                 vim.cmd[[Lazy update]]
