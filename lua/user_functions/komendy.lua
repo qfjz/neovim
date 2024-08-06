@@ -44,7 +44,7 @@ M.komendy = function()
         "NewFileVSplit - otwórz nowy plik w podziale pionowym",
         "OpenFile",
         "OstatniaAktualizacja - aktualizacja lini 'Aktualizacja: '",
-        "Pobierze słownik pisowni języka polskiego (GetSpell)",
+        "GetSpell - pobierze słownik pisowni języka polskiego",
         "Pokaż Timer (TimerShow)",
         "Przeszukiwanie historii wyszukiwania (FzfLua search_history)",
         "Przeszukiwanie katalogu $NOTES_DIR (GrepNotesDir)",
@@ -195,7 +195,7 @@ M.komendy = function()
             elseif choice == "Exit - zapisanie i wyjście" then
                 vim.cmd.wa()
                 vim.cmd.qa()
-            elseif choice == "Pobierze słownik pisowni języka polskiego (GetSpell)" then
+            elseif choice == "GetSpell - pobierze słownik pisowni języka polskiego" then
                 require("user_functions.misc").GetSpell()
             elseif choice == "Ulubione katalogi (BmDirs i CD)" then
                 require("user_functions.bookmarks").CD()
