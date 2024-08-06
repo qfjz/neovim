@@ -71,7 +71,7 @@ M.komendy = function()
         "Ustaw scrolloff na 999",
         "Ustawia przezroczystość dla Neovide na 0.2",
         "Ustawia przezroczystość dla Neovide na 1",
-        "Usunięcie nieużywanych pluginów (Lazy clean)",
+        "Lazy clean - usunięcie nieużywanych pluginów",
         "Usuwanie zakładek (BookmarksDelete)",
         "Usuń bieżący plik z systemu plików",
         "Usuń całą zawartość pliku",
@@ -303,11 +303,11 @@ M.komendy = function()
                 vim.cmd[[language en_US]]
             elseif choice == "Zmiana języka Neovim na język polski (language pl_PL.UTF-8)" then
                 vim.cmd[[language pl_PL.UTF-8]]
-            elseif choice == "Lazy update - aktualizacja pluginów" then
+            elseif choice == "Lazy clean - usunięcie nieużywanych pluginów" then
                 vim.cmd[[Lazy clean]]
             elseif choice == "Lazy install - instalacja nowych pluginów" then
                 vim.cmd[[Lazy install]]
-            elseif choice == "Aktualizacja pluginów (Lazy update)" then
+            elseif choice == "Lazy update - aktualizacja pluginów" then
                 vim.cmd[[Lazy update]]
             elseif choice == "Light - ustaw jasny schemat kolorystyczny" then
                 vim.cmd[[colorscheme tokyonight-day]]
