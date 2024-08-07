@@ -5,7 +5,13 @@ M.komendy = function()
         "AddBmFile - dodaj plik do ulubionych",
         "AddCDDir - dodaj katalog do ulubionych",
         "Alpha Dashboard",
+        "BackupNeovimConfig - wykonaj kopię zapasową plików Neovim",
+        "BmDirs i CD - ulubione katalogi",
+        "BmFiles - ulubione pliki",
+        "BookmarksAllMarks - wyszukiwanie zakładek",
+        "BookmarksDelete - usuwanie zakładek",
         "BufferOrderByBufferNumber - sortuj bufory według numerów",
+        "BufferPick - wybierz bufor",
         "BufInfo - informacje o buforze",
         "CD - przejdź do katalogu wybranego z ulubionych",
         "CDE - otwórz katalog wybrany z listy",
@@ -16,6 +22,7 @@ M.komendy = function()
         "Cheatsheet QFJZ",
         "CheckExternalReqs - sprawdza czy w systemie są wymagane programy",
         "CheckVersion - wyświetla wersję programu Neovim",
+        "ClearRegs - wyczyść wszystkie rejestry",
         "CopyFileName - kopiuje katalog nazwę pliku do rejestru",
         "CopyLineToSelectedFile - kopiuj bieżącą linię do wybranego pliku",
         "CopyVLineToSelectedFile - kopiuj zaznaczone linie do wybranego pliku",
@@ -26,7 +33,14 @@ M.komendy = function()
         "Exit - zapisanie i wyjście",
         "FileNeovimDocs - wyszukiwanie dokumentacji Neovim /usr/share/nvim/runtime/doc/",
         "FindGitRoot",
+        "FindNotesDir - wyszukiwanie notatek",
         "Force Quit - wyjdź bez zapisywania",
+        "FzfLua commands - wyszukiwanie komend",
+        "FzfLua helptags - wyszukiwanie pomocy Neovim",
+        "FzfLua keymaps - wyszukiwanie skrótów klawiszowych",
+        "FzfLua loclist - przeszukiwanie location list",
+        "FzfLua oldfiles - wyszukiwanie ostatnio edytowanych plików",
+        "FzfLua quickfix - przeszukiwanie listy quick fix",
         "GA - dodaj pliki do repozytorium Git",
         "GetSpell - pobierze słownik pisowni języka polskiego",
         "GitStatus - pokazuje zmiany w repozytorium Git",
@@ -50,12 +64,9 @@ M.komendy = function()
         "NewFileHSplit - otwórz nowy plik w podziale poziomym",
         "NewFileNoSplit - otwórz nowy plik",
         "NewFileVSplit - otwórz nowy plik w podziale pionowym",
-        "OpenFile",
+        "OpenFile - otwiera nowy plik dodają prefix src/",
         "OstatniaAktualizacja - aktualizacja lini 'Aktualizacja: '",
-        "Pokaż Timer (TimerShow)",
-        "Przeszukiwanie listy quick fix (FzfLua quickfix)",
-        "Przeszukiwanie location list (FzfLua loclist)",
-        "Przywróc ostatnią sesję (OstatniaSesja)",
+        "OstatniaSesja - przywróc ostatnią sesję",
         "PU - pobiera zmiany z repozytorium Git",
         "Reload user module",
         "Search history - przeszukiwanie historii wyszukiwania",
@@ -65,18 +76,16 @@ M.komendy = function()
         "TermGitStatus - wyświetl zmiany w repozytorium Git w terminalu",
         "Time - Pokaż datę i godzinę",
         "TimerHide - ukryj Timer",
+        "TimerShow - pokaż Timer",
         "TimerStart 15m - ustaw Timer na 15 minut",
         "TimerStart 1m - ustaw Timer na 1 minutę",
         "TimerStart 30m - ustaw Timer na 30 minut",
         "TimerStart 5m - ustaw Timer na 5 minut",
         "TimerStart 60m - ustaw Timer na 60 minut",
-        "Ulubione katalogi (BmDirs i CD)",
-        "Ulubione pliki (BmFiles)",
         "Ustaw scrolloff na 3",
         "Ustaw scrolloff na 999",
         "Ustawia przezroczystość dla Neovide na 0.2",
         "Ustawia przezroczystość dla Neovide na 1",
-        "Usuwanie zakładek (BookmarksDelete)",
         "Usuń bieżący plik z systemu plików",
         "Usuń całą zawartość pliku",
         "Usuń wszystkie puste linie oraz linie wypełnione znakiem spacji w pliku",
@@ -86,18 +95,9 @@ M.komendy = function()
         "Wstaw aktualną datę i godzinę w formacie 2024-07-22 17:28:27",
         "Wstaw znacznik czasu EPOCH",
         "Wstaw znacznik ID",
-        "Wybierz bufor (BufferPick)",
-        "Wyczyść wszystkie rejestry (ClearRegs)",
-        "Wykonaj kopię zapasową plików Neovim (BackupNeovimConfig)",
         "Wyszukaj znacznik ID",
-        "Wyszukiwanie komend (FzfLua commands)",
-        "Wyszukiwanie notatek (FindNotesDir)",
-        "Wyszukiwanie ostatnio edytowanych plików (FzfLua oldfiles)",
         "Wyszukiwanie plików konfiguracyjnych Neovim w katalogu $NVIM_APPNAME (Config)",
         "Wyszukiwanie plików w bieżącej lokalizacji (Files)",
-        "Wyszukiwanie pomocy Neovim (FzfLua helptags)",
-        "Wyszukiwanie skrótów klawiszowych (FzfLua keymaps)",
-        "Wyszukiwanie zakładek (BookmarksAllMarks)",
         "Wyszukiwarka rejestrów",
         "Wyszukuje pliki znajdujące się w repozytorium Git (GitFiles)",
         "Wyłącz autopairs",
@@ -144,7 +144,7 @@ M.komendy = function()
             local choice = selected[1]
             if choice == "AddBmFile - dodaj plik do ulubionych" then
                 require("user_functions.bookmarks").AddBmFile()
-            elseif choice == "Wybierz bufor (BufferPick)" then
+            elseif choice == "BufferPick - wybierz bufor" then
                 vim.cmd[[BufferPick]]
             elseif choice == "GrepGitRoot - przeszukiwanie repozytorium Git" then
                 require("user_functions.misc").GrepGitRoot()
@@ -152,7 +152,7 @@ M.komendy = function()
                 require("user_functions.misc").FindGitRoot()
             elseif choice == "CDGitRoot - przechodzi do katalogu głównego repozytorium Git" then
                 require("user_functions.misc").CDGitRoot()
-            elseif choice == "OpenFile" then
+            elseif choice == "OpenFile - otwiera nowy plik dodają prefix src/" then
                 local cursor_word = "src/" .. vim.api.nvim_eval("expand('<cWORD>')")
                 vim.cmd("e " .. cursor_word)
             elseif choice == "Wyszukiwarka rejestrów" then
@@ -169,7 +169,7 @@ M.komendy = function()
                 require("user_functions.misc").GrepDirectory("/usr/share/nvim/runtime/doc/")
             elseif choice == "AddCDDir - dodaj katalog do ulubionych" then
                 require("user_functions.bookmarks").AddCDDir()
-            elseif choice == "Wykonaj kopię zapasową plików Neovim (BackupNeovimConfig)" then
+            elseif choice == "BackupNeovimConfig - wykonaj kopię zapasową plików Neovim" then
                 vim.cmd("TermExec cmd='$HOME/bin/neovim-config-backup.sh " .. require("user_functions.misc").NvimAppName() .. "'")
             elseif choice == "Zamiana popularnych słów true / false (BiPolar)" then
                 local moods_table = {
@@ -190,14 +190,14 @@ M.komendy = function()
                 if moods_table[cursor_word] then
                     vim.cmd("normal ciw" .. moods_table[cursor_word] .. "")
                 end
-            elseif choice == "Ulubione pliki (BmFiles)" then
+            elseif choice == "BmFiles - ulubione pliki" then
                 require("user_functions.bookmarks").BmFiles()
             elseif choice == "Exit - zapisanie i wyjście" then
                 vim.cmd.wa()
                 vim.cmd.qa()
             elseif choice == "GetSpell - pobierze słownik pisowni języka polskiego" then
                 require("user_functions.misc").GetSpell()
-            elseif choice == "Ulubione katalogi (BmDirs i CD)" then
+            elseif choice == "BmDirs i CD - ulubione katalogi" then
                 require("user_functions.bookmarks").CD()
             elseif choice == "TimerStart 1m - ustaw Timer na 1 minutę" then
                 vim.cmd[[TimerStart 1m]]
@@ -215,13 +215,13 @@ M.komendy = function()
                 vim.cmd("lua require'fzf-lua'.git_status({ winopts = { height=1, width=1 } })")
             elseif choice == "BufInfo - informacje o buforze" then
                 require("user_functions.misc").BufInfo()
-            elseif choice == "Wyszukiwanie zakładek (BookmarksAllMarks)" then
+            elseif choice == "BookmarksAllMarks - wyszukiwanie zakładek" then
                 local api = require("bookmarks.api")
                 local picker = require("bookmarks.adapter.picker")
                 picker.pick_bookmark(function(bookmark)
                     api.goto_bookmark(bookmark, { open_method = "vsplit" })
                 end, { all = true })
-            elseif choice == "Usuwanie zakładek (BookmarksDelete)" then
+            elseif choice == "BookmarksDelete - usuwanie zakładek" then
                 local repo = require("bookmarks.repo")
                 local picker = require("bookmarks.adapter.picker")
                 picker.pick_bookmark(function(bookmark)
@@ -237,7 +237,7 @@ M.komendy = function()
                 require("user_functions.bookmarks").CDE()
             elseif choice == "CDFD - przejdź do katalogu dla otwartego pliku" then
                 require("user_functions.misc").CDFD()
-            elseif choice == "Wyczyść wszystkie rejestry (ClearRegs)" then
+            elseif choice == "ClearRegs - wyczyść wszystkie rejestry" then
                 require("user_functions.misc").ClearRegs()
             elseif choice == "Wyświetla historię komend (CommandLineHistory)" then
                 vim.cmd[[CommandLineHistory]]
@@ -259,11 +259,11 @@ M.komendy = function()
                 require("user_functions.misc").FileInfo()
             elseif choice == "Wyszukiwanie plików w bieżącej lokalizacji (Files)" then
                 require("user_functions.misc").Files()
-            elseif choice == "Wyszukiwanie komend (FzfLua commands)" then
+            elseif choice == "FzfLua commands - wyszukiwanie komend" then
                 vim.cmd[[FzfLua commands]]
-            elseif choice == "Wyszukiwanie pomocy Neovim (FzfLua helptags)" then
+            elseif choice == "FzfLua helptags - wyszukiwanie pomocy Neovim" then
                 vim.cmd[[FzfLua helptags]]
-            elseif choice == "Wyszukiwanie skrótów klawiszowych (FzfLua keymaps)" then
+            elseif choice == "FzfLua keymaps - wyszukiwanie skrótów klawiszowych" then
                 vim.cmd[[FzfLua keymaps]]
             elseif choice == "Wyszukiwanie ostatnio edytowanych plików (FzfLua oldfiles)" then
                 require("user_functions.misc").OldFiles()
@@ -333,7 +333,7 @@ M.komendy = function()
                 vim.cmd("lua require('noice').cmd('last')")
             elseif choice == "TimerHide - ukryj Timer" then
                 vim.cmd[[TimerHide]]
-            elseif choice == "Pokaż Timer (TimerShow)" then
+            elseif choice == "TimerShow - pokaż Timer" then
                 vim.cmd[[TimerShow]]
             elseif choice == "Neorg przejdź do workspace home" then
                 vim.cmd[[Neorg workspace home]]
@@ -352,7 +352,7 @@ M.komendy = function()
                 print(require("user_functions.misc").NvimAppName())
             elseif choice == "OstatniaAktualizacja - aktualizacja lini 'Aktualizacja: '" then
                 require("user_functions.misc").OstatniaAktualizacja()
-            elseif choice == "Przywróc ostatnią sesję (OstatniaSesja)" then
+            elseif choice == "OstatniaSesja - przywróc ostatnią sesję" then
                 require("user_functions.misc").OstatniaSesja()
             elseif choice == "Włącz / wyłącz numerowanie wierszy (number!)" then
                 vim.cmd[[set number!]]
@@ -414,15 +414,15 @@ M.komendy = function()
                 require("nvim-autopairs").disable()
             elseif choice == "Włącz autopairs" then
                 require("nvim-autopairs").enable()
-            elseif choice == "Przeszukiwanie listy quick fix (FzfLua quickfix)" then
+            elseif choice == "FzfLua quickfix - przeszukiwanie listy quick fix" then
                 vim.cmd[[FzfLua quickfix]]
             elseif choice == "CopyLineToSelectedFile - kopiuj bieżącą linię do wybranego pliku" then
                 require("user_functions.notatki").CopyLineToSelectedFile()
             elseif choice == "CopyVLineToSelectedFile - kopiuj zaznaczone linie do wybranego pliku" then
                 require("user_functions.notatki").CopyVLineToSelectedFile()
-            elseif choice == "Wyszukiwanie notatek (FindNotesDir)" then
+            elseif choice == "FindNotesDir - wyszukiwanie notatek" then
                 require("user_functions.notatki").FindNotesDir()
-            elseif choice ==  "Przeszukiwanie location list (FzfLua loclist)" then
+            elseif choice ==  "FzfLua loclist - przeszukiwanie location list" then
                 vim.cmd[[FzfLua loclist]]
             elseif choice == "GrepNotesDir - przeszukiwanie katalogu $NOTES_DIR" then
                 require("user_functions.notatki").GrepNotesDir()
