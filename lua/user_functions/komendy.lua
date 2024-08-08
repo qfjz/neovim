@@ -101,7 +101,6 @@ M.komendy = function()
         "Wyszukiwarka rejestrów",
         "Wyszukuje pliki znajdujące się w repozytorium Git (GitFiles)",
         "Wyłącz autopairs",
-        "Wyłącz wszystkie dekoracje (DesFree)",
         "Wyłącza prowadnice wcięć (IBLDisable)",
         "Wyświetl procesy systemowe (TermPs)",
         "Wyświetl znacznik czasu EPOCH w czytelnej formie daty",
@@ -249,8 +248,6 @@ M.komendy = function()
                 require("user_functions.misc").CopyFileName()
             elseif choice == "Dark - ustaw schemat kolorystyczny na tokyonight-moon" then
                 vim.cmd[[colorscheme tokyonight-moon]]
-            elseif choice == "Wyłącz wszystkie dekoracje (DesFree)" then
-                require("user_functions.misc").DesFree()
             elseif choice == "EditCDDirs - edytuj ulubione katalogi ~/.config/bmdirs" then
                 require("user_functions.bookmarks").EditCDDirs()
             elseif choice == "EditGitConfig - edytuj plik konfiguracyjny repozytorium Git .git/config" then

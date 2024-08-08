@@ -35,12 +35,14 @@ require("config.zen-mode-cnf")
 require('config.nvim-autopairs-cnf')
 require("plugins.plugins")
 
-vim.cmd([[colorscheme tokyonight]])
+require("user_functions.bookmarks")
+require("user_functions.git")
+require("user_functions.komendy")
+require("user_functions.misc")
+require("user_functions.notatki")
+require("user_functions.write")
 
--- Funkcje
-for _, file in ipairs(vim.fn.readdir(vim.fn.stdpath "config" .. "/lua/user_functions", [[v:val =~ '\.lua$']])) do
-  require("user_functions." .. file:gsub("%.lua$", ""))
-end
+vim.cmd([[colorscheme tokyonight]])
 
 -- Ustawienia użytkownika
 -- ~/.config/$NVIM_APPNAME/lua/user-settings.lua

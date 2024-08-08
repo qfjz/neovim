@@ -306,30 +306,6 @@ function M.DateHeaderLong()
     vim.cmd[[silent! language en_US]]
 end
 
-DestractionFree = 0
-function M.DesFree()
-    if DestractionFree == 0 then
-        DestractionFree = 1
-        vim.opt.number = false
-        vim.opt.relativenumber = false
-        vim.opt.cursorline = false
-        vim.opt.colorcolumn = "0"
-        vim.opt.signcolumn = "no"
-        vim.opt.foldcolumn = "0"
-        vim.opt.list = false
-    elseif DestractionFree == 1 then
-        DestractionFree = 0
-        vim.opt.number = true
-        vim.opt.relativenumber = true
-        vim.opt.cursorline = true
-        vim.opt.colorcolumn = "+1"
-        vim.opt.signcolumn = "yes"
-        vim.opt.foldcolumn = "1"
-        vim.opt.list = true
-    end
-    vim.cmd[[IBLToggle]]
-end
-
 -- DESC: Generuje losowy ciąg znaków w formacie "-- #xxxx-xxxx"
 -- https://vi.stackexchange.com/questions/39681/how-to-insert-text-from-lua-function-at-cursor-position-insert-mode
 function M.Generate_ID()
@@ -471,7 +447,7 @@ end
 -- DESC: Wyszukuje słowa 'Aktualizacja: ' w górnej częśći pliku i dodaje lub zmienia na bieżącą datę
 function M.OstatniaAktualizacja()
     vim.cmd[[silent! language pl_PL.UTF-8]]
-    local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+    local row, col = table.unpack(vim.api.nvim_win_get_cursor(0))
     -- local data_aktualizacji = vim.fn.strftime("%Y %b %d")
     local data_aktualizacji = vim.fn.strftime("%F %T, %A %d %B")
     local ln = vim.fn.line("$")

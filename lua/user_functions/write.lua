@@ -23,7 +23,7 @@ function M.input_filename()
         end
         vim.cmd("silent write" .. input)
         vim.notify("Utworzyłem" .. " " .. vim.fn.expand("%:p"))
-        CDFD()
+        require("user_functions.misc").CDFD()
     end)
 end
 
@@ -48,7 +48,7 @@ function M.write_file()
             end
         end
     else
-        MkDir()
+        require("user_functions.misc").MkDir()
         vim.cmd("silent write")
         vim.notify("Utworzyłem" .. " " .. vim.fn.expand("%:p"))
     end
